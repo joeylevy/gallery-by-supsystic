@@ -1,0 +1,36 @@
+{% macro show(areaWidth, galleryId) %}
+    <div class="media-wrapr" style="width: {{ areaWidth }}px;margin: 0 auto !important;display: block;">
+        <h1>{{ environment.translate('Choose source') }}</h1>
+        <button class="button button-primary button-hero gallery" id="gg-btn-upload" data-folder-id="0"
+                style="width: 400px;"
+                data-gallery-id="{{ galleryId }}" data-upload>
+            <i class="fa fa-wordpress fa-2x"></i>
+            {{ environment.translate('Import from Wordpress Media Library') }}
+        </button>
+        <h3>{{ environment.translate('Social import will be added soon') }}</h3>
+        <button class="button button-primary button-hero gallery" data-folder-id="0"
+                style="width: 400px;margin-bottom: 20px;"
+                data-gallery-id="{{ gallery.id }}" data-upload disabled>
+            <i class="fa fa-instagram fa-2x"></i>
+            {{ environment.translate('Impor from your Instagram account') }}
+        </button>
+        <button class="button button-primary button-hero gallery" data-folder-id="0"
+                style="width: 400px;margin-bottom: 20px;"
+                data-gallery-id="{{ gallery.id }}" data-upload disabled>
+            <i class="fa fa-flickr fa-2x"></i>
+            {{ environment.translate('Impor from your Flickr account') }}
+        </button>
+        <button class="button button-primary button-hero gallery" data-folder-id="0"
+                style="width: 400px;margin-bottom: 20px;"
+                data-gallery-id="{{ gallery.id }}" data-upload disabled>
+            <i class="fa fa-tumblr fa-2x"></i>
+            {{ environment.translate('Impor from your Tumblr account') }}
+        </button>
+        <button class="button button-primary button-hero gallery" data-folder-id="0"
+                style="width: 400px;margin-bottom: 20px;"
+                data-gallery-id="{{ gallery.id }}" data-upload disabled>
+            <i class="fa fa-facebook fa-2x"></i>
+            {{ environment.translate('Impor from your Facebook account') }}
+        </button>
+    </div>
+{% endmacro %}

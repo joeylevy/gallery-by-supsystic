@@ -1,0 +1,197 @@
+/* Container */
+.grid-gallery {}
+
+/* Remove normalize.css or/and theme styles from figure */
+.grid-gallery > a > figure {
+    margin: 0 !important;
+}
+
+.grid-gallery-fluid .grid-gallery-photos {
+    position: relative;
+    top: 10px;
+}
+
+.grid-gallery-nav {
+    margin: 10px 0;
+}
+
+.grid-gallery-nav a {
+    -webkit-transition: all 500ms;
+    -o-transition: all 500ms;
+    transition: all 500ms;
+    opacity: .7;
+    outline: none;
+    display: inline-block;
+}
+
+.grid-gallery-nav a:hover {
+    opacity: 1;
+}
+
+/* Pagination */
+.grid-gallery-pagination-wrap {
+    margin: 10px;
+}
+
+.grid-gallery-pagination-wrap .grid-gallery-page {
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-decoration: none !important;
+}
+
+/* Clearfix */
+.grid-gallery-clearfix:before,
+.grid-gallery-clearfix:after {
+    content:"";
+    display:table;
+}
+.grid-gallery-clearfix:after {
+    clear:both;
+}
+.grid-gallery-clearfix {
+    zoom:1;
+}
+
+
+/* Fluid grid */
+.grid-gallery-fluid > a > figure {
+    float: left !important;
+}
+
+/* Fixed */
+.grid-gallery-fixed a.gg-link {
+    float: left !important;
+    outline: none !important;
+    text-decoration: none !important;
+    background-color: rgba(255, 255, 255, 0.0) !important;
+}
+
+.grid-gallery-fluid a.gg-link {
+    float: left !important;
+    outline: none !important;
+    text-decoration: none !important;
+}
+
+.grid-gallery a.gg-link:active,
+.grid-gallery a.gg-link:focus {
+    outline: none !important;
+}
+
+.grid-gallery .post a{
+    text-decoration: none;
+}
+
+.grid-gallery .post a.post-feed-date:hover,
+.grid-gallery .post a.post-category:hover,
+.grid-gallery .post a.post-feed-author:hover {
+    text-decoration: underline;
+}
+
+.grid-gallery .post [data-grid-gallery-type="fixed-post"] .post-feed-title {
+    font-size: 20px;
+    font-family : "Droid Serif" !important;
+    margin-top: 20px;
+    color: #000000;
+    display: block;
+}
+
+.grid-gallery .post [data-grid-gallery-type="fixed-post"] .post-feed-author,
+.grid-gallery .post [data-grid-gallery-type="fixed-post"] .post-feed-date {
+    display: inline-block;
+    font-size: 10px;
+    color: #A2A2A2;
+}
+
+.grid-gallery .post [data-grid-gallery-type="fixed-post"] .post-feed-content {
+    font-size: 14px;
+    color: #2b2b2b;
+    font-family: "Droid Serif";
+    position: relative;
+    padding-top: 5px;
+    width: 100%;
+}
+
+.grid-gallery .post [data-grid-gallery-type="fixed-post"] .read-more {
+    font-size: 14px;
+    color: #d43300;
+    text-align: left;
+    padding-top: 5px;
+}
+
+.grid-gallery .post [data-grid-gallery-type="post-bottom"] .post-feed-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: black;
+    background: white;
+    display: block;
+}
+
+.grid-gallery .post [data-grid-gallery-type="post-bottom"] .post-feed-author,
+.grid-gallery .post [data-grid-gallery-type="post-bottom"] .post-feed-date {
+    display: inline-block;
+    font-family : "Open Sans", sans-serif;
+    font-size: 13px;
+    color: #A2A2A2;
+}
+
+.grid-gallery .post [data-grid-gallery-type="post-bottom"] .post-feed-content {
+    font-size: 14px;
+    color: white;
+    font-family: "Droid Serif";
+    position: relative;
+    padding-top: 5px;
+}
+
+.grid-gallery .post [data-grid-gallery-type="post-fade"] .post-feed-title {
+    font-size: 17px;
+    font-family : "Open Sans", sans-serif;
+    font-weight: 800;
+    color: white;
+    display: block;
+}
+
+.grid-gallery .post [data-grid-gallery-type="post-fade"] .post-feed-date,
+.grid-gallery .post [data-grid-gallery-type="post-fade"] .post-feed-author {
+    display: inline-block;
+    font-family : "Open Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    padding-top: 2%;
+}
+
+.grid-gallery .post [data-grid-gallery-type="post-fade"] .post-feed-content {
+    font-size: 14px;
+    color: white;
+    font-family: "Droid Serif";
+    position: relative;
+    padding-top: 5%;
+}
+.grid-gallery .post-categories .post-category {
+    display: inline-block;
+    font-family : "Open Sans", sans-serif;
+    font-size: 10px;
+    color: #A2A2A2;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.grid-gallery .caption-with-icons {
+    position: absolute;
+    width: 100%;
+    height: 35%;
+    bottom: -35%;
+    left: 0;
+    opacity: 0.0;
+}
+
+.grid-gallery figure:hover .caption-with-icons {
+    opacity: 1.0;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transition: 500ms;
+    -o-transition: 500ms;
+    transition: 500ms;
+}
