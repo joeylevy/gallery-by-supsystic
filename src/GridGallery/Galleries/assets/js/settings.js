@@ -1182,10 +1182,6 @@
             align: 'thumbnail[overlay][text_align]'
         };
 
-        if($('[name="thumbnail[overlay][enabled]"]').val() == 'true') {
-            this.previewCationShow(fields);
-        }
-
         $('[name="thumbnail[overlay][enabled]"]').on('change', $.proxy(function(e) {
             if($('[name="thumbnail[overlay][enabled]"]:checked').val() == 'true') {
                 this.previewCationShow(fields);
@@ -1193,6 +1189,13 @@
                 this.previewCaptionHide();
             }
         }, this));
+
+        if($('[name="thumbnail[overlay][enabled]"]:checked').val() == 'true') {
+            this.previewCationShow(fields);
+        } else {
+            this.previewCaptionHide();
+        }
+
     });
 
     ImagePreview.prototype.init = (function () {

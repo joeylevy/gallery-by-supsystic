@@ -8,12 +8,12 @@
             {{ environment.translate('Import from Wordpress Media Library') }}
         </button>
         <h3>{{ environment.translate('Social import will be added soon') }}</h3>
-        <button class="button button-primary button-hero gallery" data-folder-id="0"
+        <a href="{{ environment.generateUrl('insta') }}" class="button button-primary button-hero gallery" data-folder-id="0"
                 style="width: 400px;margin-bottom: 20px;"
-                data-gallery-id="{{ gallery.id }}" data-upload disabled>
+                data-gallery-id="{{ gallery.id }}">
             <i class="fa fa-instagram fa-2x"></i>
             {{ environment.translate('Impor from your Instagram account') }}
-        </button>
+        </a>
         <button class="button button-primary button-hero gallery" data-folder-id="0"
                 style="width: 400px;margin-bottom: 20px;"
                 data-gallery-id="{{ gallery.id }}" data-upload disabled>

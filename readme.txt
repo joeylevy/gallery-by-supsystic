@@ -31,3 +31,7 @@ Grid Gallery Plugin with a great number of layouts will help you to create quali
 
 = 1.0.15 = 
 * Submit to WordPress.org
+
+= 1.0.16 =
+* Pro integration added
+* Functional fixes
