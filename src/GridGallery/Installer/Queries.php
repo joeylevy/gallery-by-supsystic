@@ -14,7 +14,7 @@
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8',
 
-    '{prefix}gg_galleries_resources' => 'CREATE TABLE `{prefix}sg_galleries_resources` (
+    '{prefix}gg_galleries_resources' => 'CREATE TABLE `{prefix}gg_galleries_resources` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `resource_type` enum(\'folder\',\'photo\') CHARACTER SET utf8 NOT NULL,
   `resource_id` int(11) NOT NULL,
@@ -46,7 +46,7 @@
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8',
 
-    '{prefix}sg_stats' => 'CREATE TABLE `{prefix}sg_stats` (
+    '{prefix}gg_stats' => 'CREATE TABLE `{prefix}gg_stats` (
  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
  `code` varchar(255) NOT NULL,
  `visits` int(11) NOT NULL,
@@ -54,7 +54,7 @@
  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8',
 
-    '{prefix}sg_settings_presets' => 'CREATE TABLE `{prefix}sg_settings_presets` (
+    '{prefix}gg_settings_presets' => 'CREATE TABLE `{prefix}gg_settings_presets` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `title` varchar(255) NOT NULL,
  `settings_id` int(11) NOT NULL,

@@ -37,7 +37,7 @@
             {{ environment.translate('Captions') }}
         </a>
 
-        <a class="nav-tab change-tab" href="cats">
+        {#<a class="nav-tab change-tab" href="cats">
             <i class="fa fa-bookmark-o"></i>
             {{ environment.translate('Categories') }}
         </a>
@@ -45,7 +45,7 @@
         <a class="nav-tab change-tab" href="post">
             <i class="fa fa-columns"></i>
             {{ environment.translate('Posts') }}
-        </a>
+        </a>#}
 
         {% block tabs %}{% endblock %}
 
@@ -433,7 +433,7 @@
 
         </div>
 
-        {% block post %}
+        {#{% block post %}
             <div data-tab="post">
                 <h1 style="line-height: 1;">
                     {{ environment.translate("Orginize posts and pages in an amazing gallery to attract attention") }}
@@ -448,7 +448,7 @@
                     </a>
                 </div>
             </div>
-        {% endblock %}
+        {% endblock %}#}
 
         <div data-tab="overlay">
             <table class="form-table" name="captions">
@@ -552,7 +552,7 @@
 
             <div class="separator"></div>
 
-            {% block icons %}
+            {#{% block icons %}
                 <div name="icons">
                     <h1 style="line-height: 1;">
                         {{ environment.translate("Show amazing Icons on the images with different options. Open big image in popup or open the link") }}
@@ -567,10 +567,10 @@
                         </a>
                     </div>
                 </div>
-            {% endblock %}
+            {% endblock %}#}
         </div>
 
-        {% block categories %}
+        {#{% block categories %}
             <div data-tab="cats">
                 <h1 style="line-height: 1;">
                     {{ environment.translate('Categories images in the gallery, so the user can see them all or choose any category') }}
@@ -600,7 +600,7 @@
                     </div>
                 {% endblock %}
             </div>
-        {% endblock %}
+        {% endblock %}#}
 
         {% block form %}{% endblock %}
 
