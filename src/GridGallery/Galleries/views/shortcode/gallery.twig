@@ -65,6 +65,8 @@
                     {% if settings.categories.theme_color is not defined %}
                         color:{{ settings.categories.text_color }};
                         text-decoration:none !important;
+                        font-size: {{ settings.categories.font_size }}px;
+                        font-weight: {{ settings.categories.font_weight }};
                     {% endif %}
                     margin-left: 2.5px;
                     margin-right: 2.5px;
@@ -165,12 +167,9 @@
             {% endif %}
 
             <div class="grid-gallery-clearfix"></div>
-
-            {% if settings.pagination.pos == 'bottom' %}
-                {{ paginationButtons }}
-            {% endif %}
-
         </section>
+       <div class="grid-gallery-clearfix"></div>
+
         {% if categories is defined and categories is not empty and environment.isPro() %}
             {% if settings.categories is defined and settings.categories.enabled == 'true' and settings.categories.position == 'bottom' %}
                 {% set navStyle %}
@@ -189,6 +188,8 @@
                 {% if settings.categories.theme_color is not defined %}
                     color:{{ settings.categories.text_color }};
                     text-decoration:none !important;
+                    font-size: {{ settings.categories.font_size }}px;
+                    font-weight: {{ settings.categories.font_weight }};
                 {% endif %}
                 margin-left: 2.5px;
                 margin-right: 2.5px;
@@ -197,15 +198,21 @@
                 padding: {{ settings.categories.padding.vert }}px {{ settings.categories.padding.hor }}px;
                 margin-bottom: {{ settings.categories.padding.vert }}px;
                 {% endset %}
+
                 <nav class="grid-gallery-nav" style="{{ navStyle|trim }}">
                     <a href="#" data-tag="__all__" style="{{ navAStyle|trim }}">All</a>
                     {% for category, nothing in categories %}
                         <a href="#" data-tag="{{ category|trim|replace(' ', '_') }}" style="{{ navAStyle|trim }}">{{ category|title }}</a>
                     {% endfor %}
                 </nav>
+
             {% endif %}
         {% endif %}
-       <div class="grid-gallery-clearfix"></div>
+
+        {% if settings.pagination.pos == 'bottom' %}
+            {{ paginationButtons }}
+        {% endif %}
+
     </section>
 
     <!-- Gallery by Supsystic plugin -->

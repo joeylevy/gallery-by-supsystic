@@ -41,7 +41,7 @@ class Rsc_Promo_Controller extends Rsc_Mvc_Controller
         $code = $this->getEnvironment()->getPluginName();
 
         $request = array(
-            'url'  => 'http://dev.supsystic.com/plugins/gallery',
+            'url'  => 'http://supsystic.com/plugins/photo-gallery/',
             'body' => array(
                 'site_url'      => get_bloginfo('wpurl'),
                 'site_name'     => get_bloginfo('name'),

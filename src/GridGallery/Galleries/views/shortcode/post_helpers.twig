@@ -32,10 +32,10 @@
 
     <div class="post" style="width: auto">
 
-        <figure class="grid-gallery-caption" data-tags="{{ categories|trim|replace(' ', '_') }}"
+        <figure class="grid-gallery-caption{% if settings.mouse_shadow == '1' and settings.use_shadow == '1' %} shadow-show{% endif %}{% if settings.mouse_shadow == '2' and settings.use_shadow == '1' %} shadow-hide{% endif %}" data-tags="{{ tags|trim|replace(' ', '_') }}"
                 data-grid-gallery-type="fixed-post"
                 style="display:none;{{ figureStyle|trim }}">
-            <div class="crop" style="{% if settings.area.grid == '0' %}width:{{ settings.area.photo_width ~ settings.area.photo_width_unit|replace(['px', '%']) }};height:{{ settings.area.photo_height ~ settings.area.photo_height_unit|replace(['px', '%']) }};{% endif %}">
+            <div class="crop{% if settings.thumbnail.shadow.overlay == '1' and settings.use_shadow == '1' %} image-overlay{% endif %}" style="{% if settings.area.grid == '0' %}width:{{ settings.area.photo_width ~ settings.area.photo_width_unit|replace(['px', '%']) }};height:{{ settings.area.photo_height ~ settings.area.photo_height_unit|replace(['px', '%']) }};{% endif %}">
 
                 {% set width, height, crop = 0, 0, 0 %}
 
@@ -124,10 +124,10 @@
 
     <div class="post">
 
-        <figure class="grid-gallery-caption" data-tags="{{ categories|trim|replace(' ', '_') }}"
+        <figure class="grid-gallery-caption{% if settings.mouse_shadow == '1' and settings.use_shadow == '1' %} shadow-show{% endif %}{% if settings.mouse_shadow == '2' and settings.use_shadow == '1' %} shadow-hide{% endif %}" data-tags="{{ categories|trim|replace(' ', '_') }}"
                 data-grid-gallery-type="post-bottom"
                 style="display:none;{{ figureStyle|trim }}">
-            <div class="crop"
+            <div class="crop{% if settings.thumbnail.shadow.overlay == '1' and settings.use_shadow == '1' %} image-overlay{% endif %}"
                  style="{% if settings.area.grid == '0' %}width:{{ settings.area.photo_width ~ settings.area.photo_width_unit|replace(['px', '%']) }};height:{{ settings.area.photo_height ~ settings.area.photo_height_unit|replace(['px', '%']) }};overflow:hidden;{% endif %}">
 
                 {% set width, height, crop = 0, 0, 0 %}
@@ -233,9 +233,9 @@
 
     <div class="post">
 
-        <figure class="grid-gallery-caption" data-tags="{{ cat|trim|replace(' ', '|') }}"
+        <figure class="grid-gallery-caption{% if settings.mouse_shadow == '1' and settings.use_shadow == '1' %} shadow-show{% endif %}{% if settings.mouse_shadow == '2' and settings.use_shadow == '1' %} shadow-hide{% endif %}" data-tags="{{ cat|trim|replace(' ', '|') }}"
                 data-grid-gallery-type="post-fade" style="display:none;{{ figureStyle|trim }};">
-            <div class="crop"
+            <div class="crop{% if settings.thumbnail.shadow.overlay == '1' and settings.use_shadow == '1' %} image-overlay{% endif %}"
                  style="{% if settings.area.grid == '0' %}width:{{ settings.area.photo_width ~ settings.area.photo_width_unit|replace(['px', '%']) }};height:{{ settings.area.photo_height ~ settings.area.photo_height_unit|replace(['px', '%']) }};overflow:hidden;{% endif %}">
 
                 {% set width, height, crop = 0, 0, 0 %}

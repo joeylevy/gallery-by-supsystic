@@ -1352,7 +1352,8 @@
     Gallery.prototype.initCategories = (function () {
 
         var $defaultElement = this.$navigation.find('a[data-tag="__all__"]'),
-            $elements = this.$navigation.find('a');
+            $elements = this.$navigation.find('a'),
+            $defaultBackground = $defaultElement.css('background-color');
 
         $defaultElement.css('background-color',
             "#" + (parseInt(this.rgb2hex($defaultElement.css('borderTopColor')), 16) + parseInt("2E2E2E",16)).toString(16));
@@ -1364,7 +1365,7 @@
                 requested   = String($category.data('tag')),
                 _defaultTag = '__all__';
 
-            $elements.css('background-color', 'transparent');
+            $elements.css('background-color', $defaultBackground);
             $category.css('background-color',
                 "#" + (parseInt(Gallery.prototype.rgb2hex($category.css('borderTopColor')), 16) + parseInt("2E2E2E",16)).toString(16));
 
@@ -1452,7 +1453,7 @@
 
     Gallery.prototype.setImageOverlay = (function() {
         if(this.isImageOverlay()) {
-            this.$container.find('a.gg-link').each(function () {
+            this.$container.find('.grid-gallery-caption').each(function () {
                 var image = $(this).find('img');
                 var crop = $(this).find('.image-overlay');
                 image.css('opacity', '0.2');

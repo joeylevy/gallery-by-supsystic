@@ -47,7 +47,7 @@
                     </li>
                     <li {% if environment.isPro() == false %} class="supsystic-pro" {% endif %} class="supsystic-sticky {% if request.query.module == 'flickr' or request.query.module is null %}active{% endif %}">
 			            {% if environment.isPro() == false %}
-                            <a href="http://dev.supsystic.com/plugins/gallery">
+                            <a href="http://supsystic.com/plugins/photo-gallery/">
 				                <i class="fa fa-unlock"></i>
                                 {{ environment.translate('Flickr') }}
                             </a>
@@ -60,7 +60,7 @@
                     </li>
                     <li {% if environment.isPro() == false %} class="supsystic-pro" {% endif %} class="supsystic-sticky {% if request.query.module == 'tumblr' or request.query.module is null %}active{% endif %}">
                         {% if environment.isPro() == false %}
-                        <a href="http://dev.supsystic.com/plugins/gallery">
+                        <a href="http://supsystic.com/plugins/photo-gallery/">
                             <i class="fa fa-unlock"></i>
                             {{ environment.translate('Tumblr') }}
                         </a>
@@ -73,7 +73,7 @@
                     </li>
                     <li {% if environment.isPro() == false %} class="supsystic-pro" {% endif %} class="supsystic-sticky {% if request.query.module == 'facebook' or request.query.module is null %}active{% endif %}">
                         {% if environment.isPro() == false %}
-                        <a href="http://dev.supsystic.com/plugins/gallery">
+                        <a href="http://supsystic.com/plugins/photo-gallery/">
                             <i class="fa fa-unlock"></i>
                             {{ environment.translate('Facebook') }}
                         </a>
@@ -95,7 +95,7 @@
 
                     {#{% if environment.isPro() == false %}
                         <li class="supsystic-pro">
-                            <a href="http://dev.supsystic.com/plugins/gallery">
+                            <a href="http://supsystic.com/plugins/photo-gallery/">
                                 <i class="fa fa-unlock"></i>
                                 {{ environment.translate('Get PRO') }}
                             </a>

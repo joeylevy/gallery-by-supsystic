@@ -612,7 +612,7 @@
             if (value) {
                 $toggleRow.attr('disabled', 'disabled');
                 $changedRow.notify('You cant use image shuffling option \n when post feed is enabled', {
-                    position: 'top left',
+                    position: 'bottom left',
                     className: 'warn'
                 });
                 $toggleRow.val('0');

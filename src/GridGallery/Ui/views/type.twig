@@ -161,7 +161,7 @@
 {% endmacro %}
 
 {% macro list_image(image) %}
-    {% set nonProMsg = '<a href="http://dev.supsystic.com/plugins/gallery" target="_blank" style="color:red;">Available in PRO</a>' %}
+    {% set nonProMsg = '<a href="http://supsystic.com/plugins/photo-gallery/" target="_blank" style="color:red;">Available in PRO</a>' %}
 
     <tr data-entity data-entity-id="{{ image.id }}" data-entity-type="photo" data-entity-info="{{ image|json_encode }}">
         <th scope="row" class="check-column">
