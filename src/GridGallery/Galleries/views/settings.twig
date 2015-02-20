@@ -37,7 +37,7 @@
             {{ environment.translate('Captions') }}
         </a>
 
-        {#<a class="nav-tab change-tab" href="cats">
+        <a class="nav-tab change-tab" href="cats">
             <i class="fa fa-bookmark-o"></i>
             {{ environment.translate('Categories') }}
         </a>
@@ -45,7 +45,7 @@
         <a class="nav-tab change-tab" href="post">
             <i class="fa fa-columns"></i>
             {{ environment.translate('Posts') }}
-        </a>#}
+        </a>
 
         {% block tabs %}{% endblock %}
 
@@ -155,7 +155,7 @@
                 <thead>
 
                 {{ form.row(environment.translate('Gallery Type'),
-                form.select('area[grid]', ['Fixed', 'Fluid-vertical', 'Fluid-horizontal'], settings.area.grid, { 'style': 'width: auto;' }), 'grid-type', 'gallery-types') }}
+                form.select('area[grid]', ['Fixed', 'Vertical', 'Horizontal'], settings.area.grid, { 'style': 'width: auto;' }), 'grid-type', 'gallery-types') }}
 
                 {#{{ form.row(environment.translate('Position'),
                 form.select('area[position]', ['Center', 'Left', 'Right'], settings.area.position, { 'style': 'width: 300px;' }), 'grid-type') }}#}
@@ -433,10 +433,11 @@
 
         </div>
 
-        {#{% block post %}
+        {% block post %}
             <div data-tab="post">
                 <h1 style="line-height: 1;">
-                    {{ environment.translate("Orginize posts and pages in an amazing gallery to attract attention") }}
+                    {{ environment.translate("Show Posts and Pages") }}
+                    </br>
                     <a class="add-new-h2"
                        href="http://supsystic.com/plugins/photo-gallery/">Get
                         PRO for 29$</a>
@@ -444,11 +445,11 @@
 
                 <div>
                     <a href="http://supsystic.com/plugins/photo-gallery/">
-                        <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/posts_pro.png" />
+                        <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/posts_pro.jpg" />
                     </a>
                 </div>
             </div>
-        {% endblock %}#}
+        {% endblock %}
 
         <div data-tab="overlay">
             <table class="form-table" name="captions">
@@ -552,10 +553,11 @@
 
             <div class="separator"></div>
 
-            {#{% block icons %}
+            {% block icons %}
                 <div name="icons">
                     <h1 style="line-height: 1;">
-                        {{ environment.translate("Show amazing Icons on the images with different options. Open big image in popup or open the link") }}
+                        {{ environment.translate("Show amazing Icons on the images") }}
+                        </br>
                         <a class="add-new-h2"
                            href="http://supsystic.com/plugins/photo-gallery/">Get
                             PRO for 29$</a>
@@ -563,17 +565,18 @@
 
                     <div>
                         <a href="http://supsystic.com/plugins/photo-gallery/">
-                            <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/icons_pro.png" />
+                            <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/icons_pro.jpg" />
                         </a>
                     </div>
                 </div>
-            {% endblock %}#}
+            {% endblock %}
         </div>
 
-        {#{% block categories %}
+        {% block categories %}
             <div data-tab="cats">
                 <h1 style="line-height: 1;">
-                    {{ environment.translate('Categories images in the gallery, so the user can see them all or choose any category') }}
+                    {{ environment.translate('Categorize images in the gallery') }}
+                    </br>
                     <a class="add-new-h2"
                        href="http://supsystic.com/plugins/photo-gallery/">Get
                         PRO for 29$</a>
@@ -581,12 +584,13 @@
 
                 <div>
                     <a href="http://supsystic.com/plugins/photo-gallery/">
-                        <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/cats_pro.png" />
+                        <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/cats_pro.jpg" />
                     </a>
                 </div>
                 {% block pagination %}
                     <h1 style="line-height: 1;">
-                        {{ environment.translate('Show gallery with pagination, so the user can switch pages with images') }}
+                        {{ environment.translate('Let user switch gallery pages') }}
+                        </br>
                         <a class="add-new-h2"
                            href="http://supsystic.com/plugins/photo-gallery/">Get
                             PRO for 29$</a>
@@ -594,13 +598,13 @@
                     <div name="pagination">
                         <div>
                             <a href="http://supsystic.com/plugins/photo-gallery/">
-                                <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/pagination_pro.png" />
+                                <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/pagination_pro.jpg" />
                             </a>
                         </div>
                     </div>
                 {% endblock %}
             </div>
-        {% endblock %}#}
+        {% endblock %}
 
         {% block form %}{% endblock %}
 

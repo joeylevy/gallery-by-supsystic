@@ -74,7 +74,7 @@
             <span style="margin-bottom: 20px; display: block;">
                 {{ environment.translate('You need to import images to your gallery before you can start using galleries') }}
             </span>
-            <a class="button button-primary button-hero" href="{{ environment.generateUrl('photos', 'index') }}">
+            <a class="button button-primary button-hero" href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery.id }) }}">
                 {{ environment.translate('Import images') }}
             </a>
         </h2>

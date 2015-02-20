@@ -6,7 +6,8 @@
 
 .sg-photos > li {
     float: left;
-    width: 172px;
+    position: relative;
+    /*width: 172px;*/
     padding: 10px;
 }
 

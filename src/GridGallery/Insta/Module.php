@@ -15,13 +15,13 @@ class GridGallery_Insta_Module extends Rsc_Mvc_Module
         $config = $environment->getConfig();
 
         // Client ID
-        $config->add('instagram_id', 'c7eca993fa6c47549df930dbed07c7da');
+        $config->add('instagram_id', '1b449282e8a64f0e8265e4c39ce1b053');
 
         // Client Secret
-        $config->add('instagram_secret', 'e8db8713c91945559d26bb5d77eed5c0');
+        $config->add('instagram_secret', 'b40e0d148f4e4ee19b668a858f55ea04');
 
         // Authenticator's Instagram URL
-        $config->add('instagram_redirect', 'http://dev.supsystic.com/authenticator/index.php/authenticator/instagram');
+        $config->add('instagram_redirect', 'http://supsystic.com/authenticator/index.php/authenticator/instagram');
 
         // Authenticator redirect uri
         $config->add(

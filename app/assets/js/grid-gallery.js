@@ -65,7 +65,7 @@
 (function ($) {
 
     $(document).ready(function () {
-        var ggActiveTab = jQuery('nav.supsystic-navigation li.active a').attr('href').split('/');
+        /*var ggActiveTab = jQuery('nav.supsystic-navigation li.active a').attr('href').split('/');
         ggActiveTab = ggActiveTab[ggActiveTab.length - 1];
 
         if(typeof(ggActiveTab) != 'undefined' && ggActiveTab != 'admin.php?page=supsystic-gallery&module=galleries') {
@@ -78,7 +78,7 @@
         } else {
             var subMenus = jQuery('#toplevel_page_supsystic-gallery').find('.wp-submenu li');
             jQuery(subMenus).find('a:first').addClass('current');
-        }
+        }*/
 
         //SupsysticGallery.Loader.show();
 

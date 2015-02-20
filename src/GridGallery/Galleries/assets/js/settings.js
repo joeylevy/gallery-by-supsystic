@@ -997,31 +997,48 @@
 
     ImagePreview.prototype.initMouseShadow = (function() {
         var shadow = $('figure.grid-gallery-caption').css('box-shadow'),
+            self = this,
             wrapper = {
-                element: 'figure.grid-gallery-caption',
-                $node: $('figure.grid-gallery-caption')
-            };
+                element: '#preview figure.grid-gallery-caption',
+                $node: $('#preview figure.grid-gallery-caption')
+            },
+            showOver = function() {
+                wrapper.$node.on('mouseover', function () {
+                    shadow = wrapper.$node.css('box-shadow');
+                    self.setProp(wrapper.element , {boxShadow: '5px 5px 5px #888'});
+                });
+                wrapper.$node.on('mouseleave',function () {
+                    self.setProp(wrapper.element , {boxShadow: shadow});
+                });
+            },
+            hideOver = function() {
+                console.log(wrapper.$node);
+                wrapper.$node.on('mouseover', function () {
+                    shadow = wrapper.$node.css('box-shadow');
+                    self.setProp(wrapper.element , {boxShadow: 'none'});
+                });
+                wrapper.$node.on('mouseleave', function () {
+                    self.setProp(wrapper.element , {boxShadow: shadow});
+                });
+            },
+            value = parseInt($('#useMouseOverShadow option:selected').val(), 10);
+
+        if(value == 1) {
+            showOver();
+        }
+        if(value == 2) {
+            hideOver();
+        }
 
         $('#useMouseOverShadow').on('change', $.proxy(function() {
-            var value = parseInt($('#useMouseOverShadow option:selected').val(), 10);
+            value = parseInt($('#useMouseOverShadow option:selected').val(), 10);
+
             if(value == 1) {
-                wrapper.$node.on('mouseover', $.proxy(function () {
-                    shadow = wrapper.$node.css('box-shadow');
-                    this.setProp(wrapper.element , {boxShadow: '5px 5px 5px #888'});
-                }, this));
-                wrapper.$node.on('mouseleave', $.proxy(function () {
-                    this.setProp(wrapper.element , {boxShadow: shadow});
-                }, this));
+                showOver();
             }
 
             if(value == 2) {
-                wrapper.$node.on('mouseover', $.proxy(function () {
-                    shadow = wrapper.$node.css('box-shadow');
-                    this.setProp(wrapper.element , {boxShadow: 'none'});
-                }, this));
-                wrapper.$node.on('mouseleave', $.proxy(function () {
-                    this.setProp(wrapper.element , {boxShadow: shadow});
-                }, this));
+                hideOver();
             }
 
             if(!value) {
@@ -1029,7 +1046,7 @@
                 wrapper.$node.off('mouseleave');
             }
 
-        }, this)).trigger('change');
+        }, this));
     });
 
     ImagePreview.prototype.initOverlayShadow = (function() {

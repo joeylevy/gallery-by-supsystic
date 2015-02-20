@@ -84,14 +84,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <h4 style="display: inline-block; margin:8px 20px; height: 20px; float: left;">
-                            {{ environment.translate('Shortcode: ') }}
-                            <span title="{{ environment.translate('Select shortcode for the gallery ') ~ gallery.title }}"
-                                  id="shortcode-{{ gallery.id }}}"
-                                  class="gallery-shortcode">[supsystic-gallery id="{{ gallery.id }}" position="center"]
-                            </span>
-                        </h4>
-                        <h4 style="display: inline-block; margin:6px 20px; float: left;">
+                        <h4 style="width: 400px; margin:6px 20px; float: left;">
                             <i class="fa fa-picture-o"></i>
                             {{ environment.translate('Total Images: ') }}
                             <div class="gg-counter"
@@ -100,13 +93,28 @@
                                 {{ gallery.photos|length + gallery.settings.posts.length }}
                             </div>
                         </h4>
+                        <h4 style="display: inline-block; margin:8px 20px; height: 20px; float: left;">
+                            {{ environment.translate('Shortcode: ') }}
+                            <span title="{{ environment.translate('Select shortcode for the gallery ') ~ gallery.title }}"
+                                  id="shortcode-{{ gallery.id }}}"
+                                  class="gallery-shortcode">[supsystic-gallery id="{{ gallery.id }}" position="center"]
+                            </span>
+                        </h4>
+                        <h4 style="display: inline-block; margin:1px 10px; height: 20px; float: left;">
+                            {{ environment.translate('Phpcode: ') }}
+                            <span title="{{ environment.translate('Select phpcode for the gallery ') ~ gallery.title }}"
+                                  id="phpcode-{{ gallery.id }}}"
+                                  class="gallery-shortcode"> < ?php echo do_shortcode([supsystic-gallery id="{{ gallery.id }}" position="center"]) ?>
+                            </span>
+                        </h4>
                     </div>
                 {% else %}
                     <h3>{{ environment.translate('You have not any galleries') }}</h3>
                     <p>
                         {{ environment.translate('You don\'t have any galleries yet.') }}
-                        <a href="{{ environment.config.get('ajax_url') }}"
-                           id="gg-create-gallery-link">{{ environment.translate('Want to create one right now?') }}</a>
+                        <a href="{{ environment.generateUrl('galleries', 'showPresets') }}"
+                           id="gg-create-gallery-link"
+                           style = "color: #2ea2cc;">{{ environment.translate('Want to create one right now?') }}</a>
                     </p>
 
                     <h3>{{ environment.translate('What is a gallery') }}</h3>
@@ -116,10 +124,6 @@
                         {{ environment.translate('You can have an unlimited number of galleries, to which you can attach the preloaded pictures and folders.') }}
                         {{ environment.translate('Each gallery has a number of display settings and behaviors that you can save to presets and apply to other galleries.') }}
                     </p>
-
-                    <h3>{{ environment.translate('Wanna know more?') }}</h3>
-                    {% set help = '<a href="#">' ~ environment.translate('Help') ~ '</a>' %}
-                    <p>{{ environment.translate('Visit %s section to read more information about the galleries.')|format(help)|raw }}</p>
                 {% endfor %}
             </div>
         {% endif %}

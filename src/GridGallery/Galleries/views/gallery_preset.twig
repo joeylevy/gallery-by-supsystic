@@ -3,7 +3,6 @@
 {% macro putPreset(data) %}
     <div class="preset {% if environment.isPro() == false and data.pro %}disabled{% endif %}"
          data-preset="{{ data.value }}">
-        <p>{{ data.title|title }}</p>
         <img src="{{ environment.getModule('galleries').getLocationUrl() }}/assets/img/{{ data.image }}" alt=""/>
         {% if data.pro and environment.isPro() == false %}
             <a class="button button-primary inPro"
@@ -19,6 +18,9 @@
                 Available in PRO
             </a>
         {% endif %}
+        <div class="preset-overlay">
+            <h3>{{ data.title|title }}</h3>
+        </div>
     </div>
 {% endmacro %}
 
@@ -33,8 +35,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1 style="margin-left: 10px;padding-bottom: 10px !important;border-bottom: 1px solid;">{{ environment.translate('Create New Gallery') }}</h1>
-    <h3 style="text-align: center;">{{ environment.translate('Choose Gallery Template.You can change template and settings on the next step.') }}</h3>
+    <h3 style="margin-left: 10px;padding-bottom: 10px !important;border-bottom: 1px solid;">{{ environment.translate('Choose Gallery Template.You can change template and settings on the next step.') }}</h3>
     <div id="gg-create-gallery-text">
         <h3 style="float: left; margin: 10px !important;">{{ environment.translate('Gallery Name:') }}</h3>
         <input name="title" type="text" style="float: left; width: 60%;"/>
@@ -55,10 +56,10 @@
             {% import _self as preset %}
 
             {% set presets = [
-            {'title':'', 'image':'template1.jpg', 'pro': false, 'value': 1},
-            {'title':'', 'image':'template2.jpg', 'pro': false, 'value': 2},
-            {'title':'', 'image':'template3.jpg', 'pro': false, 'value': 3},
-            {'title':'', 'image':'template4.jpg', 'pro': false, 'value': 4}
+            {'title':'Standart Gallery', 'image':'template1.jpg', 'pro': false, 'value': 1},
+            {'title':'Vertical Gallery', 'image':'template2.jpg', 'pro': false, 'value': 2},
+            {'title':'Rounded Gallery', 'image':'template3.jpg', 'pro': false, 'value': 3},
+            {'title':'horizontal Gallery', 'image':'template4.jpg', 'pro': false, 'value': 4}
             ] %}
 
             {#Pro presets#}

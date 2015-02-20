@@ -87,7 +87,7 @@
         {% set paginationButtons %}
             {% if environment.isPro() and settings.pagination is defined and settings.pagination.enabled == 'true' %}
 
-                {% if settins.posts.enable != '1' %}
+                {% if settings.posts.enable != '1' %}
                     {% set postsLength = 0 %}
                 {% endif %}
 

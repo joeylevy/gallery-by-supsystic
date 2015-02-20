@@ -20,8 +20,9 @@ class GridGallery_Insta_Controller extends GridGallery_Core_BaseController
         );
     }
 
-    public function indexAction()
+    public function indexAction(Rsc_Http_Request $request)
     {
+        $galleryId = $request->query->get('id');
         $stats = $this->getEnvironment()->getModule('stats');
         $stats->save('Instagram.tab');
 
@@ -34,7 +35,7 @@ class GridGallery_Insta_Controller extends GridGallery_Core_BaseController
         return $this->response(
             '@insta/index.twig',
             array(
-                'token' => get_option('insta_token'), 'user' => get_option('insta_user'), 'images' => get_option('insta_thumbnails')
+                'images' => get_option('insta_thumbnails'), 'id' => $galleryId
             )
         );
     }

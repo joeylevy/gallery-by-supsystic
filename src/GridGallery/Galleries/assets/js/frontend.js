@@ -1553,7 +1553,7 @@
         this.pagination.$wrapper.find('a.grid-gallery-page').on('click', $.proxy(function (e) {
             e.preventDefault();
 
-            var element = $(e.currentTarget)
+            var element = $(e.currentTarget);
             var galery = Gallery.prototype;
             this.pagination.$wrapper.find('a.grid-gallery-page').each(function() {
                 $(this).css('font-size','inherit');
