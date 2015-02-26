@@ -319,8 +319,6 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             }
         }
 
-        var_dump($settings->data['posts']);
-
         $template = $twig->render(
             '@galleries/shortcode/gallery.twig',
             array(

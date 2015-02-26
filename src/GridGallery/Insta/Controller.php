@@ -23,6 +23,7 @@ class GridGallery_Insta_Controller extends GridGallery_Core_BaseController
     public function indexAction(Rsc_Http_Request $request)
     {
         $galleryId = $request->query->get('id');
+        $galleries = new GridGallery_Galleries_Model_Galleries;
         $stats = $this->getEnvironment()->getModule('stats');
         $stats->save('Instagram.tab');
 
@@ -35,7 +36,7 @@ class GridGallery_Insta_Controller extends GridGallery_Core_BaseController
         return $this->response(
             '@insta/index.twig',
             array(
-                'images' => get_option('insta_thumbnails'), 'id' => $galleryId
+                'images' => get_option('insta_thumbnails'), 'id' => $galleryId, 'galleryName' => $galleries->getById($galleryId)->title
             )
         );
     }

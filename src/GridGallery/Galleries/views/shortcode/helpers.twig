@@ -132,6 +132,9 @@
                         background-color:{{ settings.icons.overlay_color|default('#3498db') }};
                         height : 100%;
                         z-index: 999;
+                    {% else %}
+                        height : 100%;
+                        background-color: transparent;
                     {% endif %}
                 {% else %}
                     color:{{ settings.thumbnail.overlay.foreground }};

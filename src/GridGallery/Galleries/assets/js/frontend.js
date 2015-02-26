@@ -1421,7 +1421,7 @@
                 if(!this.$qsData)
                     this.$qsData = this.$holder.clone();
                 var $data = this.$qsData.find('a.gg-link').clone();
-                var $filteredData = $data.find('figure[data-tags='+$category.data('tag')+']').parent();
+                var $filteredData = $data.find('figure[data-tags*='+$category.data('tag')+']').parent();
                 this.callQuicksand(this.$holder, $filteredData, this.$qsDuration);
             }
 

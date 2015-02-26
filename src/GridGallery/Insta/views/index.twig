@@ -5,6 +5,12 @@
     <nav id="supsystic-breadcrumbs" class="supsystic-breadcrumbs">
         <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Gallery by Supsystic') }}</a>
         <i class="fa fa-angle-right"></i>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Galleries') }}</a>
+        <i class="fa fa-angle-right"></i>
+        <a href="{{ environment.generateUrl('galleries', 'view') }}">{{ galleryName|capitalize }}</a>
+        <i class="fa fa-angle-right"></i>
+        <a href="{{ environment.generateUrl('galleries', 'view') }}">{{ environment.translate('Import images') }}</a>
+        <i class="fa fa-angle-right"></i>
         <a href="{{ environment.generateUrl('insta', 'index') }}">{{ environment.translate('Instagram') }}</a>
     </nav>
 
