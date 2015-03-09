@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: photo gallery, responsive photo gallery, foto gallery, grid, grid gallery, add album, add gallery, add picture, add pictures, album, foto, fotoalbum, galary, galery, gallary, gallerie, gallery, gallery decription, gallery image, gelary, gellary, gellery, image, multiple pictures, photo, photoalbum, photogallery, pictures, gird, gird gallery, galery, slide show, slideshow, upload images, upload photos, view images, view pictures, website gallery, wordpress gallery, gallery plugin, slideshow, image gallery, responsive gallery, responsive image gallery
 Tested up to: 4.1.1
-Stable tag: 1.0.19
+Stable tag: 1.1.0
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
 
@@ -19,6 +19,8 @@ Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Res
 Gallery plugin will help you display your images for maximum effect on your blog or website.
 
 A photo gallery adds an instant professional touch to any WordPress website. But it doesn't just enhance your sites looks, it also makes image management a breeze, by allowing bulk uploading and publishing.
+
+[youtube https://www.youtube.com/watch?v=5bkjrlV14CE#t=14]
 
 Gallery by Supsystic is an easy to use gallery plugin that allows you to add simply galleries to your website. The plugin utilizes the WordPress media uploader for images.
 
@@ -75,9 +77,9 @@ With responsive photo gallery plugin you can import images from -
 
  * WordPress Media Library
  * Instagram Account
- * Flickr Account
- * Tumblr Account
- * Facebook Account
+ * Flickr Account (PRO feature)
+ * Tumblr Account (PRO feature)
+ * Facebook Account (PRO feature)
  
 1. Click on "Add Images" button.
 
@@ -134,8 +136,8 @@ Activate “Available” radio button to see the settings of this option. Shadow
 
 1.4. Pop-up Image - here you can:
 	
- - choose the “Big Image” theme for popup image of grid gallery - to do this you need simply click a “Choose theme” button and select one of the great themes;
- - select the transition of pop-image - Fade, Elastic, None;
+ - choose the “Big Image” theme for popup image of grid gallery - to do this you need simply click a “Choose theme” button and select one of the great themes. One of the themes include the navigation control with thumbnails of images, which is much simplify and speed up access to all images of the gallery.
+ - select the transition of pop-image - Fade, Elastic, None.
  - enable the slideshow option - you need activate “Available” radio button to see the settings of this option. here you can set speed of slideshow and activate slideshow autostart. If you activate it - slideshow starts when big image open in popup, if don’t - you have the ability to start slideshow whenever you want. In any case, on the big image will be slideshow controls.
 
 = 2. Captions tab =
@@ -149,7 +151,7 @@ Activate “Available” radio button to see the settings of this option. Shadow
  - the ability to specify the font size of the text. (in pixels, percent, ems)
  - the ability to choose the text alignment of caption - left, center, right, auto.
  
-2.2. Icons (PRO feature) - show amazing icons on the images with different options. 
+2.2. Icons (PRO feature) - show amazing icons on the images with different options. There are several types of icons, it all depends on what exactly is attached to the picture - link, video or anything.
 	
  - select the effect for animation of icons - you need to click ”Animation” button and choose the effect.
  - select the icons color.
@@ -245,13 +247,31 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 
 == Screenshots ==
 
-1. Photo Gallery by Supsystic
-2. Fixed Gallery. It's still responsive and compatible all mobile devices, but fixed :)
+1. Fixed Gallery. It's still responsive and compatible all mobile devices, but fixed :)
+2. [Photo Gallery WordPress Plugin](http://supsystic.com/plugins/photo-gallery/ "Photo Gallery WordPress plugin") by Supsystic
 3. Gallery plugin admin area
+4. Post Feed Gallery
+5. Image Circle Gallery
 
 == Changelog ==
 
-= 1.0.2 / 26.02.2015 =
+= 1.1.0 / 09.03.2015
+* Image upload fixed
+* Gallery shortcode fixed
+* Add Overview page
+* Minor bugs fixed
+
+= 1.0.21 / 6.03.2015 =
+* Minor changes
+* Gallery functional fixes
+* Overview page added
+* Supsystic news added
+* Common FAQs
+* Mail form added
+* Video tutorial
+* Server configs
+
+= 1.0.20 / 26.02.2015 =
 * Minor changes
 * Functional fixes
 

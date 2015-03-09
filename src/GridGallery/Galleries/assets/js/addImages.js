@@ -90,9 +90,9 @@
         request.add('gallery_id', this.getParameterByName('gallery_id'));
         request.send(function (response, request) {
 
-            if (!response.error) {
+            /*if (!response.error) {
                 window.location.href = button.href;
-            }
+            }*/
 
             if (response.message) {
                 $.jGrowl(response.message);

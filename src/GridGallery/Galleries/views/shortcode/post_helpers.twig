@@ -160,7 +160,7 @@
             {% set figcaptionStyle %}
                 border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};
                 background: rgba(0, 0, 0, 0.9);
-                font-size: {{ (height + width)/60.0 }}px;
+                font-size: {{ (height + width)/40.0 }}px;
             {% endset %}
 
             {% set fontSize %}
@@ -271,7 +271,7 @@
             {% set figcaptionStyle %}
                 border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};
                 background: rgba(0,142,133,0.85);
-                font-size: {{ (height + width)/50.0 }}px;
+                font-size: {{ (height + width)/40.0 }}px;
             {% endset %}
 
             {% set fontSize %}

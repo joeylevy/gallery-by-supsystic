@@ -51,7 +51,8 @@
 
             $.jGrowl(statusMessage.replace('%number%', attachments.length.toString()));
 
-            var $container = $('[data-container]');
+            var $container = $('[data-container]'),
+                reload = attachments.length;
 
             $.each(attachments, function (index, attachment) {
                 $.post(parameters.url, {
@@ -70,16 +71,15 @@
 
                         $container.prepend(response.photo);
                         $('.supsystic-lazy').lazyload();
+                        if(!--reload) {
+                            SupsysticGallery.Loader.hide();
+                            location.reload(true);
+                        }
                     }
 
                     $.jGrowl(response.message);
                 });
             });
-
-            SupsysticGallery.Loader.hide();
-            if(defaults.attachType) {
-                location.reload(true);
-            }
         });
 
         this.on('click', function (e) {

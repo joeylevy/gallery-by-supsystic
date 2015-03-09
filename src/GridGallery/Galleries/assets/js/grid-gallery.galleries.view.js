@@ -180,7 +180,6 @@
                     this.request.add('resources', [{ type: 'folder', id: folderId }]);
 
                     this.request.send(function (response) {
-                        console.log(response);
                         if (!response.error) {
                             window.location.reload(true);
                         }

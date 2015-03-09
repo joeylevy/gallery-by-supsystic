@@ -59,6 +59,7 @@
         {% elseif photo.attachment.external_link is defined and photo.attachment.external_link is not empty %}
 
             {{ photo.attachment.external_link|force_http }}
+            {% set link = true %}
 
         {% else %}
 
@@ -87,7 +88,7 @@
             href="{{ aHref|trim }}"
             target="{{ photo.attachment.target|default('_self') }}"
             title="{{ aTitle|trim }}"
-            {% if settings.box.type == '1' %}
+            {% if settings.box.type == '1' and link is defined and link %}
                 rel="prettyPhoto[pp_gal]"
             {% endif %}
             style="border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};"
