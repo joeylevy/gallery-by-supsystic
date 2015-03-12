@@ -55,6 +55,6 @@ class GridGallery_Overview_Controller extends GridGallery_Core_BaseController
 
         $items = $DOM->getElementsByTagName('div');
 
-        return $DOM->saveHTML($items->item(22));
+        return $DOM->saveXML($items->item(22));
     }
 } 

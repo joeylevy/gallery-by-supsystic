@@ -1445,7 +1445,7 @@
                 });
             }
         );
-    }
+    };
 
     Gallery.prototype.hidePaginationControls = (function () {
         return false;
@@ -1632,7 +1632,7 @@
     $(document).ready(function () {
         contentLoaded();
     }).ajaxComplete(function() {
-        contentLoaded();
+        //contentLoaded();
     });
 
 }(jQuery));

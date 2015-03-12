@@ -414,7 +414,7 @@
             alwaysVisible: true,
             allowPageScroll: true
         });
-    }
+    };
 
     Controller.prototype.initEffectPreview = function () {
         var $effect  = $('#overlayEffect'),

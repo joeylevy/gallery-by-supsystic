@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: photo gallery, responsive photo gallery, foto gallery, grid, grid gallery, add album, add gallery, add picture, add pictures, album, foto, fotoalbum, galary, galery, gallary, gallerie, gallery, gallery decription, gallery image, gelary, gellary, gellery, image, multiple pictures, photo, photoalbum, photogallery, pictures, gird, gird gallery, galery, slide show, slideshow, upload images, upload photos, view images, view pictures, website gallery, wordpress gallery, gallery plugin, slideshow, image gallery, responsive gallery, responsive image gallery
 Tested up to: 4.1.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
 
@@ -254,6 +254,11 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 5. Image Circle Gallery
 
 == Changelog ==
+
+= 1.1.1 / 11.03.2015
+* Overview page php 5.2 support added
+* Minor bugs fixed
+* Functional fixes
 
 = 1.1.0 / 09.03.2015
 * Image upload fixed
