@@ -266,7 +266,7 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         }
 
         foreach($attributes as $key => $value) {
-            if($settings->data['area'][$key])
+            if(!empty($settings->data['area'][$key]) && $settings->data['area'][$key])
                 $settings->data['area'][$key] = $value;
         }
 
@@ -330,6 +330,7 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
                 'postsLength' => $postsLenght,
                 'posts' => $settingsModel->getPostsToRender($attributes['id']),
                 'pages' => $settingsModel->getPagesToRender($attributes['id']),
+                'mobile' => $settingsModel->isMobile($settings->data['box']['mobile']),
             )
         );
         

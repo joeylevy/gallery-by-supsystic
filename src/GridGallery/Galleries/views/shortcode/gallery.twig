@@ -22,13 +22,15 @@
         data-height="{{ settings.area.photo_height }}{% if settings.area.photo_height_unit == 1 %}%{% endif %}"
         data-quicksand = "{% if settings.quicksand.enabled == '1' %}enabled{% else %}disabled{% endif %}"
         data-quicksand-duration = "{% if settings.quicksand.duration is not empty %}{{ settings.quicksand.duration }}{% else %}none{% endif %}"
-            {% if settings.box.type == '1' %}
+            {% if settings.box.type == '1' and mobile != 'true' %}
                 data-popup-type ="pretty-photo"
             {% else %}
-                data-popup-type ="colorbox"
-                data-popup-fadeOut = "{{ settings.box.fadeOut|default(300) }}"
-                data-popup-slideshowAuto = "{{ settings.box.slideshowAuto|default('true') }}"
-                data-popup-transition = "{{ settings.box.transition|default("elastic") }}"
+                {% if mobile != 'true' %}
+                    data-popup-type ="colorbox"
+                    data-popup-fadeOut = "{{ settings.box.fadeOut|default(300) }}"
+                    data-popup-slideshowAuto = "{{ settings.box.slideshowAuto|default('true') }}"
+                    data-popup-transition = "{{ settings.box.transition|default("elastic") }}"
+                {% endif %}
             {% endif %}
         data-popup-slideshow = "{{ settings.box.slideshow }}"
         data-popup-slideshow-speed = "{{ settings.box.slideshowSpeed|default(2500) }}"

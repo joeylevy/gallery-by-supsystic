@@ -307,6 +307,16 @@
                     </td>
                 </tr>
 
+                <tr id="enable-mobile-row">
+                    <th scope="row">
+                        <label for="enableMobile">{{ environment.translate('Disable on mobile') }}</label>
+                    </th>
+                    <td>
+                        <input type="checkbox" id="enableMobile" name="box[mobile]" {% if settings.box.mobile == 'on' %}checked{% endif %}>
+                        {{ form.show_tooltip('mobile') }}
+                    </td>
+                </tr>
+
                 {#{{ form.row(environment.translate('Pop-up Image'),
                 form.select('box[type]', ['Colorbox', 'PrettyPhoto'], settings.box.type, { 'style': 'width: auto;' }), 'text-align', true) }}#}
 
@@ -438,7 +448,7 @@
                 <h1 style="line-height: 1;">
                     {{ environment.translate("Show Posts and Pages") }}
                     </br>
-                    <a class="add-new-h2"
+                    <a class="button"
                        href="http://supsystic.com/plugins/photo-gallery/">Get
                         PRO for 29$</a>
                 </h1>
@@ -558,7 +568,7 @@
                     <h1 style="line-height: 1;">
                         {{ environment.translate("Show amazing Icons on the images") }}
                         </br>
-                        <a class="add-new-h2"
+                        <a class="button"
                            href="http://supsystic.com/plugins/photo-gallery/">Get
                             PRO for 29$</a>
                     </h1>
@@ -577,7 +587,7 @@
                 <h1 style="line-height: 1;">
                     {{ environment.translate('Categorize images in the gallery') }}
                     </br>
-                    <a class="add-new-h2"
+                    <a class="button"
                        href="http://supsystic.com/plugins/photo-gallery/">Get
                         PRO for 29$</a>
                 </h1>
@@ -591,7 +601,7 @@
                     <h1 style="line-height: 1;">
                         {{ environment.translate('Let user switch gallery pages') }}
                         </br>
-                        <a class="add-new-h2"
+                        <a class="button"
                            href="http://supsystic.com/plugins/photo-gallery/">Get
                             PRO for 29$</a>
                     </h1>

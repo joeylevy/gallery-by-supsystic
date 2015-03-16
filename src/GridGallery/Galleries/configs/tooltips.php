@@ -20,6 +20,7 @@ return array(
         'shadow-x' => 'Offset by X',
         'shadow-y' => 'Offset by Y',
         'slideshow' => 'Start slideshow when open big image in popup',
+        'mobile' => 'Check if you want to disable popups on mobile devices',
         // Uncomment to enable overlay tooltips
         /*'overlay-effect' => 'Overlay effect',
         'overlay-background' => 'Overlay background color',

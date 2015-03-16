@@ -267,7 +267,9 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         $galleryId = $request->post->get('gallery_id');
 
         $settings = $this->getModel('settings')->get($galleryId);
-        $photo = $this->getModel('photos')->getById($resourceId[0]['id']);
+        if($resourceId[0]['id']) {
+            $photo = $this->getModel('photos')->getById($resourceId[0]['id']);
+        }
 
         $settings->data['previewImage'] = $photo->attachment_id;
 

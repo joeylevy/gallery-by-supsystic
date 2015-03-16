@@ -50,8 +50,9 @@
 }
 
 .supsystic-overview .button {
-    margin-left: 64%;
-    margin-top: 5px;
+    float: right;
+    margin-top: 24px;
+    display: block;
 }
 
 .supsystic-overview .video {

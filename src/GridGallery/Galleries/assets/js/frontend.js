@@ -1266,7 +1266,9 @@
                 speed: 350,
                 transition: this.$container.data('popup-transition')
             });
-        } else {
+        }
+
+        if(popupType == 'pretty-photo') {
             this.$container.find("a[rel^='prettyPhoto']").prettyPhoto({
                 theme: 'light_square',
                 show_title: false,

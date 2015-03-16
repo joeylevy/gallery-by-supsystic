@@ -48,7 +48,9 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
         if(!$presets[$preset_number] && !empty($customPresets) && $customPresets[$preset_number - sizeof($presets)]['categories']) {
             $data['categories'] = array_merge($data['categories'], $customPresets[$preset_number - sizeof($presets)]['categories']);
         } else {
-            $data['categories'] = array_merge($data['categories'], $presets[$preset_number]);
+            if(is_array($presets[$preset_number]) && !empty($presets[$preset_number])) {
+                $data['categories'] = array_merge($data['categories'], $presets[$preset_number]);
+            }
         }
 
         return $data;
@@ -63,7 +65,9 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
         if(!$presets[$preset_number] && !empty($customPresets) && $customPresets[$preset_number - sizeof($presets)]['pagination']) {
             $data['pagination'] = array_merge($data['pagination'], $customPresets[$preset_number - sizeof($presets)]['pagination']);
         } else {
-            $data['pagination'] = array_merge($data['pagination'], $presets[$preset_number]);
+            if(is_array($presets[$preset_number]) && !empty($presets[$preset_number])) {
+                $data['pagination'] = array_merge($data['pagination'], $presets[$preset_number]);
+            }
         }
 
         return $data;
@@ -72,12 +76,14 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
     public function settingsDiff($stats, $id, $data) {
         foreach($this->get($id)->data as $key => $value) {
             if(is_array($data[$key])) {
-                $diffOptions = array_diff_assoc($data[$key], $value);
-                $this->saveDiffOptions($stats, $key, $diffOptions);
-                foreach($value as $el => $opt) {
-                    if(is_array($opt)) {
-                        $diffOptions = array_diff_assoc($data[$key][$el], $opt);
-                        $this->saveDiffOptions($stats, $key, $diffOptions);
+                if(is_array($value) && !empty($value)) {
+                    $diffOptions = array_diff_assoc($data[$key], $value);
+                    $this->saveDiffOptions($stats, $key, $diffOptions);
+                    foreach($value as $el => $opt) {
+                        if(is_array($opt)) {
+                            $diffOptions = array_diff_assoc($data[$key][$el], $opt);
+                            $this->saveDiffOptions($stats, $key, $diffOptions);
+                        }
                     }
                 }
             }
@@ -88,6 +94,18 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
         if(sizeof($diffOptions) > 0)
             foreach($diffOptions as $key => $value)
                 $stats->save('settings.' . $element . '.' . $key);
+    }
+
+    public function isMobile($checkMobile) {
+        require_once 'plugins/Mobile_Detect.php';
+
+        $detect = new Mobile_Detect;
+
+        if($detect->isMobile() && $checkMobile == 'on'){
+            return true;
+        }
+
+        return false;
     }
 
     /**

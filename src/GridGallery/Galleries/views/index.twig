@@ -101,10 +101,12 @@
                             </span>
                         </h4>
                         <h4 style="display: inline-block; margin:1px 10px; height: 20px; float: left;">
-                            {{ environment.translate('Phpcode: ') }}
+                            {{ environment.translate('Phpcode: ')|trim }}
                             <span title="{{ environment.translate('Select phpcode for the gallery ') ~ gallery.title }}"
                                   id="phpcode-{{ gallery.id }}}"
-                                  class="gallery-shortcode"> < ?php echo do_shortcode([supsystic-gallery id="{{ gallery.id }}" position="center"]) ?>
+                                  class="gallery-shortcode"
+                                  style="white-space: normal;">
+                                {{ '<?php echo do_shortcode([supsystic-gallery id="' ~ gallery.id ~ '" position="center"]) ?>'|trim }}
                             </span>
                         </h4>
                     </div>
