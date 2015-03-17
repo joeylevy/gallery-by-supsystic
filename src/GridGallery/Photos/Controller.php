@@ -432,6 +432,7 @@ class GridGallery_Photos_Controller extends GridGallery_Core_BaseController
         $attachmentId = $request->post->get('attachment_id');
         $caption = $request->post->get('caption');
         $description = $request->post->get('description');
+        $link = $request->post->get('link');
 
         /** @var GridGallery_Photos_Model_Photos $photos */
         $photos = $this->getModel('photos');
@@ -440,6 +441,7 @@ class GridGallery_Photos_Controller extends GridGallery_Core_BaseController
             'alt' => $alt,
             'caption' => $caption,
             'description' => $description,
+            'link'   => $link,
         ));
 
         return $this->response(Rsc_Http_Response::AJAX);

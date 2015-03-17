@@ -222,16 +222,16 @@
                 <p id="photo-link-{{ image.id }}" class="tabcontent-{{ image.id }}" style="display: none">
                     <input
                             type="text"
-                            {% if environment.isPro() %}
+                            {#{% if environment.isPro() %}#}
                                 name="link"
                                 value="{{ image.attachment.external_link }}"
-                            {% else %}
+                            {#{% else %}
                                 disabled="disabled"
-                            {% endif %}
+                            {% endif %}#}
                             style="width: 60%;"
                             placeholder="{{ environment.translate('http://example.com/') }}"
                             />
-                    <label>
+                    <label style="border: 1px solid #9D9D9D;padding: 5px;">
                         <input
                                 type="checkbox"
                                 {% if environment.isPro() %}
@@ -246,12 +246,12 @@
                                 {% endif %}
                                 />
                         {{ environment.translate('Open in new window.') }}
-                    </label>
-                    {% if environment.isPro() == false %}
-                        <span style="color:red" class="description">
+                        {% if environment.isPro() == false %}
+                            <span style="color:red" class="description">
                             {{ nonProMsg|raw }}
                         </span>
-                    {% endif %}
+                        {% endif %}
+                    </label>
                 </p>
 
                 <p id="photo-video-{{ image.id }}" class="tabcontent-{{ image.id }}" style="display: none; width: 350px;">

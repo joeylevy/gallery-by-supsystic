@@ -39,6 +39,11 @@ class GridGallery_Photos_Module extends Rsc_Mvc_Module
             )
         );
 
+        add_filter(
+            'wp_prepare_attachment_for_js',
+            array($this, 'prepareAttachmentForJs')
+        );
+
         // Sets the JPEG quality.
         add_filter('jpeg_quality', array($this, 'getJpegQuality'));
 
@@ -99,6 +104,21 @@ class GridGallery_Photos_Module extends Rsc_Mvc_Module
             $this->getLocationUrl() . '/assets/js/grid-gallery.photos.folders.js'
         ));
 
+    }
+
+    public function prepareAttachmentForJs($data)
+    {
+        $photos = new GridGallery_Photos_Model_Photos();
+        $id     = $data['id'];
+
+        // Called 'Extranal link', because 'link' reserved by WordPress.
+        $data['external_link'] = get_post_meta(
+            $id,
+            $photos->getMetadataField('link'),
+            true
+        );
+
+        return $data;
     }
 
     /**

@@ -297,6 +297,27 @@ class GridGallery_Photos_Model_Photos extends Rsc_Mvc_Model
         );
     }
 
+    public function getMetadataAliases()
+    {
+        return array( 'link'   => '_grid_gallery_link' );
+    }
+
+    public function getMetadataField($alias)
+    {
+        $metadata = $this->getMetadataAliases();
+
+        return (isset($metadata[$alias]) ? $metadata[$alias] : null);
+    }
+
+    public function setLink($attachmentId, $link)
+    {
+        update_post_meta(
+            (int)$attachmentId,
+            $this->getMetadataField('link'),
+            $link
+        );
+    }
+
     public function updateMetadata($attachmentId, array $metadata)
     {
         foreach ($metadata as $key => $value) {
