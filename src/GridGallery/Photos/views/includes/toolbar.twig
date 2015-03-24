@@ -1,13 +1,13 @@
 {# Toolbar #}
 <section id="photo-toolbar" class="supsystic-bar" data-intro="{{ manual.intro }}" data-step="1">
     <ul class="supsystic-bar-controls">
-        <li title="{{ environment.translate('Upload new images') }}">
+        <li title="{{ translate('Upload new images') }}">
             <button class="button button-primary" id="gg-btn-upload" data-folder-id="0" data-upload>
                 <i class="fa fa-fw fa-camera"></i>
-                {{ environment.translate('Import images') }}
+                {{ translate('Import images') }}
             </button>
         </li>
-        <li title="{{ environment.translate('Create new folder') }}">
+        <li title="{{ translate('Create new folder') }}">
             <button class="button" id="button-folder" data-enabled="none|one|many|all" data-toolbar-button>
                 <i class="fa fa-fw fa-folder-open"></i>
             </button>
@@ -17,18 +17,18 @@
             |
         </li>
 
-        <li title="{{ environment.translate('Edit selected item') }}">
+        <li title="{{ translate('Edit selected item') }}">
             <button class="button" id="button-edit" disabled data-enabled="one" data-toolbar-button>
                 <i class="fa fa-fw fa-pencil"></i>
             </button>
         </li>
-        <li title="{{ environment.translate('Delete selected items') }}">
+        <li title="{{ translate('Delete selected items') }}">
             <button class="button" id="button-delete" disabled data-enabled="one|many|all" data-toolbar-button>
                 <i class="fa fa-fw fa-trash-o"></i>
             </button>
         </li>
 
-        <li title="{{ environment.translate('Select/unselect all photos') }}">
+        <li title="{{ translate('Select/unselect all photos') }}">
             <button id="button-select" class="button" data-enabled="none|one|many|all" data-toolbar-button>
                 <i class="fa fa-check-square-o fa-fw"></i>
             </button>
@@ -36,15 +36,15 @@
 
         <li class="separator">|</li>
 
-        <li title="{{ environment.translate('Create new gallery from the selected items') }}">
+        <li title="{{ translate('Create new gallery from the selected items') }}">
             <button class="button" id="button-create" disabled data-enabled="one|many|all" data-toolbar-button>
-                {{ environment.translate('New gallery from selected') }}
+                {{ translate('New gallery from selected') }}
             </button>
         </li>
 
-        <li title="{{ environment.translate('Add the selected items to the existing gallery') }}">
+        <li title="{{ translate('Add the selected items to the existing gallery') }}">
             <button class="button" id="button-attach" disabled data-enabled="one|many|all" data-toolbar-button>
-                {{ environment.translate('Add selected to the gallery') }}
+                {{ translate('Add selected to the gallery') }}
             </button>
         </li>
 
@@ -56,7 +56,7 @@
                 {% set url = environment.generateUrl('photos', 'index', { 'view': 'list' }) %}
             {% endif %}
 
-            <li title="{{ environment.translate('Switch to the list view') }}" style="float:right;">
+            <li title="{{ translate('Switch to the list view') }}" style="float:right;">
                 <a class="button" href="{{ url }}">
                     <i class="fa fa-list fa-fw"></i>
                 </a>

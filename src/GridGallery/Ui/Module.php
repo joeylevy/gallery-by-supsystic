@@ -94,12 +94,15 @@ class GridGallery_Ui_Module extends Rsc_Mvc_Module
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-jquery-ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css'));
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css'));
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-jgrowl', '//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.2.12/jquery.jgrowl.min.css'));
-        $this->add(new GridGallery_Ui_BackendStylesheet(
-            'gg-tooltipster',
-            $this->getLocationUrl() . '/css/tooltipster.css'
-        ));
+        $this->add(new GridGallery_Ui_BackendStylesheet('gg-tooltipster', $this->getLocationUrl() . '/css/tooltipster.css'));
+        $this->add(new GridGallery_Ui_Stylesheet('gg-photobox-styles', $this->getLocationUrl() . '/css/photobox.css'));
+        $this->add(new GridGallery_Ui_Stylesheet('gg-photobox-ie-styles', $this->getLocationUrl() . '/css/photobox.ie.css'));
         //$this->add(new GridGallery_Ui_BackendStylesheet('gg-tooltipster', '//cdn.jsdelivr.net/jquery.tooltipster/2.1.4/css/tooltipster.css'));
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-animate-css', $url . '/app/assets/css/animate.css'));
+
+        /* Google fonts */
+        $this->add(new GridGallery_Ui_BackendStylesheet('gg-montserrat-css', 'http://fonts.googleapis.com/css?family=Montserrat'));
+        $this->add(new GridGallery_Ui_Stylesheet('gg-montserrat-css', 'http://fonts.googleapis.com/css?family=Montserrat'));
 
         /* Javascript */
         $this->add(new GridGallery_Ui_BackendJavascript('jquery'));
@@ -110,7 +113,9 @@ class GridGallery_Ui_Module extends Rsc_Mvc_Module
         $this->add(new GridGallery_Ui_BackendJavascript('gg-lazy-load-ks', $url . '/app/assets/js/jquery.lazyload.min.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-form-serializer-js', $this->getLocationUrl() . '/plugins/grid-gallery.ui.formSerialize.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-jgrowl-js', '//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.2.12/jquery.jgrowl.min.js'));
-        $this->add(new GridGallery_Ui_BackendJavascript('gg-tooltipster-js', '//cdn.jsdelivr.net/jquery.tooltipster/3.3.0/js/jquery.tooltipster.min.js'));
+        $this->add(new GridGallery_Ui_BackendJavascript('gg-tooltipster-js', $this->getLocationUrl(). '/js/jquery.tooltipster.min.js' ));
+        $this->add(new GridGallery_Ui_Javascript('gg-photobox-js', $this->getLocationUrl(). '/js/jquery.photobox.js' ));
+        $this->add(new GridGallery_Ui_Javascript('gg-sliphover-js', $this->getLocationUrl(). '/js/jquery.sliphover.js' ));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-scroll-js', $this->getLocationUrl(). '/js/jquery.slimscroll.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-toolbar-js', $this->getLocationUrl() . '/plugins/grid-gallery.ui.toolbar.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-cb-observ', $this->getLocationUrl() . '/js/checkbox-observer.js'));

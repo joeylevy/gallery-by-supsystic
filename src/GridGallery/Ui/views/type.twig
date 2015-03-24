@@ -7,13 +7,13 @@
         <th scope="col" id="check-all" class="ui-state-default ui-th-column ui-th-ltr jqgh_ui-jqgrid-htable_id">
         </th>
         <th scope="col" id="icon" class="ui-state-default ui-th-column ui-th-ltr jqgh_ui-jqgrid-htable_id">
-            {{ environment.translate('Image') }}
+            {{ translate('Image') }}
         </th>
         <th scope="col" id="title" class="ui-state-default ui-th-column ui-th-ltr jqgh_ui-jqgrid-htable_id">
-            {{ environment.translate('Properties') }}
+            {{ translate('Properties') }}
         </th>
         <th scope="col" id="date" class="ui-state-default ui-th-column ui-th-ltr jqgh_ui-jqgrid-htable_id">
-            {{ environment.translate('Date') }}
+            {{ translate('Date') }}
         </th>
     </tr>
     {% endset %}
@@ -121,7 +121,7 @@
         data-entity-info="{{ folder|json_encode }}">
         <th scope="row" class="check-column">
             <label class="screen-reader-text"
-                   for="cb-select-{{ folder.id }}">{{ environment.translate('Select %s')|format(folder.title) }}</label>
+                   for="cb-select-{{ folder.id }}">{{ translate('Select %s')|format(folder.title) }}</label>
             <input type="checkbox" name="folder[]" id="cb-select-{{ folder.id }}" value="{{ folder.id }}"
                    data-observable>
         </th>
@@ -149,9 +149,9 @@
                     {{ folder.photos|length }}
                 </span>
                 {% if folder.photos|length == 1 %}
-                    {{ environment.translate('photo') }}
+                    {{ translate('photo') }}
                 {% else %}
-                    {{ environment.translate('photos') }}
+                    {{ translate('photos') }}
                 {% endif %}
             </p>
         </td>
@@ -160,12 +160,12 @@
 {% endmacro %}
 
 {% macro list_image(image) %}
-    {% set nonProMsg = '<a href="http://supsystic.com/plugins/photo-gallery/" target="_blank" style="color:red;">Available in PRO</a>' %}
+    {% set nonProMsg = 'Available in PRO' %}
 
     <tr data-entity data-entity-id="{{ image.id }}" data-entity-type="photo" data-entity-info="{{ image|json_encode }}">
         <th scope="row" class="check-column">
             <label class="screen-reader-text"
-                   for="cb-select-{{ image.id }}">{{ environment.translate('Select %s')|format(image.attachment.title) }}</label>
+                   for="cb-select-{{ image.id }}">{{ translate('Select %s')|format(image.attachment.title) }}</label>
             <input type="checkbox" name="image[]" id="cb-select-{{ image.id }}" value="{{ image.id }}" data-observable>
         </th>
         <td class="column-icon media-icon">
@@ -189,34 +189,34 @@
             <form id="photo-editor-{{ image.id }}" class="photo-editor attachment-{{ image.attachment.id }}">
                 <strong data-tabcontent=".tabcontent-{{ image.id }}">
                     <a href="#photo-caption-{{ image.id }}" class="add-new-h2 active">
-                        {{ environment.translate('Caption') }}
+                        {{ translate('Caption') }}
                     </a>
                     <a href="#photo-seo-{{ image.id }}" class="add-new-h2">
-                        {{ environment.translate('SEO') }}
+                        {{ translate('SEO') }}
                     </a>
                     <a href="#photo-link-{{ image.id }}" class="add-new-h2">
-                        {{ environment.translate('Link') }}
+                        {{ translate('Link') }}
                     </a>
                     <a href="#photo-video-{{ image.id }}" class="add-new-h2">
-                        {{ environment.translate('Video') }}
+                        {{ translate('Video') }}
                     </a>
                     <a href="#photo-tags-{{ image.id }}" class="add-new-h2">
-                        {{ environment.translate('Categories') }}
+                        {{ translate('Categories') }}
                     </a>
                 </strong>
 
                 <p id="photo-caption-{{ image.id }}" class="tabcontent-{{ image.id }}">
                     <input type="text" name="caption" value="{{ image.attachment.caption }}"
-                           placeholder="{{ environment.translate('Caption') }}"/>
+                           placeholder="{{ translate('Caption') }}"/>
                 </p>
 
                 <p id="photo-seo-{{ image.id }}" class="tabcontent-{{ image.id }}" style="display: none">
                     <input type="text" name="description" value="{{ image.attachment.description }}"
                            style="width: 40%;"
-                           placeholder="{{ environment.translate('Description') }}"/>
+                           placeholder="{{ translate('Description') }}"/>
                     <input type="text" name="alt" value="{% if image.attachment.alt is not empty %}{{ image.attachment.alt }}{% else %}{{ image.attachment.title }}{% endif %}"
                            style="width: 40%;"
-                           placeholder="{{ environment.translate('Alternative text') }}"/>
+                           placeholder="{{ translate('Alternative text') }}"/>
                 </p>
 
                 <p id="photo-link-{{ image.id }}" class="tabcontent-{{ image.id }}" style="display: none">
@@ -229,7 +229,7 @@
                                 disabled="disabled"
                             {% endif %}#}
                             style="width: 60%;"
-                            placeholder="{{ environment.translate('http://example.com/') }}"
+                            placeholder="{{ translate('http://example.com/') }}"
                             />
                     <label style="border: 1px solid #9D9D9D;padding: 5px;">
                         <input
@@ -245,7 +245,7 @@
                                     checked="checked"
                                 {% endif %}
                                 />
-                        {{ environment.translate('Open in new window.') }}
+                        {{ translate('Open in new window.') }}
                         {% if environment.isPro() == false %}
                             <span style="color:red" class="description">
                             {{ nonProMsg|raw }}
@@ -264,11 +264,13 @@
                                 disabled="disabled"
                                 style="width: 200px;"
                             {% endif %}
-                            placeholder="{{ environment.translate('Video URL') }}"
+                            placeholder="{{ translate('Video URL') }}"
                             >
                     {% if environment.isPro() == false %}
                         <span style="color:red" class="description">
-                            {{ nonProMsg|raw }}
+                            <a href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=video&utm_campaign=gallery">
+                                {{ nonProMsg|raw }}
+                            </a>
                         </span>
                     {% endif %}
                 </p>
@@ -277,7 +279,9 @@
                     {% if environment.isPro() == false %}
                         <input type="text" style="width: 60%; margin-left:4px;" disabled placeholder="Categories">
                         <span style="color:red" class="description">
-                            {{ nonProMsg|raw }}
+                            <a href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=imagescategories&utm_campaign=gallery">
+                                {{ nonProMsg|raw }}
+                            </a>
                         </span>
                     {% else %}
                         <input type="text" class="gg-tags" id="tags-{{ image.id }}" data-id="{{ image.id }}"

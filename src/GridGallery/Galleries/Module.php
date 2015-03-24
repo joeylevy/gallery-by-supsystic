@@ -57,11 +57,14 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             array($this, 'forceHttpUrl')
         );
 
+        $function = new Twig_SimpleFunction('translate', array($this->getController(), 'translate'));
+
         $twig = $this->getEnvironment()
             ->getTwig();
 
         $twig->addFilter($pregReplaceFilter);
         $twig->addFilter($httpFilter);
+        $twig->addFunction($function);
 
         // It allows to extract settings for presets.
         // It will be removed in next version.
@@ -123,6 +126,16 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         }
 
         return $url;
+    }
+
+    public function _loadPluginsTextDomain()
+    {
+        //var_dump($this);
+        load_plugin_textdomain(
+            'sgg',
+            false,
+            'supsystic-grid-gallery/app/langs/'
+        );
     }
 
     /**
@@ -228,6 +241,8 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         );
 
         $ui->add(new GridGallery_Ui_Javascript('jquery'));
+
+        //$this->_loadPluginsTextDomain();
     }
 
     /**
@@ -319,6 +334,10 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             }
         }
 
+        foreach($gallery->photos as $photo) {
+            $photo->attachment['caption'] = html_entity_decode($photo->attachment['caption']);
+        }
+
         $template = $twig->render(
             '@galleries/shortcode/gallery.twig',
             array(
@@ -330,7 +349,7 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
                 'postsLength' => $postsLenght,
                 'posts' => $settingsModel->getPostsToRender($attributes['id']),
                 'pages' => $settingsModel->getPagesToRender($attributes['id']),
-                'mobile' => $settingsModel->isMobile($settings->data['box']['mobile']),
+                'mobile' => isset($settings->data['box']['mobile']) ? $settingsModel->isMobile($settings->data['box']['mobile']) :  null,
             )
         );
         

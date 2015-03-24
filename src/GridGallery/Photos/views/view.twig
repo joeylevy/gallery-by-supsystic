@@ -3,9 +3,9 @@
 {% block header %}
 
     <nav id="gg-breadcrumbs" class="gg-breadcrumbs">
-        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Gallery by Supsystic') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Gallery by Supsystic') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('photos', 'index', { 'view': view_type }) }}">{{ environment.translate('Images') }}</a>
+        <a href="{{ environment.generateUrl('photos', 'index', { 'view': view_type }) }}">{{ translate('Images') }}</a>
         <i class="fa fa-angle-right"></i>
         <a href="#">{{ folder.title }}</a>
     </nav>

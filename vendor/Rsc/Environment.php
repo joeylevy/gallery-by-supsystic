@@ -136,7 +136,8 @@ class Rsc_Environment
      */
     public function run()
     {
-        $this->loader->add('BarsMaster', dirname(dirname(__FILE__)));
+        var_dump($this);
+        /*$this->loader->add('BarsMaster', dirname(dirname(__FILE__)));
         $this->loader->add('Twig', dirname(dirname(__FILE__)));
 
         if ($this->config->has('plugin_prefix') && $this->config->has('plugin_source')) {
@@ -152,7 +153,7 @@ class Rsc_Environment
             $this
         );
 
-        $this->loader->register();
+        $this->loader->register();*/
 
         /* Twig */
         try {
@@ -176,7 +177,7 @@ class Rsc_Environment
             );
         }
 
-        $this->getLang()->loadTextDomain();
+        //$this->getLang()->loadTextDomain();
 
         /** @TODO THROW TRY CATCH */
         if ($this->config->has('plugin_menu')) {
@@ -261,7 +262,7 @@ class Rsc_Environment
                 $this->config->add('lang_path', $path);
             }
 
-            $this->lang = new Rsc_Lang($domain, $path);
+            //$this->lang = new Rsc_Lang($domain, $path);
         }
 
         return $this->lang;
@@ -382,7 +383,8 @@ class Rsc_Environment
      */
     public function translate($msgid)
     {
-        return $this->getLang()->translate($msgid);
+        return __($msgid, 'sgg');
+        //return $this->getLang()->translate($msgid);
     }
 
     /**

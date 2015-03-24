@@ -192,7 +192,7 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
     public function postThumb($galleries) {
         if($galleries) {
             foreach($galleries as $gallery) {
-                if ($gallery->settings['posts']['enable'] == '1') {
+                if ($gallery->settings['posts'] && $gallery->settings['posts']['enable'] == '1') {
                     $postCover = wp_get_attachment_url(get_post_thumbnail_id($gallery->settings['posts']['current']));
                     if (!$postCover) {
                         $postCover = wp_get_attachment_url(get_post_thumbnail_id($gallery->settings['pages']['current']));

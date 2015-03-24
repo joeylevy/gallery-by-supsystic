@@ -20,27 +20,29 @@
                     <li class="supsystic-sticky {% if request.query.module == 'overview' %}active{% endif %}">
                         <a href="{{ environment.generateUrl('overview') }}">
                             <i class="fa fa-info"></i>
-                            {{ environment.translate('Overview') }}
+                            {{ translate('Overview') }}
                         </a>
                     </li>
                     <li {% if request.query.module == 'galleries' and request.query.action == 'showPresets' %}class="active" {% endif %}>
                         <a id="btn-add-new" href="{{ environment.generateUrl('galleries', 'showPresets') }}">
                             <i class="fa fa-plus-circle"></i>
-                            {{ environment.translate('New Gallery') }}
+                            {{ translate('New Gallery') }}
                         </a>
                     </li>
                     <li class="supsystic-sticky {% if (request.query.module == 'galleries' or request.query.module is null) and request.query.action != 'showPresets' %}active{% endif %}">
                         <a href="{{ environment.generateUrl('galleries') }}">
                             <i class="fa fa-archive"></i>
-                            {{ environment.translate('Galleries') }}
+                            {{ translate('Galleries') }}
                         </a>
                     </li>
-                    <li class="supsystic-sticky {% if (request.query.module == 'license') %}active{% endif %}">
-                        <a href="{{ environment.generateUrl('license') }}">
-                            <i class="fa fa-hand-o-right"></i>
-                            {{ environment.translate('License') }}
-                        </a>
-                    </li>
+                    {% if environment.isPro() %}
+                        <li class="supsystic-sticky {% if (request.query.module == 'license') %}active{% endif %}">
+                            <a href="{{ environment.generateUrl('license') }}">
+                                <i class="fa fa-hand-o-right"></i>
+                                {{ translate('License') }}
+                            </a>
+                        </li>
+                    {% endif %}
 
                     {# Uncomment to enable images tab #}
                     {#<li class="supsystic-sticky {% if request.query.module == 'photos' or request.query.module is null %}active{% endif %}">
@@ -130,7 +132,7 @@
         <p>
             <span id="loading-text">Loading</span>
             <img src="{{ environment.config.get('admin_url') ~ '/images/wpspin_light.gif' }}" alt=""
-                 title="{{ environment.translate('Loading') }}"/>
+                 title="{{ translate('Loading') }}"/>
         </p>
     </div>
 
