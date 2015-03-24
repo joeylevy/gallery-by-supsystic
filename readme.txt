@@ -3,21 +3,18 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: photo gallery, responsive photo gallery, foto gallery, grid, grid gallery, add album, add gallery, add picture, add pictures, album, foto, fotoalbum, galary, galery, gallary, gallerie, gallery, gallery decription, gallery image, gelary, gellary, gellery, image, multiple pictures, photo, photoalbum, photogallery, pictures, gird, gird gallery, galery, slide show, slideshow, upload images, upload photos, view images, view pictures, website gallery, wordpress gallery, gallery plugin, slideshow, image gallery, responsive gallery, responsive image gallery
 Tested up to: 4.1.1
-Stable tag: 1.1.4
+Stable tag: 1.1.3
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
 
 == Description ==
 
-[Grid Gallery WordPress Plugin](http://supsystic.com/plugins/photo-gallery?utm_source=wordpress&utm_medium=description&utm_campaign=gallery "Photo Gallery WordPress Plugin") by Supsystic with a great number of layouts will help you to create quality respectable portfolios and image galleries. Its unlimited options allow to choose different designs and styles, which make your photo grid gallery attractive for users.
+[Grid Gallery WordPress Plugin](http://supsystic.com/plugins/photo-gallery/ "Photo Gallery WordPress Plugin") by Supsystic with a great number of layouts will help you to create quality respectable portfolios and image galleries. Its unlimited options allow to choose different designs and styles, which make your photo grid gallery attractive for users.
 
 * Elegant gallery design optimized for mobile devices
+* Available with any Wordpress Theme
 * Full customization styles such as shadow, border and caption
 * Horizontal, Vertical and Fixed layouts
-* Add links, icons and captions
-* Post Feed Gallery and Video Gallery
-* HTML caption option
-* Available with any Wordpress Theme
 
 Gallery plugin will help you display your images for maximum effect on your blog or website.
 
@@ -251,19 +248,15 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 == Screenshots ==
 
 1. Fixed Gallery. It's still responsive and compatible all mobile devices, but fixed :)
-2. [Photo Gallery WordPress Plugin](http://supsystic.com/plugins/photo-gallery?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Photo Gallery WordPress plugin") by Supsystic
+2. [Photo Gallery WordPress Plugin](http://supsystic.com/plugins/photo-gallery/ "Photo Gallery WordPress plugin") by Supsystic
 3. Gallery plugin admin area
 4. Post Feed Gallery
 5. Image Circle Gallery
 
 == Changelog ==
+= 1.1.5 / 17.03.2015
+ * Hot fix for 1.1.4 version!
 
-= 1.1.4 / 24.03.2015
- * New option Popup Image disable option
- * Gallery overview news fixed
- * Post Feed Gallery notice fixed
- * HTML caption add
- 
 = 1.1.3 / 17.03.2015
  * External image link added
  * Minor issues fix

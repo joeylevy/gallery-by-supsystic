@@ -50,6 +50,11 @@ class GridGallery_Overview_Controller extends GridGallery_Core_BaseController
     protected function loadNews ($url) {
         $news = wp_remote_retrieve_body(wp_remote_get($url));
 
-        return $news;
+        $DOM = new DOMDocument;
+        $DOM->loadHTML($news);
+
+        $items = $DOM->getElementsByTagName('div');
+
+        return $DOM->saveXML($items->item(22));
     }
 } 

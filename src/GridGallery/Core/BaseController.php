@@ -156,10 +156,9 @@ class GridGallery_Core_BaseController extends Rsc_Mvc_Controller
 
     public function translate($text)
     {
-        /*return $this->getEnvironment()
+        return $this->getEnvironment()
             ->getLang()
-            ->translate($text);*/
-        return __($text, 'sgg');
+            ->translate($text);
     }
 
     public function escape($text)

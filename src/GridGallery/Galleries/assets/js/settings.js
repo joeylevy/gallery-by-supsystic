@@ -141,13 +141,10 @@
     Controller.prototype.togglePopupTheme = function (value) {
         var $boxType = $('[name="box[type]"]');
 
-        $boxType.attr('value', '0');
-
         if(value == 'theme_6') {
             $boxType.attr('value', '1');
-        }
-        if(value == 'theme_7') {
-            $boxType.attr('value', '2');
+        } else {
+            $boxType.attr('value', '0');
         }
     };
 
@@ -427,10 +424,8 @@
         $preview.find('figure').on('click', function (event) {
             event.preventDefault();
 
-            if(!$(this).hasClass('disabled')) {
-                $effect.val($(this).data('grid-gallery-type'));
-                $dialog.dialog('close');
-            }
+            $effect.val($(this).data('grid-gallery-type'));
+            $dialog.dialog('close');
 
             $('.selectedEffectName').text($.proxy(function () {
                 return this.find('span').text();
@@ -473,7 +468,6 @@
 
         $('#hideShadow').on('click', function () {
             $table.find('tr').hide();
-            $('#useMouseOverShadow').attr('value', 0);
             $toggleRow.show();
         });
 
@@ -481,7 +475,6 @@
             $table.find('tr').show();
         } else {
             $table.find('tr').hide();
-            $('#useMouseOverShadow').attr('value', 0);
             $toggleRow.show();
         }
     };
@@ -1007,30 +1000,25 @@
             self = this,
             wrapper = {
                 element: '#preview figure.grid-gallery-caption',
-                $node: $('#preview figure.grid-gallery-caption'),
-                toggleEvents: function() {
-                    this.$node.off('mouseover');
-                    this.$node.off('mouseleave');
-                }
+                $node: $('#preview figure.grid-gallery-caption')
             },
             showOver = function() {
-                wrapper.toggleEvents();
                 wrapper.$node.on('mouseover', function () {
                     shadow = wrapper.$node.css('box-shadow');
-                    $(this).css('box-shadow', '5px 5px 5px #888');
+                    self.setProp(wrapper.element , {boxShadow: '5px 5px 5px #888'});
                 });
                 wrapper.$node.on('mouseleave',function () {
-                    $(this).css('box-shadow', shadow);
+                    self.setProp(wrapper.element , {boxShadow: shadow});
                 });
             },
             hideOver = function() {
-                wrapper.toggleEvents();
+                console.log(wrapper.$node);
                 wrapper.$node.on('mouseover', function () {
                     shadow = wrapper.$node.css('box-shadow');
-                    $(this).css('box-shadow', 'none');
+                    self.setProp(wrapper.element , {boxShadow: 'none'});
                 });
                 wrapper.$node.on('mouseleave', function () {
-                    $(this).css('box-shadow', shadow);
+                    self.setProp(wrapper.element , {boxShadow: shadow});
                 });
             },
             value = parseInt($('#useMouseOverShadow option:selected').val(), 10);
@@ -1054,7 +1042,8 @@
             }
 
             if(!value) {
-                wrapper.toggleEvents();
+                wrapper.$node.off('mouseover');
+                wrapper.$node.off('mouseleave');
             }
 
         }, this));
@@ -1196,7 +1185,7 @@
             .on('focusout', $.proxy(function () {
                 this.setProp('figcaption', { opacity: '' });
             }, this));
-    };
+    }
 
     ImagePreview.prototype.initCaption = (function () {
 

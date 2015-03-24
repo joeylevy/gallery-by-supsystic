@@ -5,7 +5,16 @@
          data-preset="{{ data.value }}">
         <img src="{{ environment.getModule('galleries').getLocationUrl() }}/assets/img/{{ data.image }}" alt=""/>
         {% if data.pro and environment.isPro() == false %}
-            <a class="button button-primary" href="http://supsystic.com/plugins/photo-gallery/" style="position: absolute; top: 50%; left: 30%; background-color: #ffffff;">
+            <a class="button button-primary inPro"
+                    {% if data.title == 'Categories' %}
+                        href="http://supsystic.com/plugins/photo-gallery/" target="_blank">
+                {% endif %}
+                {% if data.title == 'Icons' %}
+                    href="http://supsystic.com/plugins/photo-gallery/" target="_blank">
+                {% endif %}
+                {% if data.title == 'Pagination' %}
+                    href="http://supsystic.com/plugins/photo-gallery/" target="_blank">
+                {% endif %}
                 Available in PRO
             </a>
         {% endif %}
@@ -18,21 +27,21 @@
 {% block header %}
 
     <nav id="supsystic-breadcrumbs" class="supsystic-breadcrumbs">
-        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Gallery by Supsystic') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Gallery by Supsystic') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('galleries, showPresets') }}">{{ translate('Create new gallery') }}</a>
+        <a href="{{ environment.generateUrl('galleries, showPresets') }}">{{ environment.translate('Create new gallery') }}</a>
     </nav>
 
 {% endblock %}
 
 {% block content %}
-    <h3 style="margin-left: 10px;padding-bottom: 10px !important;border-bottom: 1px solid;">{{ translate('Choose Gallery Template.You can change template and settings on the next step.') }}</h3>
+    <h3 style="margin-left: 10px;padding-bottom: 10px !important;border-bottom: 1px solid;">{{ environment.translate('Choose Gallery Template.You can change template and settings on the next step.') }}</h3>
     <div id="gg-create-gallery-text">
-        <h3 style="float: left; margin: 10px !important;">{{ translate('Gallery Name:') }}</h3>
+        <h3 style="float: left; margin: 10px !important;">{{ environment.translate('Gallery Name:') }}</h3>
         <input name="title" type="text" style="float: left; width: 60%;"/>
         <button id="gallery-create" class="button button-primary" type="button">
             <i class="fa fa-check"></i>
-            {{ translate('Save') }}
+            {{ environment.translate('Save') }}
         </button>
         {#<button id="gallery-cancel" class="button button-primary" type="button">
             {{ environment.translate('Cancel') }}
@@ -50,9 +59,7 @@
             {'title':'Standart Gallery', 'image':'template1.jpg', 'pro': false, 'value': 1},
             {'title':'Vertical Gallery', 'image':'template2.jpg', 'pro': false, 'value': 2},
             {'title':'Rounded Gallery', 'image':'template3.jpg', 'pro': false, 'value': 3},
-            {'title':'Horizontal Gallery', 'image':'template4.jpg', 'pro': false, 'value': 4},
-            {'title':'Categories adn Icons PRO', 'image':'template5.jpg', 'pro': true, 'value': 5},
-            {'title':'Post feed and Pagination', 'image':'template6.jpg', 'pro': true, 'value': 6}
+            {'title':'horizontal Gallery', 'image':'template4.jpg', 'pro': false, 'value': 4}
             ] %}
 
             {#Pro presets#}

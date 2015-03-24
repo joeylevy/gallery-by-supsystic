@@ -1,7 +1,7 @@
 {% extends 'base.twig' %}
 
 {% block content %}
-    <h1>{{ translate('An error has occurred') }}</h1>
+    <h1>{{ environment.translate('An error has occurred') }}</h1>
     <p>
         {{ message|raw }}
     </p>

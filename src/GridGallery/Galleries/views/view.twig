@@ -3,9 +3,9 @@
 {% block header %}
 
     <nav id="supsystic-breadcrumbs" class="supsystic-breadcrumbs">
-        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Gallery by Supsystic') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Gallery by Supsystic') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Galleries') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Galleries') }}</a>
         <i class="fa fa-angle-right"></i>
         <a href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery.id }) }}">{{ gallery.title }}</a>
     </nav>
@@ -21,10 +21,10 @@
                 </a>
             </li>#}
 
-            <li title="{{ translate('Upload new images') }}">
+            <li title="{{ environment.translate('Upload new images') }}">
                 <button class="button button-primary gallery" id="import-to-gallery">
                     <i class="fa fa-fw fa-upload"></i>
-                    {{ translate('Add Images') }}
+                    {{ environment.translate('Add Images') }}
                 </button>
             </li>
 
@@ -39,7 +39,7 @@
                 <a href="{{ environment.generateUrl('galleries', 'settings', { 'gallery_id': gallery.id }) }}"
                    class="button">
                     <i class="fa fa-fw fa-cogs"></i>
-                    {{ translate('Properties') }}
+                    {{ environment.translate('Properties') }}
                 </a>
             </li>
 
@@ -48,7 +48,7 @@
                    href="{{ environment.generateUrl('galleries', 'preview', { 'gallery_id': gallery.id }) }}"
                    class="button" data-button="preview">
                     <i class="fa fa-fw fa-eye"></i>
-                    {{ translate('Preview') }}
+                    {{ environment.translate('Preview') }}
                 </a>
             </li>
 
@@ -63,7 +63,7 @@
             <li>
                 <button class="button" data-button="remove" disabled>
                     <i class="fa fa-fw fa-trash-o"></i>
-                    {{ translate('Delete Image') }}
+                    {{ environment.translate('Delete Image') }}
                 </button>
             </li>
 
@@ -94,7 +94,7 @@
 
     {% if gallery is not defined or gallery is null %}
 
-        <p>{{ translate('The gallery is does not exists') }}</p>
+        <p>{{ environment.translate('The gallery is does not exists') }}</p>
 
     {% else %}
 
@@ -102,7 +102,7 @@
 
             <h2 style="text-align: center; color: #bfbfbf; margin: 50px 0 25px 0;">
                 <span style="margin-bottom: 20px; display: block;">
-                    {{ translate('Currently this gallery has no images') }}
+                    {{ environment.translate('Currently this gallery has no images') }}
                 </span>
                 {{ importTypes.show('1000', gallery.id) }}
             </h2>
@@ -123,7 +123,7 @@
         {% endif %}
 
     {% endif %}
-    <div id="importDialog" title="{{ translate('Select source to import from') }}">
+    <div id="importDialog" title="{{ environment.translate('Select source to import from') }}">
         {{ importTypes.show(400, gallery.id) }}
     </div>
 {% endblock %}

@@ -3,14 +3,14 @@
 {% block header %}
 
     <nav id="supsystic-breadcrumbs" class="supsystic-breadcrumbs">
-        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Gallery by Supsystic') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Gallery by Supsystic') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Galleries') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Galleries') }}</a>
         <i class="fa fa-angle-right"></i>
         <a href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery.id }) }}">{{ gallery.title }}</a>
         <i class="fa fa-angle-right"></i>
         <a href="{{ environment.generateUrl('galleries', 'addImages', { 'gallery_id': gallery.ud }) }}">
-            {{ translate('Add images') }}
+            {{ environment.translate('Add images') }}
         </a>
     </nav>
 
@@ -21,7 +21,7 @@
                 <a class="button button-primary" data-button="add"
                    href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery.id, 'view': viewType }) }}"
                    disabled>
-                    {{ translate('Add selected items') }}
+                    {{ environment.translate('Add selected items') }}
                 </a>
             </li>
 
@@ -29,7 +29,7 @@
                 <a id="btn-cancel"
                    href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery.id, 'view': viewType }) }}"
                    class="button">
-                    {{ translate('Cancel') }}
+                    {{ environment.translate('Cancel') }}
                 </a>
             </li>
 
@@ -72,10 +72,10 @@
 
         <h2 style="text-align: center; color: #bfbfbf; margin: 50px 0 25px 0;">
             <span style="margin-bottom: 20px; display: block;">
-                {{ translate('You need to import images to your gallery before you can start using galleries') }}
+                {{ environment.translate('You need to import images to your gallery before you can start using galleries') }}
             </span>
             <a class="button button-primary button-hero" href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery.id }) }}">
-                {{ translate('Import images') }}
+                {{ environment.translate('Import images') }}
             </a>
         </h2>
 

@@ -3,15 +3,15 @@
 {% block header %}
 
     <nav id="supsystic-breadcrumbs" class="supsystic-breadcrumbs">
-        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Gallery by Supsystic') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Gallery by Supsystic') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Galleries') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Galleries') }}</a>
         <i class="fa fa-angle-right"></i>
         <a href="{{ environment.generateUrl('galleries', 'view') }}">{{ galleryName|capitalize }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('galleries', 'view') }}">{{ translate('Import images') }}</a>
+        <a href="{{ environment.generateUrl('galleries', 'view') }}">{{ environment.translate('Import images') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('insta', 'index') }}">{{ translate('Instagram') }}</a>
+        <a href="{{ environment.generateUrl('insta', 'index') }}">{{ environment.translate('Instagram') }}</a>
     </nav>
 
     {% include '@insta/includes/toolbar.twig' %}

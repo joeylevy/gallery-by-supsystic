@@ -61,7 +61,7 @@ class Rsc_Lang
      */
     public function loadTextDomain()
     {
-        //add_action('plugins_loaded', array($this, '_loadPluginsTextdomain'));
+        add_action('plugins_loaded', array($this, '_loadPluginsTextdomain'));
     }
 
     public function _loadPluginsTextDomain()
@@ -80,7 +80,7 @@ class Rsc_Lang
      */
     public function translate($msgid)
     {
-        return __($msgid, 'sgg');
+        return __($msgid, $this->domain);
     }
 
     /**

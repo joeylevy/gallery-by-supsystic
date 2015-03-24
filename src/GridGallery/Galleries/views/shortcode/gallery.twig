@@ -22,23 +22,15 @@
         data-height="{{ settings.area.photo_height }}{% if settings.area.photo_height_unit == 1 %}%{% endif %}"
         data-quicksand = "{% if settings.quicksand.enabled == '1' %}enabled{% else %}disabled{% endif %}"
         data-quicksand-duration = "{% if settings.quicksand.duration is not empty %}{{ settings.quicksand.duration }}{% else %}none{% endif %}"
-            {% if settings.box.type == '0' and mobile != 'true' %}
-                data-popup-type ="colorbox"
-                data-popup-fadeOut = "{{ settings.box.fadeOut|default(300) }}"
-                data-popup-slideshowAuto = "{{ settings.box.slideshowAuto|default('true') }}"
-                data-popup-transition = "{{ settings.box.transition|default("elastic") }}"
-                {% if settings.box.captions is defined and settings.box.captions == 'on' and settings.box.disable is not defined %}
-                    data-popup-captions = 'hide'
+            {% if settings.box.type == '1' and mobile != 'true' %}
+                data-popup-type ="pretty-photo"
+            {% else %}
+                {% if mobile != 'true' %}
+                    data-popup-type ="colorbox"
+                    data-popup-fadeOut = "{{ settings.box.fadeOut|default(300) }}"
+                    data-popup-slideshowAuto = "{{ settings.box.slideshowAuto|default('true') }}"
+                    data-popup-transition = "{{ settings.box.transition|default("elastic") }}"
                 {% endif %}
-            {% endif %}
-            {% if settings.box.type == '1' and mobile != 'true' and settings.box.disable is not defined %}
-                data-popup-type = "pretty-photo"
-            {% endif %}
-            {% if settings.box.type == '2' and mobile != 'true' and settings.box.disable is not defined %}
-                data-popup-type = "photobox"
-            {% endif %}
-            {% if settings.box.disable is defined and settings.box.disable == 'on' %}
-                data-popup-type = "disable"
             {% endif %}
         data-popup-slideshow = "{{ settings.box.slideshow }}"
         data-popup-slideshow-speed = "{{ settings.box.slideshowSpeed|default(2500) }}"
@@ -132,7 +124,7 @@
 
                 <div class="grid-gallery-pagination-wrap" style="{{ paginationWrapperStyle|trim }}">
                     {% for page in 1..totalPages %}
-                        <a href="#" data-page="{{ page }}" class="grid-gallery-page" title="{{ translate('Page ') ~ page }}" style="{{ paginationLinkStyle|trim }}">{{ page }}</a>
+                        <a href="#" data-page="{{ page }}" class="grid-gallery-page" title="{{ environment.translate('Page ') ~ page }}" style="{{ paginationLinkStyle|trim }}">{{ page }}</a>
                     {% endfor %}
                 </div>
             {% endif %}
@@ -229,7 +221,7 @@
     <script type="text/javascript">
 
         window.galleryLoaded = (function() {
-            {% if settings.box.theme != 'theme_6' and settings.box.theme != 'theme_7' %}
+            {% if settings.box.theme != 'theme_6' %}
                 jQuery('head').append(
                         '<link rel="stylesheet" type="text/css" href="{{ colorbox }}/jquery-colorbox/themes/{{ settings.box.theme|default("theme_1") }}/colorbox.css">'
                 );

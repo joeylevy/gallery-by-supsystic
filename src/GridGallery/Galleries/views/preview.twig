@@ -1,6 +1,6 @@
 <a id="back" style="margin-left:15px;display:none;"
    href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery_id }) }}">
-    &larr; {{ translate('Back to the gallery') }}
+    &larr; {{ environment.translate('Back to the gallery') }}
 </a>
 
 <iframe id="grid-gallery-preview" data-post="{{ post_id }}" src="{{ base_url }}/?p={{ post_id }}&preview=true"

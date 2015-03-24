@@ -41,7 +41,7 @@ class GridGallery_Photos_Module extends Rsc_Mvc_Module
 
         add_filter(
             'wp_prepare_attachment_for_js',
-            array($this, 'prepareAttachmentLinks')
+            array($this, 'prepareAttachmentForJs')
         );
 
         // Sets the JPEG quality.
@@ -106,7 +106,7 @@ class GridGallery_Photos_Module extends Rsc_Mvc_Module
 
     }
 
-    public function prepareAttachmentLinks($data)
+    public function prepareAttachmentForJs($data)
     {
         $photos = new GridGallery_Photos_Model_Photos();
         $id     = $data['id'];
