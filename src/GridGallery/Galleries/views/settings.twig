@@ -19,9 +19,9 @@
                 </button>
             </li>
         </ul>#}
-        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Gallery by Supsystic') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Gallery by Supsystic') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Galleries') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Galleries') }}</a>
         <i class="fa fa-angle-right"></i>
         <a href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery.id }) }}">{{ gallery.title }}</a>
     </nav>
@@ -29,22 +29,22 @@
     <h2 class="form-tabs">
         <a class="nav-tab change-tab" href="area">
             <i class="fa fa-home"></i>
-            {{ environment.translate('Main') }}
+            {{ translate('Main') }}
         </a>
 
         <a class="nav-tab change-tab" href="overlay">
             <i class="fa fa-info"></i>
-            {{ environment.translate('Captions') }}
+            {{ translate('Captions') }}
         </a>
 
         <a class="nav-tab change-tab" href="cats">
             <i class="fa fa-bookmark-o"></i>
-            {{ environment.translate('Categories') }}
+            {{ translate('Categories') }}
         </a>
 
         <a class="nav-tab change-tab" href="post">
             <i class="fa fa-columns"></i>
-            {{ environment.translate('Posts') }}
+            {{ translate('Posts') }}
         </a>
 
         {% block tabs %}{% endblock %}
@@ -70,11 +70,11 @@
                     </a>
                 </li>#}
 
-                <li title="{{ environment.translate('Upload new images') }}">
+                <li title="{{ translate('Upload new images') }}">
                     <button class="button button-primary gallery" id="gg-btn-upload" data-folder-id="0"
                             data-gallery-id="{{ gallery.id }}" data-upload>
                         <i class="fa fa-fw fa-camera"></i>
-                        {{ environment.translate('Add Images') }}
+                        {{ translate('Add Images') }}
                     </button>
                 </li>
 
@@ -82,7 +82,7 @@
                     <a class="button"
                        href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery.id }) }}">
                         <i class="fa fa-list fa-fw"></i>
-                        {{ environment.translate('Images list') }}
+                        {{ translate('Images list') }}
                     </a>
                 </li>
 
@@ -90,14 +90,14 @@
                     <a class="button button-primary" target="_blank"
                        href="{{ environment.generateUrl('galleries', 'preview', { 'gallery_id': gallery.id }) }}">
                         <i class="fa fa-fw fa-eye"></i>
-                        {{ environment.translate('Preview') }}
+                        {{ translate('Preview') }}
                     </a>
                 </li>
 
                 <li>
                     <button class="button button-primary" id="btnSave">
                         <i class="fa fa-fw fa-check"></i>
-                        {{ environment.translate('Save') }}
+                        {{ translate('Save') }}
                     </button>
                 </li>
 
@@ -123,11 +123,11 @@
 
         <a href="{{ environment.generateUrl('galleries', 'choosePreviewImage', { 'gallery_id': gallery.id }) }}" class="button button-primary button-hero" id="gg-btn-choose" style="margin-top: 20px">
             <i class="fa fa-fw fa-desktop"></i>
-            {{ environment.translate('Choose image for preview') }}
+            {{ translate('Choose image for preview') }}
         </a>
 
         <div class="shortcode-wrap" style="margin-top: 20px">
-            <div class="shortcode">{{ environment.translate('Shortcode:') }}</div>
+            <div class="shortcode">{{ translate('Shortcode:') }}</div>
             <label id="shortcode" class="shortcode"> [{{ environment.config.get('shortcode_name') }} id={{ gallery.id }} position=center] </label>
         </div>
 
@@ -154,17 +154,17 @@
             <table class="form-table" name="area">
                 <thead>
 
-                {{ form.row(environment.translate('Gallery Type'),
+                {{ form.row(translate('Gallery Type'),
                 form.select('area[grid]', ['Fixed', 'Vertical', 'Horizontal'], settings.area.grid, { 'style': 'width: auto;' }), 'grid-type', 'gallery-types') }}
 
                 {#{{ form.row(environment.translate('Position'),
                 form.select('area[position]', ['Center', 'Left', 'Right'], settings.area.position, { 'style': 'width: 300px;' }), 'grid-type') }}#}
 
-                {{ form.row(environment.translate('Images distance'),
+                {{ form.row(translate('Images distance'),
                 form.text('area[distance]', settings.area.distance, { 'style': { 'width': '140px;' } })
                 ~ form.span('', 'pixels', { 'disabled': 'disabled', 'style': 'margin-top: -2px; height: 27px; -webkit-appearance: none; -moz-appearance: none;line-height: 1;' }), 'distance') }}
 
-                {{ form.row(environment.translate('Gallery width'),
+                {{ form.row(translate('Gallery width'),
                 form.text('area[width]', settings.area.width, { 'style': { 'width': '140px' } })
                 ~ form.select('area[width_unit]', ['pixels', 'percents'], settings.area.width_unit, { 'style': 'margin-top: -2px; height: 27px;' }), 'area-width') }}
 
@@ -172,15 +172,15 @@
                 form.text('area[height]', settings.area.height, { 'style': { 'width': '205px'} })
                 ~ form.select('', ['pixels', 'percents'], null, { 'disabled': 'disabled', 'style': 'margin-top: -2px; height: 27px' }), 'area-height') }}#}
 
-                {{ form.row(environment.translate('Image width'),
+                {{ form.row(translate('Image width'),
                 form.text('area[photo_width]', settings.area.photo_width, { 'style': { 'width': '140px'} })
                 ~ form.select('area[photo_width_unit]', ['pixels', 'percents'], settings.area.photo_width_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'photo-width') }}
 
-                {{ form.row(environment.translate('Image height'),
+                {{ form.row(translate('Image height'),
                 form.text('area[photo_height]', settings.area.photo_height, { 'style': { 'width': '140px'} })
                 ~ form.select('area[photo_height_unit]', ['pixels', 'percents'], settings.area.photo_height_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'photo-height') }}
 
-                {{ form.row(environment.translate('Image radius'),
+                {{ form.row(translate('Image radius'),
                 form.text('thumbnail[border][radius]', settings.thumbnail.border.radius, { 'style': { 'width': '140px'} })
                 ~ form.select('thumbnail[border][radius_unit]', ['pixels', 'percents'], settings.thumbnail.border.radius_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'border-radius') }}
 
@@ -214,14 +214,14 @@
                     </td>
                 </tr>#}
 
-                {{ form.row(environment.translate('Border Type'),
+                {{ form.row(translate('Border Type'),
                 form.select('thumbnail[border][type]', borderTypes, settings.thumbnail.border.type, { 'style': 'width: auto;' })
                 ~ form.input('text', 'border-type', 'Types', { 'style': 'margin-top: -2px; height: 27px; width: 50px; border: 1px solid black;' }), 'border-type', 'gallery-borders') }}
 
-                {{ form.row(environment.translate('Border color'),
+                {{ form.row(translate('Border color'),
                 form.input('text', 'thumbnail[border][color]', settings.thumbnail.border.color, { 'class': 'gg-color-picker' }), 'border-color') }}
 
-                {{ form.row(environment.translate('Border width'),
+                {{ form.row(translate('Border width'),
                 form.text('thumbnail[border][width]', settings.thumbnail.border.width, { 'style': { 'width': '140px;'} })
                 ~ form.span('', 'pixels', { 'disabled': 'disabled', 'style': 'margin-top: -2px; height: 27px; -webkit-appearance: none; -moz-appearance: none;line-height: 1;' }), 'border-width') }}
 
@@ -236,49 +236,60 @@
                 <tr id="useShadowRow">
                     <th scope="row">
                         <h3 style="margin: 0 !important;">
-                            {{ environment.translate('Shadow') }}
+                            {{ translate('Shadow') }}
                         </h3>
                     </th>
                     <td>
                         <input type="radio" id="showShadow" name="use_shadow" value="1" {% if settings.use_shadow == '1' %}checked{% endif %}>
-                            {{ environment.translate('Available') }}
+                            {{ translate('Available') }}
                         <input type="radio" id="hideShadow" name="use_shadow" value="0" {% if settings.use_shadow != '1' %}checked{% endif %}>
-                            {{ environment.translate('Disable') }}
+                            {{ translate('Disable') }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">
+                        {{ translate('Shadow preset') }}
+                    </th>
+                    <td>
+                        <button id="chooseShadowPreset" class="button bordered" type="button">
+                            {{ translate('Choose preset') }}
+                        </button>
                     </td>
                 </tr>
 
                 <tr id="useMouseShadowRow">
                     <th scope="row">
-                        {{ environment.translate('When mouse is over') }}
+                        {{ translate('When mouse is over') }}
                     </th>
                     <td>
                         <select id="useMouseOverShadow" style="width: auto;" name="mouse_shadow">
                             <option value="0" {% if settings.mouse_shadow == '0' %}selected="selected"{% endif %}>
-                                {{ environment.translate('Off') }}
+                                {{ translate('Off') }}
                             </option>
                             <option value="1" {% if settings.mouse_shadow == '1' %}selected="selected"{% endif %}>
-                                {{ environment.translate('Show mouse on') }}
+                                {{ translate('Show mouse on') }}
                             </option>
                             <option value="2" {% if settings.mouse_shadow == '2' %}selected="selected"{% endif %}>
-                                {{ environment.translate('Hide mouse on') }}
+                                {{ translate('Hide mouse on') }}
                             </option>
                         </select>
                     </td>
                 </tr>
 
-                {{ form.row(environment.translate('Overlay image with shadow'),
+                {{ form.row(translate('Overlay image with shadow'),
                 form.select('thumbnail[shadow][overlay]', ['Off', 'On'], settings.thumbnail.shadow.overlay, { 'style': 'width: auto;' }), 'overlay-type') }}
 
-                {{ form.row(environment.translate('Shadow color'),
+                {{ form.row(translate('Shadow color'),
                 form.color('thumbnail[shadow][color]', settings.thumbnail.shadow.color, { 'style': { 'width': '300px' } }), 'shadow-color') }}
 
-                {{ form.row(environment.translate('Shadow blur'),
+                {{ form.row(translate('Shadow blur'),
                 form.text('thumbnail[shadow][blur]', settings.thumbnail.shadow.blur, { 'style': { 'width': 'auto' } }), 'shadow-blur') }}
 
-                {{ form.row(environment.translate('Shadow X'),
+                {{ form.row(translate('Shadow X'),
                 form.text('thumbnail[shadow][x]', settings.thumbnail.shadow.x, { 'style': { 'width': 'auto' } }), 'shadow-x') }}
 
-                {{ form.row(environment.translate('Shadow Y'),
+                {{ form.row(translate('Shadow Y'),
                 form.text('thumbnail[shadow][y]', settings.thumbnail.shadow.y, { 'style': { 'width': 'auto' } }), 'shadow-y') }}
 
                 </thead>
@@ -292,28 +303,50 @@
                 <tr>
                     <th scope="row">
                         <h3 style="margin: 0 !important;">
-                            {{ environment.translate('Pop-up Image') }}
+                            {{ translate('Pop-up Image') }}
                         </h3>
                     </th>
                     <td>
                         <input name="box[type]" value="{{ settings.box.type }}" style="vertical-align: sub;" hidden>
-                        <span class="themeName" style="vertical-align: sub;" hidden>
+                        <span
+
+                                class="themeName" style="vertical-align: sub;" hidden>
                             {{ settings.box.theme|replace({ '_' : ' '})|title }}
                         </span>
                         <button class="button bordered" type="button" id="chooseTheme">
-                            {{ environment.translate('Choose theme') }}
+                            {{ translate('Choose theme') }}
                         </button>
                         <input id="bigImageTheme" type="hidden" name="box[theme]" value="{{ settings.box.theme }}"/>
                     </td>
                 </tr>
 
+                <tr id="disable-popup-row">
+                    <th scope="row">
+                        <label for="disablePopup">{{ translate('Disable Popup') }}</label>
+                    </th>
+                    <td>
+                        <input type="checkbox" id="disablePopup" name="box[disable]" {% if settings.box.disable == 'on' %}checked{% endif %}>
+                        {{ form.show_tooltip('disable') }}
+                    </td>
+                </tr>
+
                 <tr id="enable-mobile-row">
                     <th scope="row">
-                        <label for="enableMobile">{{ environment.translate('Disable on mobile') }}</label>
+                        <label for="enableMobile">{{ translate('Disable on mobile') }}</label>
                     </th>
                     <td>
                         <input type="checkbox" id="enableMobile" name="box[mobile]" {% if settings.box.mobile == 'on' %}checked{% endif %}>
                         {{ form.show_tooltip('mobile') }}
+                    </td>
+                </tr>
+
+                <tr id="popup-caption-row">
+                    <th scope="row">
+                        <label for="enablePopupCaptions">{{ translate('Hide Popup Captions') }}</label>
+                    </th>
+                    <td>
+                        <input type="checkbox" id="enablePopupCaptions" name="box[captions]" {% if settings.box.captions == 'on' %}checked{% endif %}>
+                        {{ form.show_tooltip('captions') }}
                     </td>
                 </tr>
 
@@ -338,12 +371,12 @@
 
                 <tr>
                     <th scope="row">
-                        {{ environment.translate('Transition') }}
+                        {{ translate('Transition') }}
                     </th>
                     <td>
                         <input name="box[transition]" value="{{ settings.box.transition }}" style="vertical-align: sub;" hidden>
                         <button id="chooseTransition" class="button bordered" type="button">
-                            {{ environment.translate('Choose effect') }}
+                            {{ translate('Choose effect') }}
                         </button>
                     </td>
                 </tr>
@@ -397,19 +430,19 @@
 
                 <tr id="enableSlideshow">
                     <th scope="row">
-                        {{ environment.translate('Slideshow') }}
+                        {{ translate('Slideshow') }}
                         {{ form.show_tooltip('slideshow') }}
                     </th>
                     <td>
                         <input type="radio" id="showSlideshow" name="box[slideshow]" value="1" {% if settings.box.slideshow == '1' %}checked{% endif %}>
-                        {{ environment.translate('Available') }}
+                        {{ translate('Available') }}
                         <input type="radio" id="hideSlideshow" name="box[slideshow]" value="0" {% if settings.box.slideshow != '1' %}checked{% endif %}>
-                        {{ environment.translate('Disable') }}
+                        {{ translate('Disable') }}
                     </td>
                 </tr>
 
                 {{ form.row(
-                environment.translate('Slideshow speed'),
+                translate('Slideshow speed'),
                 form.text(
                 'box[slideshowSpeed]',
                 settings.box.slideshowSpeed,
@@ -423,12 +456,12 @@
                 ) }}
 
                 {{ form.row(
-                environment.translate('Slideshow autostart'),
+                translate('Slideshow autostart'),
                 form.select(
                 'box[slideshowAuto]',
                 {
-                    'true':  environment.translate('Yes'),
-                    'false': environment.translate('No'),
+                    'true':  translate('Yes'),
+                    'false': translate('No'),
                 },
                 settings.box.slideshowAuto,
                 {
@@ -446,15 +479,15 @@
         {% block post %}
             <div data-tab="post">
                 <h1 style="line-height: 1;">
-                    {{ environment.translate("Show Posts and Pages") }}
+                    {{ translate("Show Posts and Pages") }}
                     </br>
                     <a class="button"
-                       href="http://supsystic.com/plugins/photo-gallery/">Get
+                       href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=postfeed&utm_campaign=gallery">Get
                         PRO for 29$</a>
                 </h1>
 
                 <div>
-                    <a href="http://supsystic.com/plugins/photo-gallery/">
+                    <a href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=postfeed&utm_campaign=gallery">
                         <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/posts_pro.jpg" />
                     </a>
                 </div>
@@ -485,7 +518,19 @@
                 'guillotine-reverse': 'Guillotine Reverse',
                 'half-slide': 'Half Slide',
                 'sqkwoosh': 'Sqkwoosh',
-                'tunnel': 'Tunnel'
+                'tunnel': 'Tunnel',
+                'direction-aware': 'Direction Aware',
+                'phophorus-rotate': 'Phophorus Rotate',
+                'phophorus-offset': 'Phophorus Offset',
+                'phophorus-scale': 'Phophorus Scale',
+                } %}
+
+                {% set iconsWithCaptionsEffects = {
+                    'icons': 'Default',
+                    'icons-scale': 'Scale',
+                    'icons-sodium-left': 'Sodium Left',
+                    'icons-sodium-top': 'Sodium Top',
+                    'icons-nitrogen-top': 'Nitrogen Top'
                 } %}
 
                 {# {{ form.row(environment.translate('Effect'),
@@ -511,50 +556,50 @@
                     <th scope="row">
                         <label for="captionEnabled">
                             <h3 style="margin: 0 !important;">
-                                {{ environment.translate('Captions') }}
+                                {{ translate('Captions') }}
                             </h3>
                         </label>
                     </th>
                     <td>
                         <input type="radio" id="showCaptions" name="thumbnail[overlay][enabled]" value="true" {% if settings.thumbnail.overlay.enabled == 'true' %}checked{% endif %}>
-                        {{ environment.translate('Available') }}
+                        {{ translate('Available') }}
                         <input type="radio" id="hideCaptions" name="thumbnail[overlay][enabled]" value="false" {% if settings.thumbnail.overlay.enabled != 'true' %}checked{% endif %}>
-                        {{ environment.translate('Disable') }}
+                        {{ translate('Disable') }}
                     </td>
                 </tr>
                 <tr class="caption-effect">
                     <th scope="row">
-                        {{ environment.translate('Effect') }}
+                        {{ translate('Effect') }}
                     <td>
                     </th>
                 <span class="selectedEffectName" style="vertical-align: sub;" hidden>
                     {{ settings.thumbnail.overlay.effect }}
                 </span>
                     <button id="chooseEffect" class="button bordered" type="button">
-                        {{ environment.translate('Choose effect') }}
+                        {{ translate('Choose effect') }}
                     </button>
                     <input type="hidden" id="overlayEffect" name="thumbnail[overlay][effect]"
                            value="{{ settings.thumbnail.overlay.effect|default('quarter-appear') }}"/>
                     </td>
                 </tr>
 
-                {{ form.row(environment.translate('Background color'),
+                {{ form.row(translate('Background color'),
                 form.color('thumbnail[overlay][background]', settings.thumbnail.overlay.background), 'overlay-background') }}
 
-                {{ form.row(environment.translate('Text color'),
+                {{ form.row(translate('Text color'),
                 form.color('thumbnail[overlay][foreground]', settings.thumbnail.overlay.foreground), 'overlay-foreground') }}
 
-                {{ form.row(environment.translate('Transparency'),
+                {{ form.row(translate('Transparency'),
                 form.select('thumbnail[overlay][transparency]',
                 ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
                 settings.thumbnail.overlay.transparency|default(9),
                 { 'style': 'width: auto;' }), 'overlay-transparency') }}
 
-                {{ form.row(environment.translate('Text size'),
+                {{ form.row(translate('Text size'),
                 form.text('thumbnail[overlay][text_size]', settings.thumbnail.overlay.text_size, { 'style': { 'width': '140px'} })
                 ~ form.select('thumbnail[overlay][text_size_unit]', ['pixels', 'percents', 'ems'], settings.thumbnail.overlay.text_size_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'text-size') }}
 
-                {{ form.row(environment.translate('Text align'),
+                {{ form.row(translate('Text align'),
                 form.select('thumbnail[overlay][text_align]', ['left', 'right', 'center', 'auto'], settings.thumbnail.overlay.text_align, { 'style': 'width: auto;' }), 'text-align') }}
 
 
@@ -566,15 +611,15 @@
             {% block icons %}
                 <div name="icons">
                     <h1 style="line-height: 1;">
-                        {{ environment.translate("Show amazing Icons on the images") }}
+                        {{ translate("Show amazing Icons on the images") }}
                         </br>
                         <a class="button"
-                           href="http://supsystic.com/plugins/photo-gallery/">Get
+                           href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=icons&utm_campaign=gallery">Get
                             PRO for 29$</a>
                     </h1>
 
                     <div>
-                        <a href="http://supsystic.com/plugins/photo-gallery/">
+                        <a href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=icons&utm_campaign=gallery">
                             <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/icons_pro.jpg" />
                         </a>
                     </div>
@@ -585,29 +630,29 @@
         {% block categories %}
             <div data-tab="cats">
                 <h1 style="line-height: 1;">
-                    {{ environment.translate('Categorize images in the gallery') }}
+                    {{ translate('Categorize images in the gallery') }}
                     </br>
                     <a class="button"
-                       href="http://supsystic.com/plugins/photo-gallery/">Get
+                       href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=categories&utm_campaign=gallery">Get
                         PRO for 29$</a>
                 </h1>
 
                 <div>
-                    <a href="http://supsystic.com/plugins/photo-gallery/">
+                    <a href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=categories&utm_campaign=gallery">
                         <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/cats_pro.jpg" />
                     </a>
                 </div>
                 {% block pagination %}
                     <h1 style="line-height: 1;">
-                        {{ environment.translate('Let user switch gallery pages') }}
+                        {{ translate('Let user switch gallery pages') }}
                         </br>
                         <a class="button"
-                           href="http://supsystic.com/plugins/photo-gallery/">Get
+                           href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=pages&utm_campaign=gallery">Get
                             PRO for 29$</a>
                     </h1>
                     <div name="pagination">
                         <div>
-                            <a href="http://supsystic.com/plugins/photo-gallery/">
+                            <a href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=pages&utm_campaign=gallery">
                                 <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/pagination_pro.jpg" />
                             </a>
                         </div>
@@ -620,10 +665,10 @@
 
         {{ form.close() }}
 
-        <div id="saveDialog" title="{{ environment.translate('Save settings as preset') }}">
+        <div id="saveDialog" title="{{ translate('Save settings as preset') }}">
             <div>
                 <label for="presetTitle">
-                    {{ environment.translate('Preset title:') }}
+                    {{ translate('Preset title:') }}
                 </label>
             </div>
             <div>
@@ -632,34 +677,34 @@
             </div>
         </div>
 
-        <div id="deletePreset" title="{{ environment.translate('Delete preset') }}">
+        <div id="deletePreset" title="{{ translate('Delete preset') }}">
             <p>
-                {{ environment.translate('Are you really want to delete preset "%s"?')|format(preset.title) }}
+                {{ translate('Are you really want to delete preset "%s"?')|format(preset.title) }}
             </p>
             <input type="hidden" id="presetId" value="{{ preset.id }}">
         </div>
 
-        <div id="loadPreset" title="{{ environment.translate('Load settings from presets') }}">
+        <div id="loadPreset" title="{{ translate('Load settings from presets') }}">
             <div>
-                <label for="presetList">{{ environment.translate('Select preset:') }}</label>
+                <label for="presetList">{{ translate('Select preset:') }}</label>
             </div>
             <div>
                 <select id="presetList" name="presetList" style="width:100%"></select>
             </div>
             <div id="presetListError">
                 <p id="presetLoadingFailed" style="display:none">
-                    {{ environment.translate('Failed to load the presets.') }}
+                    {{ translate('Failed to load the presets.') }}
                 </p>
 
                 <p id="presetEmpty" style="display:none">
-                    {{ environment.translate('Currently you have no presets.') }}
+                    {{ translate('Currently you have no presets.') }}
                 </p>
             </div>
         </div>
 
-        <div id="themeDialog" title="{{ environment.translate('Select "Big image" theme') }}">
+        <div id="themeDialog" title="{{ translate('Select "Big image" theme') }}">
             <h1>
-                {{ environment.translate('Select a theme') }}
+                {{ translate('Select a theme') }}
             </h1>
             <div>
                 {% set bigImageThemes = {
@@ -668,8 +713,12 @@
                 'theme_3': 'Theme 3',
                 'theme_4': 'Theme 4',
                 'theme_5': 'Theme 5',
-                'theme_6': 'Theme 6'
+                'theme_6': 'Theme 6',
                 } %}
+
+                {% if environment.isPro() %}
+                    {% set bigImageThemes = bigImageThemes|merge({'theme_7': 'Fullscreen popup'}) %}
+                {% endif %}
 
                 {% set transitionEffects = {
                 'fade': 'Fade',
@@ -684,7 +733,7 @@
                              src="{{ environment.getModule('colorbox').getThemeScreenshotUrl(value) }}" alt="{{ name }}"
                              title="{{ name }}"/>
                         <div class="select-element">
-                            <h3>{{ environment.translate('Select') }}</h3>
+                            <h3>{{ translate('Select') }}</h3>
                         </div>
                     </div>
                 {% endfor %}
@@ -713,25 +762,71 @@
         {% endif %}
         {% endset %}
 
-        <div id="effectDialog" title="{{ environment.translate('Select overlay effect') }}">
+        <div id="effectDialog" title="{{ translate('Select overlay effect') }}">
             <div id="effectsPreview" style="margin-top: 10px;">
                 {% for type, name in effects %}
-                    <figure class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
-                        <img src="http://placehold.it/150/28282a/f7f7f7&text={{ name }}" class="dialog-image"/>
-                        <figcaption style="{{ figcaptionStyle|trim }}">
-                            <div class="grid-gallery-figcaption-wrap">
-                                <span>{{ name }}</span>
+                    {% if type != 'direction-aware' %}
+                        <figure class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
+                            <img src="http://placehold.it/150/28282a/f7f7f7&text={{ name }}" class="dialog-image"/>
+                            <figcaption style="{{ figcaptionStyle|trim }}">
+                                <div class="grid-gallery-figcaption-wrap">
+                                    <span>{{ name }}</span>
+                                </div>
+                            </figcaption>
+                            <div class="select-element">
+                                {{ translate('Select') }}
                             </div>
-                        </figcaption>
-                        <div class="select-element">
-                            {{ environment.translate('Select') }}
-                        </div>
-                    </figure>
+                        </figure>
+                    {% else %}
+                        <figure class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
+                            <div class="box">
+                                <div class="box__right">Right → Left</div>
+                                <div class="box__left">Left → Right</div>
+                                <div class="box__top">Top → Bottom</div>
+                                <div class="box__bottom">Bottom → Top</div>
+                                <div class="box__center">
+                                </div>
+                                <img src="http://placehold.it/150/28282a/f7f7f7&text={{ name }}" class="dialog-image"/>
+                            </div>
+                            <div class="select-element">
+                                {{ translate('Select') }}
+                            </div>
+                        </figure>
+                    {% endif %}
                 {% endfor %}
+                <div class="grid-gallery-clearfix" style="clear: both;"></div>
+                <h3>Captions effects with icons{% if environment.isPro() == false %} Get PRO{% endif %}</h3>
+                <div class="description">Enable icons to use this effects</div>
+                {% block iconsEffects %}
+                    {% for type, name in iconsWithCaptionsEffects %}
+                        <figure class="grid-gallery-caption{% if environment.isPro() == false %} disabled{% endif %}" data-grid-gallery-type="{{ type }}">
+                            <img src="http://placehold.it/150/28282a/f7f7f7&text={{ name }}" class="dialog-image"/>
+                            <figcaption style="{{ figcaptionStyle|trim }}">
+                                <div style="width: 32px; height: 32px; border: 1px solid white; border-radius: 50%; margin-top: 30%;">
+                                    <a href="{% if environment.isPro() == false %}http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=icons&utm_campaign=gallery{% else %}#{% endif %}" class="{% if environment.isPro() == false %}button{% endif %}" style="margin-top: 40px; margin-left: 5px; margin-right: 5px;">
+                                    {% if environment.isPro() == false %}
+                                        Get PRO
+                                    {% endif %}
+                                    </a>
+                                </div>
+                            </figcaption>
+                            <div class="caption-with-{{ type }}">
+                                {% if photo.attachment.caption is not empty %}
+                                    <span>{{ name }}</span>
+                                {% else %}
+                                    <span>{{ name }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="select-element">
+                                {{ translate('Select') }}
+                            </div>
+                        </figure>
+                    {% endfor %}
+                {% endblock %}
             </div>
         </div>
 
-        <div id="transitionDialog" title="{{ environment.translate('Select transition') }}">
+        <div id="transitionDialog" title="{{ translate('Select transition') }}">
             <div id="transitionPreview" style="margin: 10px;">
                 {% for type, name in transitionEffects %}
                     <figure id="{{ type }}" class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
@@ -742,10 +837,104 @@
                             </div>
                         </figcaption>
                         <div class="select-element">
-                            <h3>{{ environment.translate('Select') }}</h3>
+                            <h3>{{ translate('Select') }}</h3>
                         </div>
                     </figure>
                 {% endfor %}
+            </div>
+        </div>
+
+        <div id="shadowDialog" title="{{ translate('Select shadow preset') }}">
+            <h1>
+                {{ translate('Select shadow') }}
+            </h1>
+            <div class="shadow-dialog-wrapper">
+                {% set shadowPresets = {
+                'effect_1': {
+                    'name': 'Effect 1',
+                    'offset_x': '8',
+                    'offset_y': '8',
+                    'blur': '6',
+                    'color': 'rgba(0, 0, 0, 0.58)'
+                },
+                'effect_2': {
+                    'name': 'Effect 2',
+                    'offset_x': '-8',
+                    'offset_y': '-8',
+                    'blur': '6',
+                    'color': 'rgba(0, 0, 0, 0.58)'
+                },
+                'effect_3': {
+                    'name': 'Effect 3',
+                    'offset_x': '-8',
+                    'offset_y': '8',
+                    'blur': '6',
+                    'color': 'rgba(0, 0, 0, 0.58)'
+                },
+                'effect_4': {
+                    'name': 'Effect 4',
+                    'offset_x': '8',
+                    'offset_y': '-8',
+                    'blur': '6',
+                    'color': 'rgba(0, 0, 0, 0.58)'
+                },
+                'effect_5': {
+                    'name': 'Effect 5',
+                    'offset_x': '8',
+                    'offset_y': '0',
+                    'blur': '6',
+                    'color': 'rgba(0, 0, 0, 0.58)'
+                },
+                'effect_6': {
+                    'name': 'Effect 6',
+                    'offset_x': '-8',
+                    'offset_y': '0',
+                    'blur': '6',
+                    'color': 'rgba(0, 0, 0, 0.58)'
+                },
+                'effect_7': {
+                    'name': 'Effect 7',
+                    'offset_x': '0',
+                    'offset_y': '-8',
+                    'blur': '6',
+                    'color': 'rgba(0, 0, 0, 0.58)'
+                },
+                'effect_8': {
+                    'name': 'Effect 8',
+                    'offset_x': '0',
+                    'offset_y': '8',
+                    'blur': '6',
+                    'color': 'rgba(0, 0, 0, 0.58)'
+                },
+                'effect_9': {
+                    'name': 'Effect 9',
+                    'offset_x': '0',
+                    'offset_y': '4',
+                    'blur': '10',
+                    'color': 'rgba(0, 0, 0, 1.0)'
+                },
+                'effect_10': {
+                    'name': 'Effect 10',
+                    'offset_x': '0',
+                    'offset_y': '-4',
+                    'blur': '8',
+                    'color': 'rgba(0, 0, 0, 1.0)'
+                }
+                } %}
+
+
+                {% for value, effect in shadowPresets %}
+                    <div class="grid-gallery-caption" style="float: left; margin-left: 15px; cursor: pointer;">
+                        <div class="shadow-preset" data-offset-x="{{ effect.offset_x }}" data-offset-y="{{ effect.offset_y }}" data-blur="{{ effect.blur }}" data-color="{{ effect.color }}"
+                             style="margin: 20px; box-shadow: {{ effect.offset_x }}px {{ effect.offset_y }}px {{ effect.blur }}px {{ effect.color }};">
+                            <img src="http://placehold.it/200/28282a/f7f7f7&text={{ effect.name }}" class="dialog-image"/>
+                        </div>
+                        <div class="select-element">
+                            <h3>{{ translate('Select') }}</h3>
+                        </div>
+                    </div>
+                {% endfor %}
+
             </div>
         </div>
 

@@ -3,9 +3,9 @@
 {% block header %}
 
     <nav id="supsystic-breadcrumbs" class="supsystic-breadcrumbs">
-        <a href="{{ environment.generateUrl('galleries') }}">{{ environment.translate('Gallery by Supsystic') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Gallery by Supsystic') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('photos', 'index') }}">{{ environment.translate('Images') }}</a>
+        <a href="{{ environment.generateUrl('photos', 'index') }}">{{ translate('Images') }}</a>
     </nav>
 
     {% include '@photos/includes/toolbar.twig' %}
@@ -24,10 +24,10 @@
 
                 <h2 id="gg-alrt" style="text-align: center; color: #bfbfbf; margin: 50px 0 25px 0;">
                     <span style="margin-bottom: 20px; display: block;">
-                        {{ environment.translate('Upload your images from the WordPress Media Library') }}
+                        {{ translate('Upload your images from the WordPress Media Library') }}
                     </span>
                     <a class="button button-primary button-hero" href="#" onclick="jQuery('#gg-btn-upload').click();">
-                        {{ environment.translate('Upload new images') }}
+                        {{ translate('Upload new images') }}
                     </a>
                 </h2>
 

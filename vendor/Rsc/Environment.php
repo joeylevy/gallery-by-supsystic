@@ -176,7 +176,7 @@ class Rsc_Environment
             );
         }
 
-        $this->getLang()->loadTextDomain();
+        //$this->getLang()->loadTextDomain();
 
         /** @TODO THROW TRY CATCH */
         if ($this->config->has('plugin_menu')) {
@@ -382,7 +382,8 @@ class Rsc_Environment
      */
     public function translate($msgid)
     {
-        return $this->getLang()->translate($msgid);
+        return __($msgid, 'sgg');
+        //return $this->getLang()->translate($msgid);
     }
 
     /**

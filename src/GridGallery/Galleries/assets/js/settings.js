@@ -141,10 +141,13 @@
     Controller.prototype.togglePopupTheme = function (value) {
         var $boxType = $('[name="box[type]"]');
 
+        $boxType.attr('value', '0');
+
         if(value == 'theme_6') {
             $boxType.attr('value', '1');
-        } else {
-            $boxType.attr('value', '0');
+        }
+        if(value == 'theme_7') {
+            $boxType.attr('value', '2');
         }
     };
 
@@ -424,8 +427,10 @@
         $preview.find('figure').on('click', function (event) {
             event.preventDefault();
 
-            $effect.val($(this).data('grid-gallery-type'));
-            $dialog.dialog('close');
+            if(!$(this).hasClass('disabled')) {
+                $effect.val($(this).data('grid-gallery-type'));
+                $dialog.dialog('close');
+            }
 
             $('.selectedEffectName').text($.proxy(function () {
                 return this.find('span').text();
@@ -468,6 +473,7 @@
 
         $('#hideShadow').on('click', function () {
             $table.find('tr').hide();
+            $('#useMouseOverShadow').attr('value', 0);
             $toggleRow.show();
         });
 
@@ -475,6 +481,7 @@
             $table.find('tr').show();
         } else {
             $table.find('tr').hide();
+            $('#useMouseOverShadow').attr('value', 0);
             $toggleRow.show();
         }
     };
@@ -721,7 +728,53 @@
                 $.jGrowl('Done');
             }, this));
         }, this));
-    }
+    };
+
+    Controller.prototype.initShadowDialog = function () {
+        var $wrapper = $('#shadowDialog');
+
+        $wrapper.dialog({
+            autoOpen: false,
+            modal:    true,
+            width:    600,
+            buttons:  {
+                Cancel: function () {
+                    $(this).dialog('close');
+                }
+            }
+        });
+
+        Controller.prototype.initShadowSelect = function () {
+            var $shadowColor = $('[name="thumbnail[shadow][color]"]'),
+                $shadowOffsetX = $('[name="thumbnail[shadow][x]"]'),
+                $shadowOffsetY = $('[name="thumbnail[shadow][y]"]'),
+                $shadowBlur = $('[name="thumbnail[shadow][blur]"]');
+
+            $wrapper.find('.shadow-preset').on('click', function() {
+                var offsetX = parseInt($(this).data('offset-x')),
+                    offsetY = parseInt($(this).data('offset-y')),
+                    blur = parseInt($(this).data('blur')),
+                    color = $(this).data('color');
+
+                $shadowColor.attr('value', color);
+                $shadowOffsetX.attr('value', offsetX);
+                $shadowOffsetY.attr('value', offsetY);
+                $shadowBlur.attr('value', blur);
+
+                $shadowColor.trigger('change');
+
+                $wrapper.dialog('close');
+            });
+        };
+
+        Controller.prototype.openShadowDialog = function () {
+            var $button = $('#chooseShadowPreset');
+
+            $button.on('click', function() {
+                $wrapper.dialog('open');
+            });
+        };
+    };
 
     $(document).ready(function () {
         var qs = new URI().query(true), controller;
@@ -737,6 +790,10 @@
             controller.initEffectsDialog();
 
             controller.initEffectPreview();
+
+            controller.initShadowDialog();
+            controller.initShadowSelect();
+            controller.openShadowDialog();
 
             controller.toggleArea();
             controller.toggleShadow();
@@ -1000,25 +1057,30 @@
             self = this,
             wrapper = {
                 element: '#preview figure.grid-gallery-caption',
-                $node: $('#preview figure.grid-gallery-caption')
+                $node: $('#preview figure.grid-gallery-caption'),
+                toggleEvents: function() {
+                    this.$node.off('mouseover');
+                    this.$node.off('mouseleave');
+                }
             },
             showOver = function() {
+                wrapper.toggleEvents();
                 wrapper.$node.on('mouseover', function () {
                     shadow = wrapper.$node.css('box-shadow');
-                    self.setProp(wrapper.element , {boxShadow: '5px 5px 5px #888'});
+                    $(this).css('box-shadow', '5px 5px 5px #888');
                 });
                 wrapper.$node.on('mouseleave',function () {
-                    self.setProp(wrapper.element , {boxShadow: shadow});
+                    $(this).css('box-shadow', shadow);
                 });
             },
             hideOver = function() {
-                console.log(wrapper.$node);
+                wrapper.toggleEvents();
                 wrapper.$node.on('mouseover', function () {
                     shadow = wrapper.$node.css('box-shadow');
-                    self.setProp(wrapper.element , {boxShadow: 'none'});
+                    $(this).css('box-shadow', 'none');
                 });
                 wrapper.$node.on('mouseleave', function () {
-                    self.setProp(wrapper.element , {boxShadow: shadow});
+                    $(this).css('box-shadow', shadow);
                 });
             },
             value = parseInt($('#useMouseOverShadow option:selected').val(), 10);
@@ -1042,8 +1104,7 @@
             }
 
             if(!value) {
-                wrapper.$node.off('mouseover');
-                wrapper.$node.off('mouseleave');
+                wrapper.toggleEvents();
             }
 
         }, this));
@@ -1185,7 +1246,7 @@
             .on('focusout', $.proxy(function () {
                 this.setProp('figcaption', { opacity: '' });
             }, this));
-    }
+    };
 
     ImagePreview.prototype.initCaption = (function () {
 

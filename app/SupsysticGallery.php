@@ -25,10 +25,11 @@ class SupsysticGallery
             require dirname(dirname(__FILE__)) . '/vendor/Rsc/Autoloader.php';
             Rsc_Autoloader::register();
         }
+        add_action('init', array($this, '_loadPluginsTextdomain'));
 
         /* Create new plugin $environment */
         $pluginPath = dirname(dirname(__FILE__));
-        $environment = new Rsc_Environment('sgg', '1.1.3', $pluginPath);
+        $environment = new Rsc_Environment('sgg', '1.1.6', $pluginPath);
 
         /* Configure */
         $environment->configure(
@@ -56,7 +57,7 @@ class SupsysticGallery
                 'uploads_rw' => true,
                 'jpeg_quality' => 95,
                 'plugin_db_update' => true,
-                'revision' => 80
+                'revision' => 110
             )
         );
 
@@ -77,6 +78,15 @@ class SupsysticGallery
         $this->environment->getTwig()->addGlobal('core_alerts', $this->alerts);
 
         $grid_gallery_supsystic = $this->environment;
+    }
+
+    public function _loadPluginsTextDomain()
+    {
+        load_plugin_textdomain(
+            'sgg',
+            false,
+            'supsystic-grid-gallery/app/langs/'
+        );
     }
 
     protected function initialize()

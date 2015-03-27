@@ -21,6 +21,7 @@ return array(
         'shadow-y' => 'Offset by Y',
         'slideshow' => 'Start slideshow when open big image in popup',
         'mobile' => 'Check if you want to disable popups on mobile devices',
+        'captions' => 'Check if you want to hide pagination and image caption on popup window',
         // Uncomment to enable overlay tooltips
         /*'overlay-effect' => 'Overlay effect',
         'overlay-background' => 'Overlay background color',
