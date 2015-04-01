@@ -26,10 +26,11 @@ class SupsysticGallery
             Rsc_Autoloader::register();
         }
         add_action('init', array($this, '_loadPluginsTextdomain'));
+        add_action('init', array($this, 'addShortcodeButton'));
 
         /* Create new plugin $environment */
         $pluginPath = dirname(dirname(__FILE__));
-        $environment = new Rsc_Environment('sgg', '1.1.6', $pluginPath);
+        $environment = new Rsc_Environment('sgg', '1.1.7', $pluginPath);
 
         /* Configure */
         $environment->configure(
@@ -57,7 +58,7 @@ class SupsysticGallery
                 'uploads_rw' => true,
                 'jpeg_quality' => 95,
                 'plugin_db_update' => true,
-                'revision' => 110
+                'revision' => 120
             )
         );
 
@@ -87,6 +88,26 @@ class SupsysticGallery
             false,
             'supsystic-grid-gallery/app/langs/'
         );
+    }
+
+    public function addShortcodeButton() {
+        add_filter( "mce_external_plugins", array($this, 'addButton'));
+        add_filter( 'mce_buttons', array($this, 'registerButton'));
+        if(is_admin()) {
+            wp_enqueue_script('sgg-bpopup-js', $this->environment->getConfig()->get('plugin_url') . '/app/assets/js/jquery.bpopup.min.js');
+            wp_enqueue_style('sgg-popup-css', $this->environment->getConfig()->get('plugin_url') . '/app/assets/css/editor-dialog.css');
+        }
+    }
+
+    public function addButton( $plugin_array ) {
+        $plugin_array['addShortcode'] = $this->environment->getConfig()->get('plugin_url') . '/app/assets/js/buttons.js';
+
+        return $plugin_array;
+    }
+    public function registerButton( $buttons ) {
+        array_push( $buttons, 'addShortcode', 'selectShortcode' );
+
+        return $buttons;
     }
 
     protected function initialize()

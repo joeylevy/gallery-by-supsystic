@@ -30,7 +30,7 @@ class GridGallery_Stats_Model extends GridGallery_Core_BaseModel
     {
         parent::__construct((bool)$debugEnabled);
 
-        $this->table = $this->db->prefix . 'sg_stats';
+        $this->table = $this->db->prefix . 'gg_stats';
         $this->pluginCode = $code;
     }
 

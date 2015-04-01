@@ -1,10 +1,16 @@
 msgid "An error has occurred"
 msgstr ""
 
+msgid "Overview"
+msgstr ""
+
 msgid "New Gallery"
 msgstr ""
 
 msgid "Galleries"
+msgstr ""
+
+msgid "License"
 msgstr ""
 
 msgid "Images"
@@ -16,6 +22,12 @@ msgstr ""
 msgid "Flickr"
 msgstr ""
 
+msgid "Tumblr"
+msgstr ""
+
+msgid "Facebook"
+msgstr ""
+
 msgid "Settings"
 msgstr ""
 
@@ -25,40 +37,16 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
-msgid "Empty user data."
+msgid "Authorization code is not specified."
 msgstr ""
 
 msgid "Gallery by Supsystic"
 msgstr ""
 
-msgid "Upload your images from the Flickr Media Library"
+msgid "Upload your images from the Facebook Media Library"
 msgstr ""
 
-msgid "Upload from Flickr"
-msgstr ""
-
-msgid "Rename folder"
-msgstr ""
-
-msgid "Folder name:"
-msgstr ""
-
-msgid "Add images to the gallery"
-msgstr ""
-
-msgid "Please wait while the plugin to get the list of galleries..."
-msgstr ""
-
-msgid "Select the gallery:"
-msgstr ""
-
-msgid "New folder"
-msgstr ""
-
-msgid "Add images to the new gallery"
-msgstr ""
-
-msgid "Gallery title:"
+msgid "Upload from Facebook"
 msgstr ""
 
 msgid "Upload new images"
@@ -73,13 +61,13 @@ msgstr ""
 msgid "Select/unselect all photos"
 msgstr ""
 
-msgid "Refresh Images List"
+msgid "Empty user data."
 msgstr ""
 
-msgid "Add the selected items to the existing gallery"
+msgid "Upload your images from the Flickr Media Library"
 msgstr ""
 
-msgid "Add selected to the gallery"
+msgid "Upload from Flickr"
 msgstr ""
 
 msgid "Show icons"
@@ -91,7 +79,16 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
+msgid "Available"
+msgstr ""
+
+msgid "Disable"
+msgstr ""
+
 msgid "Select effect"
+msgstr ""
+
+msgid "Animation"
 msgstr ""
 
 msgid "Icons color"
@@ -121,12 +118,6 @@ msgstr ""
 msgid "Overlay transparency"
 msgstr ""
 
-msgid "Enable shuffling animation"
-msgstr ""
-
-msgid "Animation duration"
-msgstr ""
-
 msgid "Posts layout"
 msgstr ""
 
@@ -148,25 +139,13 @@ msgstr ""
 msgid "Show contents"
 msgstr ""
 
-msgid "Image"
-msgstr ""
-
-msgid "Author"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-msgid "Comments"
-msgstr ""
-
-msgid "Type"
-msgstr ""
-
-msgid "Date"
-msgstr ""
-
 msgid "Show categories"
+msgstr ""
+
+msgid "Enable shuffling animation"
+msgstr ""
+
+msgid "Animation duration"
 msgstr ""
 
 msgid "Position"
@@ -188,6 +167,30 @@ msgid "Center"
 msgstr ""
 
 msgid "Right"
+msgstr ""
+
+msgid "Choose preset"
+msgstr ""
+
+msgid "Preset Editor"
+msgstr ""
+
+msgid "Enable pagination"
+msgstr ""
+
+msgid "Pagination"
+msgstr ""
+
+msgid "Images per page"
+msgstr ""
+
+msgid "Buttons position"
+msgstr ""
+
+msgid "Top"
+msgstr ""
+
+msgid "Bottom"
 msgstr ""
 
 msgid "Container background"
@@ -217,12 +220,6 @@ msgstr ""
 msgid "Font weight"
 msgstr ""
 
-msgid "Normal"
-msgstr ""
-
-msgid "Bold"
-msgstr ""
-
 msgid "Font size"
 msgstr ""
 
@@ -238,25 +235,37 @@ msgstr ""
 msgid "Border radius"
 msgstr ""
 
-msgid "Enable pagination"
-msgstr ""
-
-msgid "Images per page"
-msgstr ""
-
-msgid "Buttons position"
-msgstr ""
-
-msgid "Top"
-msgstr ""
-
-msgid "Bottom"
-msgstr ""
-
 msgid "Select icons effects"
 msgstr ""
 
 msgid "Click on the icon to select effect"
+msgstr ""
+
+msgid "Categories preset editor"
+msgstr ""
+
+msgid "Preset name"
+msgstr ""
+
+msgid "Normal"
+msgstr ""
+
+msgid "Bold"
+msgstr ""
+
+msgid "Pages preset editor"
+msgstr ""
+
+msgid "Check"
+msgstr ""
+
+msgid "Authorization oauth_verifier is not specified."
+msgstr ""
+
+msgid "Upload your images from the Tumblr Media Library"
+msgstr ""
+
+msgid "Upload from Tumblr"
 msgstr ""
 
 msgid "New gallery successfully created"
@@ -316,13 +325,25 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-msgid "Gallery by Supsystic"
-msgstr ""
-
-msgid "Add images"
-msgstr ""
-
 msgid "You need to import images to your gallery before you can start using galleries"
+msgstr ""
+
+msgid "Choose image"
+msgstr ""
+
+msgid "Create new gallery"
+msgstr ""
+
+msgid "Choose Gallery Template.You can change template and settings on the next step."
+msgstr ""
+
+msgid "Gallery Name:"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Choose Gallery Template."
 msgstr ""
 
 msgid "Remove selected"
@@ -331,19 +352,34 @@ msgstr ""
 msgid "Select/unselect all posts"
 msgstr ""
 
-msgid "Add new gallery"
-msgstr ""
-
-msgid "Edit"
+msgid "Images List"
 msgstr ""
 
 msgid "Preview"
 msgstr ""
 
+msgid "Add Images"
+msgstr ""
+
+msgid "Delete gallery"
+msgstr ""
+
+msgid "Total Images: "
+msgstr ""
+
 msgid "There are %s photos in the gallery %s"
 msgstr ""
 
+msgid "Shortcode: "
+msgstr ""
+
 msgid "Select shortcode for the gallery "
+msgstr ""
+
+msgid "Phpcode: "
+msgstr ""
+
+msgid "Select phpcode for the gallery "
 msgstr ""
 
 msgid "You have not any galleries"
@@ -367,70 +403,37 @@ msgstr ""
 msgid "Each gallery has a number of display settings and behaviors that you can save to presets and apply to other galleries."
 msgstr ""
 
-msgid "Wanna know more?"
-msgstr ""
-
-msgid "Help"
-msgstr ""
-
-msgid "Visit %s section to read more information about the galleries."
-msgstr ""
-
-msgid "Create new gallery"
-msgstr ""
-
 msgid "Gallery title can't be empty!"
 msgstr ""
 
-msgid "Save"
+msgid "Gallery title:"
 msgstr ""
 
 msgid "Back to the gallery"
 msgstr ""
 
-msgid "Images list"
+msgid "Main"
 msgstr ""
 
-msgid "Delete"
-msgstr ""
-
-msgid "Area"
-msgstr ""
-
-msgid "Border"
-msgstr ""
-
-msgid "Shadow"
-msgstr ""
-
-msgid "Caption"
-msgstr ""
-
-msgid "Big image"
-msgstr ""
-
-msgid "Icons"
+msgid "Captions"
 msgstr ""
 
 msgid "Categories"
 msgstr ""
 
-msgid "Pagination"
+msgid "Images list"
 msgstr ""
 
-msgid "Images shuffling"
+msgid "Choose image for preview"
 msgstr ""
 
-msgid "Post feed"
+msgid "Shortcode:"
 msgstr ""
 
-msgid "Properties"
+msgid "Gallery Type"
 msgstr ""
 
-msgid "Grid"
-msgstr ""
-
-msgid "Distance between photos"
+msgid "Images distance"
 msgstr ""
 
 msgid "Gallery width"
@@ -439,16 +442,37 @@ msgstr ""
 msgid "Gallery height"
 msgstr ""
 
-msgid "Photo width"
+msgid "Image width"
 msgstr ""
 
-msgid "Photo height"
+msgid "Image height"
 msgstr ""
 
-msgid "Use shadow"
+msgid "Image radius"
+msgstr ""
+
+msgid "Border"
+msgstr ""
+
+msgid "Border Type"
+msgstr ""
+
+msgid "Shadow"
+msgstr ""
+
+msgid "Shadow preset"
 msgstr ""
 
 msgid "When mouse is over"
+msgstr ""
+
+msgid "Off"
+msgstr ""
+
+msgid "Show mouse on"
+msgstr ""
+
+msgid "Hide mouse on"
 msgstr ""
 
 msgid "Overlay image with shadow"
@@ -466,31 +490,28 @@ msgstr ""
 msgid "Shadow Y"
 msgstr ""
 
-msgid "Effect"
-msgstr ""
-
-msgid "Show caption"
-msgstr ""
-
-msgid "Choose effect"
-msgstr ""
-
-msgid "Transparency"
-msgstr ""
-
-msgid "Text size"
-msgstr ""
-
-msgid "Text align"
-msgstr ""
-
-msgid "Theme"
+msgid "Pop-up Image"
 msgstr ""
 
 msgid "Choose theme"
 msgstr ""
 
+msgid "Disable Popup"
+msgstr ""
+
+msgid "Disable on mobile"
+msgstr ""
+
+msgid "Hide Popup Captions"
+msgstr ""
+
+msgid "Theme"
+msgstr ""
+
 msgid "Transition"
+msgstr ""
+
+msgid "Choose effect"
 msgstr ""
 
 msgid "Elastic"
@@ -511,31 +532,31 @@ msgstr ""
 msgid "Slideshow"
 msgstr ""
 
-msgid "Disabled"
-msgstr ""
-
-msgid "Enabled"
-msgstr ""
-
 msgid "Slideshow speed"
 msgstr ""
 
 msgid "Slideshow autostart"
 msgstr ""
 
-msgid "Shortcode"
+msgid "Effect"
 msgstr ""
 
-msgid "Use this shortcode to insert the gallery \"%s\" on the pages or posts."
+msgid "Show caption"
 msgstr ""
 
-msgid "If you new to current feature, then you can read more about shortcodes in the <a href=\"http://en.support.wordpress.com/shortcodes/\">official wordpress documentation</a>."
+msgid "Transparency"
 msgstr ""
 
-msgid "Cover"
+msgid "Text size"
 msgstr ""
 
-msgid "Sort and orginize images with \"Categories\" option"
+msgid "Text align"
+msgstr ""
+
+msgid "Categorize images in the gallery"
+msgstr ""
+
+msgid "Let user switch gallery pages"
 msgstr ""
 
 msgid "Save settings as preset"
@@ -568,16 +589,55 @@ msgstr ""
 msgid "Select a theme"
 msgstr ""
 
+msgid "Select"
+msgstr ""
+
 msgid "Select overlay effect"
 msgstr ""
 
-msgid "Live preview"
+msgid "Select transition"
+msgstr ""
+
+msgid "Select shadow preset"
+msgstr ""
+
+msgid "Select shadow"
 msgstr ""
 
 msgid "Page "
 msgstr ""
 
-msgid "Delete image"
+msgid "Choose source"
+msgstr ""
+
+msgid "Import from WordPress Media Library"
+msgstr ""
+
+msgid "Import from social networks"
+msgstr ""
+
+msgid "Import from your Instagram account"
+msgstr ""
+
+msgid "Import from your Flickr account"
+msgstr ""
+
+msgid "Import from your Tumblr account"
+msgstr ""
+
+msgid "Import from your Facebook account"
+msgstr ""
+
+msgid "Get Pro to enable import"
+msgstr ""
+
+msgid "Get PRO for 29$"
+msgstr ""
+
+msgid "Properties"
+msgstr ""
+
+msgid "Delete Image"
 msgstr ""
 
 msgid "Switch to the list view"
@@ -592,13 +652,43 @@ msgstr ""
 msgid "Currently this gallery has no images"
 msgstr ""
 
-msgid "Authorization code is not specified."
+msgid "Select source to import from"
 msgstr ""
 
 msgid "Upload your images from the Instagram Media Library"
 msgstr ""
 
 msgid "Upload from Instagram"
+msgstr ""
+
+msgid "Your name"
+msgstr ""
+
+msgid "Your email"
+msgstr ""
+
+msgid "Website"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Topic"
+msgstr ""
+
+msgid "Plugin options"
+msgstr ""
+
+msgid "Report a bug"
+msgstr ""
+
+msgid "Require a new functionallity"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "Type your message"
 msgstr ""
 
 msgid "Unable to save chosen photo %s: %s"
@@ -616,6 +706,27 @@ msgstr ""
 msgid "Position updated successfully!"
 msgstr ""
 
+msgid "Rename folder"
+msgstr ""
+
+msgid "Folder name:"
+msgstr ""
+
+msgid "Add images to the gallery"
+msgstr ""
+
+msgid "Please wait while the plugin to get the list of galleries..."
+msgstr ""
+
+msgid "Select the gallery:"
+msgstr ""
+
+msgid "New folder"
+msgstr ""
+
+msgid "Add images to the new gallery"
+msgstr ""
+
 msgid "Create new folder"
 msgstr ""
 
@@ -631,7 +742,13 @@ msgstr ""
 msgid "New gallery from selected"
 msgstr ""
 
-msgid "Upload your images from the Wordpress Media Library"
+msgid "Add the selected items to the existing gallery"
+msgstr ""
+
+msgid "Add selected to the gallery"
+msgstr ""
+
+msgid "Upload your images from the WordPress Media Library"
 msgstr ""
 
 msgid "All photos"
@@ -655,6 +772,9 @@ msgstr ""
 msgid "<strong>%s</strong> has its own caching system in order to significantly reduce the load on the database."
 msgstr ""
 
+msgid "Use this option only if all your galleries are setting correctly and you dont need to change settings soon"
+msgstr ""
+
 msgid "Caching is not available because your uploads directory is not writable."
 msgstr ""
 
@@ -670,7 +790,7 @@ msgstr ""
 msgid "Edit image"
 msgstr ""
 
-msgid "Main"
+msgid "Caption"
 msgstr ""
 
 msgid "SEO"
@@ -703,7 +823,10 @@ msgstr ""
 msgid "Supports Youtube and Vimeo. URL will be converted to embed automatically."
 msgstr ""
 
-msgid "File"
+msgid "Image"
+msgstr ""
+
+msgid "Date"
 msgstr ""
 
 msgid "Select %s"
@@ -716,9 +839,6 @@ msgid "photos"
 msgstr ""
 
 msgid "Video"
-msgstr ""
-
-msgid "Tags"
 msgstr ""
 
 msgid "http://example.com/"

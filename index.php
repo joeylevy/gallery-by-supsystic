@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Gallery by Supsystic
  * Description: Easy to use Gallery with professional gallery templates. Show off your best design, photography and creative work
- * Version: 1.1.6
+ * Version: 1.1.7
  * Author: supsistic.com
  * Text Domain: grid-gallery
  **/

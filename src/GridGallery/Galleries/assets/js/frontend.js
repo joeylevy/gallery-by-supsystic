@@ -1304,7 +1304,8 @@
                 target: 'img',
                 backgroundColor: generateOverlayColor(overlayColor, alpha),
                 fontColor: color,
-                textAlign: align
+                textAlign: align,
+                caption: 'data-caption'
             });
         }
     });
