@@ -206,7 +206,7 @@
                 </strong>
 
                 <p id="photo-caption-{{ image.id }}" class="tabcontent-{{ image.id }}">
-                    <input type="text" name="caption" value="{{ image.attachment.caption }}"
+                    <input type="text" name="caption" value="{{ image.attachment.caption|raw }}"
                            placeholder="{{ translate('Caption') }}"/>
                 </p>
 

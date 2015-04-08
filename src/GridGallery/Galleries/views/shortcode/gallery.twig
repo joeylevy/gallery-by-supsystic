@@ -253,9 +253,17 @@
 
             jQuery('.gg-video').colorbox({
                 iframe: true,
-                innerHeight: 390,
-                innerWidth: 640,
-                rel: 'grid-gallery'
+                innerHeight: '90%',
+                innerWidth: '90%',
+                maxHeight: '90%',
+                maxWidth: '90%',
+                rel: 'grid-gallery',
+                onComplete: function() {
+                    jQuery.colorbox.resize({
+                        width: window.innerWidth > 560 ? 560 : window.innerWidth - 40,
+                        height: window.innerHeight > 480 ? 480 : window.innerHeight - 40
+                    });
+                }
             });
 
             {% if settings.area.position == '1' or settings.area.position == 'left' %}

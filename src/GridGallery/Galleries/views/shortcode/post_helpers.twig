@@ -388,7 +388,7 @@
 {% macro sodiumStyles(photo, settings, themeValue) %}
 
     {% if themeValue == '4' %}
-        {% set theme = 'sodium-scale-text' %}
+        {% set theme = 'expression-scale-text' %}
     {% endif %}
     {% if themeValue == '5' %}
         {% set theme = 'sodium-top-slide' %}
@@ -464,8 +464,6 @@
             {% endset %}
 
             {% set titleStyle %}
-                float: left;
-                margin-left: 10%;
                 font-size: 18px;
                 font-weight: bold;
                 color: white;
@@ -477,18 +475,20 @@
                 <div class="grid-gallery-figcaption-wrap">
                     <div class="post-feed-crop" style="{{ postCropStyle|trim }}">
                         <a class="post-feed-title" href="{{ aHref }}" style="{{ titleStyle }}"> {{ photo.title }}</a>
-                        {% if settings.posts.author == '1' %}
-                            <a class="post-feed-author" href="{{ photo.authorUrl|trim }}" style="color: #ffffff;"> {{ photo.author }} </a>
-                        {% endif %}
-                        {% if settings.posts.date == '1' %}
-                            <span class="separator" style="color: #A2A2A2; font-size: 13px">|</span>
-                            <a class="post-feed-date" href="{{ photo.dateUrl|trim }}" style="color: #ffffff;"> {{ photo.date }} </a>
-                        {% endif %}
+                        <div class="post-feed-data">
+                            {% if settings.posts.author == '1' %}
+                                <a class="post-feed-author" href="{{ photo.authorUrl|trim }}" style="color: #ffffff;"> {{ photo.author }} </a>
+                            {% endif %}
+                            {% if settings.posts.date == '1' %}
+                                <span class="separator" style="color: #A2A2A2; font-size: 13px">|</span>
+                                <a class="post-feed-date" href="{{ photo.dateUrl|trim }}" style="color: #ffffff;"> {{ photo.date }} </a>
+                            {% endif %}
+                        </div>
                         {% if settings.posts.contents == '1' %}
                             <div class="post-feed-content" style="{{ fontSize }}"> {{ photo.content|slice(0,contentWidth)~"..." }} </div>
                         {% endif %}
                         {% if settings.posts.categories == '1' %}
-                            <div class="post-categories" style="position: absolute; bottom: 0; left: 20px;">
+                            <div class="post-categories">
                                 {% for category in photo.categories %}
                                     <a class="post-category" href="{{ category.url }}">{{ category.name }}</a>
                                     {% if loop.last == false %}

@@ -219,7 +219,7 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
                 $row = array();
                 $post = get_post($id);
                 $row['author'] = get_user_by('id', $post->post_author)->user_login;
-                $row['authorUrl'] = get_author_posts_url( get_the_author_meta( $post->post_author ) );
+                $row['authorUrl'] = get_author_posts_url( get_the_author_meta( $post->post_author ), $row['author'] );
                 $row['title'] = $post->post_title;
                 $row['content'] = strip_tags($post->post_content);
                 $row['date'] = get_post_time('M j, Y', false, $id, true);
@@ -241,7 +241,7 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
                 $row = array();
                 $page = get_post($id);
                 $row['author'] = get_user_by('id', $page->post_author)->user_login;
-                $row['authorUrl'] = get_author_posts_url( get_the_author_meta( $page->post_author ) );
+                $row['authorUrl'] = get_author_posts_url( get_the_author_meta( $page->post_author ), $row['author']);
                 $row['title'] = $page->post_title;
                 $row['content'] = strip_tags($page->post_content);
                 $row['date'] = get_post_time('M j, Y', false, $id, true);

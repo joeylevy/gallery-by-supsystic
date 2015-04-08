@@ -1150,11 +1150,11 @@ a.post .grid-gallery-caption {
     opacity: 1.0;
 }
 
-.grid-gallery-caption[data-grid-gallery-type="sodium-scale-text"] {
+.grid-gallery-caption[data-grid-gallery-type="expression-scale-text"] {
     overflow: visible;
 }
 
-.grid-gallery-caption[data-grid-gallery-type="sodium-scale-text"] figcaption {
+.grid-gallery-caption[data-grid-gallery-type="expression-scale-text"] figcaption {
     top: 0;
     left: 0;
     width: 100%;
@@ -1166,11 +1166,11 @@ a.post .grid-gallery-caption {
     transition: 500ms;
 }
 
-.grid-gallery-caption[data-grid-gallery-type="sodium-scale-text"] .post-feed-crop {
+.grid-gallery-caption[data-grid-gallery-type="expression-scale-text"] .post-feed-crop {
     display: block;
     font-family: 'Montserrat', sans-serif;
     position: relative;
-    margin-top: 20%;
+    margin-top: 10%;
     text-align: center;
     color: #ffffff !important;
     -webkit-transform: scale(0.1);
@@ -1182,13 +1182,13 @@ a.post .grid-gallery-caption {
     transition: 800ms;
 }
 
-.grid-gallery-caption[data-grid-gallery-type="sodium-scale-text"]:hover figcaption,
-.grid-gallery-caption[data-grid-gallery-type="sodium-scale-text"]:active figcaption {
+.grid-gallery-caption[data-grid-gallery-type="expression-scale-text"]:hover figcaption,
+.grid-gallery-caption[data-grid-gallery-type="expression-scale-text"]:active figcaption {
     opacity: 1.0;
 }
 
-.grid-gallery-caption[data-grid-gallery-type="sodium-scale-text"]:hover .post-feed-crop,
-.grid-gallery-caption[data-grid-gallery-type="sodium-scale-text"]:active .post-feed-crop {
+.grid-gallery-caption[data-grid-gallery-type="expression-scale-text"]:hover .post-feed-crop,
+.grid-gallery-caption[data-grid-gallery-type="expression-scale-text"]:active .post-feed-crop {
     -webkit-transform: scale(1.0);
     -ms-transform: scale(1.0);
     -o-transform: scale(1.0);
@@ -1207,11 +1207,12 @@ a.post .grid-gallery-caption {
 }
 
 .grid-gallery-caption[data-grid-gallery-type="sodium-top-slide"] .grid-gallery-figcaption-wrap {
+    width: 100%;
     position: absolute;
     top: 100%;
     left: 0;
     font-family: 'Montserrat', sans-serif;
-    margin-top: 20%;
+    margin-top: 10%;
     text-align: center;
     color: #ffffff !important;
     background: rgba(38, 94, 110, 0.63);
@@ -1241,10 +1242,7 @@ a.post .grid-gallery-caption {
 .grid-gallery-caption[data-grid-gallery-type="sodium-top-slide"]:hover .grid-gallery-figcaption-wrap,
 .grid-gallery-caption[data-grid-gallery-type="sodium-top-slide"]:active .grid-gallery-figcaption-wrap {
     background: rgba(226, 104, 103, 1.0);
-    -webkit-transform: translateY(-280%);
-    -ms-transform: translateY(-280%);
-    -o-transform: translateY(-280%);
-    transform: translateY(-280%);
+    top: 0;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="sodium-top-slide"]:hover .post-feed-author,
@@ -1287,7 +1285,7 @@ a.post .grid-gallery-caption {
     opacity: 0.4;
 }
 
-.box {
+.grid-gallery-caption .box {
     position: relative;
     width: 10em;
     height: 10em;
@@ -1295,7 +1293,11 @@ a.post .grid-gallery-caption {
     overflow: hidden;
 }
 
-.box__center, .box__right, .box__left, .box__top, .box__bottom {
+.grid-gallery-caption .box__center,
+.grid-gallery-caption .box__right,
+.grid-gallery-caption .box__left,
+.grid-gallery-caption .box__top,
+.grid-gallery-caption .box__bottom {
     position: absolute;
     width: inherit;
     height: inherit;
@@ -1303,7 +1305,11 @@ a.post .grid-gallery-caption {
     line-height: inherit;
     transition: transform .4s ease;
 }
-.box__center:before, .box__right:before, .box__left:before, .box__top:before, .box__bottom:before {
+.grid-gallery-caption .box__center:before,
+.grid-gallery-caption .box__right:before,
+.grid-gallery-caption .box__left:before,
+.grid-gallery-caption .box__top:before,
+.grid-gallery-caption .box__bottom:before {
     position: absolute;
     content: '';
     /*
@@ -1333,68 +1339,76 @@ a.post .grid-gallery-caption {
     height: 70.71%;
     transform: rotate(45deg);
 }
-.box__center:hover, .box__right:hover, .box__left:hover, .box__top:hover, .box__bottom:hover {
+.grid-gallery-caption .box__center:hover,
+.grid-gallery-caption .box__right:hover,
+.grid-gallery-caption .box__left:hover,
+.grid-gallery-caption .box__top:hover,
+.grid-gallery-caption .box__bottom:hover {
     transform: translateX(0);
     z-index: 1;
 }
-.box__center:hover:before, .box__right:hover:before, .box__left:hover:before, .box__top:hover:before, .box__bottom:hover:before {
+.grid-gallery-caption .box__center:hover:before,
+.grid-gallery-caption .box__right:hover:before,
+.grid-gallery-caption .box__left:hover:before,
+.grid-gallery-caption .box__top:hover:before,
+.grid-gallery-caption .box__bottom:hover:before {
     width: 100%;
     height: 100%;
     transform: none;
 }
 
-.box__center {
+.grid-gallery-caption .box__center {
     background: orange;
     z-index: -1;
 }
 
-.box__right {
+.grid-gallery-caption .box__right {
     background: blue;
     transform: translateX(100%);
 }
-.box__right:before {
+.grid-gallery-caption .box__right:before {
     right: 100%;
     bottom: 0;
     transform-origin: 100% 100%;
 }
-.box__right:hover ~ .box__center {
+.grid-gallery-caption .box__right:hover ~ .grid-gallery-caption .box__center {
     transform: translateX(-100%);
 }
 
-.box__left {
+.grid-gallery-caption .box__left {
     background: green;
     transform: translateX(-100%);
 }
-.box__left:before {
+.grid-gallery-caption .box__left:before {
     left: 100%;
     transform-origin: 0 0;
 }
-.box__left:hover ~ .box__center {
+.grid-gallery-caption .box__left:hover ~ .grid-gallery-caption .box__center {
     transform: translateX(100%);
 }
 
-.box__top {
+.grid-gallery-caption .box__top {
     background: red;
     transform: translateY(-100%);
 }
-.box__top:before {
+.grid-gallery-caption .box__top:before {
     top: 100%;
     right: 0;
     transform-origin: 100% 0;
 }
-.box__top:hover ~ .box__center {
+.grid-gallery-caption .box__top:hover ~ .grid-gallery-caption .box__center {
     transform: translateY(100%);
 }
 
-.box__bottom {
+.grid-gallery-caption .box__bottom {
     background: yellow;
     transform: translateY(100%);
 }
-.box__bottom:before {
+.grid-gallery-caption .box__bottom:before {
     bottom: 100%;
     left: 0;
     transform-origin: 0 100%;
 }
-.box__bottom:hover ~ .box__center {
+.grid-gallery-caption .box__bottom:hover ~ .grid-gallery-caption .box__center {
     transform: translateY(-100%);
 }
