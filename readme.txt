@@ -1,7 +1,7 @@
 === Gallery by Supsystic ===
 Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
-Tags: photo gallery, responsive photo gallery, foto gallery, grid, grid gallery, add album, add gallery, add picture, add pictures, album, foto, fotoalbum, galary, galery, gallary, gallerie, gallery, gallery decription, gallery image, gelary, gellary, gellery, image, multiple pictures, photo, photoalbum, photogallery, pictures, gird, gird gallery, galery, slide show, slideshow, upload images, upload photos, view images, view pictures, website gallery, wordpress gallery, gallery plugin, slideshow, image gallery, responsive gallery, responsive image gallery
+Tags: photo gallery, responsive, foto gallery, grid, grid gallery, add gallery, album, foto, fotoalbum, galery, image, photo, gird, website gallery, wordpress gallery, gallery plugin, image gallery, responsive gallery, post feed gallery
 Tested up to: 4.1.1
 Stable tag: 1.1.8
 
