@@ -311,7 +311,7 @@ class GridGallery_Galleries_Model_Galleries extends GridGallery_Core_BaseModel
         $models['photos'] = new GridGallery_Photos_Model_Photos($this->debugEnabled);
         $models['folders'] = new GridGallery_Photos_Model_Folders($this->debugEnabled);
 
-        foreach ($resourcesData as $data) {
+        /*foreach ($resourcesData as $data) {
             switch ($data->resource_type) {
                 case 'folder':
                     if ($photos = $models['folders']->getPhotosById($data->resource_id)) {
@@ -327,7 +327,9 @@ class GridGallery_Galleries_Model_Galleries extends GridGallery_Core_BaseModel
                     $gallery->photos[] = $models['photos']->getById($data->resource_id);
                     break;
             }
-        }
+        }*/
+
+        $gallery->photos = $models['photos']->getPhotos($resourcesData);
 
         return $gallery;
     }

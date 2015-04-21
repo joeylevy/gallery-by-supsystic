@@ -105,6 +105,21 @@ class GridGallery_Photos_Model_Position extends GridGallery_Core_BaseModel
         return $row->position;
     }
 
+    public function getPositions($scope = self::SCOPE_MAIN, $scopeId = 0)
+    {
+        $query = $this->getQueryBuilder()
+            ->select('position, photo_id')
+            ->from($this->table)
+            ->where('scope', '=', $scope)
+            ->andWhere('scope_id', '=', (int)$scopeId);
+
+        if (null === $row = $this->db->get_results($query->build())) {
+            return 0;
+        }
+
+        return $row;
+    }
+
     /**
      * Extends the photo object with the 'position' property.
      * @param  array|object $photo Photo object.
@@ -118,10 +133,13 @@ class GridGallery_Photos_Model_Position extends GridGallery_Core_BaseModel
 
         if (is_array($photo)) {
             $photo = (object)$photo;
+            $photos = $this->getPositions($scope, $scopeId);
             $isArray = true;
-        }
 
-        $photo->position = $this->getPosition($photo->id, $scope, $scopeId);
+            return $photos;
+        } else {
+            $photo->position = $this->getPosition($photo->id, $scope, $scopeId);
+        }
 
         return $isArray ? (array)$photo : $photo;
     }

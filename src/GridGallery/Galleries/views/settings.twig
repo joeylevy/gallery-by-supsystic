@@ -155,7 +155,7 @@
                 <thead>
 
                 {{ form.row(translate('Gallery Type'),
-                form.select('area[grid]', ['Fixed', 'Vertical', 'Horizontal'], settings.area.grid, { 'style': 'width: auto;' }), 'grid-type', 'gallery-types') }}
+                form.select('area[grid]', ['Fixed', 'Vertical', 'Horizontal', 'Fixed Columns'], settings.area.grid, { 'style': 'width: auto;' }), 'grid-type', 'gallery-types') }}
 
                 {#{{ form.row(environment.translate('Position'),
                 form.select('area[position]', ['Center', 'Left', 'Right'], settings.area.position, { 'style': 'width: 300px;' }), 'grid-type') }}#}
@@ -183,6 +183,17 @@
                 {{ form.row(translate('Image radius'),
                 form.text('thumbnail[border][radius]', settings.thumbnail.border.radius, { 'style': { 'width': '140px'} })
                 ~ form.select('thumbnail[border][radius_unit]', ['pixels', 'percents'], settings.thumbnail.border.radius_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'border-radius') }}
+
+                <tr id="generalColumnsRow" hidden>
+                    <th scope="row">
+                        <label style="margin: 0 !important;">
+                            {{ translate('Columns') }}
+                        </label>
+                    </th>
+                    <td>
+                        <input type="text" name="general[columns][number]" value="{{ settings.general.columns.number|default(1) }}">
+                    </td>
+                </tr>
 
                 </thead>
             </table>
@@ -601,6 +612,9 @@
 
                 {{ form.row(translate('Text align'),
                 form.select('thumbnail[overlay][text_align]', ['left', 'right', 'center', 'auto'], settings.thumbnail.overlay.text_align, { 'style': 'width: auto;' }), 'text-align') }}
+
+                {{ form.row(translate('Font family'),
+                form.selectv('thumbnail[overlay][font_family]', fontList, settings.thumbnail.overlay.font_family,{ 'style': 'width: auto;' }), 'font-family') }}
 
 
                 </thead>

@@ -1346,6 +1346,27 @@
         }
     });
 
+    Gallery.prototype.initRowsMode = function() {
+        var columnsNumber = parseInt(this.$container.data('columns-number'));
+
+        if(columnsNumber) {
+            var containerWidth = parseInt(this.$container.width()),
+                spacing = parseInt(this.$elements.css('margin')),
+                scaleHeight = containerWidth / parseInt(this.$container.height()),
+                elementWidth = null,
+                elementHeight = null;
+
+            containerWidth -= this.$elements.length * 2 * spacing;
+            elementWidth = containerWidth / columnsNumber;
+            elementHeight = Math.floor(elementWidth * scaleHeight);
+
+            this.$elements.each(function() {
+                $(this).css('width', elementWidth);
+                $(this).css('height', elementHeight);
+            });
+        }
+    };
+
     Gallery.prototype.setImagesHeight = (function () {
         var $images = this.$container.find('img');
 
@@ -1660,6 +1681,7 @@
             this.hidePopupCaptions();
             this.initSliphover();
             this.preventImages();
+            this.initRowsMode();
 
             this.setImagesHeight();
             this.setIconsPosition();

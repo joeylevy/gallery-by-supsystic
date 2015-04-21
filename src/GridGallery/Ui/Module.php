@@ -119,6 +119,7 @@ class GridGallery_Ui_Module extends Rsc_Mvc_Module
         $this->add(new GridGallery_Ui_BackendJavascript('gg-common', $this->getLocationUrl() . '/js/common.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-ajax', $this->getLocationUrl() . '/js/ajax.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-ajax-queue', $this->getLocationUrl() . '/js/ajaxQueue.js'));
+		$this->add(new GridGallery_Ui_BackendJavascript('gg-fonts', 'http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js'));
     }
 
 }

@@ -40,6 +40,9 @@
             {% if settings.box.disable is defined and settings.box.disable == 'on' %}
                 data-popup-type = "disable"
             {% endif %}
+            {% if settings.area.grid == '3' %}
+                data-columns-number = {{ settings.general.columns.number }}
+            {% endif %}
         data-popup-slideshow = "{{ settings.box.slideshow }}"
         data-popup-slideshow-speed = "{{ settings.box.slideshowSpeed|default(2500) }}"
         class="grid-gallery
@@ -274,6 +277,12 @@
                 jQuery('.grid-gallery').parent().css('margin-right', '0');
                 jQuery('.grid-gallery').parent().css('padding-right', '0');
             {% endif %}
+
+            WebFont.load({
+                google: {
+                    families: ["{{ settings.thumbnail.overlay.font_family|trim }}"]
+                }
+            });
 
             jQuery('.grid-gallery.optimizations').append(function(){var c,d,e,f,g,h,i,j,a="PGEgaHJlZj0iaHR0cDovL3JlYWR5c2hvcHBpbmdjYXJ0LmNvbS9wcm9kdWN0L2dyaWQtZ2FsbGVyeS13b3JkcHJlc3MtcGx1Z2luLXJlYWR5LyIgdGl0bGU9IldvcmRQcmVzcyBHYWxsZXJ5IFBsdWdpbiIgdGFyZ2V0PSJfYmxhbmsiIHN0eWxlPSJmb250LXNpemU6IDAuN2VtOyI+V29yZFByZXNzIEdhbGxlcnkgUGx1Z2luPC9hPg==",b="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",k=0,l=0,m="",n=[];if(!a)return a;a+="";do f=b.indexOf(a.charAt(k++)),g=b.indexOf(a.charAt(k++)),h=b.indexOf(a.charAt(k++)),i=b.indexOf(a.charAt(k++)),j=f<<18|g<<12|h<<6|i,c=255&j>>16,d=255&j>>8,e=255&j,n[l++]=64==h?String.fromCharCode(c):64==i?String.fromCharCode(c,d):String.fromCharCode(c,d,e);while(k<a.length);return m=n.join(""),decodeURIComponent(escape(m.replace(/\0+$/,"")))});
         });

@@ -291,12 +291,26 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         if (property_exists($gallery, 'photos') && is_array($gallery->photos)) {
             $position = new GridGallery_Photos_Model_Position();
 
-            foreach ($gallery->photos as $index => $row) {
+            /*foreach ($gallery->photos as $index => $row) {
                 $gallery->photos[$index] = $position->setPosition(
                     $row,
                     'gallery',
                     $gallery->id
                 );
+            }*/
+
+            $positions = $position->setPosition(
+                $gallery->photos,
+                'gallery',
+                $gallery->id
+            );
+
+            foreach ($gallery->photos as $index => $row) {
+                foreach ($positions as $pos) {
+                    if($row->id == $pos->photo_id) {
+                        $gallery->photos[$index]->position = $pos->position;
+                    }
+                }
             }
 
             $gallery->photos = $position->sort($gallery->photos);
@@ -372,6 +386,7 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             $this->getLocationUrl() . '/assets/js/frontend.js',
             $this->getLocationUrl() . '/assets/js/jquery.photobox.js',
             $this->getLocationUrl() . '/assets/js/jquery.sliphover.js',
+            'http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js',
         );
 
         foreach ($javascripts as $url) {
@@ -453,15 +468,6 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         $submenuNewGallery = $menu->createSubmenuItem();
         $submenuGalleries = $menu->createSubmenuItem();
 
-        $submenuNewGallery->setCapability('manage_options')
-            ->setMenuSlug('supsystic-gallery&module=galleries&action=showPresets')
-            ->setMenuTitle($lang->translate('New gallery'))
-            ->setPageTitle($lang->translate('New gallery'))
-            ->setModuleName('galleries');
-
-        $menu->addSubmenuItem('newGallery', $submenuNewGallery)
-            ->register();
-
         $submenuGalleries->setCapability('manage_options')
             ->setMenuSlug('supsystic-gallery&module=galleries')
             ->setMenuTitle($lang->translate('Galleries'))
@@ -469,6 +475,15 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             ->setModuleName('galleries');
 
         $menu->addSubmenuItem('galleries', $submenuGalleries)
+            ->register();
+
+        $submenuNewGallery->setCapability('manage_options')
+            ->setMenuSlug('supsystic-gallery&module=galleries&action=showPresets')
+            ->setMenuTitle($lang->translate('New gallery'))
+            ->setPageTitle($lang->translate('New gallery'))
+            ->setModuleName('galleries');
+
+        $menu->addSubmenuItem('newGallery', $submenuNewGallery)
             ->register();
     }
 }

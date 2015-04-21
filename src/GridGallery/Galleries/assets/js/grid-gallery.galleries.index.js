@@ -88,11 +88,11 @@
             }
         });*/
 
-        $(document).keypress(function (e) {
+        /*$(document).keypress(function (e) {
             if (e.which == 13) {
                 submitGallery();
             }
-        });
+        });*/
 
         $(document).ready(function () {
             var $presets = $('.preset:not(.disabled)'),

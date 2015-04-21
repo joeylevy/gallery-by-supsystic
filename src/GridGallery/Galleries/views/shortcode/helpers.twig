@@ -148,6 +148,7 @@
                     color:{{ settings.thumbnail.overlay.foreground }};
                     background-color:{{ settings.thumbnail.overlay.background }};
                     font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};
+                    font-family:{{ settings.thumbnail.overlay.font_family }};
                     {% if settings.thumbnail.overlay.text_align != 3 %}
                         text-align:{{ settings.thumbnail.overlay.text_align|replace(['left', 'right', 'center']) }};
                     {% endif %}
@@ -189,7 +190,7 @@
                                 {% endset %}
 
                                 <a href="{{ videoUrl|trim }}" class="hi-icon gg-video {{ videoIcon }}" style="{{ iconStyle|trim }}">
-                                    Watch the video {{ photo.attachment.caption }}
+                                    {#Watch the video {{ photo.attachment.caption }}#}
                                 </a>
                             {% endif %}
 

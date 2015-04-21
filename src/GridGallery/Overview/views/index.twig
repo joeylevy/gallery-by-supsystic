@@ -65,7 +65,7 @@
                 <h3>Server Settings</h3>
                 <ul class="settings-list">
                     {% for title, element in serverSettings %}
-                        <li class="settings-line">
+                        <li class="settings-line" style="float: none;">
                             <div class="settings-title">{{ title|trim }}:</div>
                             <span>{{ element.value|trim }}</span>
                         </li>

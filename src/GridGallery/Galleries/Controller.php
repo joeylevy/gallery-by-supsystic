@@ -508,6 +508,8 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
             $settings->data = unserialize($config->get('gallery_settings'));
         }
 
+		$fontList = $this->getModel('settings')->getFontsList();
+
         return $this->response(
             '@galleries/settings.twig',
             array(
@@ -516,6 +518,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
                 'id' => $settings->id,
                 // deprecated
                 'preset' => null,
+				'fontList' => $fontList,
             )
         );
     }

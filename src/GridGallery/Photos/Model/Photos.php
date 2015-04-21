@@ -366,6 +366,26 @@ class GridGallery_Photos_Model_Photos extends Rsc_Mvc_Model
         return $photo;
     }
 
+    public function getPhotos($resourcesData)
+    {
+        $query = $this->getQueryBuilder()->select('*')
+            ->from($this->table);
+        $photos = array();
+
+        //var_dump($resourcesData);
+        if($photosList = $this->db->get_results($query->build())) {
+            foreach($resourcesData as $data) {
+                foreach($photosList as $element) {
+                    if($element->id == $data->resource_id) {
+                        array_push($photos, $this->extend($element));
+                    }
+                }
+            }
+        }
+
+        return $photos;
+    }
+
     /**
      * Deletes row(s) by specified field
      * @param string $field The name of the field

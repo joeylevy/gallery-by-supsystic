@@ -460,6 +460,19 @@
         });
     };
 
+    Controller.prototype.toggleColumnsMode = function() {
+        var $toggle = $('[name="area[grid]"]'),
+            $row = $('#generalColumnsRow');
+
+        $toggle.on('change', function() {
+            if($(this).val() == 3) {
+                $row.show();
+            } else {
+                $row.hide();
+            }
+        });
+    };
+
     Controller.prototype.toggleShadow = function () {
         var $table = $('table[name="shadow"]'),
             $toggleRow = $('#useShadowRow'),
@@ -812,6 +825,7 @@
             controller.areaNotifications();
             controller.setInputColor();
             controller.setScroll();
+            controller.toggleColumnsMode();
 
             // Save as preset dialog
             $('#btnSaveAsPreset').on('click', controller.openSaveDialog);
@@ -1246,6 +1260,23 @@
             .on('focusout', $.proxy(function () {
                 this.setProp('figcaption', { opacity: '' });
             }, this));
+
+        $(getSelector(fields.fontFamily)).on('change', $.proxy(function (e) {
+            var fontFamily = $(getSelector(fields.fontFamily)).val();
+            WebFont.load({
+                google: {
+                    families: [fontFamily]
+                }
+            });
+            this.setProp('figcaption', { fontFamily: '"' + fontFamily + '"' + ', serif' });
+        }, this))
+            .trigger('change')
+            .on('focus', $.proxy(function () {
+                this.setProp('figcaption', { opacity: 1 });
+            }, this))
+            .on('focusout', $.proxy(function () {
+                this.setProp('figcaption', { opacity: '' });
+            }, this));
     };
 
     ImagePreview.prototype.initCaption = (function () {
@@ -1257,7 +1288,8 @@
             opacity: 'thumbnail[overlay][transparency]',
             size: 'thumbnail[overlay][text_size]',
             sizeUnit: 'thumbnail[overlay][text_size_unit]',
-            align: 'thumbnail[overlay][text_align]'
+            align: 'thumbnail[overlay][text_align]',
+            fontFamily: 'thumbnail[overlay][font_family]'
         };
 
         $('[name="thumbnail[overlay][enabled]"]').on('change', $.proxy(function(e) {
