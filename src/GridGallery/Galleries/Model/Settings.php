@@ -80,7 +80,7 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
                     $diffOptions = array_diff_assoc($data[$key], $value);
                     $this->saveDiffOptions($stats, $key, $diffOptions);
                     foreach($value as $el => $opt) {
-                        if(is_array($opt)) {
+                        if(is_array($opt) && is_array($data[$key][$el])) {
                             $diffOptions = array_diff_assoc($data[$key][$el], $opt);
                             $this->saveDiffOptions($stats, $key, $diffOptions);
                         }

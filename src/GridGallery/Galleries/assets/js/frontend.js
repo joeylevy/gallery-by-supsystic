@@ -1352,17 +1352,19 @@
         if(columnsNumber) {
             var containerWidth = parseInt(this.$container.width()),
                 spacing = parseInt(this.$elements.css('margin')),
-                scaleHeight = containerWidth / parseInt(this.$container.height()),
+                scaleHeight = parseInt(this.$elements.find('img').height()) / parseInt(this.$elements.width()),
                 elementWidth = null,
                 elementHeight = null;
 
-            containerWidth -= this.$elements.length * 2 * spacing;
+            containerWidth -= columnsNumber * 2 * spacing;
             elementWidth = containerWidth / columnsNumber;
             elementHeight = Math.floor(elementWidth * scaleHeight);
 
             this.$elements.each(function() {
                 $(this).css('width', elementWidth);
+                $(this).find('img').width(elementWidth);
                 $(this).css('height', elementHeight);
+                $(this).find('img').height(elementHeight);
             });
         }
     };

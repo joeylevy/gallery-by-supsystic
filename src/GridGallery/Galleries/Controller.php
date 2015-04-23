@@ -575,7 +575,14 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
             $presets = array();
         }
 
-        array_push($presets, $data);
+		$presetsNames = $this->getModel('preset')->getCatsPresetsNames();
+		$indx = array_search($data['preset']['name'], $presetsNames);
+
+		if($indx) {
+			$presets[$indx-1]['categories'] = $data['categories'];
+		} else {
+			array_push($presets, $data);
+		}
 
         update_option('customCatsPresets', $presets);
 
@@ -630,7 +637,14 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
             $presets = array();
         }
 
-        array_push($presets, $data);
+		$presetsNames = $this->getModel('preset')->getPagesPresetsNames();
+		$indx = array_search($data['preset']['name'], $presetsNames);
+
+		if($indx) {
+			$presets[$indx-1]['pagination'] = $data['pagination'];
+		} else {
+			array_push($presets, $data);
+		}
 
         update_option('customPagesPresets', $presets);
 
@@ -800,6 +814,62 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
             )
         );
     }
+
+	public function getCatsPresetOptionsAction()
+	{
+		if(isset($_POST['route']['selectedPreset'])) {
+			$selectedPreset = $_POST['route']['selectedPreset'];
+			$presetsNames = $this->getModel('preset')->getCatsPresetsNames();
+			$dbPresetOpt = get_option('customCatsPresets');
+			$indx = array_search($selectedPreset, $presetsNames);
+			if($indx) {
+				$presetOptions = $dbPresetOpt[$indx-1]['categories'];
+				return $this->response(
+					Rsc_Http_Response::AJAX,
+					array(
+						'dialogType' => 'customized',
+						'presetName' => $selectedPreset,
+						'presetOptions' => $presetOptions
+					)
+				);
+			}
+		}
+
+		return $this->response(
+			Rsc_Http_Response::AJAX,
+			array(
+				'dialogType' => 'standart'
+			)
+		);
+	}
+
+	public function getPagesPresetOptionsAction()
+	{
+		if(isset($_POST['route']['selectedPreset'])) {
+			$selectedPreset = $_POST['route']['selectedPreset'];
+			$presetsNames = $this->getModel('preset')->getPagesPresetsNames();
+			$dbPresetOpt = get_option('customPagesPresets');
+			$indx = array_search($selectedPreset, $presetsNames);
+			if($indx) {
+				$presetOptions = $dbPresetOpt[$indx-1]['pagination'];
+				return $this->response(
+					Rsc_Http_Response::AJAX,
+					array(
+						'dialogType' => 'customized',
+						'presetName' => $selectedPreset,
+						'presetOptions' => $presetOptions
+					)
+				);
+			}
+		}
+
+		return $this->response(
+			Rsc_Http_Response::AJAX,
+			array(
+				'dialogType' => 'standart'
+			)
+		);
+	}
 
     /**
      * Rewrites @url annotation to the full url.

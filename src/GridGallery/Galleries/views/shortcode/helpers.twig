@@ -10,7 +10,7 @@
         {% endif %};
         margin: {{ settings.area.distance }}px !important;
         {#-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);#}
-    {% if settings.area.grid == '2' or settings.area.grid == '0' %}
+    {% if settings.area.grid == '2' or settings.area.grid == '0' or settings.area.grid == '3' %}
         height:{{ settings.area.photo_height }} ~ {{ settings.area.photo_height_unit|replace(['px', '%']) }};
     {% endif %}
     {% if settings.area.grid == '2' %}
@@ -101,7 +101,7 @@
                 data-tags="{{ tags|trim|replace(' ', '_') }}"
                 data-grid-gallery-type="{% if environment.isPro() and settings.icons.enabled == 'true' %}{% if 'icons' in settings.thumbnail.overlay.effect %}{{ settings.thumbnail.overlay.effect }}{% else %}icons{% endif %}{% elseif settings.thumbnail.overlay.enabled == 'false' %}none{% else %}{{ settings.thumbnail.overlay.effect }}{% endif %}"
                 style="display:none;{{ figureStyle|trim }}">
-            <div class="crop{% if settings.thumbnail.shadow.overlay == '1' and settings.use_shadow == '1' %} image-overlay{% endif %}" style="{% if settings.area.grid == '0' %}width:{{ settings.area.photo_width ~ settings.area.photo_width_unit|replace(['px', '%']) }};
+            <div class="crop{% if settings.thumbnail.shadow.overlay == '1' and settings.use_shadow == '1' %} image-overlay{% endif %}" style="{% if settings.area.grid == '0' or settings.area.grid == '3' %}width:{{ settings.area.photo_width ~ settings.area.photo_width_unit|replace(['px', '%']) }};
                 {% if settings.pagination.enabled == 'true' %}
                     height: 100% !important;
                     {% else %}

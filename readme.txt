@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: photo gallery, responsive, foto gallery, grid, grid gallery, add gallery, album, foto, fotoalbum, galery, image, photo, gird, website gallery, wordpress gallery, gallery plugin, image gallery, responsive gallery, post feed gallery
 Tested up to: 4.2
-Stable tag: 1.1.9
+Stable tag: 1.2.2
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
 
@@ -17,7 +17,7 @@ Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Res
 * Add links, icons and captions
 * Post Feed Gallery and Video Gallery
 * HTML caption option
-* Available with any Wordpress Theme
+* Available with any WordPress Theme
 
 Gallery plugin will help you display your images for maximum effect on your blog or website.
 
@@ -27,9 +27,9 @@ A photo gallery adds an instant professional touch to any WordPress website. But
 
 Gallery by Supsystic is an easy to use gallery plugin that allows you to add simply galleries to your website. The plugin utilizes the WordPress media uploader for images.
 
-Whether you are showcasing images, video or HTML, this gallery will render them beautifully on any platform and any browser size. Variety of responsive image gallery effects and slideshows to better manage and display your photos, screenshots and other forms of images on your site. Some incorporate transition effects, fade-in, fade-out and other effects, as well as thumbnail views of the gallery for faster access, flexibility and ease-of-use to view your site in full all-out browser mode and small-sized smartphone screens.
+Whether you are showcasing images, video or HTML, this gallery will render them beautifully on any platform and any browser size. Variety of responsive image gallery effects and slideshows to better manage and display your photos, screenshots and other forms of images on your site. Some incorporate transition effects, fade-in, fade-out and other effects, as well as thumbnail views of the gallery for faster access, flexibility and ease-of-use to view your site in full all-out browser mode and small-sized smart phone screens.
 
-To make it easier for you to find the right pick for your websites needs, we have put together a preset gallery templates you can choose them when create new gallery and later customize design.
+To make it easier for you to find the right pick for your websites needs, we have put together a presets gallery templates you can choose them when create new gallery and later customize design.
  
 == Installation ==
 
@@ -258,71 +258,93 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 
 == Changelog ==
 
-= 1.1.9 / 21.04.2015
+= 1.2.2 / 23.04.2015 =
+
+ * Hot fixes for new gallery type
+ * Minor changes
+
+= 1.2.1 / 22.04.2015 =
+
+ * Added ability to edit custom gallery presets
+ * Fix for older PHP versions
+
+= 1.1.9 / 21.04.2015 =
+
  * Gallery functional changed
  * Minor fixes
  * New gallery type
- * Attachments load optiomization, position load optimization, overview news link changed
+ * Attachments load optimization, position load optimization, overview news link changed
  * Google fonts added to captions option
  * New gallery themes added
  * Finnish language added
 
-= 1.1.8 / 08.04.2015
+= 1.1.8 / 08.04.2015 =
+
  * Functional changed
  * Minor fixes
  * Captions with HTML saving changed
  * Popup sizes calculations on mobile devices with vimeo videos changed
  * Galleries list fixed
 
-= 1.1.7 / 1.04.2015
+= 1.1.7 / 1.04.2015 =
+
  * Direction aware effect caption changed
  * Functional changed
  * Minor fixes
  * Shortcode insertion button added to tinyMCE editor
  * Shortcode selection dialog added
 
-= 1.1.6 / 27.03.2015
+= 1.1.6 / 27.03.2015 =
+
  * New effects and presets added
  * Functional changed
  * Minor fixes
 
-= 1.1.5 / 25.03.2015
+= 1.1.5 / 25.03.2015 =
+
  * Hot fixes
 
-= 1.1.4 / 24.03.2015
+= 1.1.4 / 24.03.2015 =
+
  * New option Popup Image disable option
  * Gallery overview news fixed
  * Post Feed Gallery notice fixed
  * HTML caption add
 
-= 1.1.4 / 24.03.2015
+= 1.1.4 / 24.03.2015 =
+
  * New option Popup Image disable option
  * Gallery overview news fixed
  * Post Feed Gallery notice fixed
  * HTML caption add
  
-= 1.1.3 / 17.03.2015
+= 1.1.3 / 17.03.2015 =
+
  * External image link added
  * Minor issues fix
 
-= 1.1.2 / 16.03.2015
+= 1.1.2 / 16.03.2015 =
+
  * Debug mode warning fixes
  * Option to toggle popup on mobile added
  * Some spelling issues fixed (including php tag in insert code generation)
  * Other minor issues fix
 
-= 1.1.1 / 11.03.2015
+= 1.1.1 / 11.03.2015 =
+
 * Overview page php 5.2 support added
 * Minor bugs fixed
 * Functional fixes
 
-= 1.1.0 / 09.03.2015
+= 1.1.0 / 09.03.2015 =
+
 * Image upload fixed
 * Gallery shortcode fixed
 * Add Overview page
 * Minor bugs fixed
 
 = 1.0.21 / 6.03.2015 =
+
 * Minor changes
 * Gallery functional fixes
 * Overview page added
@@ -333,10 +355,12 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 * Server configs
 
 = 1.0.20 / 26.02.2015 =
+
 * Minor changes
 * Functional fixes
 
 = 1.0.19 / 20.02.2015 =
+
 * Responsive galery on Iphone fixed
 * Default gallery settings fixed
 * Empty gallery page changed
@@ -347,18 +371,22 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 * Photo gallery plugin by Supsystic compatibility with WordPress 4.1.1
 
 = 1.0.18 =
+
 * Functional fixes
 * Minor issues fixes
 * Shadow settings fixes
 
 = 1.0.17 =
+
 * Functional fixes
 * Core code improvements
 * Installation optimizations
 * Minor issues fixes
 
 = 1.0.16 =
+
 * Functional fixes
 
 = 1.0.15 = 
+
 * Submit to WordPress.org

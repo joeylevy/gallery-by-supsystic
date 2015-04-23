@@ -30,7 +30,7 @@ class SupsysticGallery
 
         /* Create new plugin $environment */
         $pluginPath = dirname(dirname(__FILE__));
-        $environment = new Rsc_Environment('sgg', '1.1.9', $pluginPath);
+        $environment = new Rsc_Environment('sgg', '1.2.2', $pluginPath);
 
         /* Configure */
         $environment->configure(
@@ -58,9 +58,16 @@ class SupsysticGallery
                 'uploads_rw' => true,
                 'jpeg_quality' => 95,
                 'plugin_db_update' => true,
-                'revision' => 140
+                'revision' => 144
             )
         );
+
+        if (!defined('S_YOUR_SECRET_HASH_'. $environment->getPluginName())) {
+            define(
+                'S_YOUR_SECRET_HASH_' . $environment->getPluginName(),
+                'hn48SgUyMN53#jhg7@pomnE9W2O#2m@awmMneuGW3512F@jnkj'
+            );
+        }
 
         $this->environment = $environment;
         $this->alerts = array();

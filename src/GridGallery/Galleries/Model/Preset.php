@@ -176,4 +176,36 @@ class GridGallery_Galleries_Model_Preset extends GridGallery_Core_BaseModel
 
         return $preset;
     }
+
+	/**
+	 * Returns an array of the names of user categories presets.
+	 * @return array
+	 */
+	public function getCatsPresetsNames() {
+		$presetsNames = array();
+		$dbPresetOpt = get_option('customCatsPresets');
+		$i = 1;
+		foreach($dbPresetOpt as $dbPresetName) {
+			$presetsNames[$i] = $dbPresetName['preset']['name'];
+			$i++;
+		}
+
+		return $presetsNames;
+	}
+
+	/**
+	 * Returns an array of the names of user pages presets.
+	 * @return array
+	 */
+	public function getPagesPresetsNames() {
+		$presetsNames = array();
+		$dbPresetOpt = get_option('customPagesPresets');
+		$i = 1;
+		foreach($dbPresetOpt as $dbPresetName) {
+			$presetsNames[$i] = $dbPresetName['preset']['name'];
+			$i++;
+		}
+
+		return $presetsNames;
+	}
 }
