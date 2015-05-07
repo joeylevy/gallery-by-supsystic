@@ -2,8 +2,8 @@
 Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: photo gallery, responsive, foto gallery, grid, grid gallery, add gallery, album, foto, fotoalbum, galery, image, photo, gird, website gallery, wordpress gallery, gallery plugin, image gallery, responsive gallery, post feed gallery
-Tested up to: 4.2
-Stable tag: 1.2.2
+Tested up to: 4.2.2
+Stable tag: 1.2.5
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
 
@@ -16,6 +16,7 @@ Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Res
 * Horizontal, Vertical and Fixed layouts
 * Add links, icons and captions
 * Post Feed Gallery and Video Gallery
+* Carousel gallery
 * HTML caption option
 * Available with any WordPress Theme
 
@@ -27,9 +28,19 @@ A photo gallery adds an instant professional touch to any WordPress website. But
 
 Gallery by Supsystic is an easy to use gallery plugin that allows you to add simply galleries to your website. The plugin utilizes the WordPress media uploader for images.
 
-Whether you are showcasing images, video or HTML, this gallery will render them beautifully on any platform and any browser size. Variety of responsive image gallery effects and slideshows to better manage and display your photos, screenshots and other forms of images on your site. Some incorporate transition effects, fade-in, fade-out and other effects, as well as thumbnail views of the gallery for faster access, flexibility and ease-of-use to view your site in full all-out browser mode and small-sized smart phone screens.
+Whether you are showcasing images, video or HTML, this gallery will render them beautifully on any platform and any browser size. Variety of responsive image gallery effects and slideshows to better manage and display your photos, screenshots and other forms of image gallery on your site. Some incorporate transition effects, fade-in, fade-out and other effects, as well as thumbnail views of the gallery for faster access, flexibility and ease-of-use to view your site in full all-out browser mode and small-sized smartphone screens.
 
 To make it easier for you to find the right pick for your websites needs, we have put together a presets gallery templates you can choose them when create new gallery and later customize design.
+ 
+= Translations in your language =
+
+You have an incredible opportunity to get PRO version for free. Make Translation of the plugin! It will be amazing if you take advantage of this offer!
+ 
+* English
+* French
+* Dutch
+* Finnish
+* Portuguese (Brazil)
  
 == Installation ==
 
@@ -46,8 +57,8 @@ Important! Shortcode must be inserted in a text editor page, and not in the visu
 
 = To install a plugin via FTP, you must =
 
-1. Download the plugin
-2. Unarchive the plugin
+1. Download the gallery plugin
+2. Unarchive the plugin supsystic-grid-gallery.zip
 3. Copy the folder with plugin
 4. Open ftp \wp-content\plugins\
 5. Paste the plug-ins folder in the folder
@@ -55,7 +66,7 @@ Important! Shortcode must be inserted in a text editor page, and not in the visu
 
 == Other Notes ==
 
-= How to Create an Image Gallery in WordPress =
+= How to Create an Photo Gallery in WordPress =
   
 = Step 1: Creating Responsive Grid Gallery =
 
@@ -101,7 +112,7 @@ With responsive photo gallery plugin you can import images from -
  - attach video - it will be displayed in a pop-up image when you click on a picture;
  - add tags for image categories.
  
-Step3: Editing of Photo Gallery settings
+= Step3: Editing of Photo Gallery settings =
 
 To get back to the settings of gallery - сlick “Properties” button.
 
@@ -257,6 +268,21 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 5. Image Circle Gallery
 
 == Changelog ==
+
+= 1.2.5 / 07.05.2015 =
+
+ * PhpCode layout fixed
+ * Caption corrections
+ * Minor changes
+
+= 1.2.4 / 07.05.2015 =
+
+ * Change the appearance of gallery shortcodes for easy copying
+ * Changes & bug-fixing in gallery caption text-align option
+ * Added translations to the French, Dutch, Finnish, Portuguese (Brazil)
+ * Fixed saving the preset
+ * Added option to select caption position
+ * Bug fixes
 
 = 1.2.2 / 23.04.2015 =
 

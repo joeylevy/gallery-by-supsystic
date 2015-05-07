@@ -22,7 +22,7 @@
                 {#<h2 style="margin-left: 10px;padding-bottom: 10px !important;border-bottom: 1px solid;">Gallery list</h2>#}
 
                 {% for gallery in galleries %}
-                    <div id="{{ gallery.id }}" class="gg-item gg-gallery">
+                    <div id="{{ gallery.id }}" class="gg-item gg-gallery" style="height: auto;">
                         <h3 class="gallery-title">{{ gallery.title|title }}</h3>
                         <div class="image">
                             {#<a href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery.id }) }}">#}
@@ -93,22 +93,13 @@
                                 {{ gallery.photos|length + gallery.settings.posts.length }}
                             </div>
                         </h4>
-                        <h4 style="display: inline-block; margin:8px 20px; height: 20px; float: left;">
-                            {{ translate('Shortcode: ') }}
-                            <span title="{{ translate('Select shortcode for the gallery ') ~ gallery.title }}"
-                                  id="shortcode-{{ gallery.id }}}"
-                                  class="gallery-shortcode">[supsystic-gallery id="{{ gallery.id }}" position="center"]
-                            </span>
-                        </h4>
-                        <h4 style="display: inline-block; margin:1px 20px; height: 20px; float: left;">
-                            {{ translate('Phpcode: ')|trim }}
-                            <span title="{{ translate('Select phpcode for the gallery ') ~ gallery.title }}"
-                                  id="phpcode-{{ gallery.id }}}"
-                                  class="gallery-shortcode"
-                                  style="white-space: normal;">
-                                {{ '<?php echo do_shortcode([supsystic-gallery id="' ~ gallery.id ~ '" position="center"]) ?>'|trim }}
-                            </span>
-                        </h4>
+                        <div class="shortcode-wrap">
+                            <div class="shortcode">
+                                Shortcode: <input type="text" id="shortcode-{{ gallery.id }}" class="gallery-shortcode" value="[supsystic-gallery id='{{ gallery.id }}' position='center']" onclick="this.select();" size="50" style="font-size: 12px;" readonly>
+                                <br />
+                                PhpCode: <input type="text" id="phpcode-{{ gallery.id }}" class="gallery-shortcode" value='<?php echo do_shortcode("[supsystic-gallery id={{ gallery.id }} position="center"]") ?>' onclick="this.select();" size="75" style="font-size: 12px;" readonly>
+                            </div>
+                        </div>
                     </div>
                 {% else %}
                     <h3>{{ translate('You have not any galleries') }}</h3>

@@ -50,6 +50,8 @@ a.post .grid-gallery-caption {
 
 .grid-gallery-caption[data-grid-gallery-type="none"] figcaption {
     bottom: 0;
+    left: 0;
+    opacity: 1;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="center"] figcaption {

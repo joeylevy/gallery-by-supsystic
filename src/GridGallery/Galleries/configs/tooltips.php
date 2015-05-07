@@ -4,6 +4,7 @@ return array(
     'tooltips' => array(
         // Area
         'grid-type' => 'There are 3 gallery types:</br>Fixed, Horizontal, Vertical</br><img src=@url/Grid.jpg />',
+        'columns' => 'Number of columns with images on gallery page',
         'distance' => '</br><img src=@url/distance_between_photos.jpg />',
         'area-height' => 'Height',
         /*'area-width' => 'Width',*/

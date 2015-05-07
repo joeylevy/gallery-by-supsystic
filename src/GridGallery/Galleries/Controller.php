@@ -567,34 +567,40 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
      * @return Rsc_Http_Response
      */
     public function saveCatsPresetAction(Rsc_Http_Request $request) {
-        $data = $request->post->all();
+		if(isset($_POST['route']['options'])) {
+			$data = $_POST['route']['options'];
 
-        if(get_option('customCatsPresets')) {
-            $presets = get_option('customCatsPresets');
-        } else {
-            $presets = array();
-        }
+			if(get_option('customCatsPresets')) {
+				$presets = get_option('customCatsPresets');
+			} else {
+				$presets = array();
+			}
 
-		$presetsNames = $this->getModel('preset')->getCatsPresetsNames();
-		$indx = array_search($data['preset']['name'], $presetsNames);
+			$presetsNames = $this->getModel('preset')->getCatsPresetsNames();
+			$indx = array_search($data['preset']['name'], $presetsNames);
 
-		if($indx) {
-			$presets[$indx-1]['categories'] = $data['categories'];
-		} else {
-			array_push($presets, $data);
+			if($indx) {
+				$presets[$indx-1]['categories'] = $data['categories'];
+			} else {
+				array_push($presets, $data);
+			}
+
+			update_option('customCatsPresets', $presets);
+
+			return $this->response(
+				Rsc_Http_Response::AJAX,
+				array(
+					'success' => 'ok',
+				)
+			);
 		}
 
-        update_option('customCatsPresets', $presets);
-
-        return $this->redirect(
-            $this->generateUrl(
-                'galleries',
-                'settings',
-                array(
-                    'gallery_id' => $request->query->get('gallery_id'),
-                )
-            )
-        );
+		return $this->response(
+			Rsc_Http_Response::AJAX,
+			array(
+				'success' => 'error',
+			)
+		);
     }
 
     /**
@@ -629,34 +635,39 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
      * @return Rsc_Http_Response
      */
     public function savePagesPresetAction(Rsc_Http_Request $request) {
-        $data = $request->post->all();
+		if(isset($_POST['route']['options'])) {
+			$data = $_POST['route']['options'];
+			if(get_option('customPagesPresets')) {
+				$presets = get_option('customPagesPresets');
+			} else {
+				$presets = array();
+			}
 
-        if(get_option('customPagesPresets')) {
-            $presets = get_option('customPagesPresets');
-        } else {
-            $presets = array();
-        }
+			$presetsNames = $this->getModel('preset')->getPagesPresetsNames();
+			$indx = array_search($data['preset']['name'], $presetsNames);
 
-		$presetsNames = $this->getModel('preset')->getPagesPresetsNames();
-		$indx = array_search($data['preset']['name'], $presetsNames);
+			if($indx) {
+				$presets[$indx-1]['pagination'] = $data['pagination'];
+			} else {
+				array_push($presets, $data);
+			}
 
-		if($indx) {
-			$presets[$indx-1]['pagination'] = $data['pagination'];
-		} else {
-			array_push($presets, $data);
+			update_option('customPagesPresets', $presets);
+
+			return $this->response(
+				Rsc_Http_Response::AJAX,
+				array(
+					'success' => 'ok',
+				)
+			);
 		}
 
-        update_option('customPagesPresets', $presets);
-
-        return $this->redirect(
-            $this->generateUrl(
-                'galleries',
-                'settings',
-                array(
-                    'gallery_id' => $request->query->get('gallery_id'),
-                )
-            )
-        );
+		return $this->response(
+			Rsc_Http_Response::AJAX,
+			array(
+				'success' => 'error',
+			)
+		);
     }
 
     /**

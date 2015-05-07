@@ -30,7 +30,7 @@ class SupsysticGallery
 
         /* Create new plugin $environment */
         $pluginPath = dirname(dirname(__FILE__));
-        $environment = new Rsc_Environment('sgg', '1.2.2', $pluginPath);
+        $environment = new Rsc_Environment('sgg', '1.2.5', $pluginPath);
 
         /* Configure */
         $environment->configure(
@@ -58,7 +58,7 @@ class SupsysticGallery
                 'uploads_rw' => true,
                 'jpeg_quality' => 95,
                 'plugin_db_update' => true,
-                'revision' => 144
+                'revision' => 159
             )
         );
 

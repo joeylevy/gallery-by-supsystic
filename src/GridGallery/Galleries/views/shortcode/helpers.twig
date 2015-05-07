@@ -148,10 +148,8 @@
                     color:{{ settings.thumbnail.overlay.foreground }};
                     background-color:{{ settings.thumbnail.overlay.background }};
                     font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};
+                    text-align:{{ settings.thumbnail.overlay.text_align }};
                     font-family:{{ settings.thumbnail.overlay.font_family }};
-                    {% if settings.thumbnail.overlay.text_align != 3 %}
-                        text-align:{{ settings.thumbnail.overlay.text_align|replace(['left', 'right', 'center']) }};
-                    {% endif %}
                     {% if settings.thumbnail.overlay.effect == 'none' or settings.thumbnail.overlay.enabled == 'false' %}
                         opacity:1;
                         bottom:0;
@@ -168,7 +166,7 @@
             {% endset %}
 
             <figcaption data-alpha="{{ figcaptionAlpha|trim }}" style="{{ figcaptionStyle|trim }}" >
-                <div class="grid-gallery-figcaption-wrap">
+                <div class="grid-gallery-figcaption-wrap" style="{% if environment.isPro() == false or settings.icons is not defined or settings.icons.enabled == 'false' %}position: relative;{% if settings.thumbnail.overlay.position == 'top' %}top: 0;{% elseif settings.thumbnail.overlay.position == 'middle' %}top: 50%;{% elseif settings.thumbnail.overlay.position == 'bottom' %}top: 90%;{% endif %}{% endif %}">
                     {% if environment.isPro() and settings.icons is defined and settings.icons.enabled == 'true' %}
                         <div class="hi-icon-wrap {{ settings.icons.effect[0:length-1] }} {{ settings.icons.effect }}" data-margin="{{ settings.icons.margin|default(5) }}">
                             {% if photo.attachment.video is defined and photo.attachment.video is not empty %}

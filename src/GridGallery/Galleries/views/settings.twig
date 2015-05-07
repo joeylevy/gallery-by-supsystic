@@ -127,8 +127,7 @@
         </a>
 
         <div class="shortcode-wrap" style="margin-top: 20px">
-            <div class="shortcode">{{ translate('Shortcode:') }}</div>
-            <label id="shortcode" class="shortcode"> [{{ environment.config.get('shortcode_name') }} id={{ gallery.id }} position=center] </label>
+            <div class="shortcode">{{ translate('Shortcode:') }} <input type="text" id="shortcode" class="gallery-shortcode" value="[{{ environment.config.get('shortcode_name') }} id={{ gallery.id }} position=center]" onclick="this.select();" size="42" style="font-size: 12px;" readonly></div>
         </div>
 
         <small style="left:25px;position:absolute;top:10px;display:none;">Oops! Transparency doesn't work in live
@@ -153,10 +152,23 @@
         <div data-tab="area">
             <table class="form-table" name="area">
                 <thead>
-
+				
                 {{ form.row(translate('Gallery Type'),
-                form.select('area[grid]', ['Fixed', 'Vertical', 'Horizontal', 'Fixed Columns'], settings.area.grid, { 'style': 'width: auto;' }), 'grid-type', 'gallery-types') }}
-
+                form.select('area[grid]', ['Fixed', 'Vertical', 'Horizontal', 'Fixed Columns'], settings.area.grid, { 'style': 'width: auto;' }), 'grid-type', 'gallery-types', 'columns') }}
+				<tr id="generalColumnsRow" hidden>
+                    <th scope="row">
+                        <label style="margin: 0 !important;">
+                            {{ translate('Number of Columns') }}
+							{{ form.show_tooltip('columns') }}
+							<br />
+							<label><a href="../gallery-types/" style="color: #0074a2; font-size: 10px; text-decoration: none;">More Info</a> </label>
+                        </label>
+                    </th>
+                    <td>
+                        <input type="text" name="general[columns][number]" value="{{ settings.general.columns.number|default(1) }}">
+                    </td>
+                </tr>
+								
                 {#{{ form.row(environment.translate('Position'),
                 form.select('area[position]', ['Center', 'Left', 'Right'], settings.area.position, { 'style': 'width: 300px;' }), 'grid-type') }}#}
 
@@ -184,16 +196,7 @@
                 form.text('thumbnail[border][radius]', settings.thumbnail.border.radius, { 'style': { 'width': '140px'} })
                 ~ form.select('thumbnail[border][radius_unit]', ['pixels', 'percents'], settings.thumbnail.border.radius_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'border-radius') }}
 
-                <tr id="generalColumnsRow" hidden>
-                    <th scope="row">
-                        <label style="margin: 0 !important;">
-                            {{ translate('Columns') }}
-                        </label>
-                    </th>
-                    <td>
-                        <input type="text" name="general[columns][number]" value="{{ settings.general.columns.number|default(1) }}">
-                    </td>
-                </tr>
+                
 
                 </thead>
             </table>
@@ -594,6 +597,12 @@
                     </td>
                 </tr>
 
+                {{ form.row(translate('Position'),
+                form.select('thumbnail[overlay][position]',
+                {'top': 'Top', 'middle': 'Middle', 'bottom': 'Bottom'},
+                settings.thumbnail.overlay.position,
+                { 'style': 'width: auto;' }), 'overlay-position') }}
+
                 {{ form.row(translate('Background color'),
                 form.color('thumbnail[overlay][background]', settings.thumbnail.overlay.background), 'overlay-background') }}
 
@@ -611,7 +620,7 @@
                 ~ form.select('thumbnail[overlay][text_size_unit]', ['pixels', 'percents', 'ems'], settings.thumbnail.overlay.text_size_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'text-size') }}
 
                 {{ form.row(translate('Text align'),
-                form.select('thumbnail[overlay][text_align]', ['left', 'right', 'center', 'auto'], settings.thumbnail.overlay.text_align, { 'style': 'width: auto;' }), 'text-align') }}
+                form.select('thumbnail[overlay][text_align]', {'left': 'Left', 'right': 'Right', 'center': 'Center', 'auto': 'Auto'}, settings.thumbnail.overlay.text_align, { 'style': 'width: auto;' }), 'text-align') }}
 
                 {{ form.row(translate('Font family'),
                 form.selectv('thumbnail[overlay][font_family]', fontList, settings.thumbnail.overlay.font_family,{ 'style': 'width: auto;' }), 'font-family') }}
@@ -756,8 +765,7 @@
         </div>
 
         {% set figcaptionStyle %}
-        border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }}
-        ;
+            border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};
         {% if environment.isPro() and settings.icons is defined and settings.icons.enabled == 'true' %}
             {% if settings.icons.overlay_enabled == 'true' %}
                 background-color:{{ settings.icons.overlay_color|default('#3498db') }};
@@ -770,7 +778,7 @@
                 text-align:{{ settings.thumbnail.overlay.text_align|replace(['left', 'right', 'center']) }};
             {% endif %}
             {% if settings.thumbnail.overlay.effect == 'none' or settings.thumbnail.overlay.enabled == 'false' %}
-                opacity:1;
+                {#opacity:1;#}
                 bottom:0;
             {% endif %}
         {% endif %}

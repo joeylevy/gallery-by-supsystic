@@ -1235,20 +1235,9 @@
 
         $(getSelector(fields.align)).on('change', $.proxy(function (e) {
             var value = '';
-
-            switch (parseInt($(e.currentTarget).val(), 10)) {
-                case 0:
-                    value = 'left';
-                    break;
-                case 1:
-                    value = 'right';
-                    break;
-                case 2:
-                    value = 'center';
-                    break;
-                case 3:
-                    value = '';
-                    break;
+            
+            if($(e.currentTarget).val() != 'auto') {
+                value = $(e.currentTarget).val();
             }
 
             this.setProp('figcaption', { textAlign: value });
@@ -1277,12 +1266,33 @@
             .on('focusout', $.proxy(function () {
                 this.setProp('figcaption', { opacity: '' });
             }, this));
+
+        $(getSelector(fields.position)).on('change', $.proxy(function (e) {
+            var value = '', key = '', $position = $(getSelector(fields.position));
+
+            switch ($($position).val()) {
+                case 'top':
+                    value = 0;
+                    break;
+                case 'middle':
+                    value = '50%';
+                    break;
+                case 'bottom':
+                    value = '90%';
+                    break;
+            }
+
+            $('div.grid-gallery-figcaption-wrap').css('position', 'relative');
+            $('div.grid-gallery-figcaption-wrap').css('top', value);
+
+        }, this)).trigger('change');
     };
 
     ImagePreview.prototype.initCaption = (function () {
 
         var fields = {
             effect: 'thumbnail[overlay][effect]',
+            position: 'thumbnail[overlay][position]',
             bg: 'thumbnail[overlay][background]',
             fg: 'thumbnail[overlay][foreground]',
             opacity: 'thumbnail[overlay][transparency]',
