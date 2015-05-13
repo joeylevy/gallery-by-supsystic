@@ -240,6 +240,13 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             )
         );
 
+		$ui->add(
+			new GridGallery_Ui_BackendJavascript(
+				'gg-gallery-holder',
+				$this->getLocationUrl() . '/assets/js/holder.js'
+			)
+		);
+
         $ui->add(new GridGallery_Ui_Javascript('jquery'));
 
         //$this->_loadPluginsTextDomain();

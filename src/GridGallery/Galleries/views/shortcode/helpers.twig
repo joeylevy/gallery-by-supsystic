@@ -166,7 +166,7 @@
             {% endset %}
 
             <figcaption data-alpha="{{ figcaptionAlpha|trim }}" style="{{ figcaptionStyle|trim }}" >
-                <div class="grid-gallery-figcaption-wrap" style="{% if environment.isPro() == false or settings.icons is not defined or settings.icons.enabled == 'false' %}position: relative;{% if settings.thumbnail.overlay.position == 'top' %}top: 0;{% elseif settings.thumbnail.overlay.position == 'middle' %}top: 50%;{% elseif settings.thumbnail.overlay.position == 'bottom' %}top: 90%;{% endif %}{% endif %}">
+                <div class="grid-gallery-figcaption-wrap" style="{% if environment.isPro() == false or settings.icons is not defined or settings.icons.enabled == 'false' %}vertical-align:{{ settings.thumbnail.overlay.position }};{% endif %}">
                     {% if environment.isPro() and settings.icons is defined and settings.icons.enabled == 'true' %}
                         <div class="hi-icon-wrap {{ settings.icons.effect[0:length-1] }} {{ settings.icons.effect }}" data-margin="{{ settings.icons.margin|default(5) }}">
                             {% if photo.attachment.video is defined and photo.attachment.video is not empty %}
@@ -204,9 +204,9 @@
                     {% if environment.isPro() == false or settings.icons is not defined or settings.icons.enabled == 'false' %}
                         {% if settings.thumbnail.overlay.enabled == 'true' %}
                             {% if photo.attachment.caption is not empty %}
-                                <span>{{ photo.attachment.caption|raw }}</span>
+                                <span style="font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};">{{ photo.attachment.caption|raw }}</span>
                             {% else %}
-                                <span>{{ photo.attachment.title|raw }}</span>
+                                <span style="font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};">{{ photo.attachment.title|raw }}</span>
                             {% endif %}
                         {% endif %}
                     {% endif %}
@@ -229,9 +229,9 @@
 
                 <div class="caption-with-{% if 'icons' in settings.thumbnail.overlay.effect %}{{ settings.thumbnail.overlay.effect }}{% else %}icons{% endif %}" style="{{ captionStyle }}" data-alpha="{{ settings.thumbnail.overlay.transparency|trim }}">
                     {% if photo.attachment.caption is not empty %}
-                        <span>{{ photo.attachment.caption|raw }}</span>
+                        <span style="font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }}; font-weight: 800;">{{ photo.attachment.caption|raw }}</span>
                     {% else %}
-                        <span>{{ photo.attachment.title }}</span>
+                        <span style="font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};">{{ photo.attachment.title }}</span>
                     {% endif %}
                 </div>
             {% endif %}

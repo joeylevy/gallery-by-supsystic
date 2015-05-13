@@ -1667,7 +1667,58 @@
             }
             return hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
         }
-    }
+    };
+
+    Gallery.prototype.initCaptionCalculations = (function () {
+        this.$container.find('.grid-gallery-caption').each(function () {
+            var figcaption = $(this).find('figcaption'), wrap = figcaption.find('div.grid-gallery-figcaption-wrap'), height = figcaption.innerHeight(),
+                captionStyle = {
+                'height': height,
+                'display': 'table'
+            };
+            figcaption.css(captionStyle);
+            wrap.css('display', 'table-cell');
+        });
+    });
+
+    Gallery.prototype.checkDirection = function($element, e) {
+        var w = $element.width(),
+            h = $element.height(),
+            x = ( e.pageX - $element.offset().left - ( w / 2 )) * ( w > h ? ( h / w ) : 1 ),
+            y = ( e.pageY - $element.offset().top - ( h / 2 )) * ( h > w ? ( w / h ) : 1 );
+
+        return Math.round(( ( ( Math.atan2(y, x) * (180 / Math.PI) ) + 180 ) / 90 ) + 3) % 4;
+    };
+
+    Gallery.prototype.initCaptionEffects = (function () {
+        var self = this;
+
+        if(this.$elements.data('grid-gallery-type') == 'cube') {
+            this.$elements.on('mouseenter mouseleave', function(e) {
+                var $figcaption = $(this).find('figcaption'),
+                    direction = self.checkDirection($(this), e),
+                    classHelper = null;
+
+                switch (direction) {
+                    case 0:
+                        classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-top';
+                        break;
+                    case 1:
+                        classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-right';
+                        break;
+                    case 2:
+                        classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-bottom';
+                        break;
+                    case 3:
+                        classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-left';
+                        break;
+                }
+                $figcaption.removeClass()
+                    .addClass(classHelper);
+
+            });
+        }
+    });
 
     Gallery.prototype.init = (function () {
         this.$container.imagesLoaded($.proxy(function () {
@@ -1691,6 +1742,9 @@
 
             this.initWookmark();
             this.initSlider();
+
+            this.initCaptionCalculations();
+            this.initCaptionEffects();
         }, this));
     });
 

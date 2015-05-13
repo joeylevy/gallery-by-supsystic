@@ -537,6 +537,7 @@
                 'phophorus-rotate': 'Phophorus Rotate',
                 'phophorus-offset': 'Phophorus Offset',
                 'phophorus-scale': 'Phophorus Scale',
+                'cube': 'Cube',
                 } %}
 
                 {% set iconsWithCaptionsEffects = {
@@ -789,7 +790,7 @@
                 {% for type, name in effects %}
                     {% if type != 'direction-aware' %}
                         <figure class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
-                            <img src="http://placehold.it/150/28282a/f7f7f7&text={{ name }}" class="dialog-image"/>
+                            <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image">
                             <figcaption style="{{ figcaptionStyle|trim }}">
                                 <div class="grid-gallery-figcaption-wrap">
                                     <span>{{ name }}</span>
@@ -808,7 +809,7 @@
                                 <div class="box__bottom">Bottom → Top</div>
                                 <div class="box__center">
                                 </div>
-                                <img src="http://placehold.it/150/28282a/f7f7f7&text={{ name }}" class="dialog-image"/>
+                                <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image">
                             </div>
                             <div class="select-element">
                                 {{ translate('Select') }}
@@ -822,7 +823,7 @@
                 {% block iconsEffects %}
                     {% for type, name in iconsWithCaptionsEffects %}
                         <figure class="grid-gallery-caption{% if environment.isPro() == false %} disabled{% endif %}" data-grid-gallery-type="{{ type }}">
-                            <img src="http://placehold.it/150/28282a/f7f7f7&text={{ name }}" class="dialog-image"/>
+                            <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image"/>
                             <figcaption style="{{ figcaptionStyle|trim }}">
                                 <div style="width: 32px; height: 32px; border: 1px solid white; border-radius: 50%; margin-top: 30%;">
                                     <a href="{% if environment.isPro() == false %}http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=icons&utm_campaign=gallery{% else %}#{% endif %}" class="{% if environment.isPro() == false %}button{% endif %}" style="margin-top: 40px; margin-left: 5px; margin-right: 5px;">
