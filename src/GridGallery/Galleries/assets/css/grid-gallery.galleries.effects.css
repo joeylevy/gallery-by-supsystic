@@ -547,7 +547,7 @@ a.post .grid-gallery-caption {
 }
 
 .grid-gallery-caption[data-grid-gallery-type="revolving-door-left"] {
-    overflow: visible;
+    /*overflow: visible;*/
 }
 
 .grid-gallery-caption[data-grid-gallery-type="revolving-door-left"] figcaption {
@@ -592,7 +592,7 @@ a.post .grid-gallery-caption {
 }
 
 .grid-gallery-caption[data-grid-gallery-type="revolving-door-right"] {
-    overflow: visible;
+    /*overflow: visible;*/
 }
 
 .grid-gallery-caption[data-grid-gallery-type="revolving-door-right"] figcaption {
@@ -756,7 +756,7 @@ a.post .grid-gallery-caption {
 }
 
 .grid-gallery-caption[data-grid-gallery-type="guillotine-reverse"] {
-    overflow: visible;
+    /*overflow: visible;*/
 }
 
 .grid-gallery-caption[data-grid-gallery-type="guillotine-reverse"] figcaption {

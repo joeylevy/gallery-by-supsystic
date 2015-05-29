@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Class Rsc_Resolver
- * Modules resolver
- *
- * @package Rsc
- * @author Artur Kovalevsky
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 class Rsc_Resolver
 {
 
@@ -45,6 +38,7 @@ class Rsc_Resolver
         $this->environment = $environment;
         $this->modules = new Rsc_Common_Collection();
         $this->request = new Rsc_Http_Request();
+        $this->routes = array();
     }
 
     /**

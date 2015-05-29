@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Class Rsc_Mvc_Controller
- * Base controller
- *
- * @package Rsc\Mvc
- * @author Artur Kovalevsky
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 class Rsc_Mvc_Controller
 {
 

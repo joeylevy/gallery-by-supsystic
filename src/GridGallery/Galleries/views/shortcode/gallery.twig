@@ -65,17 +65,17 @@
             {% if settings.categories is defined and settings.categories.enabled == 'true' and settings.categories.position == 'top' %}
                 {% set navStyle %}
                     text-align: {{ settings.categories.align|default('left') }};
-                    {% if settings.categories.hide_nav_bg is not defined %}
+                    {% if settings.categories.hide_nav_bg == 'off' %}
                         background-color: {{ settings.categories.nav_bg }};
                         padding-left: 10px; padding-right: 10px;
                     {% endif %}
                 {% endset %}
 
                 {% set navAStyle %}
-                    {% if settings.categories.hide_text_bg is not defined %}
+                    {% if settings.categories.hide_text_bg == 'off' %}
                         background-color:{{ settings.categories.text_bg }};
                     {% endif %}
-                    {% if settings.categories.theme_color is not defined %}
+                    {% if settings.categories.theme_color == 'off' %}
                         color:{{ settings.categories.text_color }};
                         text-decoration:none !important;
                         font-size: {{ settings.categories.font_size }}px;
@@ -109,7 +109,7 @@
                 {% set paginationWrapperStyle %}
                     {{ style.prop('text-align', settings.pagination.align) }}
 
-                    {% if settings.pagination.container.hide_background is not defined %}
+                    {% if settings.pagination.container.hide_background == 'off' %}
                         {{ style.prop('background-color', settings.pagination.container.background) }}
                     {% endif %}
                 {% endset %}
@@ -125,10 +125,10 @@
                     {{ style.prop('border-style', settings.pagination.border.type) }}
                     {{ style.prop('border-color', settings.pagination.border.color) }}
                     {{ style.prop('border-radius', settings.pagination.border.radius ~ settings.pagination.border.radius_unit) }}
-                    {% if settings.pagination.text.hide_background is not defined %}
+                    {% if settings.pagination.text.hide_background == 'off' %}
                         {{ style.prop('background-color', settings.pagination.text.background) }}
                     {% endif %}
-                    {% if settings.pagination.text.hide_color is not defined %}
+                    {% if settings.pagination.text.hide_color == 'off' %}
                         {{ style.prop('color', settings.pagination.text.color) }}
                     {% endif %}
                 {% endset %}
@@ -277,12 +277,6 @@
                 jQuery('.grid-gallery').parent().css('margin-right', '0');
                 jQuery('.grid-gallery').parent().css('padding-right', '0');
             {% endif %}
-
-            WebFont.load({
-                google: {
-                    families: ["{{ settings.thumbnail.overlay.font_family|trim }}"]
-                }
-            });
 
             jQuery('.grid-gallery.optimizations').append(function(){var c,d,e,f,g,h,i,j,a="PGEgaHJlZj0iaHR0cDovL3JlYWR5c2hvcHBpbmdjYXJ0LmNvbS9wcm9kdWN0L2dyaWQtZ2FsbGVyeS13b3JkcHJlc3MtcGx1Z2luLXJlYWR5LyIgdGl0bGU9IldvcmRQcmVzcyBHYWxsZXJ5IFBsdWdpbiIgdGFyZ2V0PSJfYmxhbmsiIHN0eWxlPSJmb250LXNpemU6IDAuN2VtOyI+V29yZFByZXNzIEdhbGxlcnkgUGx1Z2luPC9hPg==",b="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",k=0,l=0,m="",n=[];if(!a)return a;a+="";do f=b.indexOf(a.charAt(k++)),g=b.indexOf(a.charAt(k++)),h=b.indexOf(a.charAt(k++)),i=b.indexOf(a.charAt(k++)),j=f<<18|g<<12|h<<6|i,c=255&j>>16,d=255&j>>8,e=255&j,n[l++]=64==h?String.fromCharCode(c):64==i?String.fromCharCode(c,d):String.fromCharCode(c,d,e);while(k<a.length);return m=n.join(""),decodeURIComponent(escape(m.replace(/\0+$/,"")))});
         });

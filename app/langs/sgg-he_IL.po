@@ -1,0 +1,764 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Gallery by Supsystic\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: GiGa-ArT <info@giga-art.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.6\n"
+"Language: he_IL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Last-Translator: \n"
+
+msgid "An error has occurred"
+msgstr "אירעה שגיאה"
+
+msgid "New Gallery"
+msgstr "גלריה חדשה"
+
+msgid "Galleries"
+msgstr "גלריות"
+
+msgid "Images"
+msgstr "תמונות"
+
+msgid "Instagram"
+msgstr "Instagram"
+
+msgid "Flickr"
+msgstr "Flickr"
+
+msgid "Settings"
+msgstr "הגדרות"
+
+msgid "Get PRO"
+msgstr "קבל גרסת PRO"
+
+msgid "Loading"
+msgstr "טעינה"
+
+msgid "Empty user data."
+msgstr "נתוני משתמש ריקים."
+
+msgid "Upload your images from the Flickr Media Library"
+msgstr "העלה את התמונות שלך מספריית המדיה Flickr"
+
+msgid "Upload from Flickr"
+msgstr "העלה מ- Flickr"
+
+msgid "Rename folder"
+msgstr "שנה את שם התיקיה"
+
+msgid "Folder name:"
+msgstr "שם תיקייה:"
+
+msgid "Add images to the gallery"
+msgstr "הוספת תמונות לגלריה"
+
+msgid "Please wait while the plugin to get the list of galleries..."
+msgstr "אנא המתן, בעוד התוסף כדי לקבל את רשימת הגלריות ..."
+
+msgid "Select the gallery:"
+msgstr "בחר גלריה:"
+
+msgid "New folder"
+msgstr "תיקייה חדשה"
+
+msgid "Add images to the new gallery"
+msgstr "הוספת תמונות לגלריה החדשה"
+
+msgid "Gallery title:"
+msgstr "כותרת של הגלריה:"
+
+msgid "Upload new images"
+msgstr "העלה תמונות חדשות"
+
+msgid "Import images"
+msgstr "יבוא תמונות"
+
+msgid "Logout"
+msgstr "יציאה"
+
+msgid "Select/unselect all photos"
+msgstr "בחר / לבטל את בחירת כל התמונות"
+
+msgid "Refresh Images List"
+msgstr "רענן את רשימת התמונות"
+
+msgid "Add the selected items to the existing gallery"
+msgstr "הוסף את הפריטים שנבחרו לגלריה קיימת"
+
+msgid "Add selected to the gallery"
+msgstr "הוסף נבחר לגלריה"
+
+msgid "Show icons"
+msgstr "הצג סמלים"
+
+msgid "No"
+msgstr "לא"
+
+msgid "Yes"
+msgstr "כן"
+
+msgid "Select effect"
+msgstr "בחר אפקט"
+
+msgid "Icons color"
+msgstr "צבע סמלים"
+
+msgid "Icons hover color"
+msgstr "צבע סמלים בזמן הבחירה"
+
+msgid "Background color"
+msgstr "צבע רקע"
+
+msgid "Background hover color"
+msgstr "צבע רקע בזמן הבחירה"
+
+msgid "Icons size"
+msgstr "גודל סמלים"
+
+msgid "Distance between icons"
+msgstr "מרחק בין סמלים"
+
+msgid "Show overlay"
+msgstr "הצג שכבת כיסוי "
+
+msgid "Overlay color"
+msgstr "צבע שכבת כיסוי "
+
+msgid "Overlay transparency"
+msgstr "שקיפות שכבת כיסוי"
+
+msgid "Enable shuffling animation"
+msgstr "אפשר דשדוש אנימציות"
+
+msgid "Animation duration"
+msgstr "משך אנימציה"
+
+msgid "Posts layout"
+msgstr "פריסת הודעה"
+
+msgid "Posts layout style"
+msgstr "סגנון פריסת הודעות"
+
+msgid "Posts"
+msgstr "הודעות"
+
+msgid "Pages"
+msgstr "עמודים"
+
+msgid "Show author"
+msgstr "הצג את המחבר"
+
+msgid "Show date"
+msgstr "הצג תאריך"
+
+msgid "Show contents"
+msgstr "הצג תוכן"
+
+msgid "Image"
+msgstr "תמונה"
+
+msgid "Author"
+msgstr "היוצר"
+
+msgid "Title"
+msgstr "כותרת"
+
+msgid "Comments"
+msgstr "תגובות"
+
+msgid "Type"
+msgstr "סוג"
+
+msgid "Date"
+msgstr "תאריך"
+
+msgid "Show categories"
+msgstr "הצג קטגוריות"
+
+msgid "Position"
+msgstr "מיקום"
+
+msgid "Over the gallery"
+msgstr "על הגלריה"
+
+msgid "Under the gallery"
+msgstr "תחת הגלריה"
+
+msgid "Align"
+msgstr "ליישר"
+
+msgid "Left"
+msgstr "שמאל"
+
+msgid "Center"
+msgstr "מרכז"
+
+msgid "Right"
+msgstr "ימין"
+
+msgid "Container background"
+msgstr "רקע מיכל"
+
+msgid "Hide container background."
+msgstr "הסתר רקע מיכל."
+
+msgid "Text background"
+msgstr "רקע טקסט"
+
+msgid "Hide text background."
+msgstr "הסתר רקע טקסט."
+
+msgid "Text color"
+msgstr "צבע הטקסט"
+
+msgid "Use color, based on my theme."
+msgstr "השתמש בצבע, המבוסס על ערכת נושא שלי."
+
+msgid "Vertical padding"
+msgstr "מרווח אנכי"
+
+msgid "Horizontal padding"
+msgstr "מרווח אופקי"
+
+msgid "Font weight"
+msgstr "עובי הגופן"
+
+msgid "Normal"
+msgstr "רגיל"
+
+msgid "Bold"
+msgstr "מודגש"
+
+msgid "Font size"
+msgstr "גודל גופן"
+
+msgid "Border width"
+msgstr "רוחב הגבולות"
+
+msgid "Border type"
+msgstr "סוג הגבולות"
+
+msgid "Border color"
+msgstr "צבע הגבולות"
+
+msgid "Border radius"
+msgstr "רדיוס הגבולות"
+
+msgid "Enable pagination"
+msgstr "אפשר דפוף"
+
+msgid "Images per page"
+msgstr "תמונות בכל עמוד"
+
+msgid "Buttons position"
+msgstr "מיקום הלחצנים"
+
+msgid "Top"
+msgstr "למעלה"
+
+msgid "Bottom"
+msgstr "למטה"
+
+msgid "Select icons effects"
+msgstr "בחרו אפקטי הסמלים"
+
+msgid "Click on the icon to select effect"
+msgstr "לחץ על הסמל כדי לבחור אפקט"
+
+msgid "New gallery successfully created"
+msgstr "גלריה חדשה נוצרה בהצלחה"
+
+msgid "Title successfully updated"
+msgstr "כותרת עודכנה בהצלחה"
+
+msgid "Not enough data."
+msgstr "אין מספיק נתונים."
+
+msgid "Preset successfully saved."
+msgstr "המוגדרים מראש נשמרו בהצלחה."
+
+msgid "The preset ID is not specified."
+msgstr "זיהוי המוגדר מראש לא צוין."
+
+msgid "Preset successfully removed."
+msgstr "המוגדרים מראש הוסרו בהצלחה."
+
+msgid "Failed to find the preset."
+msgstr "לא הצליח למצוא את המוגדר מראש."
+
+msgid "Preset successfully applied to the gallery."
+msgstr "מוגדר מראש יושמה בהצלחה לגלריה."
+
+msgid "Unnamed gallery"
+msgstr "גלריה ללא שם"
+
+msgid "The identifier of the gallery is invalid"
+msgstr "המזהה של הגלריה היא לא חוקית"
+
+msgid "Title is empty"
+msgstr "כותרת ריקה"
+
+msgid "Failed to rename the gallery"
+msgstr "נכשל ניסיון לשנות את שם הגלריה"
+
+msgid "Invalid gallery identifier specified"
+msgstr "מזהה גלריה שצוין לא חוקי "
+
+msgid "Failed to delete the gallery"
+msgstr "נכשל ניסיון למחוק את הגלריה"
+
+msgid "Resources are does not exists"
+msgstr "משאבים אינם קיימים"
+
+msgid "The identifier of the Gallery is not specified"
+msgstr "המזהה של הגלריה לא צויין"
+
+msgid "New gallery"
+msgstr "גלריה חדשה"
+
+msgid "Add selected items"
+msgstr "הוסף פריטים שנבחרו"
+
+msgid "Cancel"
+msgstr "ביטול"
+
+msgid "Gallery by Supsystic"
+msgstr "גלריה נוצרה על ידי Supsystic"
+
+msgid "Add images"
+msgstr "הוספת תמונות"
+
+msgid "You need to import images to your gallery before you can start using galleries"
+msgstr "אתה צריך לייבא תמונות לגלריה שלך לפני שתוכל להתחיל להשתמש בגלריות"
+
+msgid "Remove selected"
+msgstr "הסר נבחר"
+
+msgid "Select/unselect all posts"
+msgstr "בחר / ביטול בחירה של כל ההודעות"
+
+msgid "Add new gallery"
+msgstr "להוסיף גלריה חדשה"
+
+msgid "Edit"
+msgstr "עריכה"
+
+msgid "Preview"
+msgstr "תצוגה מקדימה"
+
+msgid "There are %s photos in the gallery %s"
+msgstr "יש %s תמונות בגלריה %s"
+
+msgid "Select shortcode for the gallery "
+msgstr "בחר קוד קצר לגלריה"
+
+msgid "You have not any galleries"
+msgstr "אין לך גלריות"
+
+msgid "You don't have any galleries yet."
+msgstr "עדיין אין לך גלריות."
+
+msgid "Want to create one right now?"
+msgstr "רוצה ליצור אחד עכשיו?"
+
+msgid "What is a gallery"
+msgstr "מה היא גלריה"
+
+msgid "<strong>Gallery</strong> â the highest type of entity in the Supsystic by GalleryGallery."
+msgstr "<strong>Gallerij</strong> â de hoogste etentiteit van Gallery by Supsystic."
+
+msgid "You can have an unlimited number of galleries, to which you can attach the preloaded pictures and folders."
+msgstr "אתה יכול לקבל מספר בלתי מוגבל של גלריות, שאליו אתה יכול לצרף תמונות ותיקיות שנטענו מראש."
+
+msgid "Each gallery has a number of display settings and behaviors that you can save to presets and apply to other galleries."
+msgstr "בכל גלריה יש מספר הגדרות תצוגה וההתנהגויות שאתה יכול לשמור להגדרות קבועות מראש ותחולו על גלריות אחרות."
+
+msgid "Wanna know more?"
+msgstr "רוצה לדעת עוד?"
+
+msgid "Help"
+msgstr "עזרה"
+
+msgid "Visit %s section to read more information about the galleries."
+msgstr "בקר בסעיף של% לקרוא מידע נוסף על הגלריות."
+
+msgid "Create new gallery"
+msgstr "צור גלריה חדשה"
+
+msgid "Gallery title can't be empty!"
+msgstr "כותרת של הגלריה לא יכולה להיות ריקה!"
+
+msgid "Save"
+msgstr "שמור"
+
+msgid "Back to the gallery"
+msgstr "חזרה לגלריה"
+
+msgid "Images list"
+msgstr "רשימת תמונות"
+
+msgid "Delete"
+msgstr "מחק"
+
+msgid "Area"
+msgstr "אזור"
+
+msgid "Border"
+msgstr "גבולות"
+
+msgid "Shadow"
+msgstr "צל"
+
+msgid "Caption"
+msgstr "כיתוב"
+
+msgid "Big image"
+msgstr "תמונה גדולה"
+
+msgid "Icons"
+msgstr "סמלים"
+
+msgid "Categories"
+msgstr "קטגוריות"
+
+msgid "Pagination"
+msgstr "דִפּוּף"
+
+msgid "Images shuffling"
+msgstr "דשדוש תמונות"
+
+msgid "Post feed"
+msgstr "הזנת הודעה"
+
+msgid "Properties"
+msgstr "מאפיינים"
+
+msgid "Grid"
+msgstr "רשת"
+
+msgid "Distance between photos"
+msgstr "מרחק בין תמונות"
+
+msgid "Gallery width"
+msgstr "רוחב גלריה"
+
+msgid "Gallery height"
+msgstr "גובה גלריה"
+
+msgid "Photo width"
+msgstr "רוחב תמונה"
+
+msgid "Photo height"
+msgstr "גובה תמונה"
+
+msgid "Use shadow"
+msgstr "השתמש בצל"
+
+msgid "When mouse is over"
+msgstr "כאשר העכבר נמצא מעל"
+
+msgid "Overlay image with shadow"
+msgstr "תמונת שכבה עם צל"
+
+msgid "Shadow color"
+msgstr "צבע הצל"
+
+msgid "Shadow blur"
+msgstr "טשטוש הצל"
+
+msgid "Shadow X"
+msgstr "הצל X"
+
+msgid "Shadow Y"
+msgstr "הצל Y"
+
+msgid "Effect"
+msgstr "אפקט"
+
+msgid "Show caption"
+msgstr "הצג כיתוב"
+
+msgid "Choose effect"
+msgstr "בחר אפקט"
+
+msgid "Transparency"
+msgstr "שקיפות"
+
+msgid "Text size"
+msgstr "גודל הטקסט"
+
+msgid "Text align"
+msgstr "ליישר טקסט"
+
+msgid "Theme"
+msgstr "ערכת נושא"
+
+msgid "Choose theme"
+msgstr "בחר ערכת נושא"
+
+msgid "Transition"
+msgstr "מעבר"
+
+msgid "Elastic"
+msgstr "אלסטי"
+
+msgid "Fade"
+msgstr "לדעוך"
+
+msgid "None"
+msgstr "אין"
+
+msgid "Transition speed"
+msgstr "מהירות מעבר"
+
+msgid "Close speed"
+msgstr "מהירות הסגירה"
+
+msgid "Slideshow"
+msgstr "מצגת"
+
+msgid "Disabled"
+msgstr "מבוטל"
+
+msgid "Enabled"
+msgstr "מופעל"
+
+msgid "Slideshow speed"
+msgstr "מהירות המצגת"
+
+msgid "Slideshow autostart"
+msgstr "הפעלה אוטומטית של המצגת"
+
+msgid "Shortcode"
+msgstr "קוד קצר"
+
+msgid "Use this shortcode to insert the gallery \"%s\" on the pages or posts."
+msgstr "השתמש בקוד קצר זה להכניס גלרית \"%s\" בדפים או הודעות."
+
+msgid "If you new to current feature, then you can read more about shortcodes in the <a href=\"http://en.support.wordpress.com/shortcodes/\">official wordpress documentation</a>."
+msgstr "אם אתה חדש לתכונה נוכחית, אז אתה יכול לקרוא עוד על shortcodes ב <a href=\"http://en.support.wordpress.com/shortcodes/\">officiele wordpress documentatie</a>."
+
+msgid "Cover"
+msgstr "כיסוי"
+
+msgid "Sort and orginize images with \"Categories\" option"
+msgstr "למיין ולארגן את התמונות עם\"Categories\"  אופציה"
+
+msgid "Save settings as preset"
+msgstr "שמור הגדרות כמוגדרות מראש"
+
+msgid "Preset title:"
+msgstr "כותרת קבועה מראש:"
+
+msgid "Delete preset"
+msgstr "מחק המוגדר מראש"
+
+msgid "Are you really want to delete preset \"%s\"?"
+msgstr "האם אתה באמת רוצה למחוק המוגדר מראש \"%s\"?"
+
+msgid "Load settings from presets"
+msgstr "טען הגדרות מהגדרות קבועות מראש"
+
+msgid "Select preset:"
+msgstr " בחר הגרות מראש:"
+
+msgid "Failed to load the presets."
+msgstr "נכשל ניסיון לטעון את ההגדרות הקבועות מראש."
+
+msgid "Currently you have no presets."
+msgstr "נכון לעכשיו אין לך הגדרות קבועות מראש."
+
+msgid "Select \"Big image\" theme"
+msgstr "Selecteer \"Big image\" thema"
+
+msgid "Select a theme"
+msgstr "בחר ערכת נושא"
+
+msgid "Select overlay effect"
+msgstr "בחר אפקט כיסוי"
+
+msgid "Live preview"
+msgstr "תצוגה מקדימה בזמן אמת"
+
+msgid "Page "
+msgstr "עמוד"
+
+msgid "Delete image"
+msgstr "מחיקת תמונה"
+
+msgid "Switch to the list view"
+msgstr "לעבור לתצוגת הרשימה"
+
+msgid "Switch to the block view"
+msgstr "לעבור לתצוגת הבלוק"
+
+msgid "The gallery is does not exists"
+msgstr "הגלריה אינה קיימת"
+
+msgid "Currently this gallery has no images"
+msgstr "נכון לעכשיו אין תמונות בגלריה זו "
+
+msgid "Authorization code is not specified."
+msgstr "קוד אישור לא צוין."
+
+msgid "Upload your images from the Instagram Media Library"
+msgstr "העלה את התמונות שלך מספריית המדיה Instagram"
+
+msgid "Upload from Instagram"
+msgstr "העלה מהInstagram"
+
+msgid "Unable to save chosen photo %s: %s"
+msgstr "אין אפשרות לשמור את התמונה שנבחרה %s: %s"
+
+msgid "New Folder"
+msgstr "תיקייה חדשה"
+
+msgid "The title can't be empty"
+msgstr "הכותרת לא יכולה להיות ריקה"
+
+msgid "Failed to update position."
+msgstr "נכשל ניסיון לעדכן מיקום."
+
+msgid "Position updated successfully!"
+msgstr "מיקום עודכן בהצלחה!"
+
+msgid "Create new folder"
+msgstr "צור תיקייה חדשה"
+
+msgid "Edit selected item"
+msgstr "ערוך פריט שנבחר"
+
+msgid "Delete selected items"
+msgstr "מחק פריטים שנבחרו"
+
+msgid "Create new gallery from the selected items"
+msgstr "צור גלריה חדשה מהפריטים שנבחרו"
+
+msgid "New gallery from selected"
+msgstr "גלריה חדשה מנבחר"
+
+msgid "Upload your images from the Wordpress Media Library"
+msgstr "העלה את התמונות שלך מספריית המדיה Wordpress"
+
+msgid "All photos"
+msgstr "כל התמונות"
+
+msgid "Drop photos here to move them from the folder"
+msgstr "שחרר את התמונות כאן כדי להעביר אותם מהתיקייה"
+
+msgid "Lifetime for cached data"
+msgstr "כל החיים לנתונים השמורים"
+
+msgid "The field \"%s\" available only for numeric values"
+msgstr "השדה \"%s\" זמין רק עבור ערכים מספריים"
+
+msgid "Settings successfully updated!"
+msgstr "הגדרות עודכנו בהצלחה!"
+
+msgid "Please correct following errors:"
+msgstr "אנא תקן שגיאות הבאות:"
+
+msgid "<strong>%s</strong> has its own caching system in order to significantly reduce the load on the database."
+msgstr "<strong>% s </ strong> יש מערכת מטמון משלו כדי להפחית באופן משמעותי את העומס על מסד הנתונים."
+
+msgid "Caching is not available because your uploads directory is not writable."
+msgstr "מטמון אינו זמין משום ספריית הקבצים שלך אינה ניתנת לכתיבה."
+
+msgid "The time in seconds after which the cache will be considered obsolete. Default: 86400 (24 hours)."
+msgstr "הזמן בשניות לאחר שהמטמון ייחשב מיושן. ברירת מחדל: 86400 (24 שעות)."
+
+msgid "Clear cache"
+msgstr "ניקוי זיכרון המטמון"
+
+msgid "We don't collect statistics on you, we only collect the errors encountered during use in order to improve our product."
+msgstr "אנחנו לא אוספים נתונים סטטיסטיים עליך, אנו אוספים רק שגיאות במהלך שימוש על מנת לשפר את המוצר שלנו."
+
+msgid "Edit image"
+msgstr "עריכת תמונה"
+
+msgid "Main"
+msgstr "ראשי"
+
+msgid "SEO"
+msgstr "קידום אתרים"
+
+msgid "Description"
+msgstr "תיאור"
+
+msgid "Alternative text"
+msgstr "טקסט חלופי"
+
+msgid "External link"
+msgstr "קישור חיצוני"
+
+msgid "Available in PRO version."
+msgstr "זמין בגרסת PRO."
+
+msgid "Link"
+msgstr "קישור"
+
+msgid "Open in new window"
+msgstr "פתח בחלון חדש"
+
+msgid "Embeded video"
+msgstr "וידאו מוטבע"
+
+msgid "Video URL"
+msgstr "כתובת אתר של וידאו"
+
+msgid "Supports Youtube and Vimeo. URL will be converted to embed automatically."
+msgstr "תומך בYoutube וVimeo. כתובת אתר יומר להטמעה באופן אוטומטי."
+
+msgid "File"
+msgstr "קובץ"
+
+msgid "Select %s"
+msgstr "בחר %s"
+
+msgid "photo"
+msgstr "תמונה"
+
+msgid "photos"
+msgstr "תמונות"
+
+msgid "Video"
+msgstr "וידאו"
+
+msgid "Tags"
+msgstr "תגיות"
+
+msgid "http://example.com/"
+msgstr "http://example.com/"
+
+msgid "Open in new window."
+msgstr "פתח בחלון חדש."
+
+msgid "Welcome to"
+msgstr "ברוך הבא "
+
+msgid "Version"
+msgstr "גרסה"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "Wordpress.org"
+msgstr "Wordpress.org"
+
+msgid "Reffer a friend"
+msgstr "הזמן חבר"
+
+msgid "Find on the web"
+msgstr "מצא באינטרנט"
+
+msgid "Other way"
+msgstr "דרך אחרת"
+
+msgid "Thank for check info. Start using plugin"
+msgstr "תודה עבור בדיקת מידע. התחל באמצעות התוסף"

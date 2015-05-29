@@ -393,7 +393,7 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             $this->getLocationUrl() . '/assets/js/frontend.js',
             $this->getLocationUrl() . '/assets/js/jquery.photobox.js',
             $this->getLocationUrl() . '/assets/js/jquery.sliphover.js',
-            'http://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js',
+            'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js',
         );
 
         foreach ($javascripts as $url) {

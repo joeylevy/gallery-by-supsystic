@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Interface Rsc_Form_Rule_Interface
- * Interface for validation rules
- *
- * @package Rsc\Form\Rule
- * @author Artur Kovalevsky
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 interface Rsc_Form_Rule_Interface
 {
     /**

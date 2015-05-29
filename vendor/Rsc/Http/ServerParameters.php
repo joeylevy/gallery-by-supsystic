@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Class Rsc_Http_ServerParameters
- * Basic request parameters extension for server globals
- *
- * @package Rsc\Http
- * @author Artur Kovalevsky
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 class Rsc_Http_ServerParameters extends Rsc_Http_Parameters
 {
 

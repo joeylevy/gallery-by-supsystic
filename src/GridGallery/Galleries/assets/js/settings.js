@@ -332,6 +332,51 @@
         });
     };
 
+    Controller.prototype.initNoticeDialog = function() {
+        $('#reviewNotice').dialog({
+            modal:    true,
+            width:    600,
+            autoOpen: true
+        });
+    };
+
+    Controller.prototype.showReviewNotice = function() {
+        var self = this;
+
+        $.post(window.wp.ajax.settings.url,
+            {
+                action: 'grid-gallery',
+                route: {
+                    module: 'galleries',
+                    action: 'checkReviewNotice'
+                }
+            })
+            .success(function (response) {
+
+                if(response.show) {
+                    self.initNoticeDialog();
+
+                    $('#reviewNotice [data-statistic-code]').on('click', function() {
+                        var code = $(this).data('statistic-code');
+
+                        $.post(window.wp.ajax.settings.url,
+                            {
+                                buttonCode: code,
+                                action: 'grid-gallery',
+                                route: {
+                                    module: 'galleries',
+                                    action: 'checkNoticeButton'
+                                }
+                            })
+                            .success(function(response) {
+
+                                $('#reviewNotice').dialog('close');
+                            });
+                    });
+                }
+            });
+    };
+
     Controller.prototype.initThemeDialog = function () {
         $('#themeDialog').dialog({
             autoOpen: false,
@@ -819,6 +864,8 @@
             controller.savePosts();
             controller.savePages();
 
+            controller.showReviewNotice();
+
             controller.saveButton();
             controller.togglePosts();
             controller.togglePostsTable();
@@ -882,6 +929,7 @@
             this.init();
             this.$window.show();
             this.captionCalculations();
+            this.initCaptionEffects();
         }
     }
 
@@ -1315,17 +1363,66 @@
         this.initOverlayShadow();
         //this.initIcons();
         this.initCaption();
+        this.initCaptionEffects();
     });
 
     ImagePreview.prototype.captionCalculations = (function() {
-        var figcaption = $('div#preview > figure > figcaption'),
-            captionStyle = {
-                'height': figcaption.innerHeight(),
-                'display': 'table'
-            },
-            wrap = figcaption.find('div.grid-gallery-figcaption-wrap');
-        figcaption.css(captionStyle);
-        wrap.css('display', 'table-cell');
+        var heightRecalculate = function() {
+            var figcaption = $('div#preview > figure > figcaption'),
+                captionStyle = {
+                    'height': figcaption.innerHeight(),
+                    'display': 'table'
+                },
+                wrap = figcaption.find('div.grid-gallery-figcaption-wrap');
+            figcaption.css(captionStyle);
+            wrap.css('display', 'table-cell');
+        };
+        $('div#preview > figure').on('change', function() {
+            heightRecalculate();
+        });
+    });
+
+    ImagePreview.prototype.checkDirection = function($element, e) {
+        var w = $element.width(),
+            h = $element.height(),
+            x = ( e.pageX - $element.offset().left - ( w / 2 )) * ( w > h ? ( h / w ) : 1 ),
+            y = ( e.pageY - $element.offset().top - ( h / 2 )) * ( h > w ? ( w / h ) : 1 );
+
+        return Math.round(( ( ( Math.atan2(y, x) * (180 / Math.PI) ) + 180 ) / 90 ) + 3) % 4;
+    };
+
+    ImagePreview.prototype.initCaptionEffects = (function () {
+        var self = this, figure = $('figure.grid-gallery-caption');
+
+        figure.each(function() {
+            $(this).on('hover', function() {
+                if($(this).data('grid-gallery-type') == 'cube') {
+                    $(this).on('mouseenter mouseleave', function(e) {
+                        var $figcaption = $(this).find('figcaption'),
+                            direction = self.checkDirection($(this), e),
+                            classHelper = null;
+
+                        switch (direction) {
+                            case 0:
+                                classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-top';
+                                break;
+                            case 1:
+                                classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-right';
+                                break;
+                            case 2:
+                                classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-bottom';
+                                break;
+                            case 3:
+                                classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-left';
+                                break;
+                        }
+                        $figcaption.removeClass()
+                            .addClass(classHelper);
+
+                    });
+                }
+            });
+        });
     });
 
     $(document).ready(function () {

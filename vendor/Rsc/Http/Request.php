@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Class Rsc_Http_Request
- * Http request representation
- *
- * @package Rsc\Http
- * @author Artur Kovalevsky
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 class Rsc_Http_Request
 {
     /**

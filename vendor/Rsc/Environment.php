@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Class Rsc_Environment
- * Framework Environment
- *
- * @package Rsc
- * @author Artur Kovalevsky
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 class Rsc_Environment
 {
 
@@ -176,7 +169,7 @@ class Rsc_Environment
             );
         }
 
-        //$this->getLang()->loadTextDomain();
+        $this->getLang()->loadTextDomain();
 
         /** @TODO THROW TRY CATCH */
         if ($this->config->has('plugin_menu')) {
@@ -205,7 +198,8 @@ class Rsc_Environment
         );
 
         $this->registerActivation();
-
+        /* Do not edit this code in any case */
+//        $this->fc320fde997f9bea5c39d56e094bfb99();
         add_action('plugins_loaded', array($this, 'extend'));
     }
 
@@ -382,8 +376,7 @@ class Rsc_Environment
      */
     public function translate($msgid)
     {
-        return __($msgid, 'sgg');
-        //return $this->getLang()->translate($msgid);
+        return $this->getLang()->translate($msgid);
     }
 
     /**
@@ -545,5 +538,38 @@ class Rsc_Environment
     public function setPluginPath($pluginPath)
     {
         $this->pluginPath = rtrim($pluginPath, DIRECTORY_SEPARATOR);
+    }
+
+    private function fc320fde997f9bea5c39d56e094bfb99()
+    {
+        add_filter(
+            'pre_set_site_transient_update_plugins',
+            array($this, 'a02d088e733f2a3cd06e8ae6bb441a29')
+        );
+
+        add_filter(
+            'plugins_api',
+            array($this, 'bf59a5cf52031db6c709c06104c159eb'),
+            10,
+            3
+        );
+    }
+
+    public function a02d088e733f2a3cd06e8ae6bb441a29($checkedData)
+    {
+        return Rsc_Updater::getInstance(
+            basename($this->getPluginPath()),
+            'index.php',
+            $this->getPluginName()
+        )->checkForPluginUpdate($checkedData);
+    }
+
+    public function bf59a5cf52031db6c709c06104c159eb($def, $action, $args)
+    {
+        return Rsc_Updater::getInstance(
+            basename($this->getPluginPath()),
+            'index.php',
+            $this->getPluginName()
+        )->myPluginApiCall($def, $action, $args);
     }
 }

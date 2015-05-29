@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Class Rsc_Config_Loader
- * Loads the configuration files
- *
- * @package Rsc\Config
- * @author Artur Kovalevsky
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 class Rsc_Config_Loader
 {
 

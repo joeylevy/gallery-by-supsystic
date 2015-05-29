@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Class Rsc_Config
- * Configurations manager
- *
- * @package Rsc
- * @author Artur Kovalevsky
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 class Rsc_Config extends Rsc_Common_Collection
 {
 

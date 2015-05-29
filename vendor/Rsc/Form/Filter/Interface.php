@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Interface Rsc_Form_Filter_Interface
- * Interface of the form filter
- *
- * @package Rsc\Form\Filter
- * @author Artur Kovalevsky
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 interface Rsc_Form_Filter_Interface
 {
     /**

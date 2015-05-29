@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: photo gallery, responsive, foto gallery, grid, grid gallery, add gallery, album, foto, fotoalbum, galery, image, photo, gird, website gallery, wordpress gallery, gallery plugin, image gallery, responsive gallery, post feed gallery
 Tested up to: 4.2.2
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
 
@@ -253,21 +253,36 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 
 *Check other WordPress plugins:*
 
-* [Backup by Supsystic](https://wordpress.org/plugins/backup-by-supsystic/ "Backup and Restoration plugin")
-* [Slider by Supsystic](https://wordpress.org/plugins/slider-by-supsystic/ "Slider plugin")
-* [Google Maps](https://wordpress.org/plugins/google-maps-easy/ "Google Maps plugin")
-* [Popup plugin](https://wordpress.org/plugins/popup-by-supsystic/ "Popup plugin")
-* [Security and Firewall](https://wordpress.org/plugins/security-by-supsystic/ "Security solution")
+* [Social Share Buttons by Supsystic](https://wordpress.org/plugins/social-share-buttons-by-supsystic/ "Social Share Buttons by Supsystic")
+* [Data Tables Generator by Supsystic](https://wordpress.org/plugins/data-tables-generator-by-supsystic/ "Data Tables Generator by Supsystic")
+* [Google Maps Easy](https://wordpress.org/plugins/google-maps-easy/ "Google Maps Easy")
+* [Gallery by Supsystic](https://wordpress.org/plugins/gallery-by-supsystic/ "Gallery by Supsystic")
+* [Backup by Supsystic](https://wordpress.org/plugins/backup-by-supsystic/ "Backup by Supsystic")
+* [Lightbox by Supsystic](https://wordpress.org/plugins/lightbox-by-supsystic/ "Lightbox by Supsystic")
+* [Slider by Supsystic](https://wordpress.org/plugins/slider-by-supsystic/ "Slider by Supsystic")
+* [PopUp by Supsystic](https://wordpress.org/plugins/popup-by-supsystic/ "PopUp by Supsystic")
+* [Security by Supsystic](https://wordpress.org/plugins/security-by-supsystic/ "Security by Supsystic")
+* [Secure Login by Supsystic](https://wordpress.org/plugins/secure-login-by-supsystic/ "Secure Login by Supsystic")
 
 == Screenshots ==
 
-1. Fixed Gallery. It's still responsive and compatible all mobile devices, but fixed :)
+1. [Fixed Gallery.](http://supsystic.com/plugins/photo-gallery/#examples?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Fixed Gallery") It's still responsive and compatible all mobile devices, but fixed :)
 2. [Photo Gallery WordPress Plugin](http://supsystic.com/plugins/photo-gallery?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Photo Gallery WordPress plugin") by Supsystic the complete set for any user that can assist quickly create stunning online presentation, photo gallery or slideshow
 3. Gallery plugin admin area. Choose one of the professional image gallery template and manage any aspect of the gallery with easy-to-use options
-4. Post Feed Gallery. It never was so easy to show Posts, Pages or any Content in an amazing view of the post feed gallery.
-5. Image Circle Gallery
+4. [Post Feed Gallery](http://supsystic.com/post-feed-animated-gallery-example?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Post Feed Gallery") - it never was so easy to show Posts, Pages or any Content in an amazing view of the post feed gallery.
+5. [Image Circle Gallery](http://supsystic.com/plugins/photo-gallery/#examples?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Image Circle Gallery") - perform your best ideas with Gallery by Supsystic!
 
 == Changelog ==
+
+= 1.2.7 / 28.05.2015 =
+
+ * Added new categories & pagination presets
+ * Categories & pagination presets moved to dialogs
+ * Modified settings for standard categories & pages presets
+ * Caption height fixed for new settings
+ * Added Hebrew(Israil) language
+ * Functional fixes
+ * Minor changes
 
 = 1.2.6 / 13.05.2015 =
 

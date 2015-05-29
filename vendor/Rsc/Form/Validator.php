@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Class Rsc_Form_Validator
- * Class for data validation of incoming requests
- *
- * @package Rsc\Form
- * @author Artur Kovalevsky
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 class Rsc_Form_Validator
 {
 

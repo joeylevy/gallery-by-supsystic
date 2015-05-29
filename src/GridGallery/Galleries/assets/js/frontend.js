@@ -1657,7 +1657,7 @@
 
     Gallery.prototype.hex=function(x) {
         return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
-    }
+    };
 
     Gallery.prototype.rgb2hex = function(rgb) {
         if(rgb) {
@@ -1669,13 +1669,30 @@
         }
     };
 
+    Gallery.prototype.loadFontFamily = (function () {
+        var figcaption = this.$container.find('.grid-gallery-caption').find('figcaption'), fontFamily = figcaption.css('font-family');
+        WebFont.load({
+            google: {
+                families: [fontFamily]
+            }
+        });
+    });
+
     Gallery.prototype.initCaptionCalculations = (function () {
+        var self = this;
+
         this.$container.find('.grid-gallery-caption').each(function () {
-            var figcaption = $(this).find('figcaption'), wrap = figcaption.find('div.grid-gallery-figcaption-wrap'), height = figcaption.innerHeight(),
+            var figcaption = $(this).find('figcaption'),
+                wrap = figcaption.find('div.grid-gallery-figcaption-wrap'),
+                height = self.$container.data('height'),
                 captionStyle = {
-                'height': height,
-                'display': 'table'
-            };
+                    'display': 'table'
+                };
+
+            if(!($(this).data('grid-gallery-type').split('-')[0] == 'quarter')) {
+                captionStyle.height = height;
+            }
+
             figcaption.css(captionStyle);
             wrap.css('display', 'table-cell');
         });
@@ -1743,6 +1760,7 @@
             this.initWookmark();
             this.initSlider();
 
+            this.loadFontFamily();
             this.initCaptionCalculations();
             this.initCaptionEffects();
         }, this));

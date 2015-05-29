@@ -1,0 +1,627 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"X-Generator: Poedit 1.7.6\n"
+
+msgid "An error has occurred"
+msgstr "Произошла ошибка"
+
+msgid "New Gallery"
+msgstr "Новая галерея"
+
+msgid "Galleries"
+msgstr "Галереи"
+
+msgid "Images"
+msgstr "Картинки"
+
+msgid "Instagram"
+msgstr "Instagram"
+
+msgid "Flickr"
+msgstr "Flickr"
+
+msgid "Tumblr"
+msgstr "Tumblr"
+
+msgid "Facebook"
+msgstr "Facebook"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Get PRO"
+msgstr "Получить ПРО"
+
+msgid "Loading"
+msgstr "Загрузка"
+
+msgid "New gallery successfully created"
+msgstr "Новая галерея успешно создана"
+
+msgid "Title successfully updated"
+msgstr "Заголовок успешно обновлен"
+
+msgid "Not enough data."
+msgstr "Не хватает данных."
+
+msgid "Preset successfully saved."
+msgstr "Предустановка успешно сохранена."
+
+msgid "The preset ID is not specified."
+msgstr "ID предустановки не указан."
+
+msgid "Preset successfully removed."
+msgstr "Предустановки успешно удалены."
+
+msgid "Failed to find the preset."
+msgstr "Не удалось найти предустановки."
+
+msgid "Preset successfully applied to the gallery."
+msgstr "Предустановка успешно применена к галерее."
+
+msgid "Unnamed gallery"
+msgstr "Галерея без имени"
+
+msgid "The identifier of the gallery is invalid"
+msgstr "Идентификатор галереи является недействительным"
+
+msgid "Title is empty"
+msgstr "Заголовок пустой"
+
+msgid "Failed to rename the gallery"
+msgstr "Не удалось переименовать галерею"
+
+msgid "Invalid gallery identifier specified"
+msgstr "Неверно указан идентификатор галереи "
+
+msgid "Failed to delete the gallery"
+msgstr "Не удалось удалить галерею"
+
+msgid "Resources are does not exists"
+msgstr "Ресурсы не существует"
+
+msgid "The identifier of the Gallery is not specified"
+msgstr "Идентификатор галереи не указано"
+
+msgid "New gallery"
+msgstr "Новая галерея"
+
+msgid "Add selected items"
+msgstr "Добавить выбранные пункты"
+
+msgid "Cancel"
+msgstr "Отменить"
+
+msgid "Ready! Gird Gallery"
+msgstr "supsystic! Gird Gallery"
+
+msgid "Add images"
+msgstr "Добавить картинки"
+
+msgid "You need to import images to your gallery before you can start using galleries"
+msgstr "Вы должны импортировать изображения в галерею, прежде чем начать использовать галерею"
+
+msgid "Import images"
+msgstr "Импорт картинок"
+
+msgid "Remove selected"
+msgstr "Удалить выбранное"
+
+msgid "Select/unselect all posts"
+msgstr "Выбрать / снять все посты"
+
+msgid "Add new gallery"
+msgstr "Добавить новую галерею"
+
+msgid "Ready! Grid Gallery"
+msgstr "Supsystic! Grid Gallery"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Preview"
+msgstr "Просмотр"
+
+msgid "There are %s photos in the gallery %s"
+msgstr "Есть всего %s фотографий в галерее %s"
+
+msgid "Select shortcode for the gallery "
+msgstr "Выберите шорткод для галереи"
+
+msgid "You have not any galleries"
+msgstr "У вас нет галерей"
+
+msgid "You don't have any galleries yet."
+msgstr "У Вас ещё нету никаких галерей"
+
+msgid "Want to create one right now?"
+msgstr "Хотите создать прямо сейчас?"
+
+msgid "What is a gallery"
+msgstr "Что такое галерея"
+
+msgid "<strong>Gallery</strong> â the highest type of entity in the Ready! Gird-Gallery."
+msgstr ""
+
+msgid "You can have an unlimited number of galleries, to which you can attach the preloaded pictures and folders."
+msgstr "Вы можете иметь неограниченное количество галерей, в которых вы можете прикрепить предустановленной фотографии и папки."
+
+msgid "Each gallery has a number of display settings and behaviors that you can save to presets and apply to other galleries."
+msgstr "Каждая галерея имеет ряд настроек, которые вы можете сохранить в качестве предустановок и применять к другим галереям"
+
+msgid "Wanna know more?"
+msgstr "Хотите знать больше?"
+
+msgid "Help"
+msgstr "Помощь"
+
+msgid "Visit %s section to read more information about the galleries."
+msgstr "Посетите раздел %s чтобы прочитать более подробную информацию о галереях."
+
+msgid "Create new gallery"
+msgstr "Создать новую галерею"
+
+msgid "Gallery title can't be empty!"
+msgstr "Заголовок галереи не может быть пустым!"
+
+msgid "Gallery title:"
+msgstr "Заголовок галереи:"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Back to the gallery"
+msgstr "Вернуться к галерее"
+
+msgid "Upload new images"
+msgstr "Загрузить новые картинки"
+
+msgid "Images list"
+msgstr "Список картинок"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Area"
+msgstr ""
+
+msgid "Border"
+msgstr "Рамка"
+
+msgid "Shadow"
+msgstr "Тень"
+
+msgid "Caption"
+msgstr "Подпись"
+
+msgid "Big image"
+msgstr "Большие картинки"
+
+msgid "Icons"
+msgstr "Иконки"
+
+msgid "Categories"
+msgstr "Категории"
+
+msgid "Pagination"
+msgstr "Пагинация"
+
+msgid "Post feed"
+msgstr ""
+
+msgid "Properties"
+msgstr "Свойства"
+
+msgid "Grid"
+msgstr "Сетка"
+
+msgid "Show as thumbnails"
+msgstr "Показать в виде миниатюр"
+
+msgid "Position"
+msgstr "Позиция"
+
+msgid "Distance between photos"
+msgstr "Расстояние между картинками"
+
+msgid "Gallery width"
+msgstr "Ширина галереи"
+
+msgid "Gallery height"
+msgstr "Высота галереи"
+
+msgid "Photo width"
+msgstr "Ширина картинки"
+
+msgid "Photo height"
+msgstr "Высота картинки"
+
+msgid "Border type"
+msgstr "Тип рамки"
+
+msgid "Border color"
+msgstr "Цвет рамки"
+
+msgid "Border width"
+msgstr "Ширина рамки"
+
+msgid "Border radius"
+msgstr "Радиус рамки"
+
+msgid "Use shadow"
+msgstr "Использовать тень"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "When mouse is over"
+msgstr "Когда мышка находится над"
+
+msgid "Overlay image with shadow"
+msgstr "Наложение изображения с тенью"
+
+msgid "Shadow color"
+msgstr "Цвет тени"
+
+msgid "Shadow blur"
+msgstr "Размытие тени"
+
+msgid "Shadow X"
+msgstr "Тень по оси Х"
+
+msgid "Shadow Y"
+msgstr "Тень по оси Y"
+
+msgid "Effect"
+msgstr "Эффект"
+
+msgid "Show caption"
+msgstr "Показывать подпись"
+
+msgid "Choose effect"
+msgstr "Выбрать эффект"
+
+msgid "Background color"
+msgstr "Цвет фона"
+
+msgid "Text color"
+msgstr "Цвет текста"
+
+msgid "Transparency"
+msgstr "Прозрачность"
+
+msgid "Text size"
+msgstr "Размер текста"
+
+msgid "Text align"
+msgstr "Положение текста"
+
+msgid "Box type"
+msgstr "Тип ячейки"
+
+msgid "Theme"
+msgstr "Тема"
+
+msgid "Choose theme"
+msgstr "Выбрать тему"
+
+msgid "Transition"
+msgstr "Переход"
+
+msgid "Elastic"
+msgstr "Elastic"
+
+msgid "Fade"
+msgstr "Fade"
+
+msgid "None"
+msgstr "Нету"
+
+msgid "Transition speed"
+msgstr "Скорость перехода"
+
+msgid "Close speed"
+msgstr "Скорость закрытия"
+
+msgid "Slideshow"
+msgstr "Слайдшоу"
+
+msgid "Disabled"
+msgstr "Выключить"
+
+msgid "Enabled"
+msgstr "Включить"
+
+msgid "Slideshow speed"
+msgstr "Скорость слайдшоу"
+
+msgid "Slideshow autostart"
+msgstr "Автовключение слайдшоу"
+
+msgid "Shortcode"
+msgstr "Шорткод"
+
+msgid "Use this shortcode to insert the gallery \"%s\" on the pages or posts."
+msgstr "Используйте этот короткий код, чтобы вставить галерею \"%s\" на страницах или постах."
+
+msgid "If you new to current feature, then you can read more about shortcodes in the <a href=\"http://en.support.wordpress.com/shortcodes/\">official wordpress documentation</a>."
+msgstr "Если вы новичок, то вы можете прочитать больше о шорткоде <a href=\"http://en.support.wordpress.com/shortcodes/\">в официальнойl wordpress документации</a>."
+
+msgid "Cover"
+msgstr "Cover"
+
+msgid "Sort and orginize images with \"Categories\" option"
+msgstr "Сортировать и организовывать картинки с опцией    \"Категории \""
+
+msgid "Save settings as preset"
+msgstr "Сохранить настройки предустановленого шаблона"
+
+msgid "Preset title:"
+msgstr "Заголовок предустановленного шаблона"
+
+msgid "Delete preset"
+msgstr "Удалить предустановленный шаблон"
+
+msgid "Are you really want to delete preset \"%s\"?"
+msgstr "Вы действительно хотите удалить предустановленный шаблон \"%s\"? "
+
+msgid "Load settings from presets"
+msgstr "Загрузить настройки из предустановок"
+
+msgid "Select preset:"
+msgstr "Выбрать предустановленный шаблон:"
+
+msgid "Failed to load the presets."
+msgstr "Не удалось загрузить предустановленный шаблон."
+
+msgid "Currently you have no presets."
+msgstr "В настоящее время у вас нет предустановленных шаблонов"
+
+msgid "Select \"Big image\" theme"
+msgstr "Выберите  тему   \"Большой картинке \""
+
+msgid "Select a theme"
+msgstr "Выбрать тему"
+
+msgid "Select overlay effect"
+msgstr "Выберите эффект наложения"
+
+msgid "Live preview"
+msgstr "Предварительный просмотр"
+
+msgid "Page "
+msgstr "Страница"
+
+msgid "Delete image"
+msgstr "Удалить картинку"
+
+msgid "Switch to the list view"
+msgstr "Переключитесь на вид списка"
+
+msgid "Switch to the block view"
+msgstr "Переключитесь на вид блока"
+
+msgid "The gallery is does not exists"
+msgstr "Галерея не существует"
+
+msgid "Currently this gallery has no images"
+msgstr "В настоящее время эта галерея не имеет изображения"
+
+msgid "Add from images"
+msgstr "Добавить c  изображений"
+
+msgid "Import from media"
+msgstr "Импортировать через медиа"
+
+msgid "Authorization code is not specified."
+msgstr "Код авторизации не указано."
+
+msgid "Upload your images from the Instagram Media Library"
+msgstr "Загрузить фотографии через  Instagram"
+
+msgid "Upload from Instagram"
+msgstr "Загрузить с Instagram"
+
+msgid "Rename folder"
+msgstr "Переименовать папку"
+
+msgid "Folder name:"
+msgstr "Имя папки:"
+
+msgid "Add images to the gallery"
+msgstr "Добавить картинки в галерею"
+
+msgid "Please wait while the plugin to get the list of galleries..."
+msgstr "Пожалуйста, подождите, пока плагин получит список галерей ..."
+
+msgid "Select the gallery:"
+msgstr "Выбрать галерею:"
+
+msgid "New folder"
+msgstr "Новая папка"
+
+msgid "Add images to the new gallery"
+msgstr "Добавить картинки в новую галерею"
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "Select/unselect all photos"
+msgstr "Выбрать/снять все картинки"
+
+msgid "Refresh Images List"
+msgstr "Обновить список картинок"
+
+msgid "Add the selected items to the existing gallery"
+msgstr "Добавить выбранные элементы к существующей галерее"
+
+msgid "Add selected to the gallery"
+msgstr "Добавить выбранное к галерее"
+
+msgid "Unable to save chosen photo %s: %s"
+msgstr "Невозможно сохранить выбранную фотографию %s: %s"
+
+msgid "New Folder"
+msgstr "Новая папка"
+
+msgid "The title can't be empty"
+msgstr "Заголовок не может быть пустым"
+
+msgid "Failed to update position."
+msgstr "Не удалось обновить позицию."
+
+msgid "Position updated successfully!"
+msgstr "Позиция успешно обновлена!"
+
+msgid "Create new folder"
+msgstr "Создать новую папку"
+
+msgid "Edit selected item"
+msgstr "Редактировать выбранные элементы"
+
+msgid "Delete selected items"
+msgstr "Удалить выбранные элементы"
+
+msgid "Create new gallery from the selected items"
+msgstr "Создать новую галерею из выбранных элементов"
+
+msgid "New gallery from selected"
+msgstr "Новая галерея с  выбранного"
+
+msgid "Upload your images from the Wordpress Media Library"
+msgstr "Загрузить фотографии из Wordpress медиа-библиотеки"
+
+msgid "All photos"
+msgstr "Все фотографии"
+
+msgid "Drop photos here to move them from the folder"
+msgstr "Перетащите фотографии сюда, чтобы переместить их из папки"
+
+msgid "Lifetime for cached data"
+msgstr "Срок для кэширования данных"
+
+msgid "The field \"%s\" available only for numeric values"
+msgstr "Поле  \"%s\" доступно только для числовых значений"
+
+msgid "Settings successfully updated!"
+msgstr "Настройки успешно обновлены!"
+
+msgid "Please correct following errors:"
+msgstr "Пожалуйста, исправьте следующие ошибки:"
+
+msgid "<strong>%s</strong> has its own caching system in order to significantly reduce the load on the database."
+msgstr "<strong>%s</strong> имеет свою собственную систему кэширования для того, чтобы значительно уменьшить нагрузку на базу данных."
+
+msgid "Use this option only if all your galleries are setting correctly and you dont need to change settings soon"
+msgstr "Используйте эту опцию, только если все ваши галереи правильно настроены, и вам не нужно в ближайшее  изменять настройки"
+
+msgid "Caching is not available because your uploads directory is not writable."
+msgstr "Кэширование не доступно, потому что ваш каталог загрузки недоступен для записи."
+
+msgid "The time in seconds after which the cache will be considered obsolete. Default: 86400 (24 hours)."
+msgstr "Время в секундах, после которого кэш будет считаться устаревшим. По умолчанию: 86400 (24 часов)."
+
+msgid "Clear cache"
+msgstr "Очистить кэш"
+
+msgid "We don't collect statistics on you, we only collect the errors encountered during use in order to improve our product."
+msgstr "Мы не собираем статистику о Вас, мы собираем только ошибки, возникающие во время использования, с тем чтобы улучшить наш продукт."
+
+msgid "Edit image"
+msgstr "Редактировать картинку"
+
+msgid "Main"
+msgstr "Главная"
+
+msgid "SEO"
+msgstr "СЕО"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Alternative text"
+msgstr "Альтернативный текст"
+
+msgid "External link"
+msgstr "Внешняя ссылка"
+
+msgid "Available in PRO version."
+msgstr "Доступно в ПРО версии."
+
+msgid "Link"
+msgstr "Ссылка"
+
+msgid "Open in new window"
+msgstr "Открыть в новом окне"
+
+msgid "Embeded video"
+msgstr "Встроенное видео"
+
+msgid "Video URL"
+msgstr "Ссылка на видео"
+
+msgid "Supports Youtube and Vimeo. URL will be converted to embed automatically."
+msgstr "Поддержка Youtube и Vimeo. Ссылка будет автоматически переводятся вставляться."
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Select %s"
+msgstr "Выбрать %s"
+
+msgid "photo"
+msgstr "фото"
+
+msgid "photos"
+msgstr "фотографии"
+
+msgid "Video"
+msgstr "Видео"
+
+msgid "Tags"
+msgstr "Теги"
+
+msgid "http://example.com/"
+msgstr "http://example.com/"
+
+msgid "Open in new window."
+msgstr "Открыть в новом окне."
+
+msgid "Welcome to"
+msgstr "Добро пожаловать"
+
+msgid "Version"
+msgstr "Версия"
+
+msgid "Google"
+msgstr "Google"
+
+msgid "Wordpress.org"
+msgstr "Wordpress.org"
+
+msgid "Reffer a friend"
+msgstr "Посоветовал друг"
+
+msgid "Find on the web"
+msgstr "Нашел через интернет"
+
+msgid "Other way"
+msgstr "Другое"
+
+msgid "Thank for check info. Start using plugin"
+msgstr "Спасибо за проверку информации. Начните использовать плагин"

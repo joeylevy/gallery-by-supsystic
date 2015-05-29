@@ -1,13 +1,6 @@
 <?php
 
-/**
- * Interface Rsc_Cache_Interface
- * Interface for caching data within the framework
- *
- * @package Rsc\Cache
- * @author Artur Kovalevsky <kovalevskyproj@gmail.com>
- * @copyright Copyright (c) 2015, Supsystic
- */
+
 interface Rsc_Cache_Interface
 {
     /**
