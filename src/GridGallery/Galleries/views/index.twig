@@ -97,7 +97,7 @@
                             <div class="shortcode">
                                 Shortcode: <input type="text" id="shortcode-{{ gallery.id }}" class="gallery-shortcode" value="[supsystic-gallery id='{{ gallery.id }}' position='center']" onclick="this.select();" size="50" style="font-size: 12px;" readonly>
                                 <br />
-                                PhpCode: <input type="text" id="phpcode-{{ gallery.id }}" class="gallery-shortcode" value='<?php echo do_shortcode("[supsystic-gallery id={{ gallery.id }} position="center"]") ?>' onclick="this.select();" size="75" style="font-size: 12px;" readonly>
+                                PhpCode: <input type="text" id="phpcode-{{ gallery.id }}" class="gallery-shortcode" value='{{ '<?php echo do_shortcode(\'[supsystic-gallery id=' ~ gallery.id ~ ' position="center"]\') ?>' }}' onclick="this.select();" size="75" style="font-size: 12px;" readonly>
                             </div>
                         </div>
                     </div>

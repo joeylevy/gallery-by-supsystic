@@ -30,7 +30,7 @@ class SupsysticGallery
 
         /* Create new plugin $environment */
         $pluginPath = dirname(dirname(__FILE__));
-        $environment = new Rsc_Environment('sgg', '1.2.7', $pluginPath);
+        $environment = new Rsc_Environment('sgg', '1.2.8', $pluginPath);
 
         /* Configure */
         $environment->configure(
