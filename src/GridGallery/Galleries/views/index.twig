@@ -35,7 +35,7 @@
                                     {% set cover = 'http://placehold.it/450x220&text=' ~ gallery.title %}
                                 {% endif %}
                             {% endif %}
-                            <img src="{{ cover }}" alt="{{ gallery.title }}" width="450px" height="220px"/>
+                            <img src="{{ cover }}" alt="{{ gallery.title }}" width="350px" height="220px"/>
                             {#</a>#}
                             {#<a class="delete-gallery" title="Delete this gallery"
                                href="{{ environment.generateUrl('galleries', 'delete', { 'gallery_id': gallery.id }) }}">
@@ -68,6 +68,17 @@
                                 </li>
                             </ul>
                             <ul class="gg-control-btn">
+                                <li>
+                                    <h4>
+                                        <i class="fa fa-picture-o"></i>
+                                        {{ translate('Total Images: ') }}
+                                        <div class="gg-counter"
+                                             style="display: inline-block; font-weight: 200;"
+                                             title="{{ translate('There are %s photos in the gallery %s')|format(gallery.photos|length, gallery.title) }}">
+                                            {{ gallery.photos|length + gallery.settings.posts.length }}
+                                        </div>
+                                    </h4>
+                                </li>
                                 <li title="{{ translate('Upload new images') }}">
                                     <button class="button button-primary gallery" id="gg-btn-upload" data-folder-id="0"
                                             data-gallery-id="{{ gallery.id }}" data-upload>
@@ -84,20 +95,11 @@
                                 </li>
                             </ul>
                         </div>
-                        <h4 style="width: 400px; margin:6px 20px; float: left;">
-                            <i class="fa fa-picture-o"></i>
-                            {{ translate('Total Images: ') }}
-                            <div class="gg-counter"
-                                 style="display: inline-block; font-weight: 200;"
-                                 title="{{ translate('There are %s photos in the gallery %s')|format(gallery.photos|length, gallery.title) }}">
-                                {{ gallery.photos|length + gallery.settings.posts.length }}
-                            </div>
-                        </h4>
                         <div class="shortcode-wrap">
-                            <div class="shortcode">
-                                Shortcode: <input type="text" id="shortcode-{{ gallery.id }}" class="gallery-shortcode" value="[supsystic-gallery id='{{ gallery.id }}' position='center']" onclick="this.select();" size="50" style="font-size: 12px;" readonly>
+                            <div class="gg-shortcode">
+                                Shortcode: <input type="text" id="shortcode-{{ gallery.id }}" class="ggCopyTextCode" value="[supsystic-gallery id='{{ gallery.id }}' position='center']" style="font-size: 12px;">
                                 <br />
-                                PhpCode: <input type="text" id="phpcode-{{ gallery.id }}" class="gallery-shortcode" value='{{ '<?php echo do_shortcode(\'[supsystic-gallery id=' ~ gallery.id ~ ' position="center"]\') ?>' }}' onclick="this.select();" size="75" style="font-size: 12px;" readonly>
+                                PhpCode: <input type="text" id="phpcode-{{ gallery.id }}" class="ggCopyTextCode" value='{{ '<?php echo do_shortcode(\'[supsystic-gallery id=' ~ gallery.id ~ ' position="center"]\') ?>' }}' style="font-size: 12px;">
                             </div>
                         </div>
                     </div>
@@ -107,14 +109,14 @@
                         {{ translate('You don\'t have any galleries yet.') }}
                         <a href="{{ environment.generateUrl('galleries', 'showPresets') }}"
                            id="gg-create-gallery-link"
-                           style = "color: #2ea2cc;">{{ translate('Want to create one right now?') }}</a>
+                           style = "color: #4ae8ea;">{{ translate('Want to create one right now?') }}</a>
                     </p>
 
                     <h3>{{ translate('What is a gallery') }}</h3>
                     <p>
                         {{ translate('<strong>Gallery</strong> &mdash; the highest type of entity in the Gallery by Supsystic.')|raw }}
                         <br/>
-                        {{ translate('You can have an unlimited number of galleries, to which you can attach the preloaded pictures and folders.') }}
+                        {{ translate('You can have an unlimited number of galleries, to which you can attach the preloaded pictures.') }}
                         {{ translate('Each gallery has a number of display settings and behaviors that you can save to presets and apply to other galleries.') }}
                     </p>
                 {% endfor %}

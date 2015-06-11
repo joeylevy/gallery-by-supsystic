@@ -65,16 +65,19 @@
 (function ($) {
 
     $(document).ready(function () {
-        var ggActiveTab = jQuery('nav.supsystic-navigation li.active a').attr('href').split('/');
-        ggActiveTab = ggActiveTab[ggActiveTab.length - 1];
+        var ggActiveTab = (jQuery('nav.supsystic-navigation li.active a').length ? jQuery('nav.supsystic-navigation li.active a').attr('href').split('/') : null);
 
-        if(typeof(ggActiveTab) != 'undefined') {
-            var subMenus = jQuery('#toplevel_page_supsystic-gallery').find('.wp-submenu li');
-            subMenus.removeClass('current').each(function(){
-                if(jQuery(this).find('a[href="'+ ggActiveTab + '"]').size()) {
-                    jQuery(this).addClass('current');
-                }
-            });
+        if(ggActiveTab) {
+            ggActiveTab = ggActiveTab[ggActiveTab.length - 1];
+
+            if(typeof(ggActiveTab) != 'undefined') {
+                var subMenus = jQuery('#toplevel_page_supsystic-gallery').find('.wp-submenu li');
+                subMenus.removeClass('current').each(function(){
+                    if(jQuery(this).find('a[href="'+ ggActiveTab + '"]').size()) {
+                        jQuery(this).addClass('current');
+                    }
+                });
+            }
         }
 
         //SupsysticGallery.Loader.show();
@@ -98,14 +101,39 @@
             }
         });
 
+        ggInitCustomCheckRadio();
         setContainerHeight();
         changeUiButtonToWp();
         closeOnOutside();
+
+        setTimeout(function(){	// setTimeout to make sure that all required show/hide were triggered
+            ggResetCopyTextCodeFields();
+        }, 10);
     });
 
     $(window).on('resize', function () {
         setContainerHeight();
+        ggResetCopyTextCodeFields();
     });
+
+    function ggInitCustomCheckRadio(selector) {
+        if(!selector)
+            selector = document;
+        jQuery(selector).find('input').iCheck('destroy').iCheck({
+            checkboxClass: 'icheckbox_minimal'
+            ,	radioClass: 'iradio_minimal'
+        }).on('ifClicked', function(e){
+            jQuery(this).trigger('click')
+                .trigger('change');
+            ggCheckUpdateArea('.supsystic-container');
+        });
+    }
+    function ggCheckUpdate(checkbox) {
+        jQuery(checkbox).iCheck('update');
+    }
+    function ggCheckUpdateArea(selector) {
+        jQuery(selector).find('input[type=radio]').iCheck('update');
+    };
 
     function setContainerHeight() {
         var container = $('.supsystic-container'),
@@ -145,6 +173,30 @@
                 $container.dialog('close');
             });
         });
+    }
+
+    /**
+     * Make shortcodes display normal width
+     */
+    function ggResetCopyTextCodeFields(selector) {
+        var area = selector ? jQuery(selector) : jQuery(document);
+        if(area.find('.ggCopyTextCode').size()) {
+            var cloneWidthElement =  jQuery('<span class="sup-shortcode" />').appendTo('.supsystic-plugin');
+            area.find('.ggCopyTextCode').attr('readonly', 'readonly').click(function(){
+                this.setSelectionRange(0, this.value.length);
+            }).focus(function(){
+                this.setSelectionRange(0, this.value.length);
+            });
+            area.find('input.ggCopyTextCode').each(function(){
+                cloneWidthElement.html( str_replace(jQuery(this).val(), '<', 'P') );
+                jQuery(this).width( cloneWidthElement.width() );
+            });
+            cloneWidthElement.remove();
+        }
+    }
+    function str_replace(haystack, needle, replacement) {
+        var temp = haystack.split(needle);
+        return temp.join(replacement);
     }
 
 })(jQuery);

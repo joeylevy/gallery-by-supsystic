@@ -7,7 +7,7 @@
         <i class="fa fa-angle-right"></i>
         <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Galleries') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('galleries', 'view') }}">{{ galleryName|capitalize }}</a>
+        <a href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': id }) }}">{{ galleryName|capitalize }}</a>
         <i class="fa fa-angle-right"></i>
         <a href="{{ environment.generateUrl('galleries', 'view') }}">{{ translate('Import images') }}</a>
         <i class="fa fa-angle-right"></i>
@@ -100,13 +100,7 @@
                                 resources: resources
                             }, function (response) {
                                 $.jGrowl(response.message);
-                            });
-
-                            request.send(function (response) {
-                                if (response.msg == 'Loaded')
-                                    SupsysticGallery.Loader.hide();
-                                $.jGrowl('Done');
-                                window.location = "{{ environment.generateUrl('galleries') }}";
+                                window.location = response.redirectUrl.replace(/\\"/g, '"');
                             });
                         } else {
                             $.jGrowl('Please select images for import');

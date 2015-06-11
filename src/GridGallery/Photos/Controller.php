@@ -161,6 +161,11 @@ class GridGallery_Photos_Controller extends GridGallery_Core_BaseController
                     ),
                     $attachment->post_title
                 ),
+				'link' => $this->generateUrl(
+					'galleries',
+					'view',
+					array('gallery_id' => $request->post->get('galleryId'))
+				),
             );
         }
 

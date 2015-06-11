@@ -419,7 +419,7 @@ div .image img {
 div.shortcode {
     display: inline-block;
     line-height: 4;
-    background-color: rgba(239, 255, 0, 0.17);
+    /*background-color: rgba(239, 255, 0, 0.17);*/
     padding: 0 10px;
     font-weight: 800;
 }
@@ -429,6 +429,41 @@ label.shortcode {
     line-height: 4;
     background-color: rgba(239, 255, 0, 0.17);
     padding: 0 10px;
+}
+
+div.gg-shortcode {
+    display: inline-block;
+    padding-left: 20px;
+    font-weight: 800;
+    position: relative;
+}
+/*shortcode text*/
+.sup-shortcode {
+	background-color: #F5F5F5;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    color: #333333;
+    font-size: 13px;
+    line-height: 3.42857;
+    margin: 0 0 10px;
+    padding: 9.5px;
+    word-break: break-all;
+    word-wrap: break-word;
+	font-family: monospace;
+	cursor: pointer;
+	white-space: nowrap;
+}
+.supsystic-plugin .ggCopyTextCode {
+    background-color: #f5f5f5 !important;
+    border: 1px solid #cccccc !important;
+    border-radius: 4px !important;
+    color: #333333 !important;
+    cursor: pointer;
+    font-family: monospace !important;
+    font-size: 13px !important;
+    margin: 0 0 10px !important;
+    padding: 9.5px !important;
+    width: 100%;
 }
 
 .preset {
@@ -497,4 +532,13 @@ label.shortcode {
     -ms-transition: opacity 300ms;
     -o-transition: opacity 300ms;
     transition: opacity 300ms;
+}
+
+.preset-border {
+    cursor: pointer;
+    border-bottom: 1px solid gray;
+}
+
+.preset-border:hover, .preset-selected {
+    border-bottom: 1px solid aqua;
 }

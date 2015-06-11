@@ -73,7 +73,8 @@
                         $('.supsystic-lazy').lazyload();
                         if(!--reload) {
                             SupsysticGallery.Loader.hide();
-                            location.reload(true);
+                            //location.reload(true);
+                            window.location.replace(response.link);
                         }
                     }
 

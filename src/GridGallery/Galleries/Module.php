@@ -16,7 +16,8 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
     {
         parent::onInit();
 
-        $this->registerMenu();
+		$dispatcher = $this->getEnvironment()->getDispatcher();
+		$dispatcher->on('after_overview_loaded', array($this, 'registerMenu'));
         $this->registerShortcode();
 
         $resources = new GridGallery_Galleries_Model_Resources();
@@ -475,6 +476,15 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         $submenuNewGallery = $menu->createSubmenuItem();
         $submenuGalleries = $menu->createSubmenuItem();
 
+		$submenuNewGallery->setCapability('manage_options')
+			->setMenuSlug('supsystic-gallery&module=galleries&action=showPresets')
+			->setMenuTitle($lang->translate('New gallery'))
+			->setPageTitle($lang->translate('New gallery'))
+			->setModuleName('galleries');
+
+		$menu->addSubmenuItem('newGallery', $submenuNewGallery)
+			->register();
+
         $submenuGalleries->setCapability('manage_options')
             ->setMenuSlug('supsystic-gallery&module=galleries')
             ->setMenuTitle($lang->translate('Galleries'))
@@ -484,13 +494,5 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         $menu->addSubmenuItem('galleries', $submenuGalleries)
             ->register();
 
-        $submenuNewGallery->setCapability('manage_options')
-            ->setMenuSlug('supsystic-gallery&module=galleries&action=showPresets')
-            ->setMenuTitle($lang->translate('New gallery'))
-            ->setPageTitle($lang->translate('New gallery'))
-            ->setModuleName('galleries');
-
-        $menu->addSubmenuItem('newGallery', $submenuNewGallery)
-            ->register();
     }
 }

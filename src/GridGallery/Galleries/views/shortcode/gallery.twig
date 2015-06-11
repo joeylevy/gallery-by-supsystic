@@ -199,7 +199,7 @@
             {% if settings.categories is defined and settings.categories.enabled == 'true' and settings.categories.position == 'bottom' %}
                 {% set navStyle %}
                 text-align: {{ settings.categories.align|default('left') }};
-                {% if settings.categories.hide_nav_bg is not defined %}
+                {% if settings.categories.hide_nav_bg == 'off' %}
                     background-color: {{ settings.categories.nav_bg }};
                     padding-left: 10px; padding-right: 10px;
                 {% endif %}
@@ -207,10 +207,10 @@
                 {% endset %}
 
                 {% set navAStyle %}
-                {% if settings.categories.hide_text_bg is not defined %}
+                {% if settings.categories.hide_text_bg == 'off' %}
                     background-color:{{ settings.categories.text_bg }};
                 {% endif %}
-                {% if settings.categories.theme_color is not defined %}
+                {% if settings.categories.theme_color == 'off' %}
                     color:{{ settings.categories.text_color }};
                     text-decoration:none !important;
                     font-size: {{ settings.categories.font_size }}px;

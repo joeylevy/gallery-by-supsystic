@@ -95,9 +95,7 @@
             style="border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};"
         >
     {% endif %}
-        <figure class="grid-gallery-caption
-                        {% if settings.mouse_shadow == '1' and settings.use_shadow == '1' %} shadow-show{% endif %}
-                        {% if settings.mouse_shadow == '2' and settings.use_shadow == '1' %} shadow-hide{% endif %}"
+        <figure class="grid-gallery-caption{% if settings.mouse_shadow == '1' and settings.use_shadow == '1' %} shadow-show{% endif %}{% if settings.mouse_shadow == '2' and settings.use_shadow == '1' %} shadow-hide{% endif %}"
                 data-tags="{{ tags|trim|replace(' ', '_') }}"
                 data-grid-gallery-type="{% if environment.isPro() and settings.icons.enabled == 'true' %}{% if 'icons' in settings.thumbnail.overlay.effect %}{{ settings.thumbnail.overlay.effect }}{% else %}icons{% endif %}{% elseif settings.thumbnail.overlay.enabled == 'false' %}none{% else %}{{ settings.thumbnail.overlay.effect }}{% endif %}"
                 style="display:none;{{ figureStyle|trim }}">

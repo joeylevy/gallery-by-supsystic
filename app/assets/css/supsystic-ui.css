@@ -403,6 +403,31 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; } */
     background-color: black;
 }
 
+.supsystic-plugin input[type=radio]:checked:before {
+    width: 6px;
+    height: 6px;
+    margin: 5px;
+    background: #000000;
+}
+
+.supsystic-plugin input[type=radio] {
+    height: 18px;
+    width: 18px;
+    min-width: 18px;
+}
+
+.supsystic-plugin input[type=checkbox]:checked:before,
+.toplevel_page_supsystic-gallery input[type=checkbox]:checked:before {
+    color: #000000;
+}
+
+.supsystic-plugin input[type=checkbox]:focus,
+.supsystic-plugin input[type=radio]:focus {
+    border-color: #28EDED;
+    -webkit-box-shadow: 0 0 2px rgba(80, 255, 255, 0.8);
+    box-shadow: 0 0 2px rgba(80, 255, 255, 0.8);
+}
+
 .swrHtaccessPre {
 	background-color: #eef;
 	padding: 10px;

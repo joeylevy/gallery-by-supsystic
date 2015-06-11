@@ -3,11 +3,17 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: photo gallery, responsive, foto gallery, grid, grid gallery, add gallery, album, foto, fotoalbum, galery, image, photo, gird, website gallery, wordpress gallery, gallery plugin, image gallery, responsive gallery, post feed gallery
 Tested up to: 4.2.2
-Stable tag: 1.2.8
+Stable tag: 1.2.9
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
 
 == Description ==
+
+= WordPress Photo Gallery by Supsystic =
+
+* [Responsive WordPress Gallery](http://supsystic.com/plugins/photo-gallery?utm_source=wordpress&utm_medium=responsive&utm_campaign=gallery "Responsive WordPress Gallery")
+* [Photo Gallery Demo](http://supsystic.com/gallery-examples?utm_source=wordpress&utm_medium=demo&utm_campaign=gallery "WordPress Photo Gallery")
+* [Grid Gallery FAQ and Documentation](http://supsystic.com/plugins/photo-gallery/#faq "Grid Gallery FAQ and Documentation")
 
 [Grid Gallery WordPress Plugin](http://supsystic.com/plugins/photo-gallery?utm_source=wordpress&utm_medium=description&utm_campaign=gallery "Photo Gallery WordPress Plugin") by Supsystic with a great number of layouts will help you to create quality respectable portfolios and image galleries. Its unlimited options allow to choose different designs and styles, which make your photo grid gallery attractive for users.
 
@@ -274,6 +280,18 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 
 == Changelog ==
 
+= 1.2.9 / 11.06.2015 =
+
+ * Gallery code optimizations, changes in the appearance
+ * Shortcodes fix, submenu anti-duplicate
+ * Fixes for social images import
+ * Social import breadcrumbs fixed
+ * Languages added, new default language file
+ * Photo Gallery column number fixed
+ * Figcaption height calculation fixed
+ * iChek fixed in admin area tabs, fixed columns layout changed
+ * Minor bugs fix
+ 
 = 1.2.8 / 28.05.2015 =
 
  * Hor fixes

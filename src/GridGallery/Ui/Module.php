@@ -97,6 +97,8 @@ class GridGallery_Ui_Module extends Rsc_Mvc_Module
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-tooltipster', $this->getLocationUrl() . '/css/tooltipster.css'));
         //$this->add(new GridGallery_Ui_BackendStylesheet('gg-tooltipster', '//cdn.jsdelivr.net/jquery.tooltipster/2.1.4/css/tooltipster.css'));
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-animate-css', $url . '/app/assets/css/animate.css'));
+		$this->add(new GridGallery_Ui_BackendStylesheet('gg-menu-anti-duplicate-css', $url . '/app/assets/css/supsystic-for-all-admin.css'));
+		$this->add(new GridGallery_Ui_BackendStylesheet('gg-minimal-css', $url . '/app/assets/css/minimal/minimal.css'));
 
         /* Google fonts */
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-montserrat-css', 'http://fonts.googleapis.com/css?family=Montserrat'));
@@ -106,7 +108,8 @@ class GridGallery_Ui_Module extends Rsc_Mvc_Module
         $this->add(new GridGallery_Ui_BackendJavascript('jquery'));
         $this->add(new GridGallery_Ui_BackendJavascript('jquery-ui-dialog'));
 
-        $this->add(new GridGallery_Ui_BackendJavascript('gg-types', $this->getLocationUrl() . '/js/types.js'));
+		$this->add(new GridGallery_Ui_BackendJavascript('gg-icheck', $url . '/app/assets/js/icheck.min.js'));
+		$this->add(new GridGallery_Ui_BackendJavascript('gg-types', $this->getLocationUrl() . '/js/types.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-ui-js', $url . '/app/assets/js/grid-gallery.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-lazy-load-ks', $url . '/app/assets/js/jquery.lazyload.min.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-form-serializer-js', $this->getLocationUrl() . '/plugins/grid-gallery.ui.formSerialize.js'));

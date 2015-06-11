@@ -242,7 +242,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         $galleries = new GridGallery_Galleries_Model_Galleries();
         $gallery = $galleries->getById($gid);
 
-        return $this->response(
+        /*return $this->response(
             'ajax',
             $this->getSuccessResponseData(
                 sprintf(
@@ -257,7 +257,19 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
                     $gallery->title
                 )
             )
-        );
+        );*/
+		return $this->response(
+			'ajax',
+			array(
+				'message' => $this->translate('The resources are successfully attached to the '.$gallery->title),
+				'galleryId' => (int)$gallery->id,
+				'redirectUrl' => $this->getEnvironment()->generateUrl(
+					'galleries',
+					'view',
+					array('gallery_id' => $gallery->id)
+				)
+			)
+		);
 
     }
 
@@ -567,8 +579,8 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
      * @return Rsc_Http_Response
      */
     public function saveCatsPresetAction(Rsc_Http_Request $request) {
-		if(isset($_POST['route']['options'])) {
-			$data = $_POST['route']['options'];
+		if(isset($request->post['route']['options'])) {
+			$data = $request->post['route']['options'];
 
             if(get_option('customCatsPresets')) {
 				$presets = get_option('customCatsPresets');
@@ -635,8 +647,8 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
      * @return Rsc_Http_Response
      */
     public function savePagesPresetAction(Rsc_Http_Request $request) {
-		if(isset($_POST['route']['options'])) {
-			$data = $_POST['route']['options'];
+		if(isset($request->post['route']['options'])) {
+			$data = $request->post['route']['options'];
 			if(get_option('customPagesPresets')) {
 				$presets = get_option('customPagesPresets');
 			} else {
@@ -826,10 +838,10 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         );
     }
 
-	public function getCatsPresetOptionsAction()
+	public function getCatsPresetOptionsAction(Rsc_Http_Request $request)
 	{
-		if(isset($_POST['route']['selectedPreset'])) {
-			$selectedPreset = $_POST['route']['selectedPreset'];
+		if(isset($request->post['route']['selectedPreset'])) {
+			$selectedPreset = $request->post['route']['selectedPreset'];
 			$presetsNames = $this->getModel('preset')->getCatsPresetsNames();
 			$dbPresetOpt = get_option('customCatsPresets');
 			$indx = array_search($selectedPreset, $presetsNames);
@@ -854,10 +866,10 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
 		);
 	}
 
-	public function getPagesPresetOptionsAction()
+	public function getPagesPresetOptionsAction(Rsc_Http_Request $request)
 	{
-		if(isset($_POST['route']['selectedPreset'])) {
-			$selectedPreset = $_POST['route']['selectedPreset'];
+		if(isset($request->post['route']['selectedPreset'])) {
+			$selectedPreset = $request->post['route']['selectedPreset'];
 			$presetsNames = $this->getModel('preset')->getPagesPresetsNames();
 			$dbPresetOpt = get_option('customPagesPresets');
 			$indx = array_search($selectedPreset, $presetsNames);

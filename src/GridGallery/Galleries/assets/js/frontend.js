@@ -1351,18 +1351,22 @@
 
         if(columnsNumber) {
             var containerWidth = parseInt(this.$container.width()),
-                spacing = parseInt(this.$elements.css('margin')),
+                spacing = parseInt(this.$container.data('offset')),
                 scaleHeight = parseInt(this.$elements.find('img').height()) / parseInt(this.$elements.width()),
                 elementWidth = null,
                 elementHeight = null;
 
-            containerWidth -= columnsNumber * 2 * spacing;
-            elementWidth = containerWidth / columnsNumber;
+            //containerWidth -= columnsNumber * 2 * spacing;
+            elementWidth = (this.$container.width() - columnsNumber * 2 * spacing) / columnsNumber;
+
+            console.log(elementWidth);
+
             elementHeight = Math.floor(elementWidth * scaleHeight);
 
             this.$elements.each(function() {
                 $(this).css('width', elementWidth);
                 $(this).find('img').width(elementWidth);
+                $(this).find('figcaption').css('width', elementWidth);
                 $(this).css('height', elementHeight);
                 $(this).find('img').height(elementHeight);
             });
@@ -1689,8 +1693,11 @@
                     'display': 'table'
                 };
 
-            if(!($(this).data('grid-gallery-type').split('-')[0] == 'quarter')) {
+            if(!($(this).data('grid-gallery-type').split('-')[0] == 'quarter') && !parseInt(self.$container.data('columns-number'))) {
                 captionStyle.height = height;
+            }
+            if(($(this).data('grid-gallery-type') == 'none') || ($(this).data('grid-gallery-type') == 'center')) {
+                captionStyle.height = figcaption.innerHeight();
             }
 
             figcaption.css(captionStyle);
@@ -1751,7 +1758,6 @@
             this.hidePopupCaptions();
             this.initSliphover();
             this.preventImages();
-            this.initRowsMode();
 
             this.setImagesHeight();
             this.setIconsPosition();
@@ -1763,6 +1769,7 @@
             this.loadFontFamily();
             this.initCaptionCalculations();
             this.initCaptionEffects();
+            this.initRowsMode();
         }, this));
     });
 
