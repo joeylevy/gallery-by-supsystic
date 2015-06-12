@@ -133,7 +133,7 @@
         var $options = $('[name="box[slideshowSpeed]"], [name="box[slideshowAuto]"]');
         $options.parents('tr').hide();
 
-        if ($('[name="box[slideshow]"]:checked').val() === '1') {
+        if ($('#hideSlideshow').parent().hasClass('checked')) {
             $options.parents('tr').show();
         }
     };
@@ -896,9 +896,9 @@
                 .trigger('change');
 
             // Toggle colorbox slide-show settings
-            $('input[name="box[slideshow]"]')
+            /*$('input[name="box[slideshow]"]')
                 .on('change', controller.toggleSlideShow)
-                .trigger('change');
+                .trigger('change');*/
 
             // Open theme dialog
             $('#chooseTheme').on('click', controller.openThemeDialog);

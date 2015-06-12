@@ -123,6 +123,7 @@
             checkboxClass: 'icheckbox_minimal'
             ,	radioClass: 'iradio_minimal'
         }).on('ifClicked', function(e){
+
             jQuery(this).trigger('click')
                 .trigger('change');
             ggCheckUpdateArea('.supsystic-container');
@@ -132,7 +133,7 @@
         jQuery(checkbox).iCheck('update');
     }
     function ggCheckUpdateArea(selector) {
-        jQuery(selector).find('input[type=radio]').iCheck('update');
+        jQuery(selector).find('input[type=radio] input[type=checkbox]').iCheck('update');
     };
 
     function setContainerHeight() {
