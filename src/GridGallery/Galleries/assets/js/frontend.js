@@ -1358,9 +1358,6 @@
 
             //containerWidth -= columnsNumber * 2 * spacing;
             elementWidth = (this.$container.width() - columnsNumber * 2 * spacing) / columnsNumber;
-
-            console.log(elementWidth);
-
             elementHeight = Math.floor(elementWidth * scaleHeight);
 
             this.$elements.each(function() {
@@ -1675,9 +1672,13 @@
 
     Gallery.prototype.loadFontFamily = (function () {
         var figcaption = this.$container.find('.grid-gallery-caption').find('figcaption'), fontFamily = figcaption.css('font-family');
+        if(fontFamily.indexOf(',') + 1) {
+            fontFamily = fontFamily.split(',')[0];
+        }
+
         WebFont.load({
             google: {
-                families: [fontFamily]
+                families: [fontFamily.replace(/'/g, '')]
             }
         });
     });
@@ -1685,24 +1686,26 @@
     Gallery.prototype.initCaptionCalculations = (function () {
         var self = this;
 
-        this.$container.find('.grid-gallery-caption').each(function () {
-            var figcaption = $(this).find('figcaption'),
-                wrap = figcaption.find('div.grid-gallery-figcaption-wrap'),
-                height = self.$container.data('height'),
-                captionStyle = {
-                    'display': 'table'
-                };
+        if(this.$elements.data('grid-gallery-type') != 'icons') {
+            this.$container.find('.grid-gallery-caption').each(function () {
+                var figcaption = $(this).find('figcaption'),
+                    wrap = figcaption.find('div.grid-gallery-figcaption-wrap'),
+                    height = self.$container.hasClass('grid-gallery-fluid-height') ? $(this).find('img').height() : self.$container.data('height'),
+                    captionStyle = {
+                        'display': 'table'
+                    };
 
-            if(!($(this).data('grid-gallery-type').split('-')[0] == 'quarter') && !parseInt(self.$container.data('columns-number'))) {
-                captionStyle.height = height;
-            }
-            if(($(this).data('grid-gallery-type') == 'none') || ($(this).data('grid-gallery-type') == 'center')) {
-                captionStyle.height = figcaption.innerHeight();
-            }
+                if(!($(this).data('grid-gallery-type').split('-')[0] == 'quarter') && !parseInt(self.$container.data('columns-number'))) {
+                    captionStyle.height = height;
+                }
+                if(($(this).data('grid-gallery-type') == 'none') || ($(this).data('grid-gallery-type') == 'center')) {
+                    captionStyle.height = figcaption.innerHeight();
+                }
 
-            figcaption.css(captionStyle);
-            wrap.css('display', 'table-cell');
-        });
+                figcaption.css(captionStyle);
+                wrap.css('display', 'table-cell');
+            });
+        }
     });
 
     Gallery.prototype.checkDirection = function($element, e) {
@@ -1765,11 +1768,12 @@
 
             this.initWookmark();
             this.initSlider();
+            this.initCaptionCalculations();
 
             this.loadFontFamily();
-            this.initCaptionCalculations();
             this.initCaptionEffects();
             this.initRowsMode();
+
         }, this));
     });
 

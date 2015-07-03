@@ -496,12 +496,12 @@
                     {{ translate("Show Posts and Pages") }}
                     </br>
                     <a class="button"
-                       href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=postfeed&utm_campaign=gallery">Get
+                       href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=postfeed&utm_campaign=gallery') }}">Get
                         PRO for 29$</a>
                 </h1>
 
                 <div>
-                    <a href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=postfeed&utm_campaign=gallery">
+                    <a href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=postfeed&utm_campaign=gallery') }}">
                         <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/posts_pro.jpg" />
                     </a>
                 </div>
@@ -638,12 +638,12 @@
                         {{ translate("Show amazing Icons on the images") }}
                         </br>
                         <a class="button"
-                           href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=icons&utm_campaign=gallery">Get
+                           href="{{ environment.getProUrl('utm_source=plugin&utm_medium=icons&utm_campaign=gallery') }}">Get
                             PRO for 29$</a>
                     </h1>
 
                     <div>
-                        <a href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=icons&utm_campaign=gallery">
+                        <a href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=icons&utm_campaign=gallery') }}">
                             <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/icons_pro.jpg" />
                         </a>
                     </div>
@@ -657,11 +657,11 @@
                     {{ translate('Categorize images in the gallery') }}
                     </br>
                     <a class="button"
-                       href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=categories&utm_campaign=gallery">Get PRO</a>
+                       href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=categories&utm_campaign=gallery') }}">Get PRO</a>
                 </h1>
 
                 <div>
-                    <a href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=categories&utm_campaign=gallery">
+                    <a href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=categories&utm_campaign=gallery') }}">
                         <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/cats_pro.jpg" />
                     </a>
                 </div>
@@ -670,11 +670,11 @@
                         {{ translate('Let user switch gallery pages') }}
                         </br>
                         <a class="button"
-                           href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=pages&utm_campaign=gallery">Get PRO</a>
+                           href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=pages&utm_campaign=gallery') }}">Get PRO</a>
                     </h1>
                     <div name="pagination">
                         <div>
-                            <a href="http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=pages&utm_campaign=gallery">
+                            <a href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=pages&utm_campaign=gallery') }}">
                                 <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/pagination_pro.jpg" />
                             </a>
                         </div>

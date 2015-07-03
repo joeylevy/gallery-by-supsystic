@@ -27,15 +27,17 @@
             return;
         }
 
-        parameters.url = parameters.wp.ajax.settings.url;
+        parameters.url = parameters.wp.ajax ? parameters.wp.ajax.settings.url : '';
 
-        uploader = parameters.wp.media.frames.file_frame = parameters.wp.media({
-            title:    parameters.title,
-            button:   {
-                text: parameters.buttonText
-            },
-            multiple: parameters.multiple
-        });
+        if(parameters.wp.media) {
+            uploader = parameters.wp.media.frames.file_frame = parameters.wp.media({
+                title:    parameters.title,
+                button:   {
+                    text: parameters.buttonText
+                },
+                multiple: parameters.multiple
+            });
+        }
 
         uploader.on('select', function () {
             SupsysticGallery.Loader.show('Please, wait until images will be imported.');

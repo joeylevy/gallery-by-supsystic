@@ -106,14 +106,15 @@
         changeUiButtonToWp();
         closeOnOutside();
 
-        setTimeout(function(){	// setTimeout to make sure that all required show/hide were triggered
+        /*setTimeout(function(){	// setTimeout to make sure that all required show/hide were triggered
             ggResetCopyTextCodeFields();
-        }, 10);
+        }, 10);*/
+        ggCodeSelection();
     });
 
     $(window).on('resize', function () {
         setContainerHeight();
-        ggResetCopyTextCodeFields();
+        //ggResetCopyTextCodeFields();
     });
 
     function ggInitCustomCheckRadio(selector) {
@@ -198,6 +199,32 @@
     function str_replace(haystack, needle, replacement) {
         var temp = haystack.split(needle);
         return temp.join(replacement);
+    }
+
+    function ggCodeSelection() {
+        jQuery('.ggCopyTextCode').click(function() {
+            var e=this, s, r;
+            if(window.getSelection) {
+                s = window.getSelection();
+                if(s.setBaseAndExtent){
+                    s.setBaseAndExtent(e,0,e,e.innerText.length-1);
+                }else{
+                    r=document.createRange();
+                    r.selectNodeContents(e);
+                    s.removeAllRanges();
+                    s.addRange(r);}
+            }else if(document.getSelection) {
+                s=document.getSelection();
+                r=document.createRange();
+                r.selectNodeContents(e);
+                s.removeAllRanges();
+                s.addRange(r);
+            }else if(document.selection) {
+                r=document.body.createTextRange();
+                r.moveToElementText(e);
+                r.select();
+            }
+        });
     }
 
 })(jQuery);

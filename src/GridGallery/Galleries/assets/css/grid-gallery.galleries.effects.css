@@ -1438,19 +1438,23 @@ a.post .grid-gallery-caption {
 
 .cube-in-top {
     -webkit-transform-origin: 50% 0%;
+    -moz-transform-origin: 50% 0%;
     -ms-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
     -webkit-animation: cube-in-top 300ms ease 0ms 1 forwards;
+    -moz-animation: cube-in-top 300ms ease 0ms 1 forwards;
     animation: cube-in-top 300ms ease 0ms 1 forwards;
 }
 @-webkit-keyframes cube-in-top {
     0% {
         -webkit-transform: rotate3d(-1, 0, 0, 90deg);
+        -moz-transform: rotate3d(-1, 0, 0, 90deg);
         transform: rotate3d(-1, 0, 0, 90deg);
         visibility: hidden;
     }
     100% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
@@ -1458,11 +1462,13 @@ a.post .grid-gallery-caption {
 @keyframes cube-in-top {
     0% {
         -webkit-transform: rotate3d(-1, 0, 0, 90deg);
+        -moz-transform: rotate3d(-1, 0, 0, 90deg);
         transform: rotate3d(-1, 0, 0, 90deg);
         visibility: hidden;
     }
     100% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
@@ -1470,19 +1476,23 @@ a.post .grid-gallery-caption {
 
 .cube-out-top {
     -webkit-transform-origin: 50% 0%;
+    -moz-transform-origin: 50% 0%;
     -ms-transform-origin: 50% 0%;
     transform-origin: 50% 0%;
     -webkit-animation: cube-out-top 300ms ease 0ms 1 forwards;
+    -moz-animation: cube-out-top 300ms ease 0ms 1 forwards;
     animation: cube-out-top 300ms ease 0ms 1 forwards;
 }
 @-webkit-keyframes cube-out-top {
     0% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
     100% {
         -webkit-transform: rotate3d(-1, 0, 0, 104deg);
+        -moz-transform: rotate3d(-1, 0, 0, 104deg);
         transform: rotate3d(-1, 0, 0, 104deg);
         visibility: hidden;
     }
@@ -1490,11 +1500,13 @@ a.post .grid-gallery-caption {
 @keyframes cube-out-top {
     0% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
     100% {
         -webkit-transform: rotate3d(-1, 0, 0, 104deg);
+        -moz-transform: rotate3d(-1, 0, 0, 104deg);
         transform: rotate3d(-1, 0, 0, 104deg);
         visibility: hidden;
     }
@@ -1502,6 +1514,7 @@ a.post .grid-gallery-caption {
 
 .cube-in-right {
     -webkit-transform-origin: 100% 0% !important;
+    -moz-transform-origin: 100% 0% !important;
     -ms-transform-origin: 100% 0% !important;
     transform-origin: 100% 0% !important;
     -webkit-animation: cube-in-right 300ms ease 0ms 1 forwards;
@@ -1510,11 +1523,13 @@ a.post .grid-gallery-caption {
 @-webkit-keyframes cube-in-right {
     from {
         -webkit-transform: rotate3d(0, -1, 0, 90deg);
+        -moz-transform: rotate3d(0, -1, 0, 90deg);
         transform: rotate3d(0, -1, 0, 90deg);
         visibility: hidden;
     }
     to {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
@@ -1522,11 +1537,13 @@ a.post .grid-gallery-caption {
 @keyframes cube-in-right {
     0% {
         -webkit-transform: rotate3d(0, -1, 0, 90deg);
+        -moz-transform: rotate3d(0, -1, 0, 90deg);
         transform: rotate3d(0, -1, 0, 90deg);
         visibility: hidden;
     }
     100% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
@@ -1534,6 +1551,7 @@ a.post .grid-gallery-caption {
 
 .cube-out-right {
     -webkit-transform-origin: 100% 50% !important;
+    -moz-transform-origin: 100% 50% !important;
     -ms-transform-origin: 100% 50% !important;
     transform-origin: 100% 50% !important;
     -webkit-animation: cube-out-right 300ms ease 0ms 1 forwards;
@@ -1542,22 +1560,26 @@ a.post .grid-gallery-caption {
 @-webkit-keyframes cube-out-right {
     0% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
     100% {
         -webkit-transform: rotate3d(0, -1, 0, 104deg);
+        -moz-transform: rotate3d(0, -1, 0, 104deg);
         transform: rotate3d(0, -1, 0, 104deg);
     }
 }
 @keyframes cube-out-right {
     0% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
     100% {
         -webkit-transform: rotate3d(0, -1, 0, 104deg);
+        -moz-transform: rotate3d(0, -1, 0, 104deg);
         transform: rotate3d(0, -1, 0, 104deg);
         visibility: hidden;
     }
@@ -1565,6 +1587,7 @@ a.post .grid-gallery-caption {
 
 .cube-in-bottom {
     -webkit-transform-origin: 50% 100% !important;
+    -moz-transform-origin: 50% 100% !important;
     -ms-transform-origin: 50% 100% !important;
     transform-origin: 50% 100% !important;
     -webkit-animation: cube-in-bottom 300ms ease 0ms 1 forwards;
@@ -1573,11 +1596,13 @@ a.post .grid-gallery-caption {
 @-webkit-keyframes cube-in-bottom {
     0% {
         -webkit-transform: rotate3d(1, 0, 0, 90deg);
+        -moz-transform: rotate3d(1, 0, 0, 90deg);
         transform: rotate3d(1, 0, 0, 90deg);
         visibility: hidden;
     }
     100% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
@@ -1585,11 +1610,13 @@ a.post .grid-gallery-caption {
 @keyframes cube-in-bottom {
     0% {
         -webkit-transform: rotate3d(1, 0, 0, 90deg);
+        -moz-transform: rotate3d(1, 0, 0, 90deg);
         transform: rotate3d(1, 0, 0, 90deg);
         visibility: hidden;
     }
     100% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
@@ -1597,6 +1624,7 @@ a.post .grid-gallery-caption {
 
 .cube-out-bottom {
     -webkit-transform-origin: 50% 100% !important;
+    -moz-transform-origin: 50% 100% !important;
     -ms-transform-origin: 50% 100% !important;
     transform-origin: 50% 100% !important;
     -webkit-animation: cube-out-bottom 300ms ease 0ms 1 forwards;
@@ -1605,11 +1633,13 @@ a.post .grid-gallery-caption {
 @-webkit-keyframes cube-out-bottom {
     0% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
     100% {
         -webkit-transform: rotate3d(1, 0, 0, 104deg);
+        -moz-transform: rotate3d(1, 0, 0, 104deg);
         transform: rotate3d(1, 0, 0, 104deg);
         visibility: hidden;
     }
@@ -1617,11 +1647,13 @@ a.post .grid-gallery-caption {
 @keyframes cube-out-bottom {
     0% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
     100% {
         -webkit-transform: rotate3d(1, 0, 0, 104deg);
+        -moz-transform: rotate3d(1, 0, 0, 104deg);
         transform: rotate3d(1, 0, 0, 104deg);
         visibility: hidden;
     }
@@ -1629,6 +1661,7 @@ a.post .grid-gallery-caption {
 
 .cube-in-left {
     -webkit-transform-origin: 0% 0%;
+    -moz-transform-origin: 0% 0%;
     -ms-transform-origin: 0% 0%;
     transform-origin: 0% 0%;
     -webkit-animation: cube-in-left 300ms ease 0ms 1 forwards;
@@ -1637,11 +1670,13 @@ a.post .grid-gallery-caption {
 @-webkit-keyframes cube-in-left {
     0% {
         -webkit-transform: rotate3d(0, 1, 0, 90deg);
+        -moz-transform: rotate3d(0, 1, 0, 90deg);
         transform: rotate3d(0, 1, 0, 90deg);
         visibility: hidden;
     }
     100% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
@@ -1649,11 +1684,13 @@ a.post .grid-gallery-caption {
 @keyframes cube-in-left {
     0% {
         -webkit-transform: rotate3d(0, 1, 0, 90deg);
+        -moz-transform: rotate3d(0, 1, 0, 90deg);
         transform: rotate3d(0, 1, 0, 90deg);
         visibility: hidden;
     }
     100% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
@@ -1661,6 +1698,7 @@ a.post .grid-gallery-caption {
 
 .cube-out-left {
     -webkit-transform-origin: 0% 0%;
+    -moz-transform-origin: 0% 0%;
     -ms-transform-origin: 0% 0%;
     transform-origin: 0% 0%;
     -webkit-animation: cube-out-left 300ms ease 0ms 1 forwards;
@@ -1669,11 +1707,13 @@ a.post .grid-gallery-caption {
 @-webkit-keyframes cube-out-left {
     0% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
     100% {
         -webkit-transform: rotate3d(0, 1, 0, 104deg);
+        -moz-transform: rotate3d(0, 1, 0, 104deg);
         transform: rotate3d(0, 1, 0, 104deg);
         visibility: hidden;
     }
@@ -1681,11 +1721,13 @@ a.post .grid-gallery-caption {
 @keyframes cube-out-left {
     0% {
         -webkit-transform: rotate3d(0, 0, 0, 0deg);
+        -moz-transform: rotate3d(0, 0, 0, 0deg);
         transform: rotate3d(0, 0, 0, 0deg);
         visibility: visible;
     }
     100% {
         -webkit-transform: rotate3d(0, 1, 0, 104deg);
+        -moz-transform: rotate3d(0, 1, 0, 104deg);
         transform: rotate3d(0, 1, 0, 104deg);
         visibility: hidden;
     }

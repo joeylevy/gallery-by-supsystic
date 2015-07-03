@@ -75,6 +75,13 @@ class GridGallery_Photos_Module extends Rsc_Mvc_Module
      */
     public function loadAssets(GridGallery_Ui_Module $ui)
     {
+        $env = $this->getEnvironment();
+
+        if($env->isModule('galleries', 'saveSettings')) {
+
+            return;
+        }
+
         $ui->add(new GridGallery_Ui_BackendStylesheet(
             'gg-photos',
             $this->getLocationUrl() . '/assets/css/grid-gallery.photos.css'

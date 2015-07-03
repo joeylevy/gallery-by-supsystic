@@ -53,7 +53,7 @@ jQuery.ajaxq = function (queue, options)
     $(document).ready(function () {
 
         /* Ajax URL */
-        var url = wp.ajax.settings.url;
+        var url = window.wp ? window.wp.ajax.settings.url : '';
 
         /* Routes */
         var routes = {

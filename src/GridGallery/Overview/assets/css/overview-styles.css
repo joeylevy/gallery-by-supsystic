@@ -109,8 +109,5 @@
 .supsystic-overview form textarea {
     float: left;
     margin-left: 50px;
-}
-
-.supsystic-overview-news a {
-    color: #0074a2;
+    width: calc(100% - 50px);
 }

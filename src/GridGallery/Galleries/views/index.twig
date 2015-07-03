@@ -97,9 +97,10 @@
                         </div>
                         <div class="shortcode-wrap">
                             <div class="gg-shortcode">
-                                Shortcode: <input type="text" id="shortcode-{{ gallery.id }}" class="ggCopyTextCode" value="[supsystic-gallery id='{{ gallery.id }}' position='center']" style="font-size: 12px;">
-                                <br />
-                                PhpCode: <input type="text" id="phpcode-{{ gallery.id }}" class="ggCopyTextCode" value='{{ '<?php echo do_shortcode(\'[supsystic-gallery id=' ~ gallery.id ~ ' position="center"]\') ?>' }}' style="font-size: 12px;">
+                                Shortcode:<br /><br /> {# <input type="text" id="shortcode-{{ gallery.id }}" class="ggCopyTextCode" value="[supsystic-gallery id='{{ gallery.id }}' position='center']"> #}
+                                <span id="shortcode-{{ gallery.id }}" class="ggCopyTextCode">[supsystic-gallery id='{{ gallery.id }}' position='center']</span><br /><br />
+                                PhpCode:<br /><br /> {# <input type="text" id="phpcode-{{ gallery.id }}" class="ggCopyTextCode" value='{{ '<?php echo do_shortcode(\'[supsystic-gallery id=' ~ gallery.id ~ ' position="center"]\') ?>' }}'> #}
+                                <span id="phpcode-{{ gallery.id }}" class="ggCopyTextCode">{{ '<?php echo do_shortcode(\'[supsystic-gallery id=' ~ gallery.id ~ ' position="center"]\') ?>' }}</span><br /><br />
                             </div>
                         </div>
                     </div>

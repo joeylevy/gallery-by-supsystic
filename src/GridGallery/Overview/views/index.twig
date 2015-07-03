@@ -45,10 +45,12 @@
                         Translate or update a translation Photo Gallery WordPress plugin in your language and get a Premium license for FREE.
                     </div>
                 </div>
+                <div style="clear: both;"></div>
                 <a href="http://supsystic.com/plugins/photo-gallery/#faq?utm_source=plugin&utm_medium=faq&utm_campaign=gallery" class="button button-primary button-hero">
                     <i class="fa fa-info-circle"></i>
                     Check all FAQs
                 </a>
+                <div style="clear: both;"></div>
             </div>
 
             <div class="video">
@@ -74,11 +76,12 @@
             </div>
         </div>
         <div class="half-page-right">
+            <h3>News</h3>
             <div class="supsystic-overview-news">
                 {{ news|raw }}
             </div>
-            <p>
-                <a href="http://supsystic.com/plugins/photo-gallery/#faq" class="button button-primary button-hero">
+            <p style="padding-bottom: 20px; border-bottom: 1px solid rgba(164, 170, 172, 0.28);">
+                <a href="http://supsystic.com/plugins/photo-gallery/" class="button button-primary button-hero">
                     <i class="fa fa-info-circle"></i>
                     All news
                 </a>
@@ -91,28 +94,27 @@
 
                 {{ form.open('post', environment.generateUrl('overview', 'sendMail'), { 'id': 'form-settings', 'style': 'max-width: 428px;' }) }}
 
-                <table class="contact-form-table">
+                <table class="contact-form-table" style="width: 100%;">
                     <thead>
 
-                    {{ form.row(translate('Your name'),
-                        form.text('mail[name]', '', { 'style': { 'width': 'auto;' } })) }}
+                    {{ form.row(translate('Name'),
+                        form.text('mail[name]', '', { 'required': '' })) }}
 
-                    {{ form.row(translate('Your email'),
-                        form.text('mail[email]', '', { 'style': { 'width': 'auto;' } })
-                        ~ '<span class="required">*</span>') }}
+                    {{ form.row(translate('Email'),
+                        form.text('mail[email]', contactForm.email, { 'required': '' })) }}
 
                     {{ form.row(translate('Website'),
-                        form.text('mail[website]', '', { 'style': { 'width': 'auto;' } })) }}
+                        form.text('mail[website]', contactForm.website, { 'required': '' })) }}
 
                     {{ form.row(translate('Subject'),
-                        form.text('mail[subject]', '', { 'style': { 'width': 'auto;' } })) }}
+                        form.text('mail[subject]', '', { 'required': '' })) }}
 
                     <tr>
                         <th scope="row">
                             <label for="select-question">{{ translate('Topic') }}</label>
                         </th>
                         <td>
-                            <select id="select-question" style="width: 200px;" name="mail[question]">
+                            <select id="select-question" name="mail[question]">
                                 <option value="plugin_options">
                                     {{ translate('Plugin options') }}
                                 </option>
@@ -130,19 +132,18 @@
                     </tr>
 
                     <tr>
-                        <th scope="row">
-                            <label for="mail-text">{{ translate('Type your message') }}</label>
+                        <th scope="row" style="vertical-align: top;">
+                            <label for="mail-text">{{ translate('Message') }}</label>
                         </th>
                         <td>
-                            <textarea id="mail-text" name="mail[message]" style="width: auto; height: 100px;"></textarea>
-                            <span class="required">*</span>
+                            <textarea id="mail-text" name="mail[message]" cols="50" rows="3" placeholder="{{ translate('Hello Supsystic Team!') }}" required=""></textarea>
                         </td>
                     </tr>
 
                     </thead>
                 </table>
 
-                <button id="send-mail" type="submit" class="button button-primary button-hero" style="margin-left: 60%;">
+                <button id="send-mail" type="submit" class="button button-primary button-hero">
                     <i class="fa fa-upload"></i>
                     Send email
                 </button>

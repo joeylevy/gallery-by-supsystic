@@ -145,6 +145,14 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
      */
     public function loadAssets(GridGallery_Ui_Module $ui)
     {
+
+        $env = $this->getEnvironment();
+
+        if($env->isModule('galleries', 'saveSettings')) {
+
+            return;
+        }
+
         /* CSS */
         $ui->add(new GridGallery_Ui_BackendStylesheet(
             'gg-galleries-style',
@@ -338,7 +346,7 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         $settingsModel = new GridGallery_Galleries_Model_Settings();
         $postsLenght = sizeof($settingsModel->getPostsToRender($attributes['id'])) + sizeof($settingsModel->getPagesToRender($attributes['id']));
 
-        if($settings->data['posts']['enable']) {
+        if(isset($settings->data['posts']) && $settings->data['posts']['enable']) {
             foreach ($settingsModel->getPostsToRender($attributes['id']) as $post) {
                 foreach($post['categories'] as $category) {
                     if (!isset($cats[$category['name']])) {
@@ -356,8 +364,10 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             }
         }
 
-        foreach($gallery->photos as $photo) {
-            $photo->attachment['caption'] = html_entity_decode($photo->attachment['caption']);
+        if(is_array($gallery->photos) && $gallery->photos) {
+            foreach($gallery->photos as $photo) {
+                $photo->attachment['caption'] = html_entity_decode($photo->attachment['caption']);
+            }
         }
 
         $template = $twig->render(

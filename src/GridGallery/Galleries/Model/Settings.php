@@ -42,13 +42,15 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
     public function getCatsFromPreset($data, $config) {
         $config->load('@galleries/categories_presets.php');
         $presets = $config->get('categories_presets');
-        $preset_number = $data['categories']['preset'];
+        $preset_number = isset($data['categories']) ? $data['categories']['preset'] : null;
         $customPresets = get_option('customCatsPresets');
 
-        if(!$presets[$preset_number] && !empty($customPresets) && $customPresets[$preset_number - sizeof($presets)]['categories']) {
+        if(isset($customPresets[$preset_number - sizeof($presets)])
+                && !$presets[$preset_number] && !empty($customPresets) && $customPresets[$preset_number - sizeof($presets)]['categories']) {
+
             $data['categories'] = array_merge($data['categories'], $customPresets[$preset_number - sizeof($presets)]['categories']);
         } else {
-            if(is_array($presets[$preset_number]) && !empty($presets[$preset_number])) {
+            if(isset($presets[$preset_number]) && is_array($presets[$preset_number]) && !empty($presets[$preset_number])) {
                 $data['categories'] = array_merge($data['categories'], $presets[$preset_number]);
             }
         }
@@ -59,13 +61,15 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
     public function getPagesFromPreset($data, $config) {
         $config->load('@galleries/pagination_presets.php');
         $presets = $config->get('pagination_presets');
-        $preset_number = $data['pagination']['preset'];
+        $preset_number = isset($data['pagination']) ? $data['pagination']['preset'] : null;
         $customPresets = get_option('customPagesPresets');
 
-        if(!$presets[$preset_number] && !empty($customPresets) && $customPresets[$preset_number - sizeof($presets)]['pagination']) {
+        if(isset($customPresets[$preset_number - sizeof($presets)]) && !$presets[$preset_number]
+            && !empty($customPresets) && $customPresets[$preset_number - sizeof($presets)]['pagination']) {
+
             $data['pagination'] = array_merge($data['pagination'], $customPresets[$preset_number - sizeof($presets)]['pagination']);
         } else {
-            if(is_array($presets[$preset_number]) && !empty($presets[$preset_number])) {
+            if(isset($presets[$preset_number]) && is_array($presets[$preset_number]) && !empty($presets[$preset_number])) {
                 $data['pagination'] = array_merge($data['pagination'], $presets[$preset_number]);
             }
         }
@@ -75,12 +79,12 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
 
     public function settingsDiff($stats, $id, $data) {
         foreach($this->get($id)->data as $key => $value) {
-            if(is_array($data[$key])) {
+            if(isset($data[$key]) && is_array($data[$key])) {
                 if(is_array($value) && !empty($value)) {
                     $diffOptions = array_diff_assoc($data[$key], $value);
                     $this->saveDiffOptions($stats, $key, $diffOptions);
                     foreach($value as $el => $opt) {
-                        if(is_array($opt) && is_array($data[$key][$el])) {
+                        if(is_array($opt) && isset($data[$key][$el]) && is_array($data[$key][$el])) {
                             $diffOptions = array_diff_assoc($data[$key][$el], $opt);
                             $this->saveDiffOptions($stats, $key, $diffOptions);
                         }

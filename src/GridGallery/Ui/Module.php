@@ -93,7 +93,7 @@ class GridGallery_Ui_Module extends Rsc_Mvc_Module
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-ui', $url . '/app/assets/css/supsystic-ui.css'));
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-jquery-ui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css'));
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css'));
-        $this->add(new GridGallery_Ui_BackendStylesheet('gg-jgrowl', '//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.2.12/jquery.jgrowl.min.css'));
+		$this->add(new GridGallery_Ui_BackendStylesheet('gg-jgrowl', $url . '/app/assets/css/supsystic-jgrowl.css'));
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-tooltipster', $this->getLocationUrl() . '/css/tooltipster.css'));
         //$this->add(new GridGallery_Ui_BackendStylesheet('gg-tooltipster', '//cdn.jsdelivr.net/jquery.tooltipster/2.1.4/css/tooltipster.css'));
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-animate-css', $url . '/app/assets/css/animate.css'));

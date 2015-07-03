@@ -13,7 +13,11 @@ class GridGallery_Overview_Controller extends GridGallery_Core_BaseController
             '@overview/index.twig',
             array(
                 'serverSettings' => $serverSettings,
-                'news' => $this->loadNews($config['post_url'])
+                'news' => $this->loadNews($config['post_url']),
+				'contactForm' => array(
+					'email' => get_bloginfo('admin_email'),
+					'website' => get_bloginfo('url')
+				)
             )
         );
     }

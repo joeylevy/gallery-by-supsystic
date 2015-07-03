@@ -20,7 +20,9 @@
     };
 
     Dialog.prototype.init = function () {
-        $(this.id).dialog(this.config);
+        if($(this.id).length) {
+            $(this.id).dialog(this.config);
+        }
     };
 
     var Controller = function () {
@@ -56,16 +58,18 @@
     };
 
     Controller.prototype.initImportDialog = function () {
-        $('#importDialog').dialog({
-            autoOpen: false,
-            modal:    true,
-            width:    570,
-            buttons:  {
-                Cancel: function () {
-                    $(this).dialog('close');
+        if($('#importDialog').length) {
+            $('#importDialog').dialog({
+                autoOpen: false,
+                modal:    true,
+                width:    570,
+                buttons:  {
+                    Cancel: function () {
+                        $(this).dialog('close');
+                    }
                 }
-            }
-        });
+            });
+        }
 
         Controller.prototype.openImportDialog = function () {
             $('#importDialog').dialog('open');
@@ -321,83 +325,85 @@
 
         observer.reinit();
 
-        $('[data-sortable]').sortable({
-            start: function (event, ui) {
-                ui.item.draggable();
-            },
-            stop:  function (event, ui) {
-                ui.item.find('.ui-draggable').css({ zIndex: 1000 });
+        if($('[data-sortable]').length) {
+            $('[data-sortable]').sortable({
+                start: function (event, ui) {
+                    ui.item.draggable();
+                },
+                stop:  function (event, ui) {
+                    ui.item.find('.ui-draggable').css({ zIndex: 1000 });
 
-                if ($('[data-container]').data('container') === 'block') {
-                    ui.item.addClass('animated swing');
+                    if ($('[data-container]').data('container') === 'block') {
+                        ui.item.addClass('animated swing');
+                    }
+
+                    ui.item.draggable('destroy');
                 }
+            });
 
-                ui.item.draggable('destroy');
-            }
-        });
+            $('[data-droppable]').droppable({
+                hoverClass: 'folder-highlight',
+                drop: function (event, ui) {
 
-        $('[data-droppable]').droppable({
-            hoverClass: 'folder-highlight',
-            drop: function (event, ui) {
+                    event.preventDefault();
 
-                event.preventDefault();
+                    var move = function ($entity, $folder) {
 
-                var move = function ($entity, $folder) {
-
-                    this.message = 'Unable to move photo to the selected folder';
-                    this.request = app.Ajax.Post({
-                        module: 'photos',
-                        action: 'move'
-                    });
-
-                    this.request.add('folder_id', $folder.data('entity-id'));
-                    this.request.add('photo_id', $entity.data('entity-id'));
-
-                    this.request.send($.proxy(function (response) {
-                        if (response.error) {
-                            $.jGrowl(this.message);
-                            return false;
-                        }
-
-                        var $counter = $folder.find('.gg-folder-photos-num');
-
-                        $counter.text(function () {
-                            return parseInt($counter.text(), 10) + 1;
+                        this.message = 'Unable to move photo to the selected folder';
+                        this.request = app.Ajax.Post({
+                            module: 'photos',
+                            action: 'move'
                         });
 
-                        $entity.remove();
+                        this.request.add('folder_id', $folder.data('entity-id'));
+                        this.request.add('photo_id', $entity.data('entity-id'));
 
-                        return true;
+                        this.request.send($.proxy(function (response) {
+                            if (response.error) {
+                                $.jGrowl(this.message);
+                                return false;
+                            }
 
-                    }, this));
+                            var $counter = $folder.find('.gg-folder-photos-num');
 
-                };
+                            $counter.text(function () {
+                                return parseInt($counter.text(), 10) + 1;
+                            });
 
-                var
-                // dragged photo
-                    $entity = ui.draggable,
+                            $entity.remove();
 
-                // folder
-                    $folder = $(this),
+                            return true;
 
-                // photos container
-                    $container = $entity.parents('[data-container]'),
+                        }, this));
 
-                // an array of the selected photos.
-                    photos = [];
+                    };
 
-                if ($('[data-observable]:checked').length > 0) {
-                    $.each($('[data-observable]:checked'), function (index, checkbox) {
-                        move(
-                            app.Common.getParentEntity(checkbox),
-                            $folder
-                        );
-                    });
-                } else {
-                    move($entity, $folder);
+                    var
+                    // dragged photo
+                        $entity = ui.draggable,
+
+                    // folder
+                        $folder = $(this),
+
+                    // photos container
+                        $container = $entity.parents('[data-container]'),
+
+                    // an array of the selected photos.
+                        photos = [];
+
+                    if ($('[data-observable]:checked').length > 0) {
+                        $.each($('[data-observable]:checked'), function (index, checkbox) {
+                            move(
+                                app.Common.getParentEntity(checkbox),
+                                $folder
+                            );
+                        });
+                    } else {
+                        move($entity, $folder);
+                    }
                 }
-            }
-        });
+            });
+        }
     };
 
     app.Controller = app.Controller || {};
