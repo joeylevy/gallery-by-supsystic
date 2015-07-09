@@ -14,7 +14,7 @@
             </button>
         </li>
         <li title="{{ translate('Logout') }}">
-            <a class="button button-primary" href="{{ environment.generateUrl('insta', 'logout') }}">
+            <a class="button button-primary" href="{{ environment.generateUrl('insta', 'logout', { 'id': id }) }}">
                 <i class="fa fa-sign-out"></i>
                 {{ translate('Logout') }}
             </a>

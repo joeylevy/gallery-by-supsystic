@@ -24,10 +24,10 @@ class GridGallery_Insta_Module extends Rsc_Mvc_Module
         $config->add('instagram_redirect', 'http://supsystic.com/authenticator/index.php/authenticator/instagram');
 
         // Authenticator redirect uri
-        $config->add(
+        /*$config->add(
             'instagram_state',
             $environment->generateUrl('insta', 'complete')
-        );
+        );*/
     }
 
     /**
@@ -35,9 +35,11 @@ class GridGallery_Insta_Module extends Rsc_Mvc_Module
      *
      * @return GridGallery_Insta_Client
      */
-    public function getClient()
+    public function getClient($galleryId = 0)
     {
-        if (!$this->client) {
+		$environment = $this->getEnvironment();
+
+		if (!$this->client) {
             $config = $this->getEnvironment()->getConfig();
             $client = new GridGallery_Insta_Client();
 
@@ -48,6 +50,8 @@ class GridGallery_Insta_Module extends Rsc_Mvc_Module
 
             $this->client = $client;
         }
+
+		$this->client->setState($environment->generateUrl('insta', 'complete', array('id' => $galleryId)));
 
         return $this->client;
     }

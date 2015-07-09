@@ -4,7 +4,13 @@
     <nav id="supsystic-breadcrumbs" class="supsystic-breadcrumbs">
         <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Gallery by Supsystic') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('insta', 'authorization') }}">{{ translate('Instagram') }}</a>
+        <a href="{{ environment.generateUrl('galleries') }}">{{ translate('Galleries') }}</a>
+        <i class="fa fa-angle-right"></i>
+        <a href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': id }) }}">{{ galleryName|capitalize }}</a>
+        <i class="fa fa-angle-right"></i>
+        <a href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': id }) }}">{{ translate('Import images') }}</a>
+        <i class="fa fa-angle-right"></i>
+        <a href="{{ environment.generateUrl('insta', 'authorization', { 'id': id }) }}">{{ translate('Instagram authorization') }}</a>
     </nav>
 {% endblock %}
 

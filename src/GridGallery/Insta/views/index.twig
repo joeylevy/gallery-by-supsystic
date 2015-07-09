@@ -9,9 +9,9 @@
         <i class="fa fa-angle-right"></i>
         <a href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': id }) }}">{{ galleryName|capitalize }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('galleries', 'view') }}">{{ translate('Import images') }}</a>
+        <a href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': id }) }}">{{ translate('Import images') }}</a>
         <i class="fa fa-angle-right"></i>
-        <a href="{{ environment.generateUrl('insta', 'index') }}">{{ translate('Instagram') }}</a>
+        <a href="{{ environment.generateUrl('insta', 'index', { 'id': id }) }}">{{ translate('Instagram') }}</a>
     </nav>
 
     {% include '@insta/includes/toolbar.twig' %}
@@ -55,9 +55,9 @@
 
                     jQuery('input:checkbox').each(function () {
                         if (button_select.data('value') == 'select') {
-                            $(this).attr('checked', 'checked');
+                            $(this).attr('checked', 'checked').iCheck('update');
                         } else {
-                            $(this).removeAttr('checked');
+                            $(this).removeAttr('checked').iCheck('update');
                         }
                     });
                     if ($(this).data('value') == 'select') {

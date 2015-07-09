@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: photo gallery, responsive, foto gallery, grid, grid gallery, add gallery, album, foto, fotoalbum, galery, image, photo, gird, website gallery, wordpress gallery, gallery plugin, image gallery, responsive gallery, post feed gallery
 Tested up to: 4.2.2
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
 
@@ -279,6 +279,17 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 5. [Image Circle Gallery](http://supsystic.com/plugins/photo-gallery/#examples?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Image Circle Gallery") - perform your best ideas with Gallery by Supsystic!
 
 == Changelog ==
+
+= 1.3.1 / 09.07.2015 =
+
+ * Fixed social import functionality
+ * Checkall buttons for social import fixed
+ * Notices fixed
+ * Saving settings console errors removed
+ * Thumbs saving notices fixed
+ * Categories and pagination presets selection notices fixed
+ * Changes in Overview page
+ * Minor changes
 
 = 1.3.0 / 11.06.2015 =
 

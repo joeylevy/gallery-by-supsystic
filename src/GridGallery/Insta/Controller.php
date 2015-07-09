@@ -29,7 +29,7 @@ class GridGallery_Insta_Controller extends GridGallery_Core_BaseController
 
         if (!get_option('insta_token')) {
             return $this->redirect(
-                $this->generateUrl('insta', 'authorization')
+                $this->generateUrl('insta', 'authorization', array('id' => $galleryId))
             );
         }
 
@@ -46,14 +46,16 @@ class GridGallery_Insta_Controller extends GridGallery_Core_BaseController
      *
      * @return Rsc_Http_Response
      */
-    public function authorizationAction()
+    public function authorizationAction(Rsc_Http_Request $request)
     {
-        $client = $this->getClient();
+		$galleryId = $request->query->get('id');
+		$galleries = new GridGallery_Galleries_Model_Galleries;
+        $client = $this->getClient($galleryId);
 
         try {
             return $this->response(
                 '@insta/authorization.twig',
-                array('url' => $client->getAuthorizationUrl())
+                array('url' => $client->getAuthorizationUrl(), 'id' => $galleryId, 'galleryName' => $galleries->getById($galleryId)->title)
             );
         } catch (Exception $e) {
             return $this->response(
@@ -66,6 +68,7 @@ class GridGallery_Insta_Controller extends GridGallery_Core_BaseController
     public function completeAction(Rsc_Http_Request $request)
     {
         $code = $request->query->get('code');
+		$galleryId = $request->query->get('id');
 
         if (!$code) {
             $message = $this->translate('Authorization code is not specified.');
@@ -96,7 +99,7 @@ class GridGallery_Insta_Controller extends GridGallery_Core_BaseController
             );
         }
 
-        return $this->redirect($this->generateUrl('insta'));
+        return $this->redirect($this->generateUrl('insta', 'index', array('id' => $galleryId)));
     }
 
     public function saveAction(Rsc_Http_Request $request)
@@ -183,24 +186,26 @@ class GridGallery_Insta_Controller extends GridGallery_Core_BaseController
         }
     }
 
-    public function logoutAction()
+    public function logoutAction(Rsc_Http_Request $request)
     {
+		$galleryId = $request->query->get('id');
+
         delete_option('insta_token');
         delete_option('insta_user');
         delete_option('insta_thumbnails');
 
-        return $this->redirect($this->generateUrl('insta'));
+        return $this->redirect($this->generateUrl('insta', 'index', array('id' => $galleryId)));
     }
 
     /**
      * @return GridGallery_Insta_Client
      */
-    protected function getClient()
+    protected function getClient($galleryId = 0)
     {
         /** @var GridGallery_Insta_Module $insta */
         $insta = $this->getModule($this);
 
-        return $insta->getClient();
+        return $insta->getClient($galleryId);
     }
 
 } 
