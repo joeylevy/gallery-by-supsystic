@@ -81,7 +81,7 @@ class GridGallery_Galleries_Model_Settings extends GridGallery_Core_BaseModel
         foreach($this->get($id)->data as $key => $value) {
             if(isset($data[$key]) && is_array($data[$key])) {
                 if(is_array($value) && !empty($value)) {
-                    $diffOptions = array_diff_assoc($data[$key], $value);
+                    $diffOptions = @array_diff_assoc($data[$key], $value);
                     $this->saveDiffOptions($stats, $key, $diffOptions);
                     foreach($value as $el => $opt) {
                         if(is_array($opt) && isset($data[$key][$el]) && is_array($data[$key][$el])) {
