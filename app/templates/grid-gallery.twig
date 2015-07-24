@@ -35,7 +35,7 @@
                             {{ translate('Galleries') }}
                         </a>
                     </li>
-                    {% if environment.isPro() %}
+                    {% if environment.getModule('license') %}
                         <li class="supsystic-sticky {% if (request.query.module == 'license') %}active{% endif %}">
                             <a href="{{ environment.generateUrl('license') }}">
                                 <i class="fa fa-hand-o-right"></i>

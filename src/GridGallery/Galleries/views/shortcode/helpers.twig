@@ -8,7 +8,7 @@
         {% if settings.use_shadow == 1 %}
             box-shadow: {{ settings.thumbnail.shadow.x }}px {{ settings.thumbnail.shadow.y }}px {{ settings.thumbnail.shadow.blur }}px {{ settings.thumbnail.shadow.color }};
         {% endif %};
-        margin: {{ settings.area.distance }}px !important;
+        margin: {{ settings.area.distance }}px;
         {#-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);#}
     {% if settings.area.grid == '2' or settings.area.grid == '0' or settings.area.grid == '3' %}
         height:{{ settings.area.photo_height }} ~ {{ settings.area.photo_height_unit|replace(['px', '%']) }};

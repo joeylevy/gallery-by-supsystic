@@ -1180,7 +1180,8 @@
 		this.$qsData = null;
         this.$qsDuration = '750';
         this.$qsEnable = false;
-        
+		this.areaPosition = this.$container.data('area-position');	// I think we wil need this in future
+		
 		this.pagination = {
             currentPage: 1,
             limit: 0,
@@ -1241,7 +1242,9 @@
             flexibleWidth:  true,
             itemWidth:      this.$container.data('width'),
             offset:         this.$container.data('offset')
-        });
+        }).css({
+			'margin': '0'
+		});
 
         if(this.isFluidHeight())
             this.$container.find('.grid-gallery-photos')
@@ -1746,6 +1749,31 @@
             });
         }
     });
+	/**
+	 * Do not margin left - first element of set, and don't marging right - last element
+	 */
+	 Gallery.prototype.correctMargin = (function () {
+		if(!this.isFluidHeight()) {
+			var prevOffset = {left: 0, top: 0}
+			,	currOffset = {}
+			,	prevElement = null
+			,	totalElements = this.$elements.size();
+			this.$elements.each(function(index){
+				currOffset = $(this).position();
+				if(index == 0 || currOffset.top != prevOffset.top) {
+					$(this).css('margin-left', 0);
+					if(index != 0) {
+						$(prevElement).css('margin-right', 0);
+					}
+				}
+				if(index == totalElements - 1) {
+					$(this).css('margin-right', 0);
+				}
+				prevOffset = currOffset;
+				prevElement = this;
+			});
+		}
+    });
 
     Gallery.prototype.init = (function () {
         this.$container.imagesLoaded($.proxy(function () {
@@ -1773,6 +1801,8 @@
             this.loadFontFamily();
             this.initCaptionEffects();
             this.initRowsMode();
+			
+			this.correctMargin();
 
         }, this));
     });

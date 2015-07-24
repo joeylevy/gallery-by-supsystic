@@ -13,6 +13,7 @@
     <section
         id="grid-gallery-{{ gallery.id }}"
         data-offset="{{ settings.area.distance }}"
+		data-area-position="{{ settings.area.position }}"
         {% if settings.area.grid == '2' %}
         data-width="auto"
             {% else %}
@@ -59,7 +60,7 @@
             {% if environment.getConfig().get('optimizations') == 1 and environment.isPro() == false %}
                     optimizations
             {% endif %}"
-        style="width:{{ settings.area.width ~ settings.area.width_unit|replace(['px', '%']) }};height:{{ settings.area.height }}{% if settings.area.height != 'auto' %}px;overflow:hidden{% endif %};{% if settings.area.position == '1' or settings.area.position == 'left'  %}float: left{% endif %}{% if settings.area.position == '2' or settings.area.position == 'right' %}float: right{% endif %}">
+        style="width:{{ settings.area.width ~ settings.area.width_unit|replace(['px', '%']) }};height:{{ settings.area.height | default('auto') }}{% if settings.area.height != 'auto' %}px;overflow:hidden{% endif %};{% if settings.area.position == '1' or settings.area.position == 'left'  %}float: left{% endif %}{% if settings.area.position == '2' or settings.area.position == 'right' %}float:right{% endif %}{% if  settings.area.position == 'center' %}margin-left:auto;margin-right:auto;{% endif %}">
 
         {% if categories is defined and categories is not empty and environment.isPro() %}
             {% if settings.categories is defined and settings.categories.enabled == 'true' and settings.categories.position == 'top' %}

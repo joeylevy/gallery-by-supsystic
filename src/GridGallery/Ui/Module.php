@@ -42,7 +42,14 @@ class GridGallery_Ui_Module extends Rsc_Mvc_Module
             array($this->assets, 'load')
         );
 
+        add_action('admin_enqueue_scripts', array($this, 'menuAntiDuplicate'));
         add_action('admin_enqueue_scripts', array($this, 'colorpicker'));
+    }
+
+    public function menuAntiDuplicate()
+    {
+        $url = $this->getEnvironment()->getConfig()->get('plugin_url');
+        wp_enqueue_style('gg-menu-anti-duplicate', $url . '/app/assets/css/supsystic-for-all-admin.css');
     }
 
     public function colorpicker()
@@ -97,7 +104,6 @@ class GridGallery_Ui_Module extends Rsc_Mvc_Module
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-tooltipster', $this->getLocationUrl() . '/css/tooltipster.css'));
         //$this->add(new GridGallery_Ui_BackendStylesheet('gg-tooltipster', '//cdn.jsdelivr.net/jquery.tooltipster/2.1.4/css/tooltipster.css'));
         $this->add(new GridGallery_Ui_BackendStylesheet('gg-animate-css', $url . '/app/assets/css/animate.css'));
-		$this->add(new GridGallery_Ui_BackendStylesheet('gg-menu-anti-duplicate-css', $url . '/app/assets/css/supsystic-for-all-admin.css'));
 		$this->add(new GridGallery_Ui_BackendStylesheet('gg-minimal-css', $url . '/app/assets/css/minimal/minimal.css'));
 
         /* Google fonts */
