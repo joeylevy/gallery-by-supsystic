@@ -1434,13 +1434,19 @@
 
             var $category   = $(event.currentTarget),
                 requested   = String($category.data('tag')),
-                _defaultTag = '__all__';
+                _defaultTag = '__all__',
+                currentGallery = this.$navigation.parent().attr('id');
 
             $elements.css('background-color', $defaultBackground);
             $category.css('background-color',
                 "#" + (parseInt(Gallery.prototype.rgb2hex($category.css('borderTopColor')), 16) + parseInt("2E2E2E",16)).toString(16));
 
-            if ($category.data('tag') == _defaultTag) {
+            if (requested == _defaultTag) {
+                this.$elements.each(function () {
+                    if($(this).parent().attr('rel'))
+                        $(this).parent().attr('rel', 'prettyPhoto['+currentGallery+']');
+                });
+
                 this.$elements
                     .removeClass('wookmarked')
                     .addClass('wookmarked')
@@ -1471,6 +1477,8 @@
                 }
 
                 if ($.inArray(requested, tags) > -1) {
+                    if($element.parent().attr('rel'))
+                        $element.parent().attr('rel', 'prettyPhoto['+currentGallery+'-'+requested+']');
                     if(!fluid && qs)
                         $element.addClass('wookmarked');
                     else {

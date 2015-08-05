@@ -296,13 +296,15 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             $settings = $this->getGallerySettings($attributes['id']);
         }
 
-        foreach($attributes as $key => $value) {
-            if(!empty($settings->data['area'][$key]) && $settings->data['area'][$key])	// I think this is wrong - all options can be re-defined, even if they are empty
-                $settings->data['area'][$key] = $value;
+        if (array_key_exists('position', $attributes)) {
+            $position = strtolower($attributes['position']);
+
+            if (!in_array($position, array('left', 'center', 'right'), false)) {
+                $position = 'center';
+            }
+
+            $settings->data['area']['position'] = $position;
         }
-		/*if(isset($attributes['position'])) {	// We can also make fix of prev. foreach -> if instead of this line
-			$settings->data['area']['position'] = $attributes['position'];
-		}*/
 
         add_action('wp_footer', array($this, 'addFrontendCss'));
         add_action('wp_footer', array($this, 'addFrontendJs'));

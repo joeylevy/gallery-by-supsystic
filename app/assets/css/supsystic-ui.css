@@ -285,6 +285,9 @@ input[type="color"] {
 .column-title.title .photo-editor input[type="text"] {
     width: 100%;
 }
+td.title.column-title {
+    width: auto !important;
+}
 /*Admin footer links*/
 .swrAdminFooterCell {
 	float: left;

@@ -29,6 +29,7 @@ a.post .grid-gallery-caption {
     -o-transition: 500ms;
     transition: 500ms;
     width: 100%;
+    height: 100%;
     display: block;
     border-radius: 0;
     margin: 0 !important;

@@ -1301,6 +1301,7 @@
 
         $(getSelector(fields.fontFamily)).on('change', $.proxy(function (e) {
             var fontFamily = $(getSelector(fields.fontFamily)).val();
+			if(!fontFamily) return;
             WebFont.load({
                 google: {
                     families: [fontFamily]
