@@ -103,28 +103,39 @@
 
             </ul>
         </section>
-        <figure class="grid-gallery-caption" data-grid-gallery-type="center" style="float: none !important;">
-            {% if gallery.settings.previewImage is not empty %}
-                {% set cover = get_attachment(gallery.settings.previewImage, '420', '250', 'true') %}
-            {% else %}
-                {% set cover = get_attachment(gallery.photos[0].attachment.id, '420', '250', 'true') %}
-            {% endif %}
+        {% if gallery.photos is not empty %}
+            <figure class="grid-gallery-caption" data-grid-gallery-type="center" style="float: none !important;">
+                {% if gallery.settings.previewImage is not empty %}
+                    {% set cover = get_attachment(gallery.settings.previewImage, '420', '250', 'true') %}
+                {% else %}
+                    {% set cover = get_attachment(gallery.photos[0].attachment.id, '420', '250', 'true') %}
+                {% endif %}
 
-            {% if cover|length < 1 %}
-                {% set cover = 'http://placehold.it/350x250&text=' ~ gallery.title %}
-            {% endif %}
-            <img src="{{ cover }}" alt="{{ gallery.title }}" style="max-height: 250px; max-width: 420px;"/>
-            <figcaption style="{{ figcaptionStyle|trim }}">
-                <div class="grid-gallery-figcaption-wrap">
-                    <span>Gallery by Supsystic</span>
-                </div>
-            </figcaption>
-        </figure>
+                {% if cover|length < 1 %}
+                    {% set cover = 'http://placehold.it/350x250&text=' ~ gallery.title %}
+                {% endif %}
+                <img src="{{ cover }}" alt="{{ gallery.title }}" style="max-height: 250px; max-width: 420px;"/>
+                <figcaption style="{{ figcaptionStyle|trim }}">
+                    <div class="grid-gallery-figcaption-wrap">
+                        <span>Gallery by Supsystic</span>
+                    </div>
+                </figcaption>
+            </figure>
 
-        <a href="{{ environment.generateUrl('galleries', 'choosePreviewImage', { 'gallery_id': gallery.id }) }}" class="button button-primary button-hero" id="gg-btn-choose" style="margin-top: 20px">
-            <i class="fa fa-fw fa-desktop"></i>
-            {{ translate('Choose image for preview') }}
-        </a>
+            <a href="{{ environment.generateUrl('galleries', 'choosePreviewImage', { 'gallery_id': gallery.id }) }}" class="button button-primary button-hero" id="gg-btn-choose" style="margin-top: 20px">
+                <i class="fa fa-fw fa-desktop"></i>
+                {{ translate('Choose image for preview') }}
+            </a>
+        {% else %}
+            <h2 style="text-align: center;">
+                {{ translate("There're no images in the gallery.") }}<br>
+                <a id="import-to-gallery" href="#">Add Images</a>
+            </h2>
+            {% import '@galleries/shortcode/import.twig' as importTypes %}
+            <div id="importDialog" title="{{ translate('Select source to import from') }}" style="display: none;">
+                {{ importTypes.show(400, gallery.id) }}
+            </div>
+        {% endif %}
 
         <div class="shortcode-wrap" style="margin-top: 20px">
             <div class="shortcode">{{ translate('Shortcode:') }} <input type="text" id="shortcode" class="gallery-shortcode" value="[{{ environment.config.get('shortcode_name') }} id={{ gallery.id }} position=center]" onclick="this.select();" size="42" style="font-size: 12px;" readonly></div>
@@ -255,7 +266,7 @@
                     </th>
                     <td>
                         <input type="radio" id="showShadow" name="use_shadow" value="1" {% if settings.use_shadow == '1' %}checked{% endif %}>
-                            {{ translate('Available') }}
+                            {{ translate('Enable') }}
                         <input type="radio" id="hideShadow" name="use_shadow" value="0" {% if settings.use_shadow != '1' %}checked{% endif %}>
                             {{ translate('Disable') }}
                     </td>
@@ -449,7 +460,7 @@
                     </th>
                     <td>
                         <input type="radio" id="showSlideshow" name="box[slideshow]" value="1" {% if settings.box.slideshow == '1' %}checked{% endif %}>
-                        {{ translate('Available') }}
+                        {{ translate('Enable') }}
                         <input type="radio" id="hideSlideshow" name="box[slideshow]" value="0" {% if settings.box.slideshow != '1' %}checked{% endif %}>
                         {{ translate('Disable') }}
                     </td>
@@ -495,7 +506,7 @@
                 <h1 style="line-height: 1;">
                     {{ translate("Show Posts and Pages") }}
                     </br>
-                    <a class="button"
+                    <a class="button get-pro"
                        href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=postfeed&utm_campaign=gallery') }}">Get
                         PRO for 29$</a>
                 </h1>
@@ -577,7 +588,7 @@
                     </th>
                     <td>
                         <input type="radio" id="showCaptions" name="thumbnail[overlay][enabled]" value="true" {% if settings.thumbnail.overlay.enabled == 'true' %}checked{% endif %}>
-                        {{ translate('Available') }}
+                        {{ translate('Enable') }}
                         <input type="radio" id="hideCaptions" name="thumbnail[overlay][enabled]" value="false" {% if settings.thumbnail.overlay.enabled != 'true' %}checked{% endif %}>
                         {{ translate('Disable') }}
                     </td>
@@ -637,7 +648,7 @@
                     <h1 style="line-height: 1;">
                         {{ translate("Show amazing Icons on the images") }}
                         </br>
-                        <a class="button"
+                        <a class="button get-pro"
                            href="{{ environment.getProUrl('utm_source=plugin&utm_medium=icons&utm_campaign=gallery') }}">Get
                             PRO for 29$</a>
                     </h1>
@@ -656,7 +667,7 @@
                 <h1 style="line-height: 1;">
                     {{ translate('Categorize images in the gallery') }}
                     </br>
-                    <a class="button"
+                    <a class="button get-pro"
                        href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=categories&utm_campaign=gallery') }}">Get PRO</a>
                 </h1>
 
@@ -669,7 +680,7 @@
                     <h1 style="line-height: 1;">
                         {{ translate('Let user switch gallery pages') }}
                         </br>
-                        <a class="button"
+                        <a class="button get-pro"
                            href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=pages&utm_campaign=gallery') }}">Get PRO</a>
                     </h1>
                     <div name="pagination">

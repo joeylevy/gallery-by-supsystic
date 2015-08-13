@@ -21,9 +21,9 @@ table, th {
 	height: auto !important;
 }
 .ui-state-default, .ui-row-ltr{
-	border-left-color: transparent !important;
+/*	border-left-color: transparent !important;
 	border-right-color: transparent !important;
-	border-bottom-color: transparent !important;
+	border-bottom-color: transparent !important;*/
 }
 
 .ui-jqgrid-sortable {
@@ -43,7 +43,7 @@ table, th {
 	font-size: 13px !important;
 }
 .ui-icon {
-	background: transparent !important;
+	background-color: transparent !important;
 	text-indent: inherit;
 	font: normal normal normal 14px/1 FontAwesome;
 	color: black !important;
@@ -197,4 +197,8 @@ thead .ui-jqgrid-labels th[id$='_cb'] .s-ico {
 /*popup dialog*/
 .ui-dialog .ui-dialog-title {
 	color: black !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+	border: 1px solid #000;
 }

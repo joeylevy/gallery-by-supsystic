@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: photo gallery, responsive, foto gallery, grid, grid gallery, add gallery, album, foto, fotoalbum, galery, image, photo, gird, website gallery, wordpress gallery, gallery plugin, image gallery, responsive gallery, post feed gallery
 Tested up to: 4.2.4
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
 
@@ -279,6 +279,27 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 5. [Image Circle Gallery](http://supsystic.com/plugins/photo-gallery/#examples?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Image Circle Gallery") - perform your best ideas with Gallery by Supsystic!
 
 == Changelog ==
+
+= 1.3.5 / 13.08.2015 =
+ * Fixed facebook session notices & margins in categories
+ * Fixed Caption – Direction Aware effect
+ * Hide overflow inline property (due to a bug with shadow cutting)
+ * Fix for 'sticky' margin bug
+ * Fixed firefox 'flat' effect bug and caption offset in chrome when shadow is on
+ * Added msg & import dialog when gallery is empty
+ * Fix for IE rotate3d bug for cube effect
+ * Added feature in categories to remove 'all category' button
+ * Fix faq link
+ * Added showing spinner icon on creating gallery
+ * Remove round corners from dialogs
+ * Fix dialog close button
+ * Replace old lighten bg color method that caused falling out of the valid color hex range
+ * Add border:none to images-links ot prevent styling with other themes
+ * Fix categories/pagianation toggle state
+ * Rename radiobutton Available to Enable in options
+ * Default animation duration set to 1800
+ * Added feature to change order of the categories
+ * Popup Image – Hide Popup Captions now working fix
 
 = 1.3.4 / 06.08.2015 =
  * Fixed template names

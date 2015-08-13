@@ -28,7 +28,7 @@
                 data-popup-fadeOut = "{{ settings.box.fadeOut|default(300) }}"
                 data-popup-slideshowAuto = "{{ settings.box.slideshowAuto|default('true') }}"
                 data-popup-transition = "{{ settings.box.transition|default("elastic") }}"
-                {% if settings.box.captions is defined and settings.box.captions == 'on' and settings.box.disable is not defined %}
+                {% if settings.box.captions is defined and settings.box.captions == 'on' and settings.box.disable is defined %}
                     data-popup-captions = 'hide'
                 {% endif %}
             {% endif %}
@@ -60,7 +60,7 @@
             {% if environment.getConfig().get('optimizations') == 1 and environment.isPro() == false %}
                     optimizations
             {% endif %}"
-        style="width:{{ settings.area.width ~ settings.area.width_unit|replace(['px', '%']) }};height:{{ settings.area.height | default('auto') }}{% if settings.area.height != 'auto' %}px;overflow:hidden{% endif %};{% if settings.area.position == '1' or settings.area.position == 'left'  %}float: left{% endif %}{% if settings.area.position == '2' or settings.area.position == 'right' %}float:right{% endif %}{% if  settings.area.position == 'center' %}margin-left:auto;margin-right:auto;{% endif %}">
+        style="width:{{ settings.area.width ~ settings.area.width_unit|replace(['px', '%']) }};height:{{ settings.area.height | default('auto') }}{% if settings.area.height != 'auto' %}px;/*overflow:hidden*/{% endif %};{% if settings.area.position == '1' or settings.area.position == 'left'  %}float: left{% endif %}{% if settings.area.position == '2' or settings.area.position == 'right' %}float:right{% endif %}{% if  settings.area.position == 'center' %}margin-left:auto;margin-right:auto;{% endif %}">
 
         {% if categories is defined and categories is not empty and environment.isPro() %}
             {% if settings.categories is defined and settings.categories.enabled == 'true' and settings.categories.position == 'top' %}
@@ -90,8 +90,10 @@
                     margin-bottom: {{ settings.categories.padding.vert }}px;
                 {% endset %}
                 <nav class="grid-gallery-nav" style="{{ navStyle|trim }}">
-                    <a href="#" data-tag="__all__" style="{{ navAStyle|trim }}">All</a>
-                    {% for category, nothing in categories %}
+                    {% if settings.categories.hide_all_category is not defined %}
+                        <a href="#" data-tag="__all__" style="{{ navAStyle|trim }}">All</a>
+                    {% endif %}
+                    {% for category in settings.categories.order %}
                         <a href="#" data-tag="{{ category|trim|replace(' ', '_') }}" style="{{ navAStyle|trim }}">{{ category|title }}</a>
                     {% endfor %}
                 </nav>
@@ -226,8 +228,10 @@
                 {% endset %}
 
                 <nav class="grid-gallery-nav" style="{{ navStyle|trim }}">
-                    <a href="#" data-tag="__all__" style="{{ navAStyle|trim }}">All</a>
-                    {% for category, nothing in categories %}
+                    {% if settings.categories.hide_all_category is not defined  %}
+                        <a href="#" data-tag="__all__" style="{{ navAStyle|trim }}">All</a>
+                    {% endif %}
+                    {% for category in settings.categories.order %}
                         <a href="#" data-tag="{{ category|trim|replace(' ', '_') }}" style="{{ navAStyle|trim }}">{{ category|title }}</a>
                     {% endfor %}
                 </nav>

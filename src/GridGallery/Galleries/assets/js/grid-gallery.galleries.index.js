@@ -126,9 +126,9 @@
                     return false;
                 }
 
+                $(this).find('i').removeClass('fa-check').addClass('fa-spinner fa-spin');
                 layers.text.hide();
                 layers.loader.show();
-
 
                 if (title) {
 

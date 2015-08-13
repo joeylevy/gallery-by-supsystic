@@ -123,7 +123,7 @@
         {% endif %}
 
     {% endif %}
-    <div id="importDialog" title="{{ translate('Select source to import from') }}">
+    <div id="importDialog" title="{{ translate('Select source to import from') }}" style="display: none;">
         {{ importTypes.show(400, gallery.id) }}
     </div>
 {% endblock %}

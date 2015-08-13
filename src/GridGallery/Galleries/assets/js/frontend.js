@@ -1241,7 +1241,7 @@
             fillEmptySpace: false,
             flexibleWidth:  true,
             itemWidth:      this.$container.data('width'),
-            offset:         this.$container.data('offset')
+            offset:         this.$container.data('offset'),
         }).css({
 			'margin': '0'
 		});
@@ -1292,7 +1292,7 @@
     Gallery.prototype.initSliphover = (function() {
         var $element = $('.grid-gallery-caption:first'),
             toggle = $element.data('grid-gallery-type'),
-            overlayColor = $element.find('figcaption').css('background'),
+            overlayColor = $element.find('figcaption').css('backgroundColor'),
             alpha = parseInt($element.find('figcaption').data('alpha')),
             color = $element.find('figcaption').css('color'),
             align = $element.find('figcaption').css('text-align'),
@@ -1424,10 +1424,15 @@
 
         var $defaultElement = this.$navigation.find('a[data-tag="__all__"]'),
             $elements = this.$navigation.find('a'),
-            $defaultBackground = $defaultElement.css('background-color');
+            $defaultBackground = $elements.first().css('background-color');
 
-        $defaultElement.css('background-color',
-            "#" + (parseInt(this.rgb2hex($defaultElement.css('borderTopColor')), 16) + parseInt("2E2E2E",16)).toString(16));
+        // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
+        function shadeColor(color, percent) {   
+            var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+            return "#" + (0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+        }
+
+        bg = shadeColor('#' + this.rgb2hex($elements.first().css('borderTopColor')), 0.3);
 
         this.$navigation.find('a').on('click', $.proxy(function (event) {
             event.preventDefault();
@@ -1438,8 +1443,7 @@
                 currentGallery = this.$navigation.parent().attr('id');
 
             $elements.css('background-color', $defaultBackground);
-            $category.css('background-color',
-                "#" + (parseInt(Gallery.prototype.rgb2hex($category.css('borderTopColor')), 16) + parseInt("2E2E2E",16)).toString(16));
+            $category.css('background-color', bg);
 
             if (requested == _defaultTag) {
                 this.$elements.each(function () {
@@ -1456,8 +1460,11 @@
                         }
                 }, this));
 
+
                 if(!this.isFluidHeight() && this.$qsEnable)
                     this.callQuicksand(this.$holder, this.$qsData.find('a.gg-link'), this.$qsDuration);
+
+                this.correctMargin();
                 return false;
             }
 
@@ -1493,9 +1500,15 @@
                 }
             });
 
+            var wookmarkedElements = this.$elements.filter('.wookmarked');
+
+
             if (this.isFluidHeight()) {
                 this.initWookmark();
             }
+
+            this.correctMargin();
+
             if(!this.isFluidHeight() && this.$qsEnable) {
                 if(!this.$qsData)
                     this.$qsData = this.$holder.clone();
@@ -1505,6 +1518,8 @@
             }
 
         }, this));
+
+        $elements.first().trigger('click');
     });
 
     Gallery.prototype.callQuicksand = function($holder, $filteredData, duration) {
@@ -1762,23 +1777,31 @@
 	 */
 	 Gallery.prototype.correctMargin = (function () {
 		if(!this.isFluidHeight()) {
-			var prevOffset = {left: 0, top: 0}
-			,	currOffset = {}
-			,	prevElement = null
-			,	totalElements = this.$elements.size();
-			this.$elements.each(function(index){
-				currOffset = $(this).position();
-				if(index == 0 || currOffset.top != prevOffset.top) {
-					$(this).css('margin-left', 0);
-					if(index != 0) {
-						$(prevElement).css('margin-right', 0);
-					}
-				}
+			var prevElement = null
+			,	totalElements = this.$elements.size()
+			,	initialMargin = this.$elements.first().css('margin-bottom')
+            ,   rowWidth = 0
+            ,   maxRowWidth = this.$container.width();
+
+            this.$elements.css('margin', '0 ' + initialMargin + ' ' + initialMargin + ' 0');
+            this.$elements.parent().css('clear', 'none');
+
+			this.$elements.filter(':visible').each(function(index){
+
+                if (rowWidth + $(this).outerWidth() > maxRowWidth) {
+                    $(prevElement).css('margin-right', 0);
+                    $(this).parent().css('clear', 'left');
+                    rowWidth = $(this).outerWidth() + parseInt(initialMargin);
+                } else {
+                    rowWidth += $(this).outerWidth() + parseInt(initialMargin);
+                }
+
 				if(index == totalElements - 1) {
 					$(this).css('margin-right', 0);
 				}
-				prevOffset = currOffset;
+
 				prevElement = this;
+				
 			});
 		}
     });
@@ -1787,7 +1810,6 @@
         this.$container.imagesLoaded($.proxy(function () {
 
             this.initPagination();
-            this.initCategories();
 
             this.showCaption();
             this.setMouseShadow();
@@ -1809,10 +1831,15 @@
             this.loadFontFamily();
             this.initCaptionEffects();
             this.initRowsMode();
-			
-			this.correctMargin();
+            
+            this.initCategories();
+            this.correctMargin();
 
         }, this));
+
+		$(window).on('resize', $.proxy(function () {
+			this.correctMargin();
+		}, this));
     });
 
     window.initGridGallery = (function (el, autoInit) {

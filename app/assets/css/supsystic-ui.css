@@ -209,6 +209,10 @@ ul.supsystic-bar-controls > li.separator {
 
 /* jQuery UI Dialog */
 
+.ui-corner-all {
+    border-radius: 0!important;
+}
+
 .ui-widget-overlay {
     background: #aaaaaa !important;
     opacity: .3;
@@ -414,9 +418,9 @@ input[type=checkbox]:checked + label:before { letter-spacing: 5px; } */
 }
 
 .supsystic-plugin input[type=radio] {
-    height: 18px;
-    width: 18px;
-    min-width: 18px;
+    height: 0px;
+    width: 0px;
+    min-width: 0px;
 }
 
 .supsystic-plugin input[type=checkbox]:checked:before,
@@ -535,6 +539,10 @@ h2 .nav-tab.active{
 
 .button.background {
     background: rgba(255, 255, 255, 0.56);
+}
+
+.supsystic-plugin .button.get-pro {
+    margin-top: 20px;
 }
 
 /*tooltip*/
@@ -719,4 +727,57 @@ h2 .nav-tab.active{
 
 .gg-modal-loading-object p {
     overflow: hidden;
+}
+
+.categories-order {
+    float: left;
+    margin-top: 80px;
+}
+
+.categories-order label {
+    font-size: 16px;
+    padding: 20px 10px 20px 10px;
+    line-height: 1.3;
+    display: block;
+    width: 200px;
+    float: left;
+}
+
+.categories-order ul {
+    float: left;
+    width: 200px;
+    background-color: #f6f7f7;
+    color: #252728;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-top: 1px solid #dfe4e4;
+    padding: 5px;
+}
+
+.categories-order li {
+    padding: 0 5px;
+    line-height: 34px;
+    background: white;
+    cursor: move;
+}
+
+.categories-order li:hover {
+    border: 1px none rgb(231, 231, 231);
+    background-color: rgb(231, 231, 231);
+}
+
+table[name="cats"] {
+    max-width: 400px;
+    float: left;
+}
+
+@media screen and (max-width: 1470px) {
+    .categories-order {
+        float: none;
+        margin: 10px 0 20px; 
+    }
+    table[name="cats"] {
+        float: none;
+    }
 }

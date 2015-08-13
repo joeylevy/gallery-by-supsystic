@@ -68,6 +68,7 @@
 .grid-gallery-fixed a.gg-link {
     float: left !important;
     outline: none !important;
+    border: none;
     text-decoration: none !important;
     background-color: rgba(255, 255, 255, 0.0) !important;
 }
@@ -75,6 +76,7 @@
 .grid-gallery-fluid a.gg-link {
     float: left !important;
     outline: none !important;
+    border: none;
     text-decoration: none !important;
 }
 

@@ -33,8 +33,11 @@ return array(
         'photo-icon' => "Select Show icons</br><img src=@url/icons.jpg />",
         //Categories
         'categories-show' => "Select Show categories</br><img src=@url/show_categories.jpg />",
+        'animation-duration' => 'Transition/animation speed in milliseconds',
+        'enable-shuffling-animation' => 'Animated sorting and laying out a group of images',
         //Pagination
-        'pages-show' => "Enable pagination</br><img src=@url/enable_pagination.jpg />"
+        'pages-show' => "Enable pagination</br><img src=@url/enable_pagination.jpg />",
+
     ),
     'tooltips_icon' => array(
         'icon' => 'question'
