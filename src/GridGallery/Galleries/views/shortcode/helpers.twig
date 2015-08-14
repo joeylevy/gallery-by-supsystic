@@ -79,7 +79,7 @@
 
     {% set tags %}
         {% if settings.categories is defined and settings.categories.enabled == 'true' %}
-            {{ photo.tags|join('|') }}
+            {{ photo.tags|join('|')|raw }}
         {% endif %}
     {% endset %}
 

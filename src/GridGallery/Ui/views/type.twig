@@ -286,7 +286,7 @@
                         </span>
                     {% else %}
                         <input type="text" class="gg-tags" id="tags-{{ image.id }}" data-id="{{ image.id }}"
-                               value="{{ image.tags|join(',') }}">
+                               value="{{ image.tags|join(',')|raw }}">
                     {% endif %}
                 </p>
 
