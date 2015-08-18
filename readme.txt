@@ -1,9 +1,9 @@
 === Gallery by Supsystic ===
 Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
-Tags: photo gallery, responsive, foto gallery, grid, grid gallery, add gallery, album, foto, fotoalbum, galery, image, photo, gird, website gallery, wordpress gallery, gallery plugin, image gallery, responsive gallery, post feed gallery
+Tags: gallery, photo gallery, responsive, foto gallery, grid, grid gallery, add gallery, album, foto, fotoalbum, galery, image, photo, gird, website gallery, wordpress gallery, gallery plugin, image gallery, responsive gallery, post feed gallery
 Tested up to: 4.2.4
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
 
@@ -47,7 +47,8 @@ You have an incredible opportunity to get PRO version for free. Make Translation
 * Dutch
 * Finnish
 * Portuguese (Brazil)
- 
+
+
 == Installation ==
 
 = First time Gallery by Supsystic user =
@@ -280,12 +281,20 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 
 == Changelog ==
 
+= 1.3.7 / 18.08.2015 =
+
+ * Gallery borders fix
+ * Add tooltips and FAQs
+ * Minor issues fix
+
 = 1.3.6 / 14.08.2015 =
+
  * Fix for unescaping quotes in tags, and remove deleted categories from categories order list
  * Add filter for empty categories
  * Minor issues fix
 
 = 1.3.5 / 13.08.2015 =
+
  * Fixed facebook session notices & margins in categories
  * Fixed Caption – Direction Aware effect
  * Hide overflow inline property (due to a bug with shadow cutting)
@@ -307,6 +316,7 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
  * Popup Image – Hide Popup Captions now working fix
 
 = 1.3.4 / 06.08.2015 =
+
  * Fixed template names
  * Additional Font setting existence check in admin area
  * Added Polish language
@@ -317,12 +327,14 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
  * Code review and minor issues changes
 
 = 1.3.3 / 24.07.2015 =
+
  * Updated framework
  * Menu anti-duplication fixed
  * Fix invalid photos margin when fixed position and distance set
  * CSS: added clarifying selector to avoid conflicts with other plugins
 
 = 1.3.2 / 14.07.2015 =
+
  * Fixed error while saving gallery settings
 
 = 1.3.1 / 09.07.2015 =

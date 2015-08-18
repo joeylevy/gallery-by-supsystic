@@ -3,18 +3,18 @@
 return array(
     'tooltips' => array(
         // Area
-        'grid-type' => 'There are 3 gallery types:</br>Fixed, Horizontal, Vertical</br><img src=@url/Grid.jpg />',
+        'grid-type' => 'There are 4 gallery types:</br>Fixed, Horizontal, Vertical, Fixed Columns</br><img src=@url/Grid.jpg />',
         'columns' => 'Number of columns with images on gallery page',
         'distance' => '</br><img src=@url/distance_between_photos.jpg />',
         'area-height' => 'Height',
-        /*'area-width' => 'Width',*/
+        'area-width' => '</br><img src=@url/gallery-width.jpg />',
         'photo-width' => '</br><img src=@url/width_bet_photos.jpg>',
         'photo-height' => '</br><img src=@url/height_bet_photos.jpg>',
         // Border
         'border-type' => '<p><img src=@url/solid_border.jpg><img src=@url/Dashed_border.jpg></p><p><img src=@url/dotted_border.jpg><img src=@url/double_border.jpg></p>',
         /*'border-color' => 'Select color',*/
         'border-width' => 'This option will work if selected Border type',
-        'border-radius' => 'Set the radius for a picture',
+        'border-radius' => '</br><img src=@url/image-radius.jpg>',
         // Shadow
         /*'shadow-color' => 'Select color',*/
         'shadow-blur' => 'Blur in percents',
