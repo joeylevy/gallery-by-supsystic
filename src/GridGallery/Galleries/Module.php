@@ -261,12 +261,119 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         //$this->_loadPluginsTextDomain();
     }
 
-    /**
-     * Shortcode callback.
-     * @param  array $attributes An array of the shortcode parameters.
-     * @return string
-     */
-    public function getGallery($attributes)
+	/**
+	 * Shortcode callback.
+	 * @param  array $attributes An array of the shortcode parameters.
+	 * @return string
+	 */
+	public function getGallery($attributes)
+	{
+        // Backward compatible with pro version 2.1.5. 
+        // In case when user have old pro version installed and new free we return old gallery realization.
+        if ($this->getConfig()->get('is_pro') && $this->getConfig()->get('pro_plugin_version') === null) {
+            return $this->getOldGallery($attributes);
+        }
+
+		if ($init = $this->initGallery($attributes)) {
+			extract($init);
+			return $this->render('@galleries/shortcode/gallery.twig',
+				array(
+					'gallery' => $gallery,
+					'settings' => is_object($settings) ? $settings->data : $settings,
+					'colorbox' => $this->getEnvironment()->getModule('colorbox')
+					->getLocationUrl(),
+					'mobile' => isset($settings->data['box']['mobile']) ? $settingsModel->isMobile($settings->data['box']['mobile']) :  null,
+					)
+				);
+		}
+	}
+
+	public function initGallery($attributes)
+	{
+		$galleries = $this->getModel('galleries');
+		$cache = $this->getEnvironment()->getCache();
+		$gallery = $galleries->getById($attributes['id']);
+
+		if (!$gallery) {
+			return;
+		}
+
+		$key = sprintf('gallery_settings_%s', $attributes['id']);
+
+		/** @var GridGallery_Settings_Registry $registry */
+		$registry = $this->getEnvironment()
+			->getModule('settings')
+			->getRegistry();
+
+		if (true === (bool)$registry->get('cache_enabled')) {
+			$ttl = $registry->get('cache_ttl');
+			$cache->setTtl($ttl);
+
+			if (null === $settings = $cache->get($key)) {
+				$settings = $this->getGallerySettings($attributes['id']);
+				$cache->set($key, $settings, (int)$ttl);
+			}
+		} else {
+			$settings = $this->getGallerySettings($attributes['id']);
+		}
+
+		if (array_key_exists('position', $attributes)) {
+			$position = strtolower($attributes['position']);
+
+			if (!in_array($position, array('left', 'center', 'right'), false)) {
+				$position = 'center';
+			}
+
+			$settings->data['area']['position'] = $position;
+		}
+
+		add_action('wp_footer', array($this, 'addFrontendCss'));
+		add_action('wp_footer', array($this, 'addFrontendJs'));
+
+		if (property_exists($gallery, 'photos') && is_array($gallery->photos)) {
+			$position = new GridGallery_Photos_Model_Position();
+
+			/*foreach ($gallery->photos as $index => $row) {
+				$gallery->photos[$index] = $position->setPosition(
+					$row,
+					'gallery',
+					$gallery->id
+				);
+			}*/
+
+			$positions = $position->setPosition(
+				$gallery->photos,
+				'gallery',
+				$gallery->id
+				);
+
+			foreach ($gallery->photos as $index => $row) {
+				foreach ($positions as $pos) {
+					if ($row->id == $pos->photo_id) {
+						$gallery->photos[$index]->position = $pos->position;
+					}
+				}
+			}
+
+			$gallery->photos = $position->sort($gallery->photos);
+		}
+		$settingsModel = $this->getModel('settings');
+
+		return compact('gallery', 'settings', 'settingsModel');
+	}
+
+    public function getModel($alias)
+    {
+    	return $this->getController()->getModel($alias);
+    }
+    
+	public function render($template, $parameters)
+	{
+		$twig = $this->getEnvironment()->getTwig();
+		return preg_replace('/\s+/', ' ', trim($twig->render($template, $parameters)));
+	}
+
+    public function getOldGallery($attributes)
     {
         $galleries = new GridGallery_Galleries_Model_Galleries();
         $twig = $this->getEnvironment()->getTwig();
@@ -376,7 +483,7 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         }
 
         $template = $twig->render(
-            '@galleries/shortcode/gallery.twig',
+            '@galleries/r314/shortcode/gallery.twig',
             array(
                 'gallery' => $gallery,
                 'settings' => is_object($settings) ? $settings->data : $settings,

@@ -6,6 +6,7 @@
 class GridGallery_Installer_Module extends GridGallery_Core_Module
 {
     const LAST_VERSION = 'grid_gallery_last_version';
+    const LAST_PRO_VERSION = 'grid_gallery_last_pro_version';
 
     /**
      * @var GridGallery_Installer_Model
@@ -30,8 +31,8 @@ class GridGallery_Installer_Module extends GridGallery_Core_Module
         }
 
         if (version_compare($currentVersion, $lastVersion, '>')) {
+            $this->cleanTwigCache($config);
             update_option(self::LAST_VERSION, $currentVersion);
-
             if (false === $config->get('plugin_db_update')) {
                 return;
             }
@@ -41,6 +42,16 @@ class GridGallery_Installer_Module extends GridGallery_Core_Module
 
             $model->update($queries);
         }
+
+        if ($config->get('is_pro')) {
+            $lastProVersion = get_option(self::LAST_PRO_VERSION);
+            $currentProVersion = $config->get('pro_plugin_version');
+            if (version_compare($currentProVersion, $lastProVersion, '>')) {
+                $this->cleanTwigCache($config);
+                update_option(self::LAST_PRO_VERSION, $currentProVersion);
+            }
+        }
+
     }
 
     /**
@@ -81,9 +92,9 @@ class GridGallery_Installer_Module extends GridGallery_Core_Module
      */
     public static function onUninstall()
     {
-        global $supsystic_gallery;
-
-        $self = $supsystic_gallery->getModule('installer');
+        global $grid_gallery_supsystic;
+        
+        $self = $grid_gallery_supsystic->getResolver()->getModulesList()->get('installer');
         $self->onDeactivation();
     }
 
@@ -103,6 +114,22 @@ class GridGallery_Installer_Module extends GridGallery_Core_Module
     protected static function getModel()
     {
         return new GridGallery_Installer_Model();
+    }
+
+    protected static function cleanTwigCache($config)
+    {
+        function cleanDir($dir) {
+            if (!$dir) {
+                return;
+            }
+            $files = array_diff(scandir($dir), array('.', '..')); 
+            foreach ($files as $file) { 
+                (is_dir("$dir/$file")) ? cleanDir("$dir/$file") : unlink("$dir/$file"); 
+            } 
+            return rmdir($dir); 
+        }
+
+        return cleanDir($config->get('plugin_cache_twig'));
     }
 
 }

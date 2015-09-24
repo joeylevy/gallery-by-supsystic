@@ -30,7 +30,7 @@ class SupsysticGallery
 
         /* Create new plugin $environment */
         $pluginPath = dirname(dirname(__FILE__));
-        $environment = new Rsc_Environment('sgg', '1.3.7', $pluginPath);
+        $environment = new Rsc_Environment('sgg', '1.4.5', $pluginPath);
 
         /* Configure */
         $environment->configure(
@@ -94,7 +94,7 @@ class SupsysticGallery
         load_plugin_textdomain(
             'sgg',
             false,
-            'supsystic-grid-gallery/app/langs/'
+            $this->environment->getConfig()->get('lang_path')
         );
     }
 
@@ -180,7 +180,7 @@ class SupsysticGallery
             'tmp' => '/grid-gallery',
             'log' => '/grid-gallery/log',
             'cache' => '/grid-gallery/cache',
-            'twig_cache' => '/grid-gallery/cache/twig',
+            'cache_twig_r' => '/grid-gallery/cache/twig',
         );
 
         foreach ($directories as $key => $dir) {

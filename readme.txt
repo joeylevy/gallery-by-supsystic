@@ -1,51 +1,52 @@
-=== Gallery by Supsystic ===
+﻿=== Photo Gallery by Supsystic ===
 Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
-Tags: gallery, photo gallery, responsive, foto gallery, grid, grid gallery, add gallery, album, foto, fotoalbum, galery, image, photo, gird, website gallery, wordpress gallery, gallery plugin, image gallery, responsive gallery, post feed gallery
-Tested up to: 4.2.4
-Stable tag: 1.3.7
+Tags: add album, add gallery, add pictures, admin, AJAX, album, banner rotator, best gallery, best gallery plugin, comments, content gallery, Facebook, filterable gallery, foto, foto gallery, fotoalbum, fotogalerie, free photo gallery, fullscreen gallery, fullscreen slider, galeri, galerie, Galleria, galleries, gallery, galery, gallery decription, gallery image, gallery lightbox, gallery shortcode, gallery slider, grid, gird, grid gallery, image, image album, image gallery, image lightbox, image rotate, image slider, image slideshow, images, images gallery, instagram, jquery, jquery gallery, lightbox, media, mosaic, multiple pictures, photo, photo album, photo albums, photo gallery, photoalbum, photogallery, photography, photos, photoset, picture, pictures, post feed gallery, responsive, responsive gallery, responsive wordpress photo gallery, sidebar, Simple gallery, slide, slide show, slideshow, thumbnail, thumbnail view, thumbnails, thumbs, upload images, upload photos, video gallery, videos, view images, view pictures, vimeo, watermarking, watermarks, website gallery, widget gallery, wordpress gallery, wordpress gallery plugin, wordpress photo gallery plugin, wp gallery, wp gallery plugins, youtube
+Tested up to: 4.3.1
+Stable tag: 1.4.5
 
-Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show any images, posts and videos
+Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show images, posts and videos
 
 == Description ==
 
 = WordPress Photo Gallery by Supsystic =
 
-* [Responsive WordPress Gallery](http://supsystic.com/plugins/photo-gallery?utm_source=wordpress&utm_medium=responsive&utm_campaign=gallery "Responsive WordPress Gallery")
+* [Responsive WordPress Image Gallery](http://supsystic.com/plugins/photo-gallery?utm_source=wordpress&utm_medium=responsive&utm_campaign=gallery "Responsive WordPress Image Gallery")
 * [Photo Gallery Demo](http://supsystic.com/gallery-examples?utm_source=wordpress&utm_medium=demo&utm_campaign=gallery "WordPress Photo Gallery")
 * [Grid Gallery FAQ and Documentation](http://supsystic.com/plugins/photo-gallery/#faq "Grid Gallery FAQ and Documentation")
 
-[Grid Gallery WordPress Plugin](http://supsystic.com/plugins/photo-gallery?utm_source=wordpress&utm_medium=description&utm_campaign=gallery "Photo Gallery WordPress Plugin") by Supsystic with a great number of layouts will help you to create quality respectable portfolios and image galleries. Its unlimited options allow to choose different designs and styles, which make your photo grid gallery attractive for users.
+**[Grid Photo Gallery WordPress Plugin](http://supsystic.com/plugins/photo-gallery?utm_source=wordpress&utm_medium=description&utm_campaign=gallery "Photo Gallery WordPress Plugin") by Supsystic with a great number of layouts will help you to create quality respectable portfolios and image galleries. Unlimited photo gallery options allow to choose different designs and styles, which make your photo grid gallery attractive for users.**
 
-* Elegant gallery design optimized for mobile devices
-* Full customization styles such as shadow, border and caption
-* Horizontal, Vertical and Fixed layouts
+* Elegant photo gallery design optimized for mobile devices
+* Fully customization image gallery styles such as shadow, border, caption and icons
+* Horizontal, Vertical, Fixed and Mobile photo gallery layouts
 * Add links, icons and captions
-* Post Feed Gallery and Video Gallery
+* Post Feed Photo Gallery and Video Gallery
 * Carousel gallery
 * HTML caption option
 * Available with any WordPress Theme
 
-Gallery plugin will help you display your images for maximum effect on your blog or website.
+Image gallery plugin will help you display your images, videos and content for maximum effect on your blog or website.
 
 A photo gallery adds an instant professional touch to any WordPress website. But it doesn't just enhance your sites looks, it also makes image management a breeze, by allowing bulk uploading and publishing.
 
 [youtube https://www.youtube.com/watch?v=5bkjrlV14CE#t=14]
 
-Gallery by Supsystic is an easy to use gallery plugin that allows you to add simply galleries to your website. The plugin utilizes the WordPress media uploader for images.
+Image Gallery by Supsystic is an easy to use photo gallery plugin that allows you to add simply galleries to your website. The grid gallery plugin utilizes the WordPress media uploader for images and import images from Instagram, Facebook and other social networks.
 
-Whether you are showcasing images, video or HTML, this gallery will render them beautifully on any platform and any browser size. Variety of responsive image gallery effects and slideshows to better manage and display your photos, screenshots and other forms of image gallery on your site. Some incorporate transition effects, fade-in, fade-out and other effects, as well as thumbnail views of the gallery for faster access, flexibility and ease-of-use to view your site in full all-out browser mode and small-sized smartphone screens.
+Whether you are showcasing images, video or HTML, this photo gallery will render them beautifully on any platform and any browser size. Variety of responsive image gallery effects and photo gallery slideshows to better manage and display your photos, screenshots, videos and other forms of image gallery on your site. Some incorporate transition effects, fade-in, fade-out and other effects, as well as thumbnail views of the gallery for faster access, flexibility and ease-of-use to view your site in full all-out browser mode and small-sized smartphone screens.
 
-To make it easier for you to find the right pick for your websites needs, we have put together a presets gallery templates you can choose them when create new gallery and later customize design.
+To make it easier for you to find the right pick for your websites needs, we have put together a presets photo gallery templates you can choose them when create new gallery and later customize design.
  
-= Translations in your language =
+= Translations Photo Gallery by Supsystic in Your Language =
 
-You have an incredible opportunity to get PRO version for free. Make Translation of the plugin! It will be amazing if you take advantage of this offer!
+You have an incredible opportunity to get PRO version of the photo gallery for free. Just make translation of the Photo Gallery by Supsystic plugin!
  
 * English
 * French
 * Dutch
 * Finnish
+* Hebrew(Israel)
 * Portuguese (Brazil)
 
 
@@ -55,21 +56,21 @@ You have an incredible opportunity to get PRO version for free. Make Translation
 
 Thank you for choosing Gallery by Supsystic! Open page of our plug-in admin panel WordPress and you will see two menu items: "New Gallery" and "Galleries".
 
-In order to create your photo gallery, simply click on "New Gallery" in your left navigation menu.  When Create New Gallery page loads, set the name of gallery, choose gallery template and click "Save" button. On the next step you can change template and settings of your gallery. To add images to your photo gallery click on button "Add Images" and choose images from WordPress Media Library. In order to manage images click the "Image List" button. Here you can also set image caption and many more.
+In order to create your photo gallery, simply click on "New Gallery" in your left navigation menu.  When Create New Photo Gallery page loads, set the name of gallery, choose gallery template and click "Save" button. On the next step you can change template and settings of your gallery. To add images to your photo gallery click on button "Add Images" and choose images from WordPress Media Library. In order to manage images click the "Image List" button. Here you can also set image caption and many more.
 On the Main tab you can set gallery type, width and height of gallery and images, image distance and radius. It is already possible to add border for images, enable shadow option and choose the theme for popup image. On the Captions tab you can enable caption option and set different settings of it.
 
-Don't forget to press the "Save" button. After all these points you can see the result in the left top corner (you have the ability to choose image for preview) or simply click on "Preview" button and will be able to see the whole gallery. 
-Under image preview you can see the shortcode. Copy and paste the shortcode into your post or page and Gallery by Supsystic plugin will automatically create the gallery on your page using the settings you choose above.
-Important! Shortcode must be inserted in a text editor page, and not in the visual.
+Don't forget to press the "Save" button. After all these points you can see your photo gallery result in the left top corner (you have the ability to choose image for preview) or simply click on "Preview" button and will be able to see the whole photo gallery. 
+Under image preview you can see the photo galery shortcode. Copy and paste the shortcode into your post or page and Photo Gallery by Supsystic plugin will automatically create the gallery on your page using the settings you choose above.
+Important! Photo Gallery shortcode must be inserted in a text editor page, and not in the visual.
 
-= To install a plugin via FTP, you must =
+= To install gallery plugin via FTP, you must =
 
-1. Download the gallery plugin
-2. Unarchive the plugin supsystic-grid-gallery.zip
-3. Copy the folder with plugin
+1. Download the photo gallery plugin
+2. Unarchive the image plugin supsystic-grid-gallery.zip
+3. Copy the folder with grid photo plugin
 4. Open ftp \wp-content\plugins\
 5. Paste the plug-ins folder in the folder
-6. Go to admin panel => open item "Plugins" => activate the plugin
+6. Go to admin panel => open item "Plugins" => activate the Photo Gallery by Supsystic plugin
 
 == Other Notes ==
 
@@ -77,20 +78,20 @@ Important! Shortcode must be inserted in a text editor page, and not in the visu
   
 = Step 1: Creating Responsive Grid Gallery =
 
-1. On the left navigation menu click “New Gallery”.
+1. On the left navigation menu click “New Photo Gallery”.
 
-2. Enter the name of gallery. 
+2. Enter the name of photo grid gallery. 
 
-3. Choose gallery template. You have the ability to choose one of 4 templates:
+3. Choose image gallery template. You have the ability to choose one of 4 templates:
 
- * Standard Gallery (with fixed grid).
- * Vertical Gallery (without distance between images).
- * Rounded Gallery (with fixed grid and border option).
- * Horizontal Gallery (with shadow option).
+ * Standard Image Gallery (with fixed grid).
+ * Vertical Photo Grid Gallery (without distance between images).
+ * Rounded Grid Gallery (with fixed grid and border option).
+ * Horizontal Image Gallery (with shadow option).
  
 4.  Click "Save" button.
 
-On the next steps you can change the settings of gallery template.
+On the next steps you can change the settings of photo gallery template.
 
 = Step 2: Adding images to the Grid Photo Gallery =
 
@@ -104,33 +105,33 @@ With responsive photo gallery plugin you can import images from -
  
 1. Click on "Add Images" button.
 
-2. Choose images from WordPress Media Library - mark those images that you like or need. If there are no images that you need, click the Upload Files tab - here you can drop files anywhere to upload or select files from your computer.
+2. Choose images from WordPress Media Library - mark those images that you like or need for the photo gallery. If there are no images that you need, click the Upload Files tab - here you can drop files anywhere to upload or select files from your computer.
 
 3. Click on “Choose Image” button. 
 
-4. To manage or change properties of images click “Image List” button. Here you can:
+4. To manage or change properties of the photo gallery of images click “Image List” button. Here you can:
 
  - change the order of images - simply by dragging them manually;
- - delete images;
+ - delete photos;
  - add new images from different sources to the grid gallery - click “Add Images” button and select source to import from;
- - add caption to image - it will be displayed on the caption effect of the gallery; 
- - add SEO - tags for search requests;
+ - add caption to photo gallery image - it will be displayed on the images caption effect of the photo gallery; 
+ - add SEO photo gallery - tags for search requests;
  - attach links to image - it will go to the link when you click the image;
  - attach video - it will be displayed in a pop-up image when you click on a picture;
  - add tags for image categories.
  
 = Step3: Editing of Photo Gallery settings =
 
-To get back to the settings of gallery - сlick “Properties” button.
+To get back to the settings of gallery - click “Properties” button.
 
-Here you can change default options of gallery template. Simply navigate the corresponding tab of properties - Main, Captions, Categories and Posts. Important! After changing the settings of gallery don’t forget to click “Save” button.
+Here you can change default options of photo gallery template. Simply navigate the corresponding tab of properties - Main, Captions, Categories and Posts of the photo gallery. Important! After changing the settings of gallery don’t forget to click “Save” button.
 
-= 1. Main tab =
+= 1. Main tab of the photo gallery =
 
-1.1. Gallery Type - here you can:
+1.1. Photo Gallery Type - here you can:
 	
- - choose the type of gallery - there are 3 gallery types: Fixed, Horizontal, Vertical;
- - set the distance between images;
+ - choose the type of photo gallery - there are 3 gallery types: Fixed, Horizontal, Vertical;
+ - set the distance between photo gallery images;
  - set the width of the responsive image gallery;
  - set the width and height of images;
  - set the radius for picture - thanks to this option will turn out wonderful rounded or circular galleries.
@@ -139,25 +140,25 @@ All the values of these options, except for images distance, can be set in pixel
 
 1.2. Border type - here you have the opportunity:
 	
- - select 4 different types of border - Solid, Dotted, Dashed, Double;
- - select the color of border for images;
- - define the border width.
+ - select 4 different types of photo gallery  border - Solid, Dotted, Dashed, Double;
+ - select the colour of border for images;
+ - define the border width
  
 This option can be disabled. Simply select value - “None” for Border Type.
 
-1.3. Shadow 
+1.3. Photo Shadow 
 	
-Activate “Available” radio button to see the settings of this option. Shadow option of Gallery by Supsystic  allows you:
+Activate “Available” radio button to see the settings of this option. Shadow option of photo Gallery by Supsystic allows you:
 
  - show the shadow when mouse is over the image. there are two types of this option: show / hide the shadow when mouse is on picture;
  - overlay image with shadow ;
- - choose the color of shadow;
+ - choose the colour of shadow;
  - set the shadow blur in percent;
  - specify the offset of the shadow by X and Y.
 
 1.4. Pop-up Image - here you can:
 	
- - choose the “Big Image” theme for popup image of grid gallery - to do this you need simply click a “Choose theme” button and select one of the great themes. One of the themes include the navigation control with thumbnails of images, which is much simplify and speed up access to all images of the gallery.
+ - choose the “Big Image” theme for popup image of grid gallery - to do this you need simply click a “Choose theme” button and select one of the great themes. One of the themes include the navigation control with thumbnails of images, which is much simplify and speed up access to all images of the photo gallery.
  - select the transition of pop-image - Fade, Elastic, None.
  - enable the slideshow option - you need activate “Available” radio button to see the settings of this option. here you can set speed of slideshow and activate slideshow autostart. If you activate it - slideshow starts when big image open in popup, if don’t - you have the ability to start slideshow whenever you want. In any case, on the big image will be slideshow controls.
 
@@ -165,30 +166,30 @@ Activate “Available” radio button to see the settings of this option. Shadow
  
 2.1. Captions - this option contains such features as:
 	
- - a huge variety of caption effects. Simply click “Choose effect” button and select the overlay effect. 
- - the ability to choose background color of caption 
- - text color of caption option
+ - a huge variety of gallery caption effects. Simply click “Choose effect” button and select the overlay effect
+ - the ability to choose background colour of caption
+ - text colour of caption photo gallery
  - the ability to set the level of transparency for caption option
  - the ability to specify the font size of the text. (in pixels, percent, ems)
  - the ability to choose the text alignment of caption - left, center, right, auto.
  
 2.2. Icons (PRO feature) - show amazing icons on the images with different options. There are several types of icons, it all depends on what exactly is attached to the picture - link, video or anything.
 	
- - select the effect for animation of icons - you need to click ”Animation” button and choose the effect.
- - select the icons color.
- - select the icons hover color - color of the icon when mouse is over.
- - choose the background color for icons.
- - choose the background hover color for icons.
- - set the size of icons.
- - set the distance between icons.
- - enable the overlay effect - image will fade under the overlay.
- - set the color and level of transparency for overlay effect of icons.
+ - select the effect for animation of icons - you need to click ”Animation” button and choose the effect photo gallery
+ - select the icons color
+ - select the icons hover color - colour of the icon when mouse is over
+ - choose the image gallery background colour for icons
+ - choose the photo gallery background hover colour for icons
+ - set the size of photo gallery icons
+ - set the distance between icons
+ - enable the overlay effect - image will fade under the overlay
+ - set the colour and level of transparency for overlay effect of gallery icons
  
-You have the opportunity to enable Captions and Icons options at the same time, but then you can not choose caption effect for gallery. “Appear” effect always will be by default.
+You have the opportunity to enable photo gallery Captions and Icons options at the same time, but then you can not choose caption effect for gallery. “Appear” effect always will be by default.
 
-= 3. Categories tab =
+= 3. Photo Gallery Categories Tab =
 
-3.1. Show categories (PRO feature) - categorize images in the grid gallery.
+3.1. Show slideshow gallery categories (PRO feature) - categorize images in the grid gallery.
 	
  First you need to add tags for the categories:
  
@@ -201,24 +202,24 @@ Further activate “Available” radio button responsive photo gallery and defin
 
 In order to create the preset click “Show preset editor” button. Provide a name for your photo gallery template and specify the settings that you need. Here you can:
 
- - Select the background color for container or hide it. Сontainer - the area where will be shown the categories of the image gallery.
- - Select the background color for text or hide it.
- - Select the color of text or use color, based on your theme.
+ - Select the background colour for gallery images and video container or hide it. Сontainer - the area where will be shown the categories of the image gallery.
+ - Select the background colour for gallery photos text or hide it.
+ - Select the colour of text or use colour, based on your theme.
  - Set overall vertical and horizontal padding for the categories.
  - Set the font weight and size.
  - Define the border width for the categories
- - Select the border type.
- - Choose the border color.
- - Define the border radius for the categories.
+ - Select gallery border type.
+ - Choose photo gallery border colour.
+ - Define image gallery border radius for the categories.
  
 After configuring the image gallery settings click “Save” button. Select your preset in the “Choose preset” dropdown box.
 
 Also Categories option includes such capabilities:
 
- * Enable shuffling animation of images. (If you enable posts layout on the Posts tab - this feature will not be available)
- * Set the duration of animation.
- * Define the position of categories - over or under the gallery.
- * Determine the alignment of categories.
+ * Enable shuffling animation of gallery images. (If you enable posts layout on the Posts tab - this feature will not be available)
+ * Set the duration of animation (include video gallery)
+ * Define the position of categories - over or under the media gallery
+ * Determine the alignment of gallery categories (video gallery or photo gallery)
 
 3.2. Pagination (PRO feature) - make your image gallery easier to use with grid gallery wordpress plugin. 
 	
@@ -226,10 +227,10 @@ At first you need to set the number of images per page and choose the preset. Yo
 
 As well you have the opportunity:
 
- * Set the position of buttons - top or bottom.
- * Define the alignment of pagination.
- * You can select only the one of these two options (Categories or Pagination) for one gallery.
- * Pagination option is not available, when is set vertical type of gallery. 
+ * Set the position of buttons - top or bottom of photo gallery
+ * Define the alignment of pagination
+ * You can select only the one of these two options (Categories or Pagination) for one gallery
+ * Pagination option is not available, when is set vertical type of photo gallery
 
 = 4. Posts tab (PRO feature) - show posts and pages with Gallery by Supsystic! = 
 
@@ -255,7 +256,7 @@ In order to see how the other options of responsive image gallery look - you sho
 
 = Step 5:  Displaying the Photo Gallery on the website =
 
-Under the window with image preview you can see the shortcode of gallery. Copy and paste the shortcode into your post or page and Gallery by Supsystic plugin will automatically create the gallery on your page using the settings you choose above.
+Under the window with image preview you can see the shortcode of photo gallery. Copy and paste the shortcode into your post or page and Gallery by Supsystic plugin will automatically create the gallery on your page using the settings you choose above.
 Important! Photo gallery plugin shortcode must be added in a text editor page, and not in the visual.
 
 *Check other WordPress plugins:*
@@ -275,11 +276,69 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 
 1. [Fixed Gallery.](http://supsystic.com/plugins/photo-gallery/#examples?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Fixed Gallery") It's still responsive and compatible all mobile devices, but fixed :)
 2. [Photo Gallery WordPress Plugin](http://supsystic.com/plugins/photo-gallery?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Photo Gallery WordPress plugin") by Supsystic the complete set for any user that can assist quickly create stunning online presentation, photo gallery or slideshow
-3. Gallery plugin admin area. Choose one of the professional image gallery template and manage any aspect of the gallery with easy-to-use options
+3. Photo gallery plugin admin area. Choose one of the professional image gallery template and manage any aspect of the gallery with easy-to-use options
 4. [Post Feed Gallery](http://supsystic.com/post-feed-animated-gallery-example?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Post Feed Gallery") - it never was so easy to show Posts, Pages or any Content in an amazing view of the post feed gallery.
 5. [Image Circle Gallery](http://supsystic.com/plugins/photo-gallery/#examples?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Image Circle Gallery") - perform your best ideas with Gallery by Supsystic!
 
 == Changelog ==
+
+= 1.4.5 / 24.09.2015 =
+
+ * Increased gallery loading speed
+ * Added Greek language
+ * Added hide tooltip option
+ * Added feature to change popup overlay background color
+ * Added feature to choose caption effect per image
+ * Dashboard UI bugfixes
+
+= 1.4.4 / 15.09.2015 =
+
+ * Added gallery type 'Polaroid Gallery'
+ * Bugfixes for preview image update in dashboard.
+ * Minor issues fix
+
+= 1.4.3 / 09.09.2015 =
+
+ * Fix Shadow options affect on preview.
+ * Fix Photo Caption align options affect on preview
+ * Photo Gallery now shown when all effects applied
+ * Set cursor to default when hover on image and popup disabled
+ * Fix path to translations files
+ * Fix Safari iPad, iPhone bug when captions stuck on first image tap
+ * Fix caption bug in old Safari version
+ * Minor issues fix
+
+= 1.4.2 / 01.09.2015 =
+
+ * Fix Safari bug when image not fit in container and left empty spaces
+ * Links title attribute tool tips now not showing on hover
+ * Minor photo gallery issues fix
+
+= 1.4.1 / 28.08.2015 =
+
+ * Images now aligned according to the shortcode value
+ * Fixed image size bugs in "fixed column" gallery
+ * Fixed bugs with "fixed column" photo gallery when pagination enabled
+ * Fixed bug when images drops out from a parent container
+
+= 1.4.0 / 26.08.2015 =
+
+ * Fixed "Vertical photo gallery" bug
+
+= 1.3.9 / 25.08.2015 =
+
+ * Fixed "Enable shuffling" bug, not saving state properly
+ * Fixed bugs with "Fixed Columns" gallery type now displays properly
+ * Fixed bugs with shuffling animation
+ * Added new border styles: groove, ridge, inset, outset
+ * Updated some help tooltips 
+
+= 1.3.8 / 19.08.2015 =
+
+ * Fix for gallery categories update categories order list when adding or removing category
+ * Post and page categories also can add to order list
+ * Added feature to change All button order
+ * Fix post feed gallery
 
 = 1.3.7 / 18.08.2015 =
 
@@ -303,11 +362,11 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
  * Added msg & import dialog when gallery is empty
  * Fix for IE rotate3d bug for cube effect
  * Added feature in categories to remove 'all category' button
- * Fix faq link
+ * Fix faq gallery link
  * Added showing spinner icon on creating gallery
  * Remove round corners from dialogs
  * Fix dialog close button
- * Replace old lighten bg color method that caused falling out of the valid color hex range
+ * Replace old lighten bg colour method that caused falling out of the valid colour hex range
  * Add border:none to images-links ot prevent styling with other themes
  * Fix categories/pagianation toggle state
  * Rename radiobutton Available to Enable in options
@@ -373,7 +432,7 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
  
 = 1.2.8 / 28.05.2015 =
 
- * Hor fixes
+ * Hot image gallery fixes
  * Revolving effects fixed
  * Minor changes
 
@@ -383,14 +442,14 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
  * Categories & pagination presets moved to dialogs
  * Modified settings for standard categories & pages presets
  * Caption height fixed for new settings
- * Added Hebrew(Israil) language
- * Functional fixes
+ * Added Hebrew(Israel) language
+ * Functional photo gallery fixes
  * Minor changes
 
 = 1.2.6 / 13.05.2015 =
 
  * New cube transition effect
- * Modified caption and gallery 'position' option - fixed better vertical alignment
+ * Modified caption and photo gallery 'position' option - fixed better vertical alignment
  * Translation file updated
  * Responsive gallery bug fix
  * Minor bugs fix
@@ -413,132 +472,125 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 = 1.2.2 / 23.04.2015 =
 
  * Hot fixes for new gallery type
- * Minor changes
+ * Minor gallery changes
 
 = 1.2.1 / 22.04.2015 =
 
- * Added ability to edit custom gallery presets
+ * Added ability to edit custom photo gallery presets
  * Fix for older PHP versions
 
 = 1.1.9 / 21.04.2015 =
 
- * Gallery functional changed
+ * Photo Gallery functional changed
  * Minor fixes
  * New gallery type
  * Attachments load optimization, position load optimization, overview news link changed
  * Google fonts added to captions option
- * New gallery themes added
+ * New photo gallery themes added
  * Finnish language added
 
 = 1.1.8 / 08.04.2015 =
 
  * Functional changed
- * Minor fixes
- * Captions with HTML saving changed
- * Popup sizes calculations on mobile devices with vimeo videos changed
+ * Minor gallery fixes
+ * Photo captions with HTML saving changed
+ * Popup sizes calculations on mobile devices with vimeo gallery videos changed
  * Galleries list fixed
 
 = 1.1.7 / 1.04.2015 =
 
  * Direction aware effect caption changed
  * Functional changed
- * Minor fixes
- * Shortcode insertion button added to tinyMCE editor
+ * Minor photo gallery fixes
+ * Shortcode photo insertion button added to tinyMCE editor
  * Shortcode selection dialog added
 
 = 1.1.6 / 27.03.2015 =
 
- * New effects and presets added
- * Functional changed
- * Minor fixes
+ * New photo gallery effects and presets added
+ * Functional photo gallery changed
+ * Minor gallery fixes
 
 = 1.1.5 / 25.03.2015 =
 
- * Hot fixes
+ * Hot photo galleryfixes
 
 = 1.1.4 / 24.03.2015 =
 
  * New option Popup Image disable option
  * Gallery overview news fixed
  * Post Feed Gallery notice fixed
- * HTML caption add
-
-= 1.1.4 / 24.03.2015 =
-
- * New option Popup Image disable option
- * Gallery overview news fixed
- * Post Feed Gallery notice fixed
- * HTML caption add
+ * HTML gallery caption add
  
 = 1.1.3 / 17.03.2015 =
 
- * External image link added
- * Minor issues fix
+ * External photo gallery image link added
+ * Minor gallery issues fix
 
 = 1.1.2 / 16.03.2015 =
 
  * Debug mode warning fixes
- * Option to toggle popup on mobile added
+ * Option to toggle popup gallery on mobile added
  * Some spelling issues fixed (including php tag in insert code generation)
  * Other minor issues fix
 
 = 1.1.1 / 11.03.2015 =
 
 * Overview page php 5.2 support added
-* Minor bugs fixed
+* Minor image gallerybugs fixed
 * Functional fixes
 
 = 1.1.0 / 09.03.2015 =
 
-* Image upload fixed
-* Gallery shortcode fixed
+* Image gallery upload fixed
+* Photo Gallery shortcode fixed
 * Add Overview page
 * Minor bugs fixed
 
 = 1.0.21 / 6.03.2015 =
 
-* Minor changes
-* Gallery functional fixes
+* Minor gallery changes
+* Photo Gallery functional fixes
 * Overview page added
 * Supsystic news added
 * Common FAQs
 * Mail form added
-* Video tutorial
+* Video Gallery tutorial
 * Server configs
 
 = 1.0.20 / 26.02.2015 =
 
-* Minor changes
+* Minor image gallery changes
 * Functional fixes
 
 = 1.0.19 / 20.02.2015 =
 
-* Responsive galery on Iphone fixed
-* Default gallery settings fixed
+* Responsive photo gallery on Iphone fixed
+* Default photo gallery settings fixed
 * Empty gallery page changed
-* Standart template settings changed
-* Choosing preview image from empty images fixed
-* Social import from instagram added
+* Standard photo gallery template settings changed
+* Choosing preview gallery image from empty images fixed
+* Social import from Instagram to the gallery added
 * Photo gallery templates fixed
 * Photo gallery plugin by Supsystic compatibility with WordPress 4.1.1
 
 = 1.0.18 =
 
-* Functional fixes
+* Functional content gallery fixes
 * Minor issues fixes
-* Shadow settings fixes
+* Photo Gallery Shadow settings fixes
 
 = 1.0.17 =
 
-* Functional fixes
-* Core code improvements
+* Functional photo gallery fixes
+* Image Gallery Core code improvements
 * Installation optimizations
-* Minor issues fixes
+* Minor responsive gallery issues fixes
 
 = 1.0.16 =
 
-* Functional fixes
+* Functional photo gallery fixes
 
 = 1.0.15 = 
 
-* Submit to WordPress.org
+* Submit gallery to WordPress.org

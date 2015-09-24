@@ -101,26 +101,6 @@
         });
     }
 
-    Controller.prototype.togglePhotoHeightWidth = function () {
-        var $optionsHeight = $('[name="area[photo_height]"], [name="area[photo_height_unit]"]'),
-            $optionsWidth = $('[name="area[photo_width]"], [name="area[photo_width_unit]"]');
-
-        $optionsHeight.parents('tr').hide();
-
-        if($(':selected', this).val() == '2') {
-            $($optionsWidth[0]).val('auto');
-            $optionsWidth.attr('disabled', 'disabled');
-        }
-
-        if ($(':selected', this).val() != '2' && $($optionsWidth[0]).val() == 'auto') {
-            $optionsWidth.removeAttr('disabled');
-            $($optionsWidth[0]).val($($optionsHeight[0]).val());
-        }
-        if ($(':selected', this).val() != '1') {
-            $optionsHeight.parents('tr').show();
-        }
-    };
-
     Controller.prototype.setInputColor = (function() {
         $('input[type="color"]').each(function() {
             if(navigator.userAgent.match(/Trident\/7\./)) {
@@ -480,6 +460,9 @@
             $('.selectedEffectName').text($.proxy(function () {
                 return this.find('span').text();
             }, $(this)));
+
+            $('#preview [data-grid-gallery-type]').data('grid-gallery-type', $(this).data('grid-gallery-type'));
+            $('#preview.gallery-preview').trigger('preview.refresh');
         });
     };
 
@@ -489,59 +472,82 @@
 
     Controller.prototype.toggleArea = function() {
         var $toggle = $('[name="area[grid]"]'),
-            $pagesRow = $('#usePages');
+            $pagesRow = $('#usePages'),
+            $optionsHeight = $('[name="area[photo_height]"]'),
+            $optionsHeightRow = $optionsHeight.closest('tr'),
+            $optionsWidth = $('[name="area[photo_width]"]'),
+            $optionsWidthRow = $optionsWidth.closest('tr'),
+            $columsRow = $('#generalColumnsRow');
 
         $toggle.on('change', function() {
-            if($(this).find('option:selected').val() == '1') {
-                $pagesRow.find('#hidePages').attr('checked', 'check').trigger('change');
-                $pagesRow.find('input').attr('disabled', true);
-                $(this).notify('Pagination disabled now', {
-                    position: 'top left',
-                    className: 'info'
-                });
-            } else {
-                $pagesRow.find('input').attr('disabled', false);
-            }
-        });
-    };
 
-    Controller.prototype.toggleColumnsMode = function() {
-        var $toggle = $('[name="area[grid]"]'),
-            $row = $('#generalColumnsRow');
+            $optionsWidthRow.find('input, select').prop('disabled', false);
+            $optionsHeightRow.find('input, select').prop('disabled', false);
+            $optionsWidthRow.show();
+            $optionsHeightRow.show();
+            $columsRow.hide();
 
-        $toggle.on('change', function() {
-            if($(this).val() == 3) {
-                $row.show();
-            } else {
-                $row.hide();
+            if (!$optionsHeight.val().length) {
+                $optionsHeight.val($optionsWidth.val());
             }
-        });
+
+            if (!$optionsWidth.val().length) {
+                $optionsWidth.val($optionsHeight.val());
+            };
+
+            switch($(this).find('option:selected').val()) {
+                // Fixed
+                case '0':
+                    break;
+                // Vertical
+                case '1':
+                    console.log('case 1');
+                    if ($pagesRow.find('#showPages').is(':checked')) {   
+                        $pagesRow.find('#hidePages').attr('checked', 'check').trigger('change');
+                        $pagesRow.find('input').attr('disabled', true);
+                        $(this).notify('Pagination disabled now', {
+                            position: 'top left',
+                            className: 'info'
+                        });
+                    } else {
+                        $pagesRow.find('input').prop('disabled', false);
+                    }
+                    $optionsHeightRow.hide();
+                    $optionsHeightRow.find('input, select').prop('disabled', true);
+                    break;
+                // Horizontal
+                case '2':
+                    $optionsWidthRow.hide();
+                    $optionsWidthRow.find('input, select').prop('disabled', true);
+                    break;
+                // Fixed columns
+                case '3':
+                    $columsRow.show();
+                    break;
+            }
+
+
+        }).trigger('change');
     };
 
     Controller.prototype.toggleShadow = function () {
+
         var $table = $('table[name="shadow"]'),
             $toggleRow = $('#useShadowRow'),
             value = 0;
 
-        value = parseInt($('[name="use_shadow"]:checked').val(), 10);
-
-        $('#showShadow').on('click', function () {
+        $('#showShadow').on('change', function () {
             $table.find('tr').show();
         });
 
-        $('#hideShadow').on('click', function () {
+        $('#hideShadow').on('change', function () {
             $table.find('tr').hide();
             $('#useMouseOverShadow').attr('value', 0);
+            $('select[name="thumbnail[shadow][overlay]"]').attr('value', 0).trigger('change');
             $toggleRow.show();
         });
 
-        if(value) {
-            $table.find('tr').show();
-        } else {
-            $table.find('tr').hide();
-            $('#useMouseOverShadow').attr('value', 0);
-            $toggleRow.show();
-        }
+        $table.find('input[name="use_shadow"]:checked').trigger('click').trigger('change');
     };
 
     Controller.prototype.toggleBorder = function () {
@@ -664,6 +670,20 @@
             }
         }).trigger('click');
 
+    }); 
+
+    Controller.prototype.togglePopUp = (function() {
+        $table = $('#box').closest('table')
+
+        $('#box-enable').on('change', function () {
+            $table.find('tbody').show();
+        });
+
+        $('#box-disable').on('change', function () {
+            $table.find('tbody').hide();
+        });
+
+        $table.find('thead input[type="radio"]:checked').trigger('click').trigger('change');
     });
 
     Controller.prototype.togglePosts = function () {
@@ -734,7 +754,7 @@
             jQuery('.ui-jqgrid [type="checkbox"]').each(function() {
                 if($(this).attr('checked')) {
                     postsId.push($(this).closest('tr').find('[aria-describedby="ui-jqgrid-htable_id"]').text());
-                    $(this).parent().parent().remove();
+                    $(this).closest('tr').remove();
                 }
             });
 
@@ -747,17 +767,8 @@
         }, this));
 
         jQuery('#button-select-posts').on('click', function() {
-            if($(this).data('value') == 'select') {
-                jQuery('[name="post[]"]').each(function() {
-                    $(this).attr('checked', true);
-                });
-                $(this).data('value', 'deselect');
-            } else {
-                jQuery('[name="post[]"]').each(function() {
-                    $(this).attr('checked', false);
-                });
-                $(this).data('value', 'select');
-            }
+            checkboxes = jQuery('.ui-jqgrid input[type="checkbox"]');
+            checkboxes.prop("checked", !checkboxes.first().prop("checked")).iCheck('update');
         });
     }
 
@@ -794,7 +805,7 @@
         $wrapper.dialog({
             autoOpen: false,
             modal:    true,
-            width:    600,
+            width:    650,
             buttons:  {
                 Cancel: function () {
                     $(this).dialog('close');
@@ -857,6 +868,8 @@
             controller.toggleShadow();
             controller.toggleBorder();
             controller.toggleCaptions();
+            controller.togglePopUp();
+
 
             controller.initThemeSelect();
             controller.initTransitionSelect();
@@ -872,8 +885,7 @@
             controller.areaNotifications();
             controller.setInputColor();
             controller.setScroll();
-            controller.toggleColumnsMode();
-
+            
             // Save as preset dialog
             $('#btnSaveAsPreset').on('click', controller.openSaveDialog);
 
@@ -889,11 +901,6 @@
             // Change the tab
             $('.change-tab')
                 .on('click', $.proxy(controller.changeTab, controller));
-
-            // Toggle photo height based on the selected grid type.
-            $('#grid-type').find('select')
-                .on('change', controller.togglePhotoHeightWidth)
-                .trigger('change');
 
             // Toggle colorbox slide-show settings
             /*$('input[name="box[slideshow]"]')
@@ -923,14 +930,16 @@
 
 
     function ImagePreview(enabled) {
-        this.$window = $('#preview.gallery-preview');
+        this.$window = $('#preview.gallery-preview').show().css('opacity', 0);
 
         if (enabled) {
             this.init();
-            this.$window.show();
-            this.captionCalculations();
-            this.initCaptionEffects();
+            this.$window.css('opacity', 1);
         }
+
+        this.$window.on('preview.refresh', $.proxy(function(event) {
+            this.init();
+        }, this));
     }
 
     ImagePreview.prototype.setProp = (function (selector, props) {
@@ -983,6 +992,7 @@
 
                 this.setProp('figure', { borderRadius: $value.val() + unitValue });
                 this.setProp('figcaption', { borderRadius: $value.val() + unitValue });
+                this.setProp('figure img', { borderRadius: $value.val() + unitValue });
 
             }, this))
             .trigger('change');
@@ -1078,41 +1088,41 @@
     });
 
     ImagePreview.prototype.initShadow = (function () {
+        var _this = this;
+
         var fieldNames = {
-            color: 'thumbnail[shadow][color]',
-            blur: 'thumbnail[shadow][blur]',
-            x: 'thumbnail[shadow][x]',
-            y: 'thumbnail[shadow][y]'
+            color: getSelector('thumbnail[shadow][color]'),
+            blur: getSelector('thumbnail[shadow][blur]'),
+            x: getSelector('thumbnail[shadow][x]'),
+            y: getSelector('thumbnail[shadow][y]')
         };
 
-        $('[name="use_shadow"]').on('change', $.proxy(function () {
-            if (parseInt($('[name="use_shadow"]:checked').val(), 10) == 1) {
-                $(
-                    getSelector(fieldNames.color) + ','
-                        + getSelector(fieldNames.blur) + ','
-                        + getSelector(fieldNames.x) + ','
-                        + getSelector(fieldNames.y)
-                )
-                    .bind('change paste keyup', $.proxy(function (e) {
-                        var $color = $(getSelector(fieldNames.color)),
-                            $blur = $(getSelector(fieldNames.blur)),
-                            $x = $(getSelector(fieldNames.x)),
-                            $y = $(getSelector(fieldNames.y));
+        selectors = $.map(fieldNames, function(item) {
+            return item;
+        });
 
-                        this.setProp('figure', {
-                            boxShadow: $x.val() + 'px '
-                                           + $y.val() + 'px '
-                                           + $blur.val() + 'px '
-                                + $color.val()
-                        });
-                    }, this))
-                    .trigger('change');
+        updateShadowProp = function(properties) {
+            _this.setProp('figure', properties);
+        }
+
+        $(selectors.join(',')).on('change paste keyup', function() {
+            updateShadowProp({
+                boxShadow: $(fieldNames.x).val() + 'px ' + $(fieldNames.y).val() + 'px ' + $(fieldNames.blur).val() + 'px ' + $(fieldNames.color).val()
+            });
+        });
+
+        $('[name="use_shadow"]').on('change', function() {
+            if ($(this).val() == 1) {
+                $(fieldNames.x).trigger('change');
             } else {
-                this.setProp('figure', {
+                updateShadowProp({
                     boxShadow: 'none'
                 });
             }
-        }, this)).trigger('change');
+        });
+
+        $('[name="use_shadow"]:checked').trigger('change');
+
     });
 
     ImagePreview.prototype.initMouseShadow = (function() {
@@ -1128,8 +1138,8 @@
             },
             showOver = function() {
                 wrapper.toggleEvents();
+                shadow = wrapper.$node.css('box-shadow');
                 wrapper.$node.on('mouseover', function () {
-                    shadow = wrapper.$node.css('box-shadow');
                     $(this).css('box-shadow', '5px 5px 5px #888');
                 });
                 wrapper.$node.on('mouseleave',function () {
@@ -1138,8 +1148,8 @@
             },
             hideOver = function() {
                 wrapper.toggleEvents();
+                shadow = wrapper.$node.css('box-shadow');
                 wrapper.$node.on('mouseover', function () {
-                    shadow = wrapper.$node.css('box-shadow');
                     $(this).css('box-shadow', 'none');
                 });
                 wrapper.$node.on('mouseleave', function () {
@@ -1200,11 +1210,16 @@
     });
 
     ImagePreview.prototype.previewCaptionHide = function() {
+
+        $('.gallery-preview .grid-gallery-caption')
+            .data('grid-gallery-type', 'none')
+            .attr('data-grid-gallery-type', 'none');
+        this.initCaptionEffects();
         $('#preview figcaption').hide();
-        this.setDataset('figure', 'data-grid-gallery-type', 'None');
+
     }
 
-    ImagePreview.prototype.previewCationShow = function(fields) {
+    ImagePreview.prototype.previewCaptionShow = function(fields) {
         $('#preview figcaption').show();
         this.setDataset('figure', 'data-grid-gallery-type', $('#overlayEffect').val());
 
@@ -1212,27 +1227,17 @@
             this.setDataset('figure', 'data-grid-gallery-type', $(e.currentTarget).data('grid-gallery-type'));
         }, this)).trigger('change');
 
-        $(getSelector(fields.bg)).bind('change paste keyup', $.proxy(function (e) {
-            this.setProp('figcaption', { backgroundColor: $(e.currentTarget).val() });
-        }, this))
-            .trigger('change')
-            .bind('change', $.proxy(function () {
-                this.setProp('figcaption', { opacity: 1 });
-            }, this))
-            .on('focusout', $.proxy(function () {
-                this.setProp('figcaption', { opacity: '' });
-            }, this));
+        $(getSelector(fields.bg)).bind('change', $.proxy(function (e) {
+            var color = hexToRgb($(e.currentTarget).val());
+            this.setProp('figcaption', {
+                backgroundColor: 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + 
+                    (1 - $(getSelector(fields.opacity)).val() / 10) + ')'
+            });
+        }, this)).trigger('change');
 
-        $(getSelector(fields.fg)).bind('change paste keyup', $.proxy(function (e) {
+        $(getSelector(fields.fg)).bind('change', $.proxy(function (e) {
             this.setProp('figcaption', { color: $(e.currentTarget).val() });
-        }, this))
-            .trigger('change')
-            .bind('change', $.proxy(function () {
-                this.setProp('figcaption', { opacity: '' });
-            }, this))
-            .on('focusout', $.proxy(function () {
-                this.setProp('figcaption', { opacity: '' });
-            }, this));
+        }, this)).trigger('change');
 
         function hexToRgb(hex) {
             var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -1243,19 +1248,12 @@
             } : null;
         }
 
-        var color = hexToRgb($(getSelector(fields.bg)).val());
-        this.setProp('figcaption', { backgroundColor: 'rgba(' + color.r +
-        ',' + color.g + ',' + color.b + ',' + (1 - $(getSelector(fields.opacity)).val()/10.0) + ')'});
-
-        $(getSelector(fields.opacity)).bind('change paste keyup', $.proxy(function (e) {
-            var color = hexToRgb($(getSelector(fields.bg)).val());
-            this.setProp('figcaption', { backgroundColor: 'rgba(' + color.r +
-            ',' + color.g + ',' + color.b + ',' + (1 - $(e.currentTarget).val()/10.0) + ')'});
+        $(getSelector(fields.opacity)).bind('change', $.proxy(function (e) {
+            $(getSelector(fields.bg)).trigger('change');
         }, this));
 
-
         $(getSelector(fields.size) + ',' + getSelector(fields.sizeUnit))
-            .bind('change paste keyup', $.proxy(function (e) {
+            .bind('change', $.proxy(function (e) {
                 var $size = $(getSelector(fields.size)),
                     $unit = $(getSelector(fields.sizeUnit)),
                     unitValue = 'px';
@@ -1273,14 +1271,7 @@
                 }
 
                 this.setProp('figcaption', { fontSize: $size.val() + unitValue });
-            }, this))
-            .trigger('change')
-            .on('focus', $.proxy(function () {
-                this.setProp('figcaption', { opacity: 1 });
-            }, this))
-            .on('focusout', $.proxy(function () {
-                this.setProp('figcaption', { opacity: '' });
-            }, this));
+            }, this)).trigger('change');
 
         $(getSelector(fields.align)).on('change', $.proxy(function (e) {
             var value = '';
@@ -1290,14 +1281,7 @@
             }
 
             this.setProp('figcaption', { textAlign: value });
-        }, this))
-            .trigger('change')
-            .on('focus', $.proxy(function () {
-                this.setProp('figcaption', { opacity: 1 });
-            }, this))
-            .on('focusout', $.proxy(function () {
-                this.setProp('figcaption', { opacity: '' });
-            }, this));
+        }, this)).trigger('change');
 
         $(getSelector(fields.fontFamily)).on('change', $.proxy(function (e) {
             var fontFamily = $(getSelector(fields.fontFamily)).val();
@@ -1308,21 +1292,29 @@
                 }
             });
             this.setProp('figcaption', { fontFamily: '"' + fontFamily + '"' + ', serif' });
-        }, this))
-            .trigger('change')
-            .on('focus', $.proxy(function () {
-                this.setProp('figcaption', { opacity: 1 });
-            }, this))
-            .on('focusout', $.proxy(function () {
-                this.setProp('figcaption', { opacity: '' });
-            }, this));
+        }, this)).trigger('change');
 
         $(getSelector(fields.position)).on('change', $.proxy(function (e) {
-
-            var position = $(getSelector(fields.position)).val(), wrap = $('div#preview > figure > figcaption > div.grid-gallery-figcaption-wrap');
+            var position = $(getSelector(fields.position)).val(), wrap = $('div#preview > figure > figcaption  div.grid-gallery-figcaption-wrap');
             wrap.css('vertical-align', position);
-
         }, this)).trigger('change');
+
+        var hideFigcaptionTimer;
+        $elements = $();
+        for (var i in fields) {
+            $.merge($elements, $(getSelector(fields[i])));
+        };
+
+        $elements.on('change keyup input paste', $.proxy(function () {
+            self = this;
+            $('.grid-gallery-caption').addClass('hovered')
+            clearTimeout(hideFigcaptionTimer);
+            hideFigcaptionTimer = setTimeout(function() {
+                $('.grid-gallery-caption').removeClass('hovered');
+            }, 3000);
+            
+        }, this));
+
     };
 
     ImagePreview.prototype.initCaption = (function () {
@@ -1339,16 +1331,16 @@
             fontFamily: 'thumbnail[overlay][font_family]'
         };
 
-        $('[name="thumbnail[overlay][enabled]"]').on('change', $.proxy(function(e) {
-            if($('[name="thumbnail[overlay][enabled]"]:checked').val() == 'true') {
-                this.previewCationShow(fields);
+        $('[name="thumbnail[overlay][enabled]"]').on('change', $.proxy(function(event) {
+            if(event.target.value == 'true') {
+                this.previewCaptionShow(fields);
             } else {
                 this.previewCaptionHide();
             }
         }, this));
 
-        if($('[name="thumbnail[overlay][enabled]"]:checked').val() == 'true') {
-            this.previewCationShow(fields);
+        if ($('[name="thumbnail[overlay][enabled]"]:checked').val() == 'true') {
+            this.previewCaptionShow(fields);
         } else {
             this.previewCaptionHide();
         }
@@ -1395,34 +1387,63 @@
     ImagePreview.prototype.initCaptionEffects = (function () {
         var self = this, figure = $('figure.grid-gallery-caption');
 
+        if (!this.defaultStyles) {
+            this.defaultStyles = {
+                figureStyle: figure.attr('style'),
+                imageStyle: figure.find('img').attr('style')
+            }
+        };
+
         figure.each(function() {
-            $(this).on('hover', function() {
-                if($(this).data('grid-gallery-type') == 'cube') {
-                    $(this).on('mouseenter mouseleave', function(e) {
-                        var $figcaption = $(this).find('figcaption'),
-                            direction = self.checkDirection($(this), e),
-                            classHelper = null;
 
-                        switch (direction) {
-                            case 0:
-                                classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-top';
-                                break;
-                            case 1:
-                                classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-right';
-                                break;
-                            case 2:
-                                classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-bottom';
-                                break;
-                            case 3:
-                                classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-left';
-                                break;
-                        }
-                        $figcaption.removeClass()
-                            .addClass(classHelper);
+            $(this).removeAttr('style').attr('style', self.defaultStyles.figureStyle);
+            $(this).find('img').removeAttr('style').attr('style', self.defaultStyles.imageStyle);
+            $(this).off('mouseenter mouseleave');
+            $(this).find('figcaption').removeClass();
 
-                    });
-                }
-            });
+            if ($(this).data('grid-gallery-type') == 'cube') {
+                $(this).on('mouseenter mouseleave', function(e) {
+                    var $figcaption = $(this).find('figcaption'),
+                        direction = self.checkDirection($(this), e),
+                        classHelper = null;
+
+                    switch (direction) {
+                        case 0:
+                            classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-top';
+                            break;
+                        case 1:
+                            classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-right';
+                            break;
+                        case 2:
+                            classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-bottom';
+                            break;
+                        case 3:
+                            classHelper = 'cube-' + (e.type == 'mouseenter' ? 'in' : 'out') + '-left';
+                            break;
+                    }
+                    $figcaption.removeClass()
+                        .addClass(classHelper);
+                });
+
+            } 
+
+            if ($(this).data('grid-gallery-type') == 'polaroid' && $(this).parent().hasClass('gallery-preview')) {
+                frameWidth = 20;
+                $img = $(this).find('img');
+                width = $(this).width() || $img.width();
+                scaleRatio = $img.width() / $img.height();
+                imageWidth = $img.width() - frameWidth * 2;
+                imageHeight = imageWidth / scaleRatio;
+
+                $img[0].style.setProperty('width', imageWidth + 'px', 'important');
+                $img[0].style.setProperty('height', imageHeight + 'px', 'important');
+                $img[0].style.setProperty('margin', frameWidth + 'px auto 0', 'important');
+                $(this).css({
+                    'height': (imageHeight + frameWidth * 4) + 'px',
+                    'width': width,
+                    'transform': 'rotate(' + Math.round(Math.random() * 10 - 5) + 'deg)'
+                });
+            }
         });
     });
 

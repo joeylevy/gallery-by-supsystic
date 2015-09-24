@@ -1,4 +1,4 @@
-{% macro list_view(entities) %}
+{% macro list_view(entities, sliderSettings) %}
 
     {% import _self as view %}
 
@@ -31,7 +31,7 @@
             {{ view.list_folder(folder) }}
         {% endfor %}
         {% for image in entities.images %}
-            {{ view.list_image(image) }}
+            {{ view.list_image(image, sliderSettings) }}
         {% else %}
             {# No images. #}
         {% endfor %}
@@ -160,7 +160,7 @@
     </tr>
 {% endmacro %}
 
-{% macro list_image(image) %}
+{% macro list_image(image, sliderSettings) %}
     {% set nonProMsg = 'Available in PRO' %}
 
     <tr data-entity data-entity-id="{{ image.id }}" data-entity-type="photo" data-entity-info="{{ image|json_encode }}">
@@ -189,19 +189,22 @@
         <td class="title column-title">
             <form id="photo-editor-{{ image.id }}" class="photo-editor attachment-{{ image.attachment.id }}">
                 <strong data-tabcontent=".tabcontent-{{ image.id }}">
-                    <a href="#photo-caption-{{ image.id }}" class="add-new-h2 active">
+                    <a href="#photo-caption-{{ image.id }}" class="add-new-h2 button active">
                         {{ translate('Caption') }}
                     </a>
-                    <a href="#photo-seo-{{ image.id }}" class="add-new-h2">
+                    <a href="#photo-captionEffect-{{ image.id }}" class="add-new-h2 button">
+                        {{ translate('Caption effect') }}
+                    </a>
+                    <a href="#photo-seo-{{ image.id }}" class="add-new-h2 button">
                         {{ translate('SEO') }}
                     </a>
-                    <a href="#photo-link-{{ image.id }}" class="add-new-h2">
+                    <a href="#photo-link-{{ image.id }}" class="add-new-h2 button">
                         {{ translate('Link') }}
                     </a>
-                    <a href="#photo-video-{{ image.id }}" class="add-new-h2">
+                    <a href="#photo-video-{{ image.id }}" class="add-new-h2 button">
                         {{ translate('Video') }}
                     </a>
-                    <a href="#photo-tags-{{ image.id }}" class="add-new-h2">
+                    <a href="#photo-tags-{{ image.id }}" class="add-new-h2 button">
                         {{ translate('Categories') }}
                     </a>
                 </strong>
@@ -209,6 +212,11 @@
                 <p id="photo-caption-{{ image.id }}" class="tabcontent-{{ image.id }}">
                     <input type="text" name="caption" value="{{ image.attachment.caption|raw }}"
                            placeholder="{{ translate('Caption') }}"/>
+                </p>
+
+                <p id="photo-captionEffect-{{ image.id }}" class="tabcontent-{{ image.id }}" style="display:none;">
+                    <button class="button selectCaptionEffectBtn" data-id="{{ image.attachment.id }}" title="{{ translate('Choose effect') }}">{{ translate('Choose effect') }}</button>
+                    <input type="text" class="captionEffectVal" name="captionEffect" data-id="{{ image.attachment.id }}" value="{{ image.attachment.captionEffect|default(sliderSettings.thumbnail.overlay.effect) }}" style="display: none;" />
                 </p>
 
                 <p id="photo-seo-{{ image.id }}" class="tabcontent-{{ image.id }}" style="display: none">

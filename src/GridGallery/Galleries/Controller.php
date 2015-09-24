@@ -110,11 +110,19 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
             $this->redirect($this->generateUrl('galleries', 'index'));
         }
 
-        if (!$gallery = $this->getModel('galleries')->getById(
-            (int)$galleryId
-        )
-        ) {
+        if ( !$gallery = $this->getModel('galleries')->getById((int)$galleryId) ) {
             $this->redirect($this->generateUrl('galleries', 'index'));
+        }
+
+        $settings = $this->getModel('settings')->get($galleryId);
+        if (!is_object($settings) || null === $settings->data) {
+            $config = $this->getEnvironment()->getConfig();
+            $config->load('@galleries/settings.php');
+
+            $settings = new stdClass;
+
+            $settings->id = null;
+            $settings->data = unserialize($config->get('gallery_settings'));
         }
 
         $position = $this->getModel('position');
@@ -134,9 +142,10 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         return $this->response(
             '@galleries/view.twig',
             array(
-                'gallery' => $gallery,
-                'viewType' => $request->query->get('view', self::STD_VIEW),
-                'ajaxUrl' => admin_url('admin-ajax.php'),
+                'gallery'   => $gallery,
+                'viewType'  => $request->query->get('view', self::STD_VIEW),
+                'ajaxUrl'   => admin_url('admin-ajax.php'),
+                'settings'  => $settings->data,
             )
         );
     }
@@ -898,15 +907,15 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         $showNotice = get_option('showGalleryRevNotice');
         $show = false;
 
-        if(!$showNotice) {
+        if (!$showNotice) {
             update_option('showGalleryRevNotice', array(
                 'date' => new DateTime(),
                 'is_shown' => false
             ));
         } else {
             $currentDate = new DateTime();
-
-            if(($currentDate->diff($showNotice['date'])->d > 7) && $showNotice['is_shown'] != 1) {
+            $days = floor(($currentDate->format('U') - $showNotice['date']->format('U')) / (60*60*24));
+            if ($days > 7 && $showNotice['is_shown'] != 1) {
                 $show = true;
             }
         }

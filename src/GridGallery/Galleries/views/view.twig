@@ -111,19 +111,128 @@
 
             {% import '@ui/type.twig' as view %}
             {% set entity = { images: gallery.photos } %}
+            {% set sliderSettings = settings %}
 
             {% if viewType == 'block' %}
                 {{ view.block_view(entity) }}
             {% endif %}
 
             {% if viewType == 'list' %}
-                {{ view.list_view(entity) }}
+                {{ view.list_view(entity, sliderSettings) }}
             {% endif %}
 
         {% endif %}
 
     {% endif %}
+
     <div id="importDialog" title="{{ translate('Select source to import from') }}" style="display: none;">
         {{ importTypes.show(400, gallery.id) }}
+    </div>
+
+    <div id="effectDialog" title="{{ translate('Select overlay effect') }}">
+        <div id="effectsPreview" style="margin-top: 10px;">
+            {% set effects = {
+            'none': 'None',
+            'center': 'Middle',
+            'quarter-appear': 'Appear',
+            'quarter-slide-up': 'Quarter Slide Up',
+            'quarter-slide-side': 'Quarter Slide Side',
+            'quarter-fall-in': 'Quarter Fall in',
+            'quarter-two-step': 'Quarter Two-step',
+            'quarter-zoom': 'Quarter Caption Zoom',
+            'cover-fade': 'Cover Fade',
+            'cover-push-right': 'Cover Push Right',
+            'revolving-door-left': 'Revolving Door Left',
+            'revolving-door-right': 'Revolving Door Right',
+            'revolving-door-top': 'Revolving Door Top',
+            'revolving-door-bottom': 'Revolving Door Bottom',
+            'cover-slide-top': 'Cover Slide Top',
+            'offset': 'Caption Offset',
+            'guillotine-reverse': 'Guillotine Reverse',
+            'half-slide': 'Half Slide',
+            'sqkwoosh': 'Sqkwoosh',
+            'tunnel': 'Tunnel',
+            'direction-aware': 'Direction Aware',
+            'phophorus-rotate': 'Phophorus Rotate',
+            'phophorus-offset': 'Phophorus Offset',
+            'phophorus-scale': 'Phophorus Scale',
+            'cube': 'Cube',
+            'polaroid': 'Polaroid',
+            } %}
+            {% set figcaptionStyle %}
+                border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};
+                {% if environment.isPro() and settings.icons is defined and settings.icons.enabled == 'true' %}
+                    {% if settings.icons.overlay_enabled == 'true' %}
+                        background-color:{{ settings.icons.overlay_color|default('#3498db') }};
+                    {% endif %}
+                {% else %}
+                    color:{{ settings.thumbnail.overlay.foreground }};
+                    background-color:{{ settings.thumbnail.overlay.background }};
+                    font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};
+                    {% if settings.thumbnail.overlay.text_align != 3 %}
+                        text-align:{{ settings.thumbnail.overlay.text_align|replace(['left', 'right', 'center']) }};
+                    {% endif %}
+                    {% if settings.thumbnail.overlay.effect == 'none' or settings.thumbnail.overlay.enabled == 'false' %}
+                        {#opacity:1;#}
+                        bottom:0;
+                    {% endif %}
+                {% endif %}
+            {% endset %}
+            {% for type, name in effects %}
+                {% if type != 'direction-aware' %}
+                    <figure class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
+                        <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image">
+                        <figcaption style="{{ figcaptionStyle|trim }}">
+                            <div class="grid-gallery-figcaption-wrap">
+                                <span>{{ name }}</span>
+                            </div>
+                        </figcaption>
+                        <div class="select-element">
+                            {{ translate('Select') }}
+                        </div>
+                    </figure>
+                {% else %}
+                    <figure class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
+                        <div class="box">
+                            <div class="box__right">Right ? Left</div>
+                            <div class="box__left">Left ? Right</div>
+                            <div class="box__top">Top ? Bottom</div>
+                            <div class="box__bottom">Bottom ? Top</div>
+                            <div class="box__center">
+                            </div>
+                            <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image">
+                        </div>
+                        <div class="select-element">
+                            {{ translate('Select') }}
+                        </div>
+                    </figure>
+                {% endif %}
+            {% endfor %}
+            <div class="grid-gallery-clearfix" style="clear: both;"></div>
+            <h3>Captions effects with icons{% if environment.isPro() == false %} Get PRO{% endif %}</h3>
+            <div class="description">Enable icons to use this effects</div>
+            {% block iconsEffects %}
+                {% for type, name in iconsWithCaptionsEffects %}
+                    <figure class="grid-gallery-caption{% if environment.isPro() == false %} disabled{% endif %}" data-grid-gallery-type="{{ type }}">
+                        <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image"/>
+                        <figcaption style="{{ figcaptionStyle|trim }}">
+                            <div style="width: 32px; height: 32px; border: 1px solid white; border-radius: 50%; margin-top: 30%;">
+                                <a href="{% if environment.isPro() == false %}http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=icons&utm_campaign=gallery{% else %}#{% endif %}" class="{% if environment.isPro() == false %}button{% endif %}" style="margin-top: 40px; margin-left: 5px; margin-right: 5px;">
+                                    {% if environment.isPro() == false %}
+                                        Get PRO
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </figcaption>
+                        <div class="caption-with-{{ type }}">
+                            <span>{{ name }}</span>
+                        </div>
+                        <div class="select-element">
+                            {{ translate('Select') }}
+                        </div>
+                    </figure>
+                {% endfor %}
+            {% endblock %}
+        </div>
     </div>
 {% endblock %}

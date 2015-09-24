@@ -23,6 +23,8 @@ return array(
         'slideshow' => 'Start slideshow when open big image in popup',
         'mobile' => 'Check if you want to disable popups on mobile devices',
         'captions' => 'Check if you want to hide pagination and image caption on popup window',
+        'overlay-personal' => "If option enabled you can choose personal caption effect per image in images list. If option disabled chosen effect will be used for all images",
+        'tooltip' => 'If selected Yes tooltip on hovering image will not appear',
         // Uncomment to enable overlay tooltips
         /*'overlay-effect' => 'Overlay effect',
         'overlay-background' => 'Overlay background color',
@@ -37,7 +39,6 @@ return array(
         'enable-shuffling-animation' => 'Animated sorting and laying out a group of images',
         //Pagination
         'pages-show' => "Enable pagination</br><img src=@url/enable_pagination.jpg />",
-
     ),
     'tooltips_icon' => array(
         'icon' => 'question'

@@ -90,6 +90,23 @@
         });
     };
 
+    Controller.prototype.initEffectsDialog = function () {
+        $('#effectDialog').dialog({
+            autoOpen: false,
+            modal:    true,
+            width:    740,
+            buttons:  {
+                Cancel: function () {
+                    $(this).dialog('close');
+                }
+            }
+        });
+    };
+
+    Controller.prototype.openEffectsDialog = function(attachmentId) {
+        $('#effectDialog').dialog('open').data('imgCaptionAttachmentId', attachmentId);
+    };
+
     Controller.prototype._initDialogs = function () {
         var GalleryDialog;
         var FolderDialog;
@@ -121,10 +138,25 @@
         SelectDialog.init();
 
         this.initImportDialog();
+        this.initEffectsDialog();
 
         //Open import dialog
         $('#import-to-gallery').on('click', function() {
             controller.openImportDialog();
+        });
+        //Open caption effects dialog
+        $('.selectCaptionEffectBtn').on('click', function() {
+            var attachmentId = $(this).attr('data-id');
+            controller.openEffectsDialog(attachmentId);
+        });
+
+        $('.grid-gallery-caption').on('click', function() {
+            var attachmentId = parseInt($(this).parents('#effectDialog').data('imgCaptionAttachmentId'));
+            if(attachmentId) {
+                $('.captionEffectVal[data-id="'+attachmentId+'"]').attr('value', $(this).attr('data-grid-gallery-type'));
+                $("form.photo-editor.attachment-"+attachmentId+"").trigger('submit');
+                $('#effectDialog').dialog('close').data('imgCaptionAttachmentId', 0);
+            }
         });
 
         function addToGallery() {

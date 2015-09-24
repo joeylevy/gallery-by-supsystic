@@ -438,15 +438,17 @@ class GridGallery_Photos_Controller extends GridGallery_Core_BaseController
         $caption = $request->post->get('caption');
         $description = $request->post->get('description');
         $link = $request->post->get('link');
+        $captionEffect = $request->post->get('captionEffect');
 
         /** @var GridGallery_Photos_Model_Photos $photos */
         $photos = $this->getModel('photos');
 
         $photos->updateMetadata($attachmentId, array(
-            'alt' => $alt,
-            'caption' => $caption,
-            'description' => $description,
-            'link'   => $link,
+            'alt'           => $alt,
+            'caption'       => $caption,
+            'description'   => $description,
+            'link'          => $link,
+            'captionEffect' => $captionEffect,
         ));
 
         return $this->response(Rsc_Http_Response::AJAX);

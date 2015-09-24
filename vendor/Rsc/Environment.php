@@ -572,4 +572,10 @@ class Rsc_Environment
             $this->getPluginName()
         )->myPluginApiCall($def, $action, $args);
     }
+
+    public function getProUrl($params = null) {
+        $config = $this->config;
+
+        return $config['page_url'] . (strpos($params, '?') === 0 ? '' : '?') . $params;
+    }
 }

@@ -1,5 +1,9 @@
 {% extends 'grid-gallery.twig' %}
 
+{% macro label(label, for) %}
+    <label for="{{ for }}">{{ label }}</label>
+{% endmacro %}
+
 {% block header %}
 
     <nav id="supsystic-breadcrumbs" class="supsystic-breadcrumbs" style="float: left; padding-top: 20px;">
@@ -56,6 +60,7 @@
 {% block preview %}
 
     {% import '@galleries/shortcode/style.twig' as style %}
+    {% import '@galleries/helpers/attachment.twig' as attachment %}
 
     <div id="preview" class="gallery-preview" style="display:none;">
 
@@ -105,19 +110,19 @@
         </section>
         {% if gallery.photos is not empty %}
             <figure class="grid-gallery-caption" data-grid-gallery-type="center" style="float: none !important;">
-                {% if gallery.settings.previewImage is not empty %}
-                    {% set cover = get_attachment(gallery.settings.previewImage, '420', '250', 'true') %}
-                {% else %}
-                    {% set cover = get_attachment(gallery.photos[0].attachment.id, '420', '250', 'true') %}
-                {% endif %}
-
-                {% if cover|length < 1 %}
-                    {% set cover = 'http://placehold.it/350x250&text=' ~ gallery.title %}
-                {% endif %}
-                <img src="{{ cover }}" alt="{{ gallery.title }}" style="max-height: 250px; max-width: 420px;"/>
+                
+            {% if gallery.settings.previewImage is not empty %}
+                {% set cover = attachment.image(gallery.settings.previewImage, gallery.settings) %}
+            {% else %}
+                {% set cover = attachment.image(gallery.photos[0].attachment.id, gallery.settings)%}
+            {% endif %}
+                
+             <img src="{{ cover }}" data-src="{{ 'holder.js/350x200?theme=simple&text=' ~ gallery.title }}" alt="{{ gallery.title }}" style="max-height: 250px; max-width: 380px; width: auto; height: auto; border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};"/>
                 <figcaption style="{{ figcaptionStyle|trim }}">
-                    <div class="grid-gallery-figcaption-wrap">
-                        <span>Gallery by Supsystic</span>
+                    <div style="display: table; height: 100%; width: 100%;">
+                        <div class="grid-gallery-figcaption-wrap" style="display: table-cell;">
+                            <span>Gallery by Supsystic</span>
+                        </div>
                     </div>
                 </figcaption>
             </figure>
@@ -154,6 +159,7 @@
 {% block content %}
 
     {% import '@core/form.twig' as form %}
+    {% import _self as f %}
 
     <div class="settings-wrap">
 
@@ -161,344 +167,240 @@
         <input id="currentPresetTitle" name="title" type="hidden" value="{{ settings.title|default('') }}"/>
 
         <div data-tab="area">
-            <table class="form-table" name="area">
-                <thead>
-				
-                {{ form.row(translate('Gallery Type'),
-                form.select('area[grid]', ['Fixed', 'Vertical', 'Horizontal', 'Fixed Columns'], settings.area.grid, { 'style': 'width: auto;' }), 'grid-type', 'gallery-types', 'columns') }}
-				<tr id="generalColumnsRow" hidden>
-                    <th scope="row">
-                        <label style="margin: 0 !important;">
-                            {{ translate('Number of Columns') }}
-							{{ form.show_tooltip('columns') }}
-							<br />
-							<label><a href="http://supsystic.com/fixed-columns-gallery-example/" style="color: #0074a2; font-size: 10px; text-decoration: none;">More Info</a> </label>
-                        </label>
-                    </th>
-                    <td>
-                        <input type="text" name="general[columns][number]" value="{{ settings.general.columns.number|default(1) }}">
-                    </td>
-                </tr>
-								
-                {#{{ form.row(environment.translate('Position'),
-                form.select('area[position]', ['Center', 'Left', 'Right'], settings.area.position, { 'style': 'width: 300px;' }), 'grid-type') }}#}
+            {% block area %}
+                <table class="form-table" name="area">
+                    <thead>
+    				
+                    {{ form.row(translate('Gallery Type'),
+                    form.select('area[grid]', ['Fixed', 'Vertical', 'Horizontal', 'Fixed Columns'], settings.area.grid, { 'style': 'width: auto;' }), 'grid-type', 'gallery-types', 'columns') }}
+    				<tr id="generalColumnsRow" hidden>
+                        <th scope="row">
+                            <label style="margin: 0 !important;">
+                                {{ translate('Number of Columns') }}
+    							{{ form.show_tooltip('columns') }}
+    							<br />
+    							<label><a href="http://supsystic.com/fixed-columns-gallery-example/" style="color: #0074a2; font-size: 10px; text-decoration: none;">More Info</a> </label>
+                            </label>
+                        </th>
+                        <td>
+                            <input type="number" name="general[columns][number]" value="{{ settings.general.columns.number|default(1) }}">
+                        </td>
+                    </tr>
+    								
+                    {#{{ form.row(environment.translate('Position'),
+                    form.select('area[position]', ['Center', 'Left', 'Right'], settings.area.position, { 'style': 'width: 300px;' }), 'grid-type') }}#}
 
-                {{ form.row(translate('Images distance'),
-                form.text('area[distance]', settings.area.distance, { 'style': { 'width': '140px;' } })
-                ~ form.span('', 'pixels', { 'disabled': 'disabled', 'style': 'margin-top: -2px; height: 27px; -webkit-appearance: none; -moz-appearance: none;line-height: 1;' }), 'distance') }}
+                    {{ form.row(translate('Images distance'),
+                    form.input('number', 'area[distance]', settings.area.distance, { 'style': { 'width': '140px;' } })
+                    ~ form.span('', 'pixels', { 'disabled': 'disabled', 'style': 'margin-top: -2px; height: 27px; -webkit-appearance: none; -moz-appearance: none;line-height: 1;' }), 'distance') }}
 
-                {{ form.row(translate('Gallery width'),
-                form.text('area[width]', settings.area.width, { 'style': { 'width': '140px' } })
-                ~ form.select('area[width_unit]', ['pixels', 'percents'], settings.area.width_unit, { 'style': 'margin-top: -2px; height: 27px;' }), 'area-width') }}
+                    {{ form.row(translate('Gallery width'),
+                    form.input('number', 'area[width]', settings.area.width, { 'style': { 'width': '140px' } })
+                    ~ form.select('area[width_unit]', ['pixels', 'percents'], settings.area.width_unit, { 'style': 'margin-top: -2px; height: 27px;' }), 'area-width') }}
 
-                {#{{ form.row(environment.translate('Gallery height'),
-                form.text('area[height]', settings.area.height, { 'style': { 'width': '205px'} })
-                ~ form.select('', ['pixels', 'percents'], null, { 'disabled': 'disabled', 'style': 'margin-top: -2px; height: 27px' }), 'area-height') }}#}
+                    {#{{ form.row(environment.translate('Gallery height'),
+                    form.input('number', 'area[height]', settings.area.height, { 'style': { 'width': '205px'} })
+                    ~ form.select('', ['pixels', 'percents'], null, { 'disabled': 'disabled', 'style': 'margin-top: -2px; height: 27px' }), 'area-height') }}#}
 
-                {{ form.row(translate('Image width'),
-                form.text('area[photo_width]', settings.area.photo_width, { 'style': { 'width': '140px'} })
-                ~ form.select('area[photo_width_unit]', ['pixels', 'percents'], settings.area.photo_width_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'photo-width') }}
+                    {{ form.row(translate('Image width'),
+                    form.input('number', 'area[photo_width]', settings.area.photo_width, { 'style': { 'width': '140px'} })
+                    ~ form.select('area[photo_width_unit]', ['pixels', 'percents'], settings.area.photo_width_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'photo-width') }}
 
-                {{ form.row(translate('Image height'),
-                form.text('area[photo_height]', settings.area.photo_height, { 'style': { 'width': '140px'} })
-                ~ form.select('area[photo_height_unit]', ['pixels', 'percents'], settings.area.photo_height_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'photo-height') }}
+                    {{ form.row(translate('Image height'),
+                    form.input('number', 'area[photo_height]', settings.area.photo_height, { 'style': { 'width': '140px'} })
+                    ~ form.select('area[photo_height_unit]', ['pixels', 'percents'], settings.area.photo_height_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'photo-height') }}
 
-                {{ form.row(translate('Image radius'),
-                form.text('thumbnail[border][radius]', settings.thumbnail.border.radius, { 'style': { 'width': '140px'} })
-                ~ form.select('thumbnail[border][radius_unit]', ['pixels', 'percents'], settings.thumbnail.border.radius_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'border-radius') }}
+                    {{ form.row(translate('Image radius'),
+                    form.input('number', 'thumbnail[border][radius]', settings.thumbnail.border.radius, { 'style': { 'width': '140px'} })
+                    ~ form.select('thumbnail[border][radius_unit]', ['pixels', 'percents'], settings.thumbnail.border.radius_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'border-radius') }}
 
+                    
+
+                    </thead>
+                </table>
                 
+                <div class="separator"></div>
+            {% endblock %}
 
-                </thead>
-            </table>
+            {# Show more ad #}
+            {# <div name="icons">
+                <h1 style="line-height: 1;">
+                    {{ translate("Load your images on scroll or button press") }}
+                    </br>
+                    <a class="button get-pro"
+                       href="{{ environment.getProUrl('utm_source=plugin&utm_medium=show-more&utm_campaign=gallery') }}">Get
+                        PRO for 29$</a>
+                </h1>
 
-            <div class="separator"></div>
+                <div>
+                    <a href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=show-more&utm_campaign=gallery') }}">
+                        <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/icons_pro.jpg" />
+                    </a>
+                </div>
+            </div>
+            <div class="separator"></div> #}
 
-            <table class="form-table" name="border">
-                <thead>
+            {% block border %}
+                <table class="form-table" name="border">
+                    <thead>
 
-                {% set borderTypes = {
-                'solid': 'Solid',
-                'dotted': 'Dotted',
-                'dashed': 'Dashed',
-                'double': 'Double',
-                'none': 'None'
-                } %}
+                    {% set borderTypes = {
+                    'solid': 'Solid',
+                    'dotted': 'Dotted',
+                    'dashed': 'Dashed',
+                    'double': 'Double',
+                    'groove': 'Groove',
+                    'ridge': 'Ridge',
+                    'inset': 'Inset',
+                    'outset': 'Outset',
+                    'none': 'None'
+                    } %}
 
-                {#<tr id="useBorderRow">
-                    <th scope="row">
-                        <h3 style="margin: 0 !important;">
-                            {{ environment.translate('Border') }}
-                        </h3>
-                    </th>
-                    <td>
-                        <input type="radio" id="showBorder" name="thumbnail[border][use]" value="1" {% if settings.thumbnail.border.use == '1' %}checked{% endif %}>
-                            {{ environment.translate('Available') }}
-                        <input type="radio" id="hideBorder" name="thumbnail[border][use]" value="0" {% if settings.thumbnail.border.use != '1' %}checked{% endif %}>
-                            {{ environment.translate('Disable') }}
-                    </td>
-                </tr>#}
+                    {#<tr id="useBorderRow">
+                        <th scope="row">
+                            <h3 style="margin: 0 !important;">
+                                {{ environment.translate('Border') }}
+                            </h3>
+                        </th>
+                        <td>
+                            <input type="radio" id="showBorder" name="thumbnail[border][use]" value="1" {% if settings.thumbnail.border.use == '1' %}checked{% endif %}>
+                                {{ environment.translate('Available') }}
+                            <input type="radio" id="hideBorder" name="thumbnail[border][use]" value="0" {% if settings.thumbnail.border.use != '1' %}checked{% endif %}>
+                                {{ environment.translate('Disable') }}
+                        </td>
+                    </tr>#}
 
-                {{ form.row(translate('Border Type'),
-                form.select('thumbnail[border][type]', borderTypes, settings.thumbnail.border.type, { 'style': 'width: auto;' })
-                ~ form.input('text', 'border-type', 'Example', { 'style': 'margin-top: -2px; height: 27px; width: 70px; border: 1px solid black;' }), 'border-type', 'gallery-borders') }}
+                    {{ form.row(translate('Border Type'),
+                    form.select('thumbnail[border][type]', borderTypes, settings.thumbnail.border.type, { 'style': 'width: auto;' })
+                    ~ form.input('text', 'border-type', 'Example', { 'style': 'margin-top: -2px; height: 27px; width: 70px; border: 1px solid black; display:none;' }), 'border-type', 'gallery-borders') }}
 
-                {{ form.row(translate('Border color'),
-                form.input('text', 'thumbnail[border][color]', settings.thumbnail.border.color, { 'class': 'gg-color-picker' }), 'border-color') }}
+                    {{ form.row(translate('Border color'),
+                    form.input('text', 'thumbnail[border][color]', settings.thumbnail.border.color, { 'class': 'gg-color-picker' }), 'border-color') }}
 
-                {{ form.row(translate('Border width'),
-                form.text('thumbnail[border][width]', settings.thumbnail.border.width, { 'style': { 'width': '140px;'} })
-                ~ form.span('', 'pixels', { 'disabled': 'disabled', 'style': 'margin-top: -2px; height: 27px; -webkit-appearance: none; -moz-appearance: none;line-height: 1;' }), 'border-width') }}
+                    {{ form.row(translate('Border width'),
+                    form.input('number', 'thumbnail[border][width]', settings.thumbnail.border.width, { 'style': { 'width': '140px;'} })
+                    ~ form.span('', 'pixels', { 'disabled': 'disabled', 'style': 'margin-top: -2px; height: 27px; -webkit-appearance: none; -moz-appearance: none;line-height: 1;' }), 'border-width') }}
 
-                </thead>
-            </table>
+                    </thead>
+                </table>
+                <div class="separator"></div>
+            {% endblock %}
 
-            <div class="separator"></div>
+            {% block shadow %}
+                <table class="form-table" name="shadow">
+                    <thead>
 
-            <table class="form-table" name="shadow">
-                <thead>
+                    <tr id="useShadowRow">
+                        <th scope="row">
+                            <h3 style="margin: 0 !important;">
+                                {{ translate('Shadow') }}
+                            </h3>
+                        </th>
+                        <td>
+                            <input type="radio" id="showShadow" name="use_shadow" value="1" {% if settings.use_shadow == '1' %}checked{% endif %}>
+                                {{ translate('Enable') }}
+                            <input type="radio" id="hideShadow" name="use_shadow" value="0" {% if settings.use_shadow != '1' %}checked{% endif %}>
+                                {{ translate('Disable') }}
+                        </td>
+                    </tr>
 
-                <tr id="useShadowRow">
-                    <th scope="row">
-                        <h3 style="margin: 0 !important;">
-                            {{ translate('Shadow') }}
-                        </h3>
-                    </th>
-                    <td>
-                        <input type="radio" id="showShadow" name="use_shadow" value="1" {% if settings.use_shadow == '1' %}checked{% endif %}>
-                            {{ translate('Enable') }}
-                        <input type="radio" id="hideShadow" name="use_shadow" value="0" {% if settings.use_shadow != '1' %}checked{% endif %}>
-                            {{ translate('Disable') }}
-                    </td>
-                </tr>
+                    <tr>
+                        <th scope="row">
+                            {{ translate('Shadow preset') }}
+                        </th>
+                        <td>
+                            <button id="chooseShadowPreset" class="button bordered" type="button">
+                                {{ translate('Choose preset') }}
+                            </button>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <th scope="row">
-                        {{ translate('Shadow preset') }}
-                    </th>
-                    <td>
-                        <button id="chooseShadowPreset" class="button bordered" type="button">
-                            {{ translate('Choose preset') }}
-                        </button>
-                    </td>
-                </tr>
+                    <tr id="useMouseShadowRow">
+                        <th scope="row">
+                            {{ translate('When mouse is over') }}
+                        </th>
+                        <td>
+                            <select id="useMouseOverShadow" style="width: auto;" name="mouse_shadow">
+                                <option value="0" {% if settings.mouse_shadow == '0' %}selected="selected"{% endif %}>
+                                    {{ translate('Off') }}
+                                </option>
+                                <option value="1" {% if settings.mouse_shadow == '1' %}selected="selected"{% endif %}>
+                                    {{ translate('Show mouse on') }}
+                                </option>
+                                <option value="2" {% if settings.mouse_shadow == '2' %}selected="selected"{% endif %}>
+                                    {{ translate('Hide mouse on') }}
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
 
-                <tr id="useMouseShadowRow">
-                    <th scope="row">
-                        {{ translate('When mouse is over') }}
-                    </th>
-                    <td>
-                        <select id="useMouseOverShadow" style="width: auto;" name="mouse_shadow">
-                            <option value="0" {% if settings.mouse_shadow == '0' %}selected="selected"{% endif %}>
-                                {{ translate('Off') }}
-                            </option>
-                            <option value="1" {% if settings.mouse_shadow == '1' %}selected="selected"{% endif %}>
-                                {{ translate('Show mouse on') }}
-                            </option>
-                            <option value="2" {% if settings.mouse_shadow == '2' %}selected="selected"{% endif %}>
-                                {{ translate('Hide mouse on') }}
-                            </option>
-                        </select>
-                    </td>
-                </tr>
+                    {{ form.row(translate('Overlay image with shadow'),
+                    form.select('thumbnail[shadow][overlay]', ['Off', 'On'], settings.thumbnail.shadow.overlay, { 'style': 'width: auto;' }), 'overlay-type') }}
 
-                {{ form.row(translate('Overlay image with shadow'),
-                form.select('thumbnail[shadow][overlay]', ['Off', 'On'], settings.thumbnail.shadow.overlay, { 'style': 'width: auto;' }), 'overlay-type') }}
+                    {{ form.row(translate('Shadow color'),
+                    form.text('thumbnail[shadow][color]', settings.thumbnail.shadow.color, { 'style': { 'width': '300px' }, 'class':'gg-color-picker' }), 'shadow-color') }}
 
-                {{ form.row(translate('Shadow color'),
-                form.color('thumbnail[shadow][color]', settings.thumbnail.shadow.color, { 'style': { 'width': '300px' } }), 'shadow-color') }}
+                    {{ form.row(translate('Shadow blur'),
+                    form.input('number', 'thumbnail[shadow][blur]', settings.thumbnail.shadow.blur, { 'style': { 'width': 'auto' } }), 'shadow-blur') }}
 
-                {{ form.row(translate('Shadow blur'),
-                form.text('thumbnail[shadow][blur]', settings.thumbnail.shadow.blur, { 'style': { 'width': 'auto' } }), 'shadow-blur') }}
+                    {{ form.row(translate('Shadow X'),
+                    form.input('number', 'thumbnail[shadow][x]', settings.thumbnail.shadow.x, { 'style': { 'width': 'auto' } }), 'shadow-x') }}
 
-                {{ form.row(translate('Shadow X'),
-                form.text('thumbnail[shadow][x]', settings.thumbnail.shadow.x, { 'style': { 'width': 'auto' } }), 'shadow-x') }}
+                    {{ form.row(translate('Shadow Y'),
+                    form.input('number', 'thumbnail[shadow][y]', settings.thumbnail.shadow.y, { 'style': { 'width': 'auto' } }), 'shadow-y') }}
 
-                {{ form.row(translate('Shadow Y'),
-                form.text('thumbnail[shadow][y]', settings.thumbnail.shadow.y, { 'style': { 'width': 'auto' } }), 'shadow-y') }}
+                    </thead>
+                </table>
+                <div class="separator"></div>
+            {% endblock %}
+    
+            {% block popup %}
+                <table class="form-table">
+                    <thead>
+                        {% set popUpEnabled = settings.box.enabled|default('true') == 'true' %}
+                        {{ form.row(translate('Pop-up Image'),
+                            form.radio('box[enabled]', 'true', {'id':'box-enable'}|merge(popUpEnabled ? {'checked':'checked'} : {})) ~
+                            f.label(translate('Enabled'), 'box-enable') ~ 
+                            form.radio('box[enabled]', 'false', {'id':'box-disable'}|merge(popUpEnabled ? {} : {'checked':'checked'})) ~
+                            f.label(translate('Disable'), 'box-disable'), 'box', true) }}
+                    </thead>
+                    <tbody>
+                        {{ form.row(translate('Popup box theme'), 
+                            form.button('chooseTheme', translate('Choose theme'), {'class': 'button bordered', 'id': 'chooseTheme'}) ~ 
+                            form.hidden('box[type]', settings.box.type) ~ 
+                            form.hidden('box[theme]', settings.box.theme, {'id':'bigImageTheme'}) 
+                        ) }}
 
-                </thead>
-            </table>
+                        {{ form.row(translate('Disable on mobile'), 
+                            form.checkbox('box[mobile]', 'on', settings.box.mobile == 'on' ? {'checked':'checked'} : {}), 
+                        'mobile') }}                        
 
-            <div class="separator"></div>
+                        {{ form.row(translate('Hide Popup Captions'), 
+                            form.checkbox('box[captions]', 'on', settings.box.captions == 'on' ? {'checked':'checked'} : {}), 
+                        'captions') }}
 
-            <table class="form-table">
-                <thead>
+                        {{ form.row(translate('Background color'),
+                            form.text('box[background]', settings.box.background, {'class':'gg-color-picker'}), 'box-background') }}
 
-                <tr>
-                    <th scope="row">
-                        <h3 style="margin: 0 !important;">
-                            {{ translate('Pop-up Image') }}
-                        </h3>
-                    </th>
-                    <td>
-                        <input name="box[type]" value="{{ settings.box.type }}" style="vertical-align: sub;" hidden>
-                        <span
+                        {{ form.row(translate('Transition'), 
+                            form.button('chooseTransition', translate('Choose effect'), {'class': 'button bordered', 'id': 'chooseTransition'}) ~ form.hidden('box[transition]', settings.box.transition)
+                        ) }}
+                        
+                        {{ form.row(translate('Slideshow'),
+                            form.select('box[slideshow]', {'true': translate('Enable'), 'false': translate('Disable')}, settings.box.slideshow|default('false'), {'style': 'width: auto'}),
+                        'slideshow') }}
 
-                                class="themeName" style="vertical-align: sub;" hidden>
-                            {{ settings.box.theme|replace({ '_' : ' '})|title }}
-                        </span>
-                        <button class="button bordered" type="button" id="chooseTheme">
-                            {{ translate('Choose theme') }}
-                        </button>
-                        <input id="bigImageTheme" type="hidden" name="box[theme]" value="{{ settings.box.theme }}"/>
-                    </td>
-                </tr>
+                        {{ form.row(translate('Slideshow speed'),
+                            form.input('number', 'box[slideshowSpeed]', settings.box.slideshowSpeed, {'style': {'width': 'auto'}},'box-slideshowSpeed')
+                        ) }}
 
-                <tr id="disable-popup-row">
-                    <th scope="row">
-                        <label for="disablePopup">{{ translate('Disable Popup') }}</label>
-                    </th>
-                    <td>
-                        <input type="checkbox" id="disablePopup" name="box[disable]" {% if settings.box.disable == 'on' %}checked{% endif %}>
-                        {{ form.show_tooltip('disable') }}
-                    </td>
-                </tr>
-
-                <tr id="enable-mobile-row">
-                    <th scope="row">
-                        <label for="enableMobile">{{ translate('Disable on mobile') }}</label>
-                    </th>
-                    <td>
-                        <input type="checkbox" id="enableMobile" name="box[mobile]" {% if settings.box.mobile == 'on' %}checked{% endif %}>
-                        {{ form.show_tooltip('mobile') }}
-                    </td>
-                </tr>
-
-                <tr id="popup-caption-row">
-                    <th scope="row">
-                        <label for="enablePopupCaptions">{{ translate('Hide Popup Captions') }}</label>
-                    </th>
-                    <td>
-                        <input type="checkbox" id="enablePopupCaptions" name="box[captions]" {% if settings.box.captions == 'on' %}checked{% endif %}>
-                        {{ form.show_tooltip('captions') }}
-                    </td>
-                </tr>
-
-                {#{{ form.row(environment.translate('Pop-up Image'),
-                form.select('box[type]', ['Colorbox', 'PrettyPhoto'], settings.box.type, { 'style': 'width: auto;' }), 'text-align', true) }}#}
-
-                {#<tr>
-                    <th scope="row">
-                        {{ environment.translate('Theme') }}
-                    </th>
-                    <td>
-                        <span class="themeName" style="vertical-align: sub;" hidden>
-                            {{ settings.box.theme|replace({ '_' : ' '})|title }}
-                        </span>
-                        <button class="button bordered" type="button" id="chooseTheme">
-                            {{ environment.translate('Choose theme') }}
-                        </button>
-                        <input id="bigImageTheme" type="hidden" name="box[theme]" value="{{ settings.box.theme }}"/>
-                    </td>
-                </tr>#}
-
-
-                <tr>
-                    <th scope="row">
-                        {{ translate('Transition') }}
-                    </th>
-                    <td>
-                        <input name="box[transition]" value="{{ settings.box.transition }}" style="vertical-align: sub;" hidden>
-                        <button id="chooseTransition" class="button bordered" type="button">
-                            {{ translate('Choose effect') }}
-                        </button>
-                    </td>
-                </tr>
-
-
-                {#{{ form.row(
-                environment.translate('Transition'),
-                form.select(
-                'box[transition]',
-                {
-                    'elastic': environment.translate('Elastic'),
-                    'fade': environment.translate('Fade'),
-                    'none': environment.translate('None')
-                },
-                settings.box.transition,
-                {
-                    'style': 'width: auto',
-                },
-                'box-transition'
-                )
-                ) }}
-
-                {{ form.row(
-                environment.translate('Transition speed'),
-                form.text(
-                'box[speed]',
-                settings.box.speed,
-                {
-                    'style': {
-                    'width': '300px'
-                },
-                },
-                'box-speed'
-                )
-                ) }}
-
-                {{ form.row(
-                environment.translate('Close speed'),
-                form.text(
-                'box[fadeOut]',
-                settings.box.fadeOut,
-                {
-                    'style': {
-                    'width': '300px',
-                },
-                },
-                'box-fadeOut'
-                )
-                ) }}
-                #}
-
-                <tr id="enableSlideshow">
-                    <th scope="row">
-                        {{ translate('Slideshow') }}
-                        {{ form.show_tooltip('slideshow') }}
-                    </th>
-                    <td>
-                        <input type="radio" id="showSlideshow" name="box[slideshow]" value="1" {% if settings.box.slideshow == '1' %}checked{% endif %}>
-                        {{ translate('Enable') }}
-                        <input type="radio" id="hideSlideshow" name="box[slideshow]" value="0" {% if settings.box.slideshow != '1' %}checked{% endif %}>
-                        {{ translate('Disable') }}
-                    </td>
-                </tr>
-
-                {{ form.row(
-                translate('Slideshow speed'),
-                form.text(
-                'box[slideshowSpeed]',
-                settings.box.slideshowSpeed,
-                {
-                    'style': {
-                    'width': '300px',
-                },
-                },
-                'box-slideshowSpeed'
-                )
-                ) }}
-
-                {{ form.row(
-                translate('Slideshow autostart'),
-                form.select(
-                'box[slideshowAuto]',
-                {
-                    'true':  translate('Yes'),
-                    'false': translate('No'),
-                },
-                settings.box.slideshowAuto,
-                {
-                    'style': 'width: 300px',
-                },
-                'box-slideshowAuto'
-                )
-                ) }}
-
-                </thead>
-            </table>
-
+                        {{ form.row(translate('Slideshow autostart'),
+                            form.select('box[slideshowAuto]', {'true':  translate('Yes'),'false': translate('No')}, settings.box.slideshowAuto, {'style': 'width: auto'}, 'box-slideshowAuto')
+                        ) }}
+                    </tbody>
+                </table>
+                <div class="separator"></div>
+            {% endblock %}
         </div>
 
         {% block post %}
@@ -549,6 +451,7 @@
                 'phophorus-offset': 'Phophorus Offset',
                 'phophorus-scale': 'Phophorus Scale',
                 'cube': 'Cube',
+                'polaroid': 'Polaroid',
                 } %}
 
                 {% set iconsWithCaptionsEffects = {
@@ -596,8 +499,8 @@
                 <tr class="caption-effect">
                     <th scope="row">
                         {{ translate('Effect') }}
-                    <td>
                     </th>
+                    <td>
                 <span class="selectedEffectName" style="vertical-align: sub;" hidden>
                     {{ settings.thumbnail.overlay.effect }}
                 </span>
@@ -609,17 +512,22 @@
                     </td>
                 </tr>
 
+                {{ form.row(translate('Personal captions'),
+                    form.select('thumbnail[overlay][personal]', {'true': translate('Enable'), 'false': translate('Disable')},
+                settings.thumbnail.overlay.personal|default('false'),
+                { 'style': 'width: auto;' }), 'overlay-personal') }}
+
                 {{ form.row(translate('Position'),
-                form.select('thumbnail[overlay][position]',
+                    form.select('thumbnail[overlay][position]',
                 {'top': 'Top', 'middle': 'Middle', 'bottom': 'Bottom'},
                 settings.thumbnail.overlay.position,
                 { 'style': 'width: auto;' }), 'overlay-position') }}
 
                 {{ form.row(translate('Background color'),
-                form.color('thumbnail[overlay][background]', settings.thumbnail.overlay.background), 'overlay-background') }}
+                form.text('thumbnail[overlay][background]', settings.thumbnail.overlay.background, {'class':'gg-color-picker'}), 'overlay-background') }}
 
                 {{ form.row(translate('Text color'),
-                form.color('thumbnail[overlay][foreground]', settings.thumbnail.overlay.foreground), 'overlay-foreground') }}
+                form.text('thumbnail[overlay][foreground]', settings.thumbnail.overlay.foreground, {'class':'gg-color-picker'}), 'overlay-foreground') }}
 
                 {{ form.row(translate('Transparency'),
                 form.select('thumbnail[overlay][transparency]',
@@ -628,7 +536,7 @@
                 { 'style': 'width: auto;' }), 'overlay-transparency') }}
 
                 {{ form.row(translate('Text size'),
-                form.text('thumbnail[overlay][text_size]', settings.thumbnail.overlay.text_size, { 'style': { 'width': '140px'} })
+                form.input('number','thumbnail[overlay][text_size]', settings.thumbnail.overlay.text_size, { 'style': { 'width': '140px'} })
                 ~ form.select('thumbnail[overlay][text_size_unit]', ['pixels', 'percents', 'ems'], settings.thumbnail.overlay.text_size_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'text-size') }}
 
                 {{ form.row(translate('Text align'),
@@ -638,7 +546,10 @@
                 form.selectv('thumbnail[overlay][font_family]', fontList, settings.thumbnail.overlay.font_family,{ 'style': 'width: auto;' }), 'font-family') }}
 
 
+
                 </thead>
+                {{ form.row(translate('Hide image title tooltip'),
+                form.select('thumbnail[tooltip]', {'false': translate('No'), 'true': translate('Yes')}, settings.thumbnail.tooltip, { 'style': 'width: auto;' }), 'tooltip') }}
             </table>
 
             <div class="separator"></div>
@@ -834,8 +745,8 @@
                         <figure class="grid-gallery-caption{% if environment.isPro() == false %} disabled{% endif %}" data-grid-gallery-type="{{ type }}">
                             <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image"/>
                             <figcaption style="{{ figcaptionStyle|trim }}">
-                                <div style="width: 32px; height: 32px; border: 1px solid white; border-radius: 50%; margin-top: 30%;">
-                                    <a href="{% if environment.isPro() == false %}http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=icons&utm_campaign=gallery{% else %}#{% endif %}" class="{% if environment.isPro() == false %}button{% endif %}" style="margin-top: 40px; margin-left: 5px; margin-right: 5px;">
+                                <div class="hi-icon-wrap" style="width: 48px; height: 48px; margin-top: 30%; position:relative;">
+                                    <a href="{% if environment.isPro() == false %}http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=icons&utm_campaign=gallery{% else %}#{% endif %}" class="{% if environment.isPro() == false %}button{% endif %} hi-icon icon-link" style="border:1px solid #ccc; border-radius:50%;margin:auto;position:absolute;left:0;right:0;top: 0;bottom: 0;">
                                     {% if environment.isPro() == false %}
                                         Get PRO
                                     {% endif %}
@@ -862,14 +773,14 @@
             <div id="transitionPreview" style="margin: 10px;">
                 {% for type, name in transitionEffects %}
                     <figure id="{{ type }}" class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
-                        <img src="http://placehold.it/250/28282a/f7f7f7&text={{ name }}" class="dialog-image"/>
+                        <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image"/>
                         <figcaption style="{{ figcaptionStyle|trim }}">
                             <div class="grid-gallery-figcaption-wrap">
                                 <span>{{ name }}</span>
                             </div>
                         </figcaption>
                         <div class="select-element">
-                            <h3>{{ translate('Select') }}</h3>
+                            {{ translate('Select') }}
                         </div>
                     </figure>
                 {% endfor %}
@@ -959,10 +870,10 @@
                     <div class="grid-gallery-caption" style="float: left; margin-left: 15px; cursor: pointer;">
                         <div class="shadow-preset" data-offset-x="{{ effect.offset_x }}" data-offset-y="{{ effect.offset_y }}" data-blur="{{ effect.blur }}" data-color="{{ effect.color }}"
                              style="margin: 20px; box-shadow: {{ effect.offset_x }}px {{ effect.offset_y }}px {{ effect.blur }}px {{ effect.color }};">
-                            <img src="http://placehold.it/200/28282a/f7f7f7&text={{ effect.name }}" class="dialog-image"/>
+                            <img data-src="holder.js/150x150?theme=industrial&text={{ effect.name }}" class="dialog-image"/>
                         </div>
                         <div class="select-element">
-                            <h3>{{ translate('Select') }}</h3>
+                            {{ translate('Select') }}
                         </div>
                     </div>
                 {% endfor %}

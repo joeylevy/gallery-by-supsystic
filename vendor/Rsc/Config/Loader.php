@@ -57,6 +57,7 @@ class Rsc_Config_Loader
      */
     public function load($file)
     {
+
         if (!$this->isNamespaced($file)) {
             $file = $this->getDefaultNamespacePath($file);
         }
@@ -98,7 +99,7 @@ class Rsc_Config_Loader
      */
     protected function loadFromNamespace($filename)
     {
-        if (!preg_match('/@([a-z]*)\//', $filename, $matches)) {
+        if (!preg_match('/@([a-z_]*)\//', $filename, $matches)) {
             throw new InvalidArgumentException(sprintf(
                 'The file %s is not has the namespace',
                 $filename
@@ -148,7 +149,7 @@ class Rsc_Config_Loader
      */
     protected function isNamespaced($path)
     {
-        return (preg_match('/@([a-z]*)\//', $path) ? true : false);
+        return (preg_match('/@([a-z_]*)\//', $path) ? true : false);
     }
 
     /**

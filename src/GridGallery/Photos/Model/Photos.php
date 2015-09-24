@@ -318,6 +318,15 @@ class GridGallery_Photos_Model_Photos extends Rsc_Mvc_Model
         );
     }
 
+    public function setCaptionEffect($attachmentId, $captionEffect)
+    {
+        update_post_meta(
+            (int)$attachmentId,
+            'captionEffect',
+            $captionEffect
+        );
+    }
+
     public function updateMetadata($attachmentId, array $metadata)
     {
         foreach ($metadata as $key => $value) {
@@ -450,6 +459,10 @@ class GridGallery_Photos_Model_Photos extends Rsc_Mvc_Model
         $photo->attachment = wp_prepare_attachment_for_js($photo->attachment_id);
         $photo->is_used = (($usedTimes > 0) ? true : false);
         $photo->used_times = $usedTimes;
+        $captionEffect = get_post_meta($photo->attachment_id, 'captionEffect');
+        if($captionEffect && !empty($captionEffect)) {
+            $photo->attachment['captionEffect'] = $captionEffect[0];
+        }
 
         if (class_exists('GridGalleryPro_Galleries_Model_Tags')) {
             $tags = new GridGalleryPro_Galleries_Model_Tags();
