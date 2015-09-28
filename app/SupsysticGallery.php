@@ -30,7 +30,7 @@ class SupsysticGallery
 
         /* Create new plugin $environment */
         $pluginPath = dirname(dirname(__FILE__));
-        $environment = new Rsc_Environment('sgg', '1.4.5', $pluginPath);
+        $environment = new Rsc_Environment('sgg', '1.4.6', $pluginPath);
 
         /* Configure */
         $environment->configure(
@@ -180,7 +180,7 @@ class SupsysticGallery
             'tmp' => '/grid-gallery',
             'log' => '/grid-gallery/log',
             'cache' => '/grid-gallery/cache',
-            'cache_twig_r' => '/grid-gallery/cache/twig',
+            'cache_twig' => '/grid-gallery/cache/twig',
         );
 
         foreach ($directories as $key => $dir) {

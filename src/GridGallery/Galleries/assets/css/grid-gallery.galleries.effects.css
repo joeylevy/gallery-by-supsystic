@@ -93,9 +93,12 @@ a.post .grid-gallery-caption {
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 10px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
+}
+
+.grid-gallery-caption[data-grid-gallery-type="icons"] .caption-with-icons > * {
+    padding: 10px;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="icons"]:hover figcaption,
@@ -341,20 +344,20 @@ a.post .grid-gallery-caption {
     -webkit-transition: none;
     -o-transition: none;
     transition: none;
-    z-index: 0;
+    z-index: 1;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="sqkwoosh"] img {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     -webkit-transition-delay: 0.25s;
     -o-transition-delay: 0.25s;
     transition-delay: 0.25s;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="sqkwoosh"] .grid-gallery-figcaption-wrap {
-    position: absolute;
-    bottom: 1rem;
+/*    position: absolute;
+    bottom: 1rem;*/
     opacity: 0;
     -webkit-transition: opacity 0.25s linear 0s;
     -o-transition: opacity 0.25s linear 0s;
@@ -380,6 +383,7 @@ a.post .grid-gallery-caption {
     -webkit-transition-delay: 0;
     -o-transition-delay: 0;
     transition-delay: 0;
+    z-index: 0;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="quarter-slide-side"] figcaption {
@@ -872,6 +876,7 @@ a.post .grid-gallery-caption {
     -ms-transform: scale(0.7);
     -o-transform: scale(0.7);
     transform: scale(0.7);
+    z-index: 11;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="tunnel"] img {
@@ -922,8 +927,6 @@ a.post .grid-gallery-caption {
     top: 40%;
     left: 0;
     width: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="phophorus-rotate"]:hover figcaption,
@@ -951,8 +954,6 @@ a.post .grid-gallery-caption {
     top: 40%;
     left: 0;
     width: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="phophorus-offset"]:hover figcaption,
@@ -986,8 +987,6 @@ a.post .grid-gallery-caption {
     top: 40%;
     left: 0;
     width: 100%;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="phophorus-scale"]:hover figcaption,

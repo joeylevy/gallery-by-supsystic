@@ -8,6 +8,13 @@
             <a class="button button-primary" href="http://supsystic.com/plugins/photo-gallery/" style="position: absolute; top: 50%; left: 30%; background-color: #ffffff;">
                 Available in PRO
             </a>
+        {% else %}
+            <div style="position: absolute; top: 50%; left: 50%; transform:translate(-50%, -50%); display:table;">
+                <a class="button button-primary button-select" style="background-color: #ffffff;">
+                    Select
+                </a>
+                <span class="selected-preset">{{ translate('Selected') }}</span>
+            </div>
         {% endif %}
         <div class="preset-overlay">
             <h3>{{ data.title|title }}</h3>

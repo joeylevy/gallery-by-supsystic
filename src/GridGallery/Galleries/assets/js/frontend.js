@@ -2144,7 +2144,7 @@
 
     Gallery.prototype.showCaption = (function () {
         this.$container.find('.grid-gallery-figcaption-wrap').each(function() {
-            if ($.trim($(this).text()) === '') {
+            if ($.trim($(this).text()) === '' && !$(this).find('img').length) {
                 $(this).closest('figcaption').remove();
             }
         });
@@ -2242,7 +2242,7 @@
 
         popupBackground = this.$container.data('popup-background');
 
-        if (popupBackground.length) {
+        if (popupBackground && popupBackground.length) {
 
             if (popupType == 'pretty-photo') {
                 style = '.pp_overlay { background-color:'+ popupBackground +'!important;}';
@@ -2652,14 +2652,11 @@
     };
 
     Gallery.prototype.loadFontFamily = (function () {
-        var figcaption = this.$container.find('.grid-gallery-caption').find('figcaption'), fontFamily = figcaption.css('font-family');
-        if (typeof fontFamily !== "undefined") {
-            if (fontFamily.indexOf(',') + 1) {
-                fontFamily = fontFamily.split(',')[0];
-            }
+        font = this.$container.data('caption-font-family');
+        if (font && font !== 'Default') {
             WebFont.load({
                 google: {
-                    families: [fontFamily.replace(/'/g, '')]
+                  families: [font + ':400,800']
                 }
             });
         }
@@ -2765,6 +2762,10 @@
                     overlayColor = overlayColor.split(')')[0].split('(');
                     return overlayColor[0] + 'a(' + overlayColor[1] + ', ' + (1 - alpha/10) + ')';
                 };
+                
+                $el.find('img').attr('data-caption', '<span style="font-family:' + 
+                    self.$container.data('caption-font-family') + '">' + 
+                    $el.find('img').attr('data-caption') + '</span>');
 
                 $el.sliphover({
                     target: 'img',

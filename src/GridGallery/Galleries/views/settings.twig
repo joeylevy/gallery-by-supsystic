@@ -144,6 +144,7 @@
 
         <div class="shortcode-wrap" style="margin-top: 20px">
             <div class="shortcode">{{ translate('Shortcode:') }} <input type="text" id="shortcode" class="gallery-shortcode" value="[{{ environment.config.get('shortcode_name') }} id={{ gallery.id }} position=center]" onclick="this.select();" size="42" style="font-size: 12px;" readonly></div>
+            <div class="shortcode">{{ translate('PHPCode:') }} <input type="text" id="shortcode" class="gallery-shortcode" value="{{ '<?php echo do_shortcode(\'[supsystic-gallery id=' ~ gallery.id ~ ' position="center"]\') ?>' }}" onclick="this.select();" size="42" style="font-size: 12px;" readonly></div>
         </div>
 
         <small style="left:25px;position:absolute;top:10px;display:none;">Oops! Transparency doesn't work in live

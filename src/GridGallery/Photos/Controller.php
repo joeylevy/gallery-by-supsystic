@@ -147,14 +147,14 @@ class GridGallery_Photos_Controller extends GridGallery_Core_BaseController
                 ),
             );
         } else {
-            $photo = $env->getTwig()->render(
-                sprintf('@ui/%s/image.twig', $viewType ? $viewType : 'block'),
-                array('image' => $photos->getByAttachmentId($attachment->ID))
-            );
+            // $photo = $env->getTwig()->render(
+            //     sprintf('@ui/%s/image.twig', $viewType ? $viewType : 'block'),
+            //     array('image' => $photos->getByAttachmentId($attachment->ID))
+            // );
 
             $response = array(
                 'error' => false,
-                'photo' => $photo,
+                // 'photo' => $photo,
                 'message' => sprintf(
                     $env->translate(
                         'Photo %s was successfully imported to the Grid Gallery'
