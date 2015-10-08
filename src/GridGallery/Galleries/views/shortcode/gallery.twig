@@ -3,7 +3,14 @@
 {% if gallery is defined and gallery is not empty %}
 
 	{% block gallery_before %}
-		
+		{% if settings.icons is defined and settings.icons.enabled == 'true' %}
+			<style>
+				.{{ settings.icons.effect }} .hi-icon { color: {{ settings.icons.color }} !important; background: {{ settings.icons.background }} !important; }
+				.{{ settings.icons.effect }} .hi-icon:hover { color: {{ settings.icons.hover_color }} !important; background: {{ settings.icons.background_hover }} !important; }
+				.hi-icon { width: {{ settings.icons.size * 2 }}px !important; height: {{ settings.icons.size * 2 }}px !important; }
+				.hi-icon:before { font-size: {{ settings.icons.size|default(16) }}px !important; line-height: {{ settings.icons.size * 2 }}px !important; }
+			</style>
+		{% endif %}
 	{% endblock %}
 
 	<section
@@ -18,6 +25,7 @@
 			{% endif %}
 			data-width="{{ settings.area.photo_width }}{% if settings.area.photo_width_unit == 1 %}%{% endif %}"
 			data-height="{{ settings.area.photo_height }}{% if settings.area.photo_height_unit == 1 %}%{% endif %}"
+			data-padding="{{ settings.area.padding }}"
 			data-quicksand = "{% if settings.quicksand.enabled == '1' %}enabled{% else %}disabled{% endif %}"
 			data-quicksand-duration = "{% if settings.quicksand.duration is not empty %}{{ settings.quicksand.duration }}{% else %}none{% endif %}"
 				{% if settings.box.type == '0' and mobile != 'true' %}
@@ -46,7 +54,7 @@
 			data-popup-background = "{{ settings.box.background }}"
 			data-fullscreen="{{ settings.fullscreen.enabled }}"
 			data-hide-tooltip="{{ settings.thumbnail.tooltip }}"
-			data-caption-font-family="{{ settings.thumbnail.overlay.font_family }}";
+			data-caption-font-family="{{ settings.thumbnail.overlay.font_family }}"
 			class="grid-gallery
 				{% if settings.area.grid == '1' %}
 					grid-gallery-fluid-height

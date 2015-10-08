@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: add album, add gallery, add pictures, admin, AJAX, album, banner rotator, best gallery, best gallery plugin, comments, content gallery, Facebook, filterable gallery, foto, foto gallery, fotoalbum, fotogalerie, free photo gallery, fullscreen gallery, fullscreen slider, galeri, galerie, Galleria, galleries, gallery, galery, gallery decription, gallery image, gallery lightbox, gallery shortcode, gallery slider, grid, gird, grid gallery, image, image album, image gallery, image lightbox, image rotate, image slider, image slideshow, images, images gallery, instagram, jquery, jquery gallery, lightbox, media, mosaic, multiple pictures, photo, photo album, photo albums, photo gallery, photoalbum, photogallery, photography, photos, photoset, picture, pictures, post feed gallery, responsive, responsive gallery, responsive wordpress photo gallery, sidebar, Simple gallery, slide, slide show, slideshow, thumbnail, thumbnail view, thumbnails, thumbs, upload images, upload photos, video gallery, videos, view images, view pictures, vimeo, watermarking, watermarks, website gallery, widget gallery, wordpress gallery, wordpress gallery plugin, wordpress photo gallery plugin, wp gallery, wp gallery plugins, youtube
 Tested up to: 4.3.1
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show images, posts and videos
 
@@ -281,6 +281,13 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 5. [Image Circle Gallery](http://supsystic.com/plugins/photo-gallery/#examples?utm_source=wordpress&utm_medium=screenshots&utm_campaign=gallery "Image Circle Gallery") - perform your best ideas with Gallery by Supsystic!
 
 == Changelog ==
+
+= 1.4.7 / 08.10.2015 =
+
+ * Added Icons from PRO
+ * Added Widget feature
+ * Fixed bug with black bar in popoup
+ * Minor fixes and UI improvements
 
 = 1.4.6 / 28.09.2015 =
 

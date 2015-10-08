@@ -5,7 +5,6 @@
 {% endmacro %}
 
 {% block header %}
-
     <nav id="supsystic-breadcrumbs" class="supsystic-breadcrumbs" style="float: left; padding-top: 20px;">
         {#<ul class="supsystic-bar-controls">
             <li>
@@ -198,6 +197,9 @@
                     {{ form.row(translate('Gallery width'),
                     form.input('number', 'area[width]', settings.area.width, { 'style': { 'width': '140px' } })
                     ~ form.select('area[width_unit]', ['pixels', 'percents'], settings.area.width_unit, { 'style': 'margin-top: -2px; height: 27px;' }), 'area-width') }}
+
+                    {{ form.row(translate('Gallery padding'),
+                    form.input('number', 'area[padding]', settings.area.padding|default(0), { 'style': { 'width': '140px' } }) ~ form.span('', 'pixels'), 'area-padding') }}
 
                     {#{{ form.row(environment.translate('Gallery height'),
                     form.input('number', 'area[height]', settings.area.height, { 'style': { 'width': '205px'} })
@@ -556,21 +558,131 @@
             <div class="separator"></div>
 
             {% block icons %}
-                <div name="icons">
-                    <h1 style="line-height: 1;">
-                        {{ translate("Show amazing Icons on the images") }}
-                        </br>
-                        <a class="button get-pro"
-                           href="{{ environment.getProUrl('utm_source=plugin&utm_medium=icons&utm_campaign=gallery') }}">Get
-                            PRO for 29$</a>
-                    </h1>
-
-                    <div>
-                        <a href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=icons&utm_campaign=gallery') }}">
-                            <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/icons_pro.jpg" />
-                        </a>
-                    </div>
-                </div>
+                <table class="form-table" name="icons">
+                    <thead>
+                        {% set iconsEnabled = settings.icons.enabled|default('false') == 'true' %}
+                        {{ form.row(translate('Show icons'),
+                            form.radio('icons[enabled]', 'true', {'id':'icons-enable'}|merge(iconsEnabled ? {'checked':'checked'} : {})) ~
+                            form.label(translate('Enable'), 'icons-enable') ~ 
+                            form.radio('icons[enabled]', 'false', {'id':'icons-disable'}|merge(iconsEnabled ? {} : {'checked':'checked'})) ~
+                            form.label(translate('Disable'), 'icons-disable'), 'photo-icon', true) }}
+                    </thead>
+                    <tbody>
+                        {{ form.row(translate('Select effect'), 
+                            form.button(null, translate('Animation'), {'class': 'button bordered', 'id': 'selectIconsEffect'}) ~ 
+                            form.hidden('icons[effect]', settings.icons.effect, {'id':'iconsEffectName'}) 
+                        ) }}
+                        <tr>
+                            <th scope="row">
+                                <label for="iconsColor">
+                                    {{ translate('Icons color') }}
+                                </label>
+                            </th>
+                            <td>
+                                <input type="text" id="iconsColor" class="gg-color-picker" value="{{ settings.icons.color }}" name="icons[color]"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="iconsHoverColor">
+                                    {{ translate('Icons hover color') }}
+                                </label>
+                            </th>
+                            <td>
+                                <input type="text" id="iconsHoverColor" class="gg-color-picker" value="{{ settings.icons.hover_color }}" name="icons[hover_color]"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="iconsBackgroundColor">
+                                    {{ translate('Background color') }}
+                                </label>
+                            </th>
+                            <td>
+                                <input type="text" id="iconsBackgroundColor" class="gg-color-picker" value="{{ settings.icons.background }}" name="icons[background]"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="iconsBackgroundHoverColor">
+                                    {{ translate('Background hover color') }}
+                                </label>
+                            </th>
+                            <td>
+                                <input type="text" id="iconsBackgroundHoverColor" class="gg-color-picker" value="{{ settings.icons.background_hover }}" name="icons[background_hover]"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="iconsSize">
+                                    {{ translate('Icons size') }}
+                                </label>
+                            </th>
+                            <td>
+                                <input type="number" pattern="[0-9]" id="iconsSize"  name="icons[size]" value="{{ settings.icons.size }}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="iconsMargin">
+                                    {{ translate('Distance between icons') }}
+                                </label>
+                            </th>
+                            <td>
+                                <input type="number" pattern="[0-9]" id="iconsMargin"  name="icons[margin]" value="{{ settings.icons.margin }}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="iconsOverlay">
+                                    {{ translate('Show overlay') }}
+                                </label>
+                            </th>
+                            <td>
+                                <select id="iconsOverlay" name="icons[overlay_enabled]" style="width: auto;">
+                                    <option value="true" {{ form.selected(settings.icons.overlay_enabled, 'true') }}>
+                                        {{ translate('Yes') }}
+                                    </option>
+                                    <option value="false" {{ form.selected(settings.icons.overlay_enabled, 'false') }}>
+                                        {{ translate('No') }}
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="icons-overlay-toggle">
+                            <th scope="row">
+                                <label for="iconsOverlayColor">
+                                    {{ translate('Overlay color') }}
+                                </label>
+                            </th>
+                            <td>
+                                <input type="text" id="iconsOverlayColor" class="gg-color-picker" value="{{ settings.icons.overlay_color }}" name="icons[overlay_color]"/>
+                            </td>
+                        </tr>
+                        <tr class="icons-overlay-toggle">
+                            <th scope="row">
+                                <label for="iconsOverlayTransparency">
+                                    {{ translate('Overlay transparency') }}
+                                </label>
+                            </th>
+                            <td>
+                                <select id="iconsOverlayTransparency" name="icons[overlay_transparency]" style="width: auto;">
+                                    <option value="0" {{ form.selected(settings.icons.overlay_transparency, 0) }}>0%</option>
+                                    <option value="1" {{ form.selected(settings.icons.overlay_transparency, 1) }}>10%</option>
+                                    <option value="2" {{ form.selected(settings.icons.overlay_transparency, 2) }}>20%</option>
+                                    <option value="3" {{ form.selected(settings.icons.overlay_transparency, 3) }}>30%</option>
+                                    <option value="4" {{ form.selected(settings.icons.overlay_transparency, 4) }}>40%</option>
+                                    <option value="5" {{ form.selected(settings.icons.overlay_transparency, 5) }}{% if settings.icons.overlay_transparency is not defined %}selected="selected"{% endif %}>50%</option>
+                                    <option value="6" {{ form.selected(settings.icons.overlay_transparency, 6) }}>60%</option>
+                                    <option value="7" {{ form.selected(settings.icons.overlay_transparency, 7) }}>70%</option>
+                                    <option value="8" {{ form.selected(settings.icons.overlay_transparency, 8) }}>80%</option>
+                                    <option value="9" {{ form.selected(settings.icons.overlay_transparency, 9) }}>90%</option>
+                                    <option value="10" {{ form.selected(settings.icons.overlay_transparency, 10) }}>100%</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             {% endblock %}
         </div>
 
@@ -688,11 +800,6 @@
 
         {% set figcaptionStyle %}
             border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};
-        {% if environment.isPro() and settings.icons is defined and settings.icons.enabled == 'true' %}
-            {% if settings.icons.overlay_enabled == 'true' %}
-                background-color:{{ settings.icons.overlay_color|default('#3498db') }};
-            {% endif %}
-        {% else %}
             color:{{ settings.thumbnail.overlay.foreground }};
             background-color:{{ settings.thumbnail.overlay.background }};
             font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};
@@ -703,7 +810,6 @@
                 {#opacity:1;#}
                 bottom:0;
             {% endif %}
-        {% endif %}
         {% endset %}
 
         <div id="effectDialog" title="{{ translate('Select overlay effect') }}">
@@ -713,8 +819,10 @@
                         <figure class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
                             <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image">
                             <figcaption style="{{ figcaptionStyle|trim }}">
-                                <div class="grid-gallery-figcaption-wrap">
-                                    <span>{{ name }}</span>
+                                <div class="grid-gallery-figcaption-wrap" style="width:100%;height:100%;top:0;">
+                                    <div style="display:table;width:100%;height:100%;">
+                                        <span style="display:table-cell;font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};padding:10px;vertical-align:{{ settings.thumbnail.overlay.position }};">Caption</span>
+                                    </div>
                                 </div>
                             </figcaption>
                             <div class="select-element">
@@ -739,27 +847,25 @@
                     {% endif %}
                 {% endfor %}
                 <div class="grid-gallery-clearfix" style="clear: both;"></div>
-                <h3>Captions effects with icons{% if environment.isPro() == false %} Get PRO{% endif %}</h3>
+                <h3>Captions effects with icons</h3>
                 <div class="description">Enable icons to use this effects</div>
                 {% block iconsEffects %}
                     {% for type, name in iconsWithCaptionsEffects %}
-                        <figure class="grid-gallery-caption{% if environment.isPro() == false %} disabled{% endif %}" data-grid-gallery-type="{{ type }}">
+                        <figure class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
                             <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image"/>
                             <figcaption style="{{ figcaptionStyle|trim }}">
                                 <div class="hi-icon-wrap" style="width: 48px; height: 48px; margin-top: 30%; position:relative;">
-                                    <a href="{% if environment.isPro() == false %}http://supsystic.com/plugins/photo-gallery?utm_source=plugin&utm_medium=icons&utm_campaign=gallery{% else %}#{% endif %}" class="{% if environment.isPro() == false %}button{% endif %} hi-icon icon-link" style="border:1px solid #ccc; border-radius:50%;margin:auto;position:absolute;left:0;right:0;top: 0;bottom: 0;">
-                                    {% if environment.isPro() == false %}
-                                        Get PRO
-                                    {% endif %}
+                                    <a href="#" class="hi-icon icon-link" style="border:1px solid #ccc; border-radius:50%;margin:auto;position:absolute;left:0;right:0;top: 0;bottom: 0;">
                                     </a>
                                 </div>
                             </figcaption>
                             <div class="caption-with-{{ type }}">
-                                {% if photo.attachment.caption is not empty %}
-                                    <span>{{ name }}</span>
-                                {% else %}
-                                    <span>{{ name }}</span>
-                                {% endif %}
+                                <div style="display: table; height:100%; width:100%;">
+                                    <span style="padding: 10px;display:table-cell;font-size:{{ settings.thumbnail.overlay.text_size }}
+                                    vertical-align:{{ settings.thumbnail.overlay.position }};">
+                                        Caption
+                                    </span>
+                                </div>
                             </div>
                             <div class="select-element">
                                 {{ translate('Select') }}
@@ -901,6 +1007,51 @@
 
     </div>
 
-    {% block modals %}{% endblock %}
+    {% block modals %}
+
+        <div id="iconsPreview" title="{{ translate('Select icons effects') }}">
+            {%
+                set iconsEffects = {
+                    'hi-icon-effect-1a': { 'padding': '0', 'bg': '41ab6b'},
+                    'hi-icon-effect-1b': { 'padding': '0', 'bg': '41ab6b'},
+                    'hi-icon-effect-2a': { 'padding': '0', 'bg': 'eea303'},
+                    'hi-icon-effect-2b': { 'padding': '0', 'bg': 'eea303'},
+                    'hi-icon-effect-3a': { 'padding': '0', 'bg': 'f06060'},
+                    'hi-icon-effect-3b': { 'padding': '0', 'bg': 'f06060'},
+                    'hi-icon-effect-5a': { 'padding': '0', 'bg': '702fa8'},
+                    'hi-icon-effect-5b': { 'padding': '0', 'bg': '702fa8'},
+                    'hi-icon-effect-5c': { 'padding': '0', 'bg': '702fa8'},
+                    'hi-icon-effect-5d': { 'padding': '0', 'bg': '702fa8'},
+                    'hi-icon-effect-7a': { 'padding': '0', 'bg': 'd54f30'},
+                    'hi-icon-effect-7b': { 'padding': '0', 'bg': 'd54f30'},
+                    'hi-icon-effect-9a': { 'padding': '0', 'bg': '96a94b'},
+                    'hi-icon-effect-9b': { 'padding': '0', 'bg': '96a94b'},
+                }
+            %}
+            {% for name, p in iconsEffects %}
+                <div class="hi-icon-wrap {{ name[0:length-1] }} {{ name }} holderjs" style="display: inline-block; padding: {{ p.padding }}; width: 150px; height: 150px; background: no-repeat; overflow: hidden;" data-background-src="?holder.js/150x150?theme=industrial&text=\n">
+                    <a href="#" class="hi-icon icon-link" data-effect="{{ name }}" title="{{ translate('Click on the icon to select effect') ~ " " ~ name }}">Select</a>
+                </div>
+            {% endfor %}
+        </div>
+        <style>
+            .hi-icon { 
+                color: {{ settings.icons.color }} !important; 
+                background: {{ settings.icons.background }} !important; 
+            }
+            .hi-icon:hover { 
+                color: {{ settings.icons.hover_color }} !important; 
+                background: {{ settings.icons.background_hover }} !important; 
+            }
+            .hi-icon { 
+                width: {{ settings.icons.size * 2 }}px !important; 
+                height: {{ settings.icons.size * 2 }}px !important; 
+            }
+            .hi-icon:before { 
+                font-size: {{ settings.icons.size|default(16) }}px !important; 
+                line-height: {{ settings.icons.size * 2 }}px !important; 
+            }
+        </style>
+    {% endblock %}
 
 {% endblock %}

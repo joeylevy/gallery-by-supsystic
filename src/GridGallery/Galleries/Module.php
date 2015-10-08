@@ -66,6 +66,7 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         $twig->addFilter($pregReplaceFilter);
         $twig->addFilter($httpFilter);
         $twig->addFunction($function);
+        add_action('widgets_init', array($this, 'registerWidget'));
 
         // It allows to extract settings for presets.
         // It will be removed in next version.
@@ -110,6 +111,10 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
 
     // ---
 
+    public function registerWidget() {
+        register_widget('sggWidget');
+    }
+
     public function pregReplace($value, $pattern, $replacement)
     {
         return preg_replace($pattern, $replacement, $value);
@@ -148,113 +153,112 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
 
         $env = $this->getEnvironment();
 
-        if($env->isModule('galleries', 'saveSettings')) {
+        if ($env->isModule('galleries', 'saveSettings')) {
 
             return;
         }
 
-        /* CSS */
-        $ui->add(new GridGallery_Ui_BackendStylesheet(
-            'gg-galleries-style',
-            $this->getLocationUrl() . '/assets/css/grid-gallery.galleries.style.css'
-        ));
-
-        // Ok, we need to include frontend effects to backend to use it with effects preview.
-        $ui->add(new GridGallery_Ui_BackendStylesheet(
-            'gg-galleries-effects-be',
-            $this->getLocationUrl() . '/assets/css/grid-gallery.galleries.effects.css'
-        ));
-
-        $ui->add(new GridGallery_Ui_BackendStylesheet(
-            'gg-galleries-jqgrid',
-            $this->getLocationUrl() . '/assets/css/ui.jqgrid.css'
-        ));
-
-        $ui->add(new GridGallery_Ui_BackendStylesheet(
-            'gg-galleries-jquery-ui-theme-min',
-            $this->getLocationUrl() . '/assets/css/jquery-ui.theme.min.css'
-        ));
-
-        $ui->add(new GridGallery_Ui_BackendStylesheet(
-            'gg-galleries-jquery-ui-structure-min',
-            $this->getLocationUrl() . '/assets/css/jquery-ui.structure.min.css'
-        ));
-
-        $ui->add(new GridGallery_Ui_BackendStylesheet(
-            'gg-galleries-jquery-ui-jqplot-min',
-            $this->getLocationUrl() . '/assets/css/jquery.jqplot.min.css'
-        ));
-
-        $ui->add(new GridGallery_Ui_BackendStylesheet(
-            'gg-galleries-jquery-ui-min',
-            $this->getLocationUrl() . '/assets/css/jquery-ui.min.css'
-        ));
-
-        /* JS */
-        $ui->add(new GridGallery_Ui_BackendJavascript(
-            'gg-galleries-index-js',
-            $this->getLocationUrl() . '/assets/js/grid-gallery.galleries.index.js'
-        ));
-
-        $ui->add(new GridGallery_Ui_BackendJavascript(
-            'gg-galleries-view-js',
-            $this->getLocationUrl() . '/assets/js/grid-gallery.galleries.view.js'
-        ));
-
-        $ui->add(new GridGallery_Ui_BackendJavascript(
-            'gg-galleries-preview-js',
-            $this->getLocationUrl() . '/assets/js/grid-gallery.galleries.preview.js'
-        ));
-
-        $ui->add(new GridGallery_Ui_BackendJavascript(
-            'gg-galleries-thumb-js',
-            $this->getLocationUrl() . '/assets/js/grid-gallery.galleries.thumb.js'
-        ));
-
-        $ui->add(new GridGallery_Ui_BackendJavascript(
-            'gg-gallery-settings',
-            $this->getLocationUrl() . '/assets/js/settings.js'
-        ));
-
-        $ui->add(new GridGallery_Ui_BackendJavascript(
-            'gg-gallery-attrchange',
-            $this->getLocationUrl() . '/assets/js/attrchange.js'
-        ));
-
-        $ui->add(
-            new GridGallery_Ui_BackendJavascript(
-                'gg-gallery-images',
-                $this->getLocationUrl() . '/assets/js/addImages.js'
-            )
+        $backendStyleSheets = array(
+            array(
+                'id' => 'gg-galleries-style',
+                'link' => $this->getLocationUrl() . '/assets/css/grid-gallery.galleries.style.css'
+            ),
+            array(
+                'id' => 'gg-galleries-effects-be',
+                'link' => $this->getLocationUrl() . '/assets/css/grid-gallery.galleries.effects.css'
+            ),
+            array(
+                'id' => 'gg-galleries-jqgrid',
+                'link' => $this->getLocationUrl() . '/assets/css/ui.jqgrid.css'
+            ),
+            array(
+                'id' => 'gg-galleries-jquery-ui-theme-min',
+                'link' => $this->getLocationUrl() . '/assets/css/jquery-ui.theme.min.css'
+            ),
+            array(
+                'id' => 'gg-galleries-jquery-ui-structure-min',
+                'link' => $this->getLocationUrl() . '/assets/css/jquery-ui.structure.min.css'
+            ),
+            array(
+                'id' => 'gg-galleries-jquery-ui-structure-min',
+                'link' => $this->getLocationUrl() . '/assets/css/jquery-ui.structure.min.css'
+            ),
+            array(
+                'id' => 'gg-galleries-jquery-ui-jqplot-min',
+                'link' => $this->getLocationUrl() . '/assets/css/jquery.jqplot.min.css'
+            ),
+            array(
+                'id' => 'gg-galleries-jquery-ui-min',
+                'link' => $this->getLocationUrl() . '/assets/css/jquery-ui.min.css'
+            ),
+            array(
+                'id' => 'gg-galleries-jquery-ui-min',
+                'link' => $this->getLocationUrl() . '/assets/css/jquery-ui.min.css'
+            ),
+            array(
+                'id' => 'gg-galleries-icons-font',
+                'link' => $this->getLocationUrl() . '/assets/css/gridgallerypro-embedded.css'
+            ),
+            array(
+                'id' => 'gg-galleries-icons-effect',
+                'link' => $this->getLocationUrl() . '/assets/css/icons-effects.css'
+            ),
         );
 
-        $ui->add(
-            new GridGallery_Ui_BackendJavascript(
-                'gg-galleries-pos',
-                $this->getLocationUrl() . '/assets/js/position.js'
-            )
+        foreach ($backendStyleSheets as $style) {
+            $ui->add(new GridGallery_Ui_BackendStylesheet($style['id'], $style['link']));
+        }
+
+        $backendScripts = array(
+            array(
+                'id' => 'gg-galleries-index-js',
+                'link' => $this->getLocationUrl() . '/assets/js/grid-gallery.galleries.index.js'
+            ),
+            array(
+                'id' => 'gg-galleries-view-js',
+                'link' => $this->getLocationUrl() . '/assets/js/grid-gallery.galleries.view.js'
+            ),
+            array(
+                'id' => 'gg-galleries-preview-js',
+                'link' => $this->getLocationUrl() . '/assets/js/grid-gallery.galleries.preview.js'
+            ),
+            array(
+                'id' => 'gg-galleries-thumb-js',
+                'link' => $this->getLocationUrl() . '/assets/js/grid-gallery.galleries.thumb.js'
+            ),
+            array(
+                'id' => 'gg-gallery-settings',
+                'link' => $this->getLocationUrl() . '/assets/js/settings.js'
+            ),
+            array(
+                'id' => 'gg-gallery-attrchange',
+                'link' => $this->getLocationUrl() . '/assets/js/attrchange.js'
+            ),
+            array(
+                'id' => 'gg-gallery-images',
+                'link' => $this->getLocationUrl() . '/assets/js/addImages.js'
+            ),
+            array(
+                'id' => 'gg-galleries-pos',
+                'link' => $this->getLocationUrl() . '/assets/js/position.js'
+            ),
+            array(
+                'id' => 'gg-galleries-jquery-jqGrid-min',
+                'link' => $this->getLocationUrl() . '/assets/js/jquery.jqGrid.min.js'
+            ),
+            array(
+                'id' => 'gg-galleries-grid-locale-en',
+                'link' =>  $this->getLocationUrl() . '/assets/js/grid.locale-en.js'
+            ),
+            array(
+                'id' => 'gg-gallery-holder',
+                'link' =>  $this->getLocationUrl() . '/assets/js/holder.js'
+            ),
         );
 
-        $ui->add(
-            new GridGallery_Ui_BackendJavascript(
-                'gg-galleries-jquery-jqGrid-min',
-                $this->getLocationUrl() . '/assets/js/jquery.jqGrid.min.js'
-            )
-        );
-
-        $ui->add(
-            new GridGallery_Ui_BackendJavascript(
-                'gg-galleries-grid-locale-en',
-                $this->getLocationUrl() . '/assets/js/grid.locale-en.js'
-            )
-        );
-
-		$ui->add(
-			new GridGallery_Ui_BackendJavascript(
-				'gg-gallery-holder',
-				$this->getLocationUrl() . '/assets/js/holder.js'
-			)
-		);
+        foreach ($backendScripts as $script) {
+            $ui->add(new GridGallery_Ui_BackendJavascript($script['id'], $script['link']));
+        }
 
         $ui->add(new GridGallery_Ui_Javascript('jquery'));
 
@@ -534,6 +538,8 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             $this->getLocationUrl() . '/assets/css/prettyPhoto.css',
             $this->getLocationUrl() . '/assets/css/photobox.css',
             $this->getLocationUrl() . '/assets/css/photobox.ie.css',
+            $this->getLocationUrl() . '/assets/css/gridgallerypro-embedded.css',
+            $this->getLocationUrl() . '/assets/css/icons-effects.css',
         );
 
         return $css;
@@ -618,3 +624,5 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
 
     }
 }
+
+require_once('Model/widget.php'); 

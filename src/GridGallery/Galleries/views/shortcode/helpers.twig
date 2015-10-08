@@ -50,7 +50,7 @@
 {% endset %}
 
 {% block figure_before %}
-	{% if environment.isPro() == false or settings.icons is not defined or settings.icons.enabled == 'false' %}
+	{% if settings.icons is not defined or settings.icons.enabled == 'false' %}
 		<a
 			{% block a_attributes %}
 				class="gg-link {{ aClass|trim }}"
@@ -89,6 +89,15 @@
 			{% endif %}"
 			data-grid-gallery-type="{{ galleryType|trim }}"
 			style="display:none;{{ figureStyle|trim }}"
+			{% if settings.icons.enabled == 'true' %}
+				{% set galleryType %}
+					{% if 'icons' in settings.thumbnail.overlay.effect %}
+						{{ settings.thumbnail.overlay.effect }}
+					{% else %}
+						icons
+					{% endif %}
+				{% endset %}
+			{% endif %}
 		{% endblock %}>
 
 		<div class="crop
@@ -130,17 +139,30 @@
 		</div>
 
 		{% set figcaptionStyle %}
+
 			border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};
 
 			{% block figcaption_style %}
-				color:{{ settings.thumbnail.overlay.foreground }};
-				background-color:{{ settings.thumbnail.overlay.background }};
-				font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};
-				text-align:{{ settings.thumbnail.overlay.text_align }};
-				font-family:{{ settings.thumbnail.overlay.font_family }};
-				{% if settings.thumbnail.overlay.effect == 'none' or settings.thumbnail.overlay.enabled == 'false' %}
-					opacity:1;
-					bottom:0;
+				{% if settings.icons is defined and settings.icons.enabled == 'true' %}
+					font-family:{{ settings.thumbnail.overlay.font_family }};
+					{% if settings.icons.overlay_enabled == 'true' %}
+						background-color:{{ settings.icons.overlay_color|default('#3498db') }};
+						height : 100%;
+						{#z-index: 999;#}
+					{% else %}
+						height : 100%;
+						background-color: transparent;
+					{% endif %}
+				{% else %}
+					color:{{ settings.thumbnail.overlay.foreground }};
+					background-color:{{ settings.thumbnail.overlay.background }};
+					font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};
+					text-align:{{ settings.thumbnail.overlay.text_align }};
+					font-family:{{ settings.thumbnail.overlay.font_family }};
+					{% if settings.thumbnail.overlay.effect == 'none' or settings.thumbnail.overlay.enabled == 'false' %}
+						opacity:1;
+						bottom:0;
+					{% endif %}
 				{% endif %}
 			{% endblock %}
 
@@ -148,6 +170,9 @@
 
 		<figcaption 
 			{% block figcaption_attributes %}
+				{% if settings.icons is defined and settings.icons.enabled == 'true' %}
+					data-alpha="{{ settings.icons.overlay_transparency|default(5)|trim }}" 
+				{% endif %}
 				data-alpha="{{ settings.thumbnail.overlay.transparency|trim }}" 
 				style="{{ figcaptionStyle|trim }}" 
 			{% endblock %}>
@@ -155,12 +180,54 @@
 			<div 
 				class="grid-gallery-figcaption-wrap" 
 				style="
-				{% if environment.isPro() == false or settings.icons is not defined or settings.icons.enabled == 'false' %}
+				{% if settings.icons is not defined or settings.icons.enabled == 'false' %}
 					vertical-align:{{ settings.thumbnail.overlay.position }};
 				{% endif %}">
 
 				{% block figcaption_wrap %}
-					{% if environment.isPro() == false or settings.icons is not defined or settings.icons.enabled == 'false' %}
+					{# Icons #}
+					{% if settings.icons is defined and settings.icons.enabled == 'true' %}
+						<div 
+							class="hi-icon-wrap {{ settings.icons.effect[0:length-1] }} {{ settings.icons.effect }}" 
+							data-margin="{{ settings.icons.margin|default(5) }}">
+							{% if photo.attachment.video is defined and photo.attachment.video is not empty %}
+
+								{% set videoUrl %}
+									{% if 'youtu' in photo.attachment.video %}
+										{{ photo.attachment.video|replace(youtube) }}
+									{% elseif 'vimeo.com' in photo.attachment.video %}
+										{{ photo.attachment.video|preg_replace(vimeoPattern, vimeoReplace) }}
+									{% else %}
+										{{ photo.attachment.video|trim }}
+									{% endif %}
+								{% endset %}
+
+								{% set videoIcon = 'youtu' in photo.attachment.video ? 'icon-youtube' : 'icon-vimeo' %}
+
+								{% set iconStyle %}
+									margin-left:{{ settings.icons.margin|default(5) }};
+									margin-right:{{ settings.icons.margin|default(5) }};
+								{% endset %}
+
+								<a href="{{ videoUrl|trim }}" class="hi-icon gg-video {{ videoIcon }}" style="{{ iconStyle|trim }}">
+									{#Watch the video {{ photo.attachment.caption }}#}
+								</a>
+							{% endif %}
+
+							{% if photo.attachment.external_link is defined and photo.attachment.external_link is not empty %}
+								<a href="{{ photo.attachment.external_link }}" target="{{ photo.attachment.target|default('_self') }}" class="hi-icon icon-link" style="{{ iconStyle|trim }}"></a>
+							{% endif %}
+
+							{% if videoUrl is not defined and (photo.attachment.external_link is not defined or photo.attachment.external_link is empty) %}
+								<a href="{{ photo.attachment.sizes.full.url }}" class="hi-icon icon-fullscreen gg-colorbox{% if settings.box.type == '2' and link is not defined %} pbox{% endif %}" style="{{ iconStyle|trim }}"
+								{% if settings.box.type == '1' and link == false %}
+									rel="prettyPhoto[pp_gal]"
+								{% endif %}>Open in pop-up window</a>
+							{% endif %}
+						</div>
+					{% endif %}
+
+					{% if settings.icons is not defined or settings.icons.enabled == 'false' %}
 						{% if settings.thumbnail.overlay.enabled == 'true' %}
 							{% if photo.attachment.caption is not empty %}
 								<span style="font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};">{{ photo.attachment.caption|raw }}</span>
@@ -173,12 +240,49 @@
 			</div>
 		</figcaption>
 		
-		{% block figcaption_after %}     
+		{% block figcaption_after %}
+			{% if settings.icons is defined and settings.icons.enabled == 'true' and settings.thumbnail.overlay.enabled == 'true' %}
+
+				{% set captionStyle %}
+					color:{{ settings.thumbnail.overlay.foreground }};
+					background-color:{{ settings.thumbnail.overlay.background }};
+					font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};
+					font-family:{{ settings.thumbnail.overlay.font_family }};
+					{% if settings.thumbnail.overlay.text_align != 3 %}
+						text-align:{{ settings.thumbnail.overlay.text_align|replace(['left', 'right', 'center']) }};
+					{% endif %}
+					{% if settings.thumbnail.overlay.effect == 'none' or settings.thumbnail.overlay.enabled == 'false' %}
+						opacity:1;
+						bottom:0;
+					{% endif %}
+					vertical-align:{{ settings.thumbnail.overlay.position }};
+				{% endset %}
+
+				<div  
+					class="caption-with-{% if 'icons' in settings.thumbnail.overlay.effect %}{{ settings.thumbnail.overlay.effect }}{% else %}icons{% endif %}" 
+					style="{{ captionStyle }}" 
+					data-alpha="{{ settings.thumbnail.overlay.transparency|trim }}">
+					<div style="display: table; height:100%; width:100%;">
+						{% if photo.attachment.caption is not empty %}
+							<span style="padding: 10px;display:table-cell;font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }}; font-weight: 800;
+							vertical-align:{{ settings.thumbnail.overlay.position }};">
+								{{ photo.attachment.caption|raw }}
+							</span>
+						{% else %}
+							<span style="padding: 10px;display:table-cell;font-size:{{ settings.thumbnail.overlay.text_size }}{{ settings.thumbnail.overlay.text_size_unit|replace(['px', '%', 'em']) }};
+							vertical-align:{{ settings.thumbnail.overlay.position }};">
+								{{ photo.attachment.title }}
+							</span>
+						{% endif %}
+					</div>
+
+				</div>
+			{% endif %}
 		{% endblock %}
 
 	</figure>
 {% block figure_after %}     
-	{% if environment.isPro() == false or settings.icons is not defined or settings.icons.enabled == 'false' %}
+	{% if settings.icons is not defined or settings.icons.enabled == 'false' %}
 		</a>
 	{% endif %}
 {% endblock %}

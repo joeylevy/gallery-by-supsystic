@@ -119,7 +119,7 @@ class GridGallery_Ui_Module extends Rsc_Mvc_Module
         $this->add(new GridGallery_Ui_BackendJavascript('gg-ui-js', $url . '/app/assets/js/grid-gallery.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-lazy-load-ks', $url . '/app/assets/js/jquery.lazyload.min.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-form-serializer-js', $this->getLocationUrl() . '/plugins/grid-gallery.ui.formSerialize.js'));
-        $this->add(new GridGallery_Ui_BackendJavascript('gg-jgrowl-js', '//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.2.12/jquery.jgrowl.min.js'));
+        $this->add(new GridGallery_Ui_BackendJavascript('gg-jgrowl-js', $url . '/app/assets/js/jquery.jgrowl.min.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-tooltipster-js', $this->getLocationUrl(). '/js/jquery.tooltipster.min.js' ));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-scroll-js', $this->getLocationUrl(). '/js/jquery.slimscroll.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-toolbar-js', $this->getLocationUrl() . '/plugins/grid-gallery.ui.toolbar.js'));
@@ -128,7 +128,7 @@ class GridGallery_Ui_Module extends Rsc_Mvc_Module
         $this->add(new GridGallery_Ui_BackendJavascript('gg-common', $this->getLocationUrl() . '/js/common.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-ajax', $this->getLocationUrl() . '/js/ajax.js'));
         $this->add(new GridGallery_Ui_BackendJavascript('gg-ajax-queue', $this->getLocationUrl() . '/js/ajaxQueue.js'));
-		$this->add(new GridGallery_Ui_BackendJavascript('gg-fonts', 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js'));
+		$this->add(new GridGallery_Ui_BackendJavascript('gg-fonts', $url . '/app/assets/js/webfont.js'));
     }
 
 }

@@ -119,7 +119,7 @@ class GridGallery_Installer_Module extends GridGallery_Core_Module
     protected static function cleanTwigCache($config)
     {
         function cleanDir($dir) {
-            if (!$dir) {
+            if (!$dir || !is_dir($dir)) {
                 return;
             }
             $files = array_diff(scandir($dir), array('.', '..')); 

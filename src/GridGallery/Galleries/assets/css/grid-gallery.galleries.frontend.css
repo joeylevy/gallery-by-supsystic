@@ -1,5 +1,7 @@
 /* Container */
-.grid-gallery {}
+.grid-gallery {
+    margin: 10px auto;
+}
 
 /* Remove normalize.css or/and theme styles from figure */
 .grid-gallery > a > figure {
@@ -46,6 +48,10 @@
     margin-left: 5px;
     margin-right: 5px;
     text-decoration: none !important;
+}
+
+.grid-gallery-pagination-wrap .grid-gallery-page.active {
+    font-size: 140%;
 }
 
 /* Clearfix */

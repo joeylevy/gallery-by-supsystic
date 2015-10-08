@@ -30,7 +30,7 @@ class SupsysticGallery
 
         /* Create new plugin $environment */
         $pluginPath = dirname(dirname(__FILE__));
-        $environment = new Rsc_Environment('sgg', '1.4.6', $pluginPath);
+        $environment = new Rsc_Environment('sgg', '1.4.7', $pluginPath);
 
         /* Configure */
         $environment->configure(
@@ -199,9 +199,8 @@ class SupsysticGallery
     {
         $uploads = wp_upload_dir();
         $basedir = $uploads['basedir'];
-
         if (!is_dir($dir = $basedir . $directory)) {
-            if (false === @mkdir($dir, 0777, true)) {
+            if (false === mkdir($dir, 0775, true)) {
                 return false;
             }
         }

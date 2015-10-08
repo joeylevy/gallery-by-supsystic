@@ -2144,7 +2144,7 @@
 
     Gallery.prototype.showCaption = (function () {
         this.$container.find('.grid-gallery-figcaption-wrap').each(function() {
-            if ($.trim($(this).text()) === '' && !$(this).find('img').length) {
+            if ($.trim($(this).text()) === '' && !$(this).find('img').length && $(this).has('.hi-icon').length == 0) {
                 $(this).closest('figcaption').remove();
             }
         });
@@ -2153,16 +2153,28 @@
     Gallery.prototype.initWookmark = (function () {
         self = this;
         width = this.$container.data('width');
+        offset = 0;
+        outerOffset = 0;
 
-        if (this.$container.data('columns-number')) {
-            spacing = parseInt(this.$container.data('offset'));
+        if (this.$container.data('offset')) {
+            offset = this.$container.data('offset');
+        }
+
+        if (this.$container.data('padding')) {
+            outerOffset = parseInt(this.$container.data('padding'));
+        }
+
+        if (String(width).indexOf('%') > -1) {
+            imagesPerRow = Math.floor(100 / parseInt(width));
+            spacing = (offset * (imagesPerRow - 1)) + outerOffset * 2;
+            width = (this.$container.width() - spacing) / 100 * parseInt(width);
+        }
+
+       if (this.$container.data('columns-number')) {
             columnsNumber = this.$container.data('columns-number');
-            width = Math.floor((this.$container.width() - (columnsNumber - 1) * spacing) / columnsNumber);
+            width = Math.floor((this.$container.width() - (columnsNumber - 1) * offset) / columnsNumber);
         };
 
-        if(!this.$container.data('offset')) {
-            this.$container.data('offset', 0);
-        }
 
         if (this.$container.data('width') !== 'auto' && !this.$qsEnable) {
             this.$elements.filter(':visible').wookmark({
@@ -2172,8 +2184,9 @@
                 fillEmptySpace: false,
                 flexibleWidth:  true,
                 itemWidth:      width,
-                offset:         this.$container.data('offset'),
+                offset:         offset,
                 align:          this.$container.data('area-position'),
+                outerOffset:    outerOffset,
                 onLayoutChanged: function() {
                     setTimeout(function() {
                         self.$container.trigger('wookmark.changed');
@@ -2201,7 +2214,6 @@
             this.$container.find('.gg-colorbox').colorbox({
                 fadeOut: this.$container.data('popup-fadeOut'),
                 fixed:  true,
-                innerHeight: '90%',
                 maxHeight: '95%',
                 maxWidth: '95%',
                 rel: 'grid-gallery',
@@ -2252,7 +2264,6 @@
                 color = this.hex2rgb(popupBackground);
                 rgba = 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',.95)';
                 style = '#pbOverlay { background-image:none!important;background-color:'+ rgba +'!important;}';
-                console.log(style);
             };
 
              if(popupType == 'colorbox') {
@@ -2894,6 +2905,7 @@
             this.hidePopupCaptions();
             this.preventImages();
             this.initWookmark();
+
             this.correctMargin();
             this.hideTitleTooltip();
 

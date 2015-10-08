@@ -119,10 +119,7 @@
                     preset = $container.find('#presetValue').val();
 
                 if (!title) {
-                    $container.find('input[name="title"]').notify('Gallery name can\'t be empty!', {
-                        position: 'top left',
-                        className: 'error'
-                    });
+                    $.jGrowl('Gallery name can\'t be empty!');
                     return false;
                 }
 
