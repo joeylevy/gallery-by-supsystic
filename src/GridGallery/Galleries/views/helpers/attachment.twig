@@ -9,7 +9,7 @@
 		{% set height = settings.area.photo_height %}
 	{% endif %}
 
-	{% if settings.area.grid == 0 or settings.area.grid == '2' or settings.area.grid == '3' %}
+	{% if settings.area.grid == 0 or settings.area.grid == 3 %}
 		{% set crop = 1 %}
 	{% else %}
 		{% set height = null %}

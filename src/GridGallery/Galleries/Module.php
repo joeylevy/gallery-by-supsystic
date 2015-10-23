@@ -29,20 +29,12 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         add_action($prefix . 'gallery_delete', array($resources, 'deleteByGalleryId'));
 
         /* Delete attachment */
-        add_action(
-            'grid_gallery_delete_image',
-            array(
-                $resources,
-                'deleteByResourceId'
-            )
+        add_action('grid_gallery_delete_image', 
+            array($resources, 'deleteByResourceId')
         );
 
-        add_action(
-            'gg_delete_photo_id',
-            array(
-                $resources,
-                'deletePhotoById'
-            )
+        add_action('gg_delete_photo_id',
+            array($resources, 'deletePhotoById')
         );
 
         add_image_size('gg_gallery_thumbnail', 450, 250, true);
@@ -60,13 +52,19 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
 
         $function = new Twig_SimpleFunction('translate', array($this->getController(), 'translate'));
 
-        $twig = $this->getEnvironment()
-            ->getTwig();
-
+        $twig = $this->getEnvironment()->getTwig();
         $twig->addFilter($pregReplaceFilter);
         $twig->addFilter($httpFilter);
         $twig->addFunction($function);
+
+        // Widget
         add_action('widgets_init', array($this, 'registerWidget'));
+
+        // Cache dir
+        $this->cacheDirectory = $this->getConfig()->get('plugin_cache_galleries');
+
+        add_action('wp_footer', array($this, 'addFrontendCss'));
+        add_action('wp_footer', array($this, 'addFrontendJs'));
 
         // It allows to extract settings for presets.
         // It will be removed in next version.
@@ -272,6 +270,12 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
 	 */
 	public function getGallery($attributes)
 	{
+
+        $id = $attributes['id'];
+        $cachePath = $this->cacheDirectory . DIRECTORY_SEPARATOR . $id;
+        if (file_exists($cachePath)) {
+            return file_get_contents($cachePath);
+        }
         // Backward compatible with pro version 2.1.5. 
         // In case when user have old pro version installed and new free we return old gallery realization.
         if ($this->getConfig()->get('is_pro') && $this->getConfig()->get('pro_plugin_version') === null) {
@@ -280,15 +284,20 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
 
 		if ($init = $this->initGallery($attributes)) {
 			extract($init);
-			return $this->render('@galleries/shortcode/gallery.twig',
-				array(
-					'gallery' => $gallery,
-					'settings' => is_object($settings) ? $settings->data : $settings,
-					'colorbox' => $this->getEnvironment()->getModule('colorbox')
-					->getLocationUrl(),
-					'mobile' => isset($settings->data['box']['mobile']) ? $settingsModel->isMobile($settings->data['box']['mobile']) :  null,
-					)
-				);
+
+            $renderData = $this->render('@galleries/shortcode/gallery.twig',
+                array(
+                    'gallery' => $gallery,
+                    'settings' => is_object($settings) ? $settings->data : $settings,
+                    'colorbox' => $this->getEnvironment()->getModule('colorbox')
+                    ->getLocationUrl(),
+                    'mobile' => isset($settings->data['box']['mobile']) ? $settingsModel->isMobile($settings->data['box']['mobile']) :  null,
+                )
+            );
+            if (isset($this->cacheDirectory)) {
+                file_put_contents($cachePath, $renderData);
+            }
+            return $renderData;
 		}
 	}
 
@@ -331,8 +340,6 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
 			$settings->data['area']['position'] = $position;
 		}
 
-		add_action('wp_footer', array($this, 'addFrontendCss'));
-		add_action('wp_footer', array($this, 'addFrontendJs'));
 
 		if (property_exists($gallery, 'photos') && is_array($gallery->photos)) {
 			$position = new GridGallery_Photos_Model_Position();
@@ -416,9 +423,6 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
 
             $settings->data['area']['position'] = $position;
         }
-
-        add_action('wp_footer', array($this, 'addFrontendCss'));
-        add_action('wp_footer', array($this, 'addFrontendJs'));
 
         if (property_exists($gallery, 'photos') && is_array($gallery->photos)) {
             $position = new GridGallery_Photos_Model_Position();
@@ -625,4 +629,4 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
     }
 }
 
-require_once('Model/widget.php'); 
+require_once('Model/widget.php');

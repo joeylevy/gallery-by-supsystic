@@ -475,13 +475,11 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         $galleries = $this->getModel('galleries');
         $gallery = $galleries->getById($galleryId);
 
-
         return $this->response(
             '@galleries/choose_image.twig',
             array(
                 'gallery' => $gallery,
-                'photos' => $this->getModel('photos')->getAllWithoutFolders(),
-                'folders' => $this->getModel('folders')->getAll(),
+                'photos' => $gallery->photos,
                 'viewType' => $request->query->get('view', 'list'),
             )
         );
@@ -554,21 +552,21 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
     public function saveSettingsAction(Rsc_Http_Request $request)
     {
         /** @var GridGallery_Galleries_Model_Settings $settings */
+        $galleryId = $request->query->get('gallery_id');
         $settings = $this->getModel('settings');
         $stats = $this->getEnvironment()->getModule('stats');
         $config = $this->getEnvironment()->getConfig();
-        $previewImage = get_option('previewImageId');
 
-        $settings->settingsDiff($stats, $request->query->get('gallery_id'), $request->post->all());
+        $settings->settingsDiff($stats, $galleryId, $request->post->all());
         $data = $settings->getCatsFromPreset($request->post->all(), $config);
         $data = $settings->getPagesFromPreset($data, $config);
-        if($previewImage) {
-            $data['previewImage'] = $previewImage;
+        
+        $settings->save($galleryId, $data);
+
+        $cachePath = $this->getConfig()->get('plugin_cache_galleries') . DIRECTORY_SEPARATOR . $galleryId;
+        if (file_exists($cachePath)) {
+            unlink($cachePath);
         }
-        $settings->save(
-            $request->query->get('gallery_id'),
-            $data
-        );
 
         return $this->redirect(
             $this->generateUrl(

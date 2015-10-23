@@ -26,13 +26,13 @@
                         <h3 class="gallery-title">{{ gallery.title|title }}</h3>
                         <div class="image">
                             {#<a href="{{ environment.generateUrl('galleries', 'view', { 'gallery_id': gallery.id }) }}">#}
-                            {% set cover = get_attachment(gallery.photos[0].attachment.id, '450', '220', 'true') %}
+                            {% set cover = get_attachment(gallery.photos[0].attachment.id, '350', '220', 'true') %}
 
                             {% if cover|length < 1 %}
                                 {% if gallery.settings.posts.postCover|length > 1 %}
                                     {% set cover = gallery.settings.posts.postCover %}
                                 {% else %}
-                                    {% set cover = 'http://placehold.it/450x220&text=' ~ gallery.title %}
+                                    {% set cover = 'http://placehold.it/350x220&text=' ~ gallery.title %}
                                 {% endif %}
                             {% endif %}
                             <img src="{{ cover }}" alt="{{ gallery.title }}" width="350px" height="220px"/>

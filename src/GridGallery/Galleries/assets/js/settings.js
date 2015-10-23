@@ -1011,8 +1011,6 @@
                 }
 
                 this.setProp('figure', { borderRadius: $value.val() + unitValue });
-                this.setProp('figcaption', { borderRadius: $value.val() + unitValue });
-                this.setProp('figure img', { borderRadius: $value.val() + unitValue });
 
             }, this))
             .trigger('change');
@@ -1312,7 +1310,7 @@
             });
             this.setProp('figcaption', { fontFamily: '"' + fontFamily + '"' + ', serif' });
         }, this)).trigger('change');
-
+        
         $(getSelector(fields.position)).on('change', $.proxy(function (e) {
             var position = $(getSelector(fields.position)).val(), wrap = $('div#preview > figure > figcaption  div.grid-gallery-figcaption-wrap');
             wrap.css('vertical-align', position);

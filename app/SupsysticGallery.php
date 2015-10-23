@@ -30,7 +30,7 @@ class SupsysticGallery
 
         /* Create new plugin $environment */
         $pluginPath = dirname(dirname(__FILE__));
-        $environment = new Rsc_Environment('sgg', '1.4.7', $pluginPath);
+        $environment = new Rsc_Environment('sgg', '1.4.9', $pluginPath);
 
         /* Configure */
         $environment->configure(
@@ -180,6 +180,7 @@ class SupsysticGallery
             'tmp' => '/grid-gallery',
             'log' => '/grid-gallery/log',
             'cache' => '/grid-gallery/cache',
+            'cache_galleries' => '/grid-gallery/cache/galleries',
             'cache_twig' => '/grid-gallery/cache/twig',
         );
 
@@ -198,6 +199,7 @@ class SupsysticGallery
     protected function makeDirectory($directory)
     {
         $uploads = wp_upload_dir();
+
         $basedir = $uploads['basedir'];
         if (!is_dir($dir = $basedir . $directory)) {
             if (false === mkdir($dir, 0775, true)) {

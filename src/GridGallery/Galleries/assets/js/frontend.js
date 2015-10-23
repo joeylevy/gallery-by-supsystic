@@ -2084,9 +2084,6 @@
         autoInit = autoInit || false;
 
         this.$container  = $(selector);
-        this.$container.css({
-        	opacity: '0',
-        });
         this.$elements   = this.$container.find('figure.grid-gallery-caption').fadeIn();
         this.initialMargin = this.$elements.first().css('margin-bottom');
         this.$navigation = this.$container.find('nav.grid-gallery-nav');
@@ -2168,11 +2165,21 @@
             imagesPerRow = Math.floor(100 / parseInt(width));
             spacing = (offset * (imagesPerRow - 1)) + outerOffset * 2;
             width = (this.$container.width() - spacing) / 100 * parseInt(width);
+            $.each(this.$container.find('img'), function() {
+                aspectRatio = $(this).width() / $(this).height();
+                $(this).width(width);
+                $(this).height(width / aspectRatio);
+            });
         }
 
        if (this.$container.data('columns-number')) {
-            columnsNumber = this.$container.data('columns-number');
-            width = Math.floor((this.$container.width() - (columnsNumber - 1) * offset) / columnsNumber);
+            columnsNumber = parseInt(this.$container.data('columns-number'));
+            spacing = (offset * (columnsNumber - 1)) + outerOffset * 2;
+            width = (this.$container.width() - spacing) / 100 * Math.floor(100 / columnsNumber);
+            this.$container.find('img').css({
+                width: width,
+                height: 'auto'
+            });
         };
 
 
@@ -2897,7 +2904,7 @@
             
             this.setMouseShadow();
             this.setImageOverlay();
-            this.setIconsPosition();
+            
             this.setOverlayTransparency();
 
             this.showCaption();
@@ -2905,6 +2912,7 @@
             this.hidePopupCaptions();
             this.preventImages();
             this.initWookmark();
+            this.setIconsPosition();
 
             this.correctMargin();
             this.hideTitleTooltip();
@@ -2917,10 +2925,11 @@
                 });
             }
 
-            this.$container.css({
-            	opacity: '1',
-				'transition': 'all 0.5s ease-out'
-			});
+            this.$container.find('.gallery-loading').hide();
+            $.merge(this.$container.find('.grid-gallery-photos'), this.$navigation).css({
+                opacity: '1',
+                transition: 'all 0.5s ease-out'
+            });
 
             $(document).trigger("GalleryAfterInit", this);
 

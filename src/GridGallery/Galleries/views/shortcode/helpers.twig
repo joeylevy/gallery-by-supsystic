@@ -68,7 +68,11 @@
 
 {% set galleryType %}
 	{% if settings.thumbnail.overlay.enabled == 'false' %}
-		none
+		{% if settings.icons is defined and settings.icons.enabled == 'true' %}
+			icons
+		{% else %}
+			none
+		{% endif %}
 	{% else %}
 		{% if settings.thumbnail.overlay.personal == 'true' %}
 			{{ photo.attachment.captionEffect|default(settings.thumbnail.overlay.effect) }}
@@ -121,7 +125,7 @@
 				{% set height = settings.area.photo_height %}
 			{% endif %}
 		
-			{% if settings.area.grid == 0 or settings.area.grid == '2' or settings.area.grid == '3' %}
+			{% if settings.area.grid == 0 or settings.area.grid == 3 %}
 				{% set crop = 1 %}
 			{% else %}
 				{% set height = null %}
@@ -133,15 +137,19 @@
 				alt="{% if photo.attachment.alt is not empty %}{{ photo.attachment.alt }}{% else %}{{ photo.attachment.title }}{% endif %}"
 				title="{% if photo.attachment.description is not empty %}{{ photo.attachment.description }}{% else %}{{ photo.attachment.title }}{% endif %}"
 				data-caption="{% if photo.attachment.caption is not empty %}{{ photo.attachment.caption }}{% else %}{{ photo.attachment.title }}{% endif %}"
-				style="border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};"
+				style="
+				{% if settings.area.photo_width_unit == 0 and settings.area.photo_width is not empty %}
+				width:{{ settings.area.photo_width }}px;
+				{% endif %}
+				{% if settings.area.photo_height_unit == 0 and settings.area.photo_height is not empty %}
+				height:{{ settings.area.photo_height }}px;
+				{% endif %}
+				"
 				{% endblock %}
 			/>
 		</div>
 
 		{% set figcaptionStyle %}
-
-			border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};
-
 			{% block figcaption_style %}
 				{% if settings.icons is defined and settings.icons.enabled == 'true' %}
 					font-family:{{ settings.thumbnail.overlay.font_family }};

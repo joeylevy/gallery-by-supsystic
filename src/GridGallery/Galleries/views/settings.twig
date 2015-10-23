@@ -108,6 +108,14 @@
             </ul>
         </section>
         {% if gallery.photos is not empty %}
+            <div style="
+            {% if gallery.settings.area.photo_width_unit == 0 and gallery.settings.area.photo_width is not empty %}
+                width:{{ gallery.settings.area.photo_width }}px;
+            {% endif %}
+            margin: 10px auto;
+            max-width: 380px; 
+            clear:both;
+            ">
             <figure class="grid-gallery-caption" data-grid-gallery-type="center" style="float: none !important;">
                 
             {% if gallery.settings.previewImage is not empty %}
@@ -115,16 +123,17 @@
             {% else %}
                 {% set cover = attachment.image(gallery.photos[0].attachment.id, gallery.settings)%}
             {% endif %}
-                
-             <img src="{{ cover }}" data-src="{{ 'holder.js/350x200?theme=simple&text=' ~ gallery.title }}" alt="{{ gallery.title }}" style="max-height: 250px; max-width: 380px; width: auto; height: auto; border-radius: {{ settings.thumbnail.border.radius ~ settings.thumbnail.border.radius_unit|replace(['px', '%']) }};"/>
-                <figcaption style="{{ figcaptionStyle|trim }}">
-                    <div style="display: table; height: 100%; width: 100%;">
-                        <div class="grid-gallery-figcaption-wrap" style="display: table-cell;">
-                            <span>Gallery by Supsystic</span>
+
+                <img src="{{ cover }}" data-src="{{ 'holder.js/350x250?theme=simple&text=' ~ gallery.title }}" alt="{{ gallery.title }}" style="width: auto; height: auto;"/>
+                    <figcaption style="{{ figcaptionStyle|trim }}">
+                        <div style="display: table; height: 100%; width: 100%;">
+                            <div class="grid-gallery-figcaption-wrap" style="display: table-cell;">
+                                <span>Gallery by Supsystic</span>
+                            </div>
                         </div>
-                    </div>
-                </figcaption>
+                    </figcaption>
             </figure>
+            </div>
 
             <a href="{{ environment.generateUrl('galleries', 'choosePreviewImage', { 'gallery_id': gallery.id }) }}" class="button button-primary button-hero" id="gg-btn-choose" style="margin-top: 20px">
                 <i class="fa fa-fw fa-desktop"></i>
@@ -165,6 +174,7 @@
 
         {{ form.open('post', environment.generateUrl('galleries', 'saveSettings', { 'gallery_id': gallery.id }), { 'id': 'form-settings' }) }}
         <input id="currentPresetTitle" name="title" type="hidden" value="{{ settings.title|default('') }}"/>
+        <input name="previewImage" type="hidden" value="{{ gallery.settings.previewImage }}"/>
 
         <div data-tab="area">
             {% block area %}

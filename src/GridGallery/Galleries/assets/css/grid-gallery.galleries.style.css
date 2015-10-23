@@ -315,9 +315,10 @@ input.cmn-toggle-round:checked + label:after {
     outline: 4px solid #2ea2cc;
 }
 
-#effectsPreview figure {
+#transitionPreview figure, #effectsPreview figure {
     cursor: pointer;
     margin: 10px;
+    display: inline-block;
 }
 
 .select-element {

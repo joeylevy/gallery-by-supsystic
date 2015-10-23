@@ -72,10 +72,17 @@
 			style="width:{{ settings.area.width ~ settings.area.width_unit|replace(['px', '%']) }};height:{{ settings.area.height | default('auto') }}{% if settings.area.height != 'auto' %}px;/*overflow:hidden*/{% endif %};{% if settings.area.position == '1' or settings.area.position == 'left'  %}float: left{% endif %}{% if settings.area.position == '2' or settings.area.position == 'right' %}float:right{% endif %}{% if  settings.area.position == 'center' %}margin-left:auto;margin-right:auto;{% endif %}
 			{% if settings.fullscreen.enabled %}position: fixed; z-index: 9999999; top: 0; left: 0; background-color: white;{% else %}position:relative;{% endif %}"
 		{% endblock %}>
+		<div class="gallery-loading">
+			<div class="blocks">
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+			</div>
+		</div>
 
 		{% block photos_before %}
 		{% endblock %}
-
 		<section 
 			{% block photos_attributes %}               
 				id="photos-{{ gallery.id }}" 
@@ -96,19 +103,14 @@
 		{% endblock %}
 
 	</section>
-
 	<!-- Gallery by Supsystic plugin -->
 	<script type="text/javascript">
 
 		window.galleryLoaded = (function() {
 			{% if settings.box.theme != 'theme_6' and settings.box.theme != 'theme_7' %}
-				jQuery('head').append(
-						'<link rel="stylesheet" type="text/css" href="{{ colorbox }}/jquery-colorbox/themes/{{ settings.box.theme|default("theme_1") }}/colorbox.css">'
-				);
+				jQuery('head').append('<link rel="stylesheet" type="text/css" href="{{ colorbox }}/jquery-colorbox/themes/{{ settings.box.theme|default("theme_1") }}/colorbox.css">');
 			{% else %}
-				jQuery('head').append(
-					'<link rel="stylesheet" type="text/css" href="{{ colorbox }}/jquery-colorbox/themes/theme_1/colorbox.css">'
-				);
+				jQuery('head').append('<link rel="stylesheet" type="text/css" href="{{ colorbox }}/jquery-colorbox/themes/theme_1/colorbox.css">');
 			{% endif %}
 
 			jQuery('.gg-video').colorbox({
