@@ -248,6 +248,8 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
             );
         }
 
+        
+
         $galleries = new GridGallery_Galleries_Model_Galleries();
         $gallery = $galleries->getById($gid);
 
@@ -267,6 +269,8 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
                 )
             )
         );*/
+        $this->cleanCache($gallery->id);
+
 		return $this->response(
 			'ajax',
 			array(
@@ -563,10 +567,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         
         $settings->save($galleryId, $data);
 
-        $cachePath = $this->getConfig()->get('plugin_cache_galleries') . DIRECTORY_SEPARATOR . $galleryId;
-        if (file_exists($cachePath)) {
-            unlink($cachePath);
-        }
+        $this->cleanCache($galleryId);
 
         return $this->redirect(
             $this->generateUrl(
@@ -913,7 +914,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         } else {
             $currentDate = new DateTime();
             $days = floor(($currentDate->format('U') - $showNotice['date']->format('U')) / (60*60*24));
-            if ($days > 7 && $showNotice['is_shown'] != 1) {
+            if ($days > 7 && $showNotice['is_shown'] != true) {
                 $show = true;
             }
         }
@@ -925,7 +926,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
     }
 
     public function checkNoticeButtonAction(Rsc_Http_Request $request) {
-        $code  = $request->post->get('buttonCode');
+        $code  = 'is_shown';
         $showNotice = get_option('showGalleryRevNotice');
 
         if($code == 'is_shown') {
@@ -1082,6 +1083,41 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
                 array(
                     'image' => $image
                 )
+            )
+        );
+    }
+
+    public function cleanCache($galleryId)
+    {
+        $cachePath = $this->getConfig()->get('plugin_cache_galleries') . 
+        DIRECTORY_SEPARATOR . $galleryId;
+        if (file_exists($cachePath)) {
+            unlink($cachePath);
+        }
+    }
+
+    public function getGalleriesListAction(Rsc_Http_Request $request)
+    {
+        $galleries = $this->getModel('galleries');
+
+        return $this->response(
+            Rsc_Http_Response::AJAX, array(
+                'list' => $galleries->getList(),
+            )
+        );
+    }
+
+    public function importSettingsAction(Rsc_Http_Request $request)
+    {
+        $settingsModel = $this->getModel('settings');
+        $from = $request->post->get('from');
+        $to = $request->post->get('to');
+        $settings = $settingsModel->get($from);
+        $settingsModel->save($to, $settings->data);
+
+        return $this->response(
+            Rsc_Http_Response::AJAX, array(
+                'success' => true,
             )
         );
     }

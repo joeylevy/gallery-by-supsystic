@@ -351,7 +351,11 @@
             $(this).parents('form.photo-editor').trigger('submit');
         });
 
-        $('form.photo-editor input:checkbox').on('change', function () {
+        // $('form.photo-editor input:checkbox').on('change', function () {
+        //     $(this).parents('form.photo-editor').trigger('submit');
+        // });
+
+        $('form.photo-editor input:checkbox').on('ifToggled', function(event) {
             $(this).parents('form.photo-editor').trigger('submit');
         });
 

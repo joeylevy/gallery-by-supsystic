@@ -362,12 +362,10 @@
                 if(response.show) {
                     self.initNoticeDialog();
 
-                    $('#reviewNotice [data-statistic-code]').on('click', function() {
-                        var code = $(this).data('statistic-code');
+                    $.merge($('#reviewNotice [data-statistic-code]'), $('#reviewNotice').prev().find('button')).on('click', function() {
 
                         $.post(window.wp.ajax.settings.url,
                             {
-                                buttonCode: code,
                                 action: 'grid-gallery',
                                 route: {
                                     module: 'galleries',
@@ -863,6 +861,65 @@
         };
     };
 
+    Controller.prototype.initImportSettingDialog = function () {
+
+        galleryId = parseInt(this.getParameterByName('gallery_id'), 10);
+
+        $.get(window.wp.ajax.settings.url, {
+            action: 'grid-gallery',
+            route: {
+                module: 'galleries',
+                action: 'getGalleriesList'
+            }
+        }).success(function (response) {
+            if (response.list) {
+                $.each(response.list, function (i, item) {
+                    if (galleryId != item.id) {
+                        $('#settingsImportDialog .list').append($('<option>', {
+                            value: item.id,
+                            text: item.title
+                        }));
+                    }
+                });
+            }
+        });
+
+        var $wrapper = $('#settingsImportDialog');
+
+        $wrapper.dialog({
+            autoOpen: false,
+            modal:    true,
+            width:    350,
+            buttons:  {
+                Cancel: function () {
+                    $(this).dialog('close');
+                },
+
+                Import: function () {
+                    $.post(window.wp.ajax.settings.url, {
+                        action: 'grid-gallery',
+                        route: {
+                            module: 'galleries',
+                            action: 'importSettings'
+                        },
+                        from: $(this).find('.list').val(),
+                        to: galleryId
+                    }).success(function(response) {
+                        if (response.success) {
+                            window.location.reload();
+                        }
+                    });
+                }
+            }
+        });
+
+        $('#openSettingsImportDialog').on('click', function(event) {
+            event.preventDefault();
+            $wrapper.dialog('open');
+        });
+
+    };
+
     $(document).ready(function () {
         var qs = new URI().query(true), controller;
 
@@ -880,6 +937,7 @@
             controller.initEffectPreview();
 
             controller.initShadowDialog();
+            controller.initImportSettingDialog();
             controller.initShadowSelect();
             controller.openShadowDialog();
 
@@ -1246,9 +1304,13 @@
 
         $(getSelector(fields.bg)).bind('change', $.proxy(function (e) {
             var color = hexToRgb($(e.currentTarget).val());
+            backgroundColor = 'transparent';
+            if (color) {
+                backgroundColor = 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + 
+                    (1 - $(getSelector(fields.opacity)).val() / 10) + ')';
+            }
             this.setProp('figcaption', {
-                backgroundColor: 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + 
-                    (1 - $(getSelector(fields.opacity)).val() / 10) + ')'
+                backgroundColor: backgroundColor
             });
         }, this)).trigger('change');
 

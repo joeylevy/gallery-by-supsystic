@@ -135,11 +135,12 @@
             </figure>
             </div>
 
-            <a href="{{ environment.generateUrl('galleries', 'choosePreviewImage', { 'gallery_id': gallery.id }) }}" class="button button-primary button-hero" id="gg-btn-choose" style="margin-top: 20px">
+            <a href="{{ environment.generateUrl('galleries', 'choosePreviewImage', { 'gallery_id': gallery.id }) }}" class="button button-primary button-hero" id="gg-btn-choose" style="margin-top: 20px;clear:both;">
                 <i class="fa fa-fw fa-desktop"></i>
                 {{ translate('Choose image for preview') }}
             </a>
         {% else %}
+            <div style="clear: both;"></div>
             <h2 style="text-align: center;">
                 {{ translate("There're no images in the gallery.") }}<br>
                 <a id="import-to-gallery" href="#">Add Images</a>
@@ -149,6 +150,9 @@
                 {{ importTypes.show(400, gallery.id) }}
             </div>
         {% endif %}
+        
+        <div style="clear: both;"></div>
+        
 
         <div class="shortcode-wrap" style="margin-top: 20px">
             <div class="shortcode">{{ translate('Shortcode:') }} <input type="text" id="shortcode" class="gallery-shortcode" value="[{{ environment.config.get('shortcode_name') }} id={{ gallery.id }} position=center]" onclick="this.select();" size="42" style="font-size: 12px;" readonly></div>
@@ -160,7 +164,10 @@
         </small>
 
         <div class="separator"></div>
-
+        
+        <div style="margin: 20px 0">
+            <a class="button" id="openSettingsImportDialog" href=""><i class="fa fa-copy"></i> {{ translate('Import settings') }}</a>
+        </div>
     </div>
 
 {% endblock %}
@@ -1007,12 +1014,17 @@
                     <button class="button button-primary"><a href="//wordpress.org/support/view/plugin-reviews/gallery-by-supsystic?rate=5#postform" target="_blank" class="bupSendStatistic" data-statistic-code="is_shown" style="color:#000000 !important;">Ok, you deserve it</a></button>
                 </li>
                 <li>
-                    <button class="button button-primary"><span class="toeLikeLink bupSendStatistic" data-statistic-code="date">Nope, maybe later</span></button>
+                    <button class="button button-primary"><span class="toeLikeLink bupSendStatistic" data-statistic-code="is_shown">Nope, maybe later</span></button>
                 </li>
                 <li>
                     <button class="button button-primary"><span class="toeLikeLink bupSendStatistic" data-statistic-code="is_shown">I already did</span></button>
                 </li>
             </ul>
+        </div>
+
+        <div id="settingsImportDialog" title="Import" hidden>
+            <p>Import settings from gallery</p>
+            <select class="list"></select>
         </div>
 
     </div>

@@ -1,3 +1,15 @@
+.wraper {
+    margin: 10px 20px 0 2px;
+}
+
+.wraper  h1, .wraper h2 {
+    font-size: 23px;
+    font-weight: 400;
+    padding: 9px 15px 4px 0;
+    line-height: 29px;
+    margin: 0;
+}
+
 .supsystic-plugin {
     width: 100%;
 	font-size: 15px;
@@ -457,7 +469,7 @@ h2 .nav-tab.active{
     color: #000000;
 }
 
-.wrap h2 {
+.wraper h2 {
     padding: 9px 0 0 0 !important;
     /*border-bottom:1px solid #e4e4e4;*/
 }
