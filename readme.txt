@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: add album, add gallery, add pictures, admin, AJAX, album, banner rotator, best gallery, best gallery plugin, comments, content gallery, Facebook, filterable gallery, foto, foto gallery, fotoalbum, fotogalerie, free photo gallery, fullscreen gallery, fullscreen slider, galeri, galerie, Galleria, galleries, gallery, galery, gallery decription, gallery image, gallery lightbox, gallery shortcode, gallery slider, grid, gird, grid gallery, image, image album, image gallery, image lightbox, image rotate, image slider, image slideshow, images, images gallery, instagram, jquery, jquery gallery, lightbox, media, mosaic, multiple pictures, polaroid, polaroid gallery, photo, photo album, photo albums, photo gallery, photoalbum, photogallery, photography, photos, photoset, picture, pictures, post feed gallery, responsive, responsive gallery, responsive wordpress photo gallery, sidebar, Simple gallery, slide, slide show, slideshow, thumbnail, thumbnail view, thumbnails, thumbs, upload images, upload photos, video gallery, videos, view images, view pictures, vimeo, watermarking, watermarks, website gallery, widget gallery, wordpress gallery, wordpress gallery plugin, wordpress photo gallery plugin, wp gallery, wp gallery plugins, youtube
 Tested up to: 4.3.1
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show images, posts and videos
 
@@ -22,7 +22,7 @@ Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Res
 * Horizontal, Vertical, Fixed and Mobile photo gallery layouts
 * Add links, icons and captions
 * Post Feed Photo Gallery and Video Gallery
-* Carousel gallery and polaroid gallery
+* Carousel Gallery and Polaroid gallery
 * HTML caption option
 * Available with any WordPress Theme
 
@@ -46,7 +46,7 @@ You have an incredible opportunity to get PRO version of the photo gallery for f
 * French
 * Dutch
 * Finnish
-* Hebrew(Israel)
+* Hebrew (Israel)
 * Portuguese (Brazil)
 * Greek
 * Russian
@@ -286,6 +286,12 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 6. [Polaroid Gallery](http://supsystic.com/polaroid-gallery/ "Polaroid WordPress Gallery Plugin")
 
 == Changelog ==
+= 1.5.1 / 03.11.2015 =
+
+ * Photo gallery cashing fix
+ * Increase gallery speed and image animation
+ * Minor fixes 
+
 = 1.5.0 / 27.10.2015 =
 
  * Added feature to import settings from other galleries

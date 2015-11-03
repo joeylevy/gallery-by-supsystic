@@ -113,6 +113,8 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         if ( !$gallery = $this->getModel('galleries')->getById((int)$galleryId) ) {
             $this->redirect($this->generateUrl('galleries', 'index'));
         }
+        
+        $this->cleanCache($galleryId);
 
         $settings = $this->getModel('settings')->get($galleryId);
         if (!is_object($settings) || null === $settings->data) {
@@ -269,7 +271,6 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
                 )
             )
         );*/
-        $this->cleanCache($gallery->id);
 
 		return $this->response(
 			'ajax',
@@ -566,8 +567,6 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         $data = $settings->getPagesFromPreset($data, $config);
         
         $settings->save($galleryId, $data);
-
-        $this->cleanCache($galleryId);
 
         return $this->redirect(
             $this->generateUrl(
