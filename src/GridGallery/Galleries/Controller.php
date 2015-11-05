@@ -73,7 +73,6 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
     public function previewAction(Rsc_Http_Request $request)
     {
         $this->saveEvent('galleries.preview');
-
         $galleryId = $request->query->get('gallery_id');
         $shortcode = $this->getEnvironment()
             ->getConfig()
@@ -90,6 +89,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
             ));
         }
 
+        $this->cleanCache($galleryId);
         return $this->response('@galleries/preview.twig', array(
             'base_url' => get_bloginfo('wpurl'),
             'post_id' => $postId,
@@ -113,8 +113,6 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         if ( !$gallery = $this->getModel('galleries')->getById((int)$galleryId) ) {
             $this->redirect($this->generateUrl('galleries', 'index'));
         }
-        
-        $this->cleanCache($galleryId);
 
         $settings = $this->getModel('settings')->get($galleryId);
         if (!is_object($settings) || null === $settings->data) {
@@ -141,6 +139,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
             $gallery->photos = $position->sort($gallery->photos);
         }
 
+        $this->cleanCache($galleryId);
         return $this->response(
             '@galleries/view.twig',
             array(
@@ -415,7 +414,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
                 $this->getErrorResponseData($e->getMessage())
             );
         }
-
+        $this->cleanCache($galleryId);
         return $this->redirect($this->generateUrl('galleries'));
     }
 
@@ -567,6 +566,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         $data = $settings->getPagesFromPreset($data, $config);
         
         $settings->save($galleryId, $data);
+        $this->cleanCache($galleryId);
 
         return $this->redirect(
             $this->generateUrl(
@@ -1113,7 +1113,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         $to = $request->post->get('to');
         $settings = $settingsModel->get($from);
         $settingsModel->save($to, $settings->data);
-
+        $this->cleanCache($to);
         return $this->response(
             Rsc_Http_Response::AJAX, array(
                 'success' => true,

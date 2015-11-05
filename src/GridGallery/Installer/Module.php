@@ -123,10 +123,10 @@ class GridGallery_Installer_Module extends GridGallery_Core_Module
                 return;
             }
             $files = array_diff(scandir($dir), array('.', '..')); 
-            foreach ($files as $file) { 
-                (is_dir("$dir/$file")) ? cleanDir("$dir/$file") : unlink("$dir/$file"); 
+            foreach ($files as $file) {
+                (is_dir("$dir/$file")) ? cleanDir("$dir/$file") : @unlink("$dir/$file"); 
             } 
-            return rmdir($dir); 
+            return @rmdir($dir); 
         }
 
         return cleanDir($config->get('plugin_cache_twig'));
