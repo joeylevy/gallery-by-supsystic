@@ -136,6 +136,8 @@ class GridGallery_Photos_Controller extends GridGallery_Core_BaseController
         $stats = $this->getEnvironment()->getModule('stats');
         $stats->save('photos.add');
 
+        $this->getModule('galleries')->cleanCache($request->post->get('galleryId'));
+
         if (!$photos->add($attachment->ID, $request->post->get('folder_id', 0))) {
             $response = array(
                 'error' => true,
@@ -439,7 +441,7 @@ class GridGallery_Photos_Controller extends GridGallery_Core_BaseController
         $description = $request->post->get('description');
         $link = $request->post->get('link');
         $captionEffect = $request->post->get('captionEffect');
-
+        
         /** @var GridGallery_Photos_Model_Photos $photos */
         $photos = $this->getModel('photos');
 
@@ -450,6 +452,8 @@ class GridGallery_Photos_Controller extends GridGallery_Core_BaseController
             'link'          => $link,
             'captionEffect' => $captionEffect,
         ));
+
+        $this->getModule('galleries')->cleanCache($request->post->get('gallery_id'));
 
         return $this->response(Rsc_Http_Response::AJAX);
     }

@@ -89,7 +89,6 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
             ));
         }
 
-        $this->cleanCache($galleryId);
         return $this->response('@galleries/preview.twig', array(
             'base_url' => get_bloginfo('wpurl'),
             'post_id' => $postId,
@@ -139,7 +138,6 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
             $gallery->photos = $position->sort($gallery->photos);
         }
 
-        $this->cleanCache($galleryId);
         return $this->response(
             '@galleries/view.twig',
             array(
@@ -414,7 +412,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
                 $this->getErrorResponseData($e->getMessage())
             );
         }
-        $this->cleanCache($galleryId);
+        $this->getModule('galleries')->cleanCache($galleryId);
         return $this->redirect($this->generateUrl('galleries'));
     }
 
@@ -436,6 +434,8 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
                 $this->getErrorResponseData($e->getMessage())
             );
         }
+
+        $this->getModule('galleries')->cleanCache($request->post->get('gallery_id'));
 
         return $this->response('ajax', $this->getSuccessResponseData('Deleted successfully.'));
 
@@ -465,26 +465,6 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
                 'photos' => $this->getModel('photos')->getAllWithoutFolders(),
                 'folders' => $this->getModel('folders')->getAll(),
                 'viewType' => $request->query->get('view', 'block'),
-            )
-        );
-    }
-
-    public function choosePreviewImageAction(Rsc_Http_Request $request)
-    {
-        if (null === $galleryId = $request->query->get('gallery_id')) {
-            // 404 - gallery not found
-        }
-
-        /** @var GridGallery_Galleries_Model_Galleries $galleries */
-        $galleries = $this->getModel('galleries');
-        $gallery = $galleries->getById($galleryId);
-
-        return $this->response(
-            '@galleries/choose_image.twig',
-            array(
-                'gallery' => $gallery,
-                'photos' => $gallery->photos,
-                'viewType' => $request->query->get('view', 'list'),
             )
         );
     }
@@ -566,8 +546,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         $data = $settings->getPagesFromPreset($data, $config);
         
         $settings->save($galleryId, $data);
-        $this->cleanCache($galleryId);
-
+        $this->getModule('galleries')->cleanCache($galleryId);
         return $this->redirect(
             $this->generateUrl(
                 'galleries',
@@ -907,12 +886,14 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
 
         if (!$showNotice) {
             update_option('showGalleryRevNotice', array(
-                'date' => new DateTime(),
+                'date' => time(),
                 'is_shown' => false
             ));
         } else {
-            $currentDate = new DateTime();
-            $days = floor(($currentDate->format('U') - $showNotice['date']->format('U')) / (60*60*24));
+            if ($showNotice['date'] instanceof DateTime) {
+                $showNotice['date'] = $showNotice['date']->getTimestamp();
+            }
+            $days = floor((time() - $showNotice['date']) / (60*60*24));
             if ($days > 7 && $showNotice['is_shown'] != true) {
                 $show = true;
             }
@@ -931,7 +912,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         if($code == 'is_shown') {
             $showNotice['is_shown'] = true;
         } else {
-            $showNotice['date'] = new DateTime();
+            $showNotice['date'] = time();
         }
 
         $this->sendUsageStat($code);
@@ -1086,15 +1067,6 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         );
     }
 
-    public function cleanCache($galleryId)
-    {
-        $cachePath = $this->getConfig()->get('plugin_cache_galleries') . 
-        DIRECTORY_SEPARATOR . $galleryId;
-        if (file_exists($cachePath)) {
-            unlink($cachePath);
-        }
-    }
-
     public function getGalleriesListAction(Rsc_Http_Request $request)
     {
         $galleries = $this->getModel('galleries');
@@ -1113,7 +1085,7 @@ class GridGallery_Galleries_Controller extends GridGallery_Core_BaseController
         $to = $request->post->get('to');
         $settings = $settingsModel->get($from);
         $settingsModel->save($to, $settings->data);
-        $this->cleanCache($to);
+        $this->getModule('galleries')->cleanCache($to);
         return $this->response(
             Rsc_Http_Response::AJAX, array(
                 'success' => true,

@@ -63,9 +63,6 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         // Cache dir
         $this->cacheDirectory = $this->getConfig()->get('plugin_cache_galleries');
 
-        add_action('wp_footer', array($this, 'addFrontendCss'));
-        add_action('wp_footer', array($this, 'addFrontendJs'));
-
         // It allows to extract settings for presets.
         // It will be removed in next version.
         if ($this->getRequest()->query->has('extract')) {
@@ -152,7 +149,6 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         $env = $this->getEnvironment();
 
         if ($env->isModule('galleries', 'saveSettings')) {
-
             return;
         }
 
@@ -203,10 +199,6 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             ),
         );
 
-        foreach ($backendStyleSheets as $style) {
-            $ui->add(new GridGallery_Ui_BackendStylesheet($style['id'], $style['link']));
-        }
-
         $backendScripts = array(
             array(
                 'id' => 'gg-galleries-index-js',
@@ -254,8 +246,23 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
             ),
         );
 
-        foreach ($backendScripts as $script) {
-            $ui->add(new GridGallery_Ui_BackendJavascript($script['id'], $script['link']));
+        if ($env->isPluginPage()) {
+            foreach ($backendStyleSheets as $stylesheet) {
+                $stylesheet = new GridGallery_Ui_BackendStylesheet(
+                    $stylesheet['id'], $stylesheet['link']
+                );
+
+                $stylesheet->setVersion($env->getConfig()->get('plugin_version'));
+                $ui->add($stylesheet);
+            }
+
+            foreach ($backendScripts as $script) {
+                $script = new GridGallery_Ui_BackendJavascript(
+                    $script['id'], $script['link']
+                );
+                $script->setVersion($env->getConfig()->get('plugin_version'));
+                $ui->add($script);
+            }
         }
 
         $ui->add(new GridGallery_Ui_Javascript('jquery'));
@@ -263,6 +270,11 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         //$this->_loadPluginsTextDomain();
     }
 
+    public function loadFrontendAssets()
+    {
+        add_action('wp_footer', array($this, 'addFrontendCss'));
+        add_action('wp_footer', array($this, 'addFrontendJs'));
+    }
 	/**
 	 * Shortcode callback.
 	 * @param  array $attributes An array of the shortcode parameters.
@@ -270,10 +282,12 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
 	 */
 	public function getGallery($attributes)
 	{
+        $this->loadFrontendAssets();
+
 
         $id = $attributes['id'];
         $cachePath = $this->cacheDirectory . DIRECTORY_SEPARATOR . $id;
-        if (file_exists($cachePath)) {
+        if (file_exists($cachePath) && $this->getEnvironment()->isProd()) {
             return file_get_contents($cachePath);
         }
         // Backward compatible with pro version 2.1.5. 
@@ -626,6 +640,16 @@ class GridGallery_Galleries_Module extends Rsc_Mvc_Module
         $menu->addSubmenuItem('galleries', $submenuGalleries)
             ->register();
 
+    }
+
+    
+    public function cleanCache($galleryId)
+    {
+        $cachePath = $this->getConfig()->get('plugin_cache_galleries') . 
+        DIRECTORY_SEPARATOR . $galleryId;
+        if (file_exists($cachePath)) {
+            unlink($cachePath);
+        }
     }
 }
 

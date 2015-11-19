@@ -117,14 +117,8 @@
             clear:both;
             ">
             <figure class="grid-gallery-caption" data-grid-gallery-type="center" style="float: none !important;">
-                
-            {% if gallery.settings.previewImage is not empty %}
-                {% set cover = attachment.image(gallery.settings.previewImage, gallery.settings) %}
-            {% else %}
-                {% set cover = attachment.image(gallery.photos[0].attachment.id, gallery.settings)%}
-            {% endif %}
 
-                <img src="{{ cover }}" data-src="{{ 'holder.js/350x250?theme=simple&text=' ~ gallery.title }}" alt="{{ gallery.title }}" style="width: auto; height: auto;"/>
+                <img src="{{ attachment.image(gallery.photos[0].attachment.id, gallery.settings) }}" data-src="{{ 'holder.js/350x250?theme=simple&text=' ~ gallery.title }}" alt="{{ gallery.title }}" style="width: auto; height: auto;"/>
                     <figcaption style="{{ figcaptionStyle|trim }}">
                         <div style="display: table; height: 100%; width: 100%;">
                             <div class="grid-gallery-figcaption-wrap" style="display: table-cell;">
@@ -135,10 +129,6 @@
             </figure>
             </div>
 
-            <a href="{{ environment.generateUrl('galleries', 'choosePreviewImage', { 'gallery_id': gallery.id }) }}" class="button button-primary button-hero" id="gg-btn-choose" style="margin-top: 20px;clear:both;">
-                <i class="fa fa-fw fa-desktop"></i>
-                {{ translate('Choose image for preview') }}
-            </a>
         {% else %}
             <div style="clear: both;"></div>
             <h2 style="text-align: center;">
@@ -242,23 +232,28 @@
                 <div class="separator"></div>
             {% endblock %}
 
-            {# Show more ad #}
-            {# <div name="icons">
+            <div class="load-more-button-preview">
                 <h1 style="line-height: 1;">
-                    {{ translate("Load your images on scroll or button press") }}
+                    {{ translate("Load more gallery images with scroll or button") }}
                     </br>
-                    <a class="button get-pro"
-                       href="{{ environment.getProUrl('utm_source=plugin&utm_medium=show-more&utm_campaign=gallery') }}">Get
-                        PRO for 29$</a>
+                    <a class="button get-pro" href="{{ environment.getProUrl('utm_source=plugin&utm_medium=show-more&utm_campaign=gallery') }}" target="_blank">{{ environment.translate('Get PRO') }}</a>
                 </h1>
-
                 <div>
-                    <a href="{{ environment.getProUrl('?utm_source=plugin&utm_medium=show-more&utm_campaign=gallery') }}">
-                        <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/icons_pro.jpg" />
+                    <a href="{{ environment.getProUrl('utm_source=plugin&utm_medium=show-more&utm_campaign=gallery') }}" target="_blank">
+                        <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/load_more_button_pro.jpg" />
                     </a>
                 </div>
+                <div class="separator"></div>
             </div>
-            <div class="separator"></div> #}
+            <div class="custom-buttons-preview">
+                <table class="form-table">
+                    <thead>
+                        {{ form.row(translate('Custom Buttons'),
+                            form.button('buttons-presets-editor-preview', 'Show preset Editor', {'class': 'button button-primary'}), 'custom-buttons-preview', true)}}
+                    </thead>
+                </table>
+                <div class="separator"></div>
+            </div>
 
             {% block border %}
                 <table class="form-table" name="border">
@@ -1025,6 +1020,13 @@
         <div id="settingsImportDialog" title="Import" hidden>
             <p>Import settings from gallery</p>
             <select class="list"></select>
+        </div>
+
+        <div class="buttons-edit-preset-dialog-preview" title="{{ translate('Buttons preset editor for Paginations, Categories and Load More buttons') }}">
+             <a href="{{ environment.getProUrl('utm_source=plugin&utm_medium=show-more&utm_campaign=gallery') }}" target="_blank">
+                <img src="{{ environment.module('galleries').getLocationUrl() }}/assets/img/custom_button_icon_pro.jpg" />
+            </a>
+            
         </div>
 
     </div>

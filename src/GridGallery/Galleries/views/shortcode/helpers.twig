@@ -35,7 +35,8 @@
 		gg-video
 	{% endif %}
 
-	{% if settings.box.type == '2' and (photo.attachment.external_link is not defined or photo.attachment.external_link|trim is empty) %}
+	{{ photo.attachment.external_link }}
+	{% if settings.box.type == '2' and (photo.attachment.external_link is not defined or photo.attachment.external_link|trim is empty or (photo.attachment.video is defined and photo.attachment.video|trim is not empty)) %}
 		pbox
 	{% endif %}
 {% endset %}

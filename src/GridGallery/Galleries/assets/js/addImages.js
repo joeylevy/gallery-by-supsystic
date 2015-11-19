@@ -100,44 +100,10 @@
         });
     };
 
-    Controller.prototype.choose = function (event) {
-
-        event.preventDefault();
-
-        var button = event.currentTarget,
-            resources = [],
-            request = app.Ajax.Post({
-                module: 'galleries',
-                action: 'choose'
-            });
-
-        $.each($('[data-observable]:checked'), function (index, checkbox) {
-            var $entity = app.Common.getParentEntity($(checkbox));
-
-            resources.push({
-                id:   $entity.data('entity-id'),
-                type: $entity.data('entity-type')
-            });
-        });
-
-        request.add('resources', resources);
-        request.add('gallery_id', this.getParameterByName('gallery_id'));
-        request.send(function (response, request) {
-
-            if (!response.error) {
-                window.location.href = button.href;
-            }
-
-            if (response.message) {
-                $.jGrowl(response.message);
-            }
-        });
-    };
-
     $(document).ready(function () {
         var queryString = new URI().query(true), controller;
 
-        if (queryString.module !== 'galleries' || (queryString.action !== 'addImages' && queryString.action !== 'choosePreviewImage')) {
+        if (queryString.module !== 'galleries' || queryString.action !== 'addImages') {
             return;
         }
 
@@ -147,7 +113,6 @@
         $('[data-observable]').on('click', $.proxy(controller.changeState, controller));
         $('#gg-btn-select').on('click', $.proxy(controller.selectAll, controller));
         $('[data-button="add"]').on('click', $.proxy(controller.add, controller));
-        $('[data-button="choose"]').on('click', $.proxy(controller.choose, controller));
     });
 
 }(window.SupsysticGallery = window.SupsysticGallery || {}, jQuery));

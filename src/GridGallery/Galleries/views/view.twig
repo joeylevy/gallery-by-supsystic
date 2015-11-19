@@ -118,7 +118,7 @@
             {% endif %}
 
             {% if viewType == 'list' %}
-                {{ view.list_view(entity, sliderSettings) }}
+                {{ view.list_view(entity, sliderSettings, gallery.id) }}
             {% endif %}
 
         {% endif %}

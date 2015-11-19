@@ -1,4 +1,4 @@
-{% macro list_view(entities, sliderSettings) %}
+{% macro list_view(entities, sliderSettings, galleryId) %}
 
     {% import _self as view %}
 
@@ -31,7 +31,7 @@
             {{ view.list_folder(folder) }}
         {% endfor %}
         {% for image in entities.images %}
-            {{ view.list_image(image, sliderSettings) }}
+            {{ view.list_image(image, sliderSettings, galleryId) }}
         {% else %}
             {# No images. #}
         {% endfor %}
@@ -160,10 +160,10 @@
     </tr>
 {% endmacro %}
 
-{% macro list_image(image, sliderSettings) %}
+{% macro list_image(image, sliderSettings, galleryId) %}
     {% set nonProMsg = 'Available in PRO' %}
 
-    <tr data-entity data-entity-id="{{ image.id }}" data-entity-type="photo" data-entity-info="{{ image|json_encode }}">
+    <tr data-entity data-entity-id="{{ image.id }}" data-settings="{{ sliderSettings|json_encode }}" data-entity-type="photo" data-entity-info="{{ image|json_encode }}">
         <th scope="row" class="check-column">
             <label class="screen-reader-text"
                    for="cb-select-{{ image.id }}">{{ translate('Select %s')|format(image.attachment.title) }}</label>
@@ -182,8 +182,8 @@
                     {% set src = image.attachment.sizes.thumbnail.url %}
                     {% set sizes = { 'width': 60, 'height': 60 } %}
                 {% endif %}
-                <img width="{{ sizes.width }}" height="{{ sizes.height }}" data-original="{{ src }}"
-                     class="attachment-80x60 supsystic-lazy" alt="{{ image.attachment.title }}">
+                <img width="75" height="75" data-original="{{ src }}"
+                     class="attachment-thumbnail supsystic-lazy" alt="{{ image.attachment.title }}">
             </a>
         </td>
         <td class="title column-title">
@@ -299,6 +299,7 @@
                 </p>
 
                 <input name="attachment_id" value="{{ image.attachment.id }}" type="hidden"/>
+                <input name="gallery_id" value="{{ galleryId }}" type="hidden"/>
                 <input name="action" value="grid-gallery" type="hidden"/>
                 <input name="route[module]" value="photos" type="hidden"/>
                 <input name="route[action]" value="updateAttachment" type="hidden"/>

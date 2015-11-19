@@ -97,10 +97,9 @@
                         </div>
                         <div class="shortcode-wrap">
                             <div class="gg-shortcode">
-                                {{ translate('Shortcode:') }}<br /><br /> {# <input type="text" id="shortcode-{{ gallery.id }}" class="ggCopyTextCode" value="[supsystic-gallery id='{{ gallery.id }}' position='center']"> #}
-                                <span id="shortcode-{{ gallery.id }}" class="ggCopyTextCode">[supsystic-gallery id='{{ gallery.id }}' position='center']</span><br /><br />
-                                {{ translate('PHPCode:') }}<br /><br /> {# <input type="text" id="phpcode-{{ gallery.id }}" class="ggCopyTextCode" value='{{ '<?php echo do_shortcode(\'[supsystic-gallery id=' ~ gallery.id ~ ' position="center"]\') ?>' }}'> #}
-                                <span id="phpcode-{{ gallery.id }}" class="ggCopyTextCode">{{ '<?php echo do_shortcode(\'[supsystic-gallery id=' ~ gallery.id ~ ' position="center"]\') ?>' }}</span><br /><br />
+                                {{ translate('Shortcode:') }}<br /><br /> <input type="text" id="shortcode-{{ gallery.id }}" class="ggCopyTextCode shortcode" value="[supsystic-gallery id='{{ gallery.id }}' position='center']"><br /><br />
+                                {{ translate('PHPCode:') }}<br /><br /> 
+                                <input type="text" id="phpcode-{{ gallery.id }}" class="ggCopyTextCode phpcode" value='{{ '<?php echo do_shortcode(\'[supsystic-gallery id=' ~ gallery.id ~ ' position="center"]\') ?>' }}'>
                             </div>
                         </div>
                     </div>

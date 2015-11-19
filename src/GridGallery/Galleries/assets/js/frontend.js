@@ -2926,7 +2926,7 @@
             }
 
             this.$container.find('.gallery-loading').hide();
-            $.merge(this.$container.find('.grid-gallery-photos'), this.$navigation).css({
+            this.$container.find('.grid-gallery-photos').css({
                 opacity: '1',
                 transition: 'all 0.5s ease-out'
             });

@@ -920,6 +920,32 @@
 
     };
 
+    Controller.prototype.initCustomButtonsPrevieDialog = function () {
+
+        $buttonsEditPresetDialog = $('.buttons-edit-preset-dialog-preview');
+
+        $buttonsEditPresetDialog.dialog({
+            autoOpen: false,
+            modal:    true,
+            width:    880,
+            buttons:  {
+                Cancel: function () {
+                    $(this).dialog('close');
+                },
+                'Get Pro': function () {
+                    url = $(this).find('a').attr('href');
+                    window.open(url);
+                    $(this).dialog('close');
+                }
+            }
+        });
+
+        $('#custom-buttons-preview input').on('click', function(event) {
+            event.preventDefault();
+            $buttonsEditPresetDialog.dialog('open');
+        });
+    };
+
     $(document).ready(function () {
         var qs = new URI().query(true), controller;
 
@@ -963,6 +989,8 @@
             controller.areaNotifications();
             controller.setInputColor();
             controller.setScroll();
+
+            controller.initCustomButtonsPrevieDialog();
             
             // Save as preset dialog
             $('#btnSaveAsPreset').on('click', controller.openSaveDialog);

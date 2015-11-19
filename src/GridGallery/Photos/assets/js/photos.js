@@ -347,8 +347,13 @@
             });
         });
 
-        $('form.photo-editor input').on('focusout', function () {
-            $(this).parents('form.photo-editor').trigger('submit');
+        $('form.photo-editor input').on('keyup', function () {
+            var $this = $(this);
+            clearTimeout($this.data('timer'));
+            $this.data('timer', setTimeout(function(){
+                $this.removeData('timer');
+                $this.parents('form.photo-editor').trigger('submit');
+            }, 1500));
         });
 
         // $('form.photo-editor input:checkbox').on('change', function () {
