@@ -2229,7 +2229,7 @@
                 slideshowAuto: this.$container.data('popup-slideshowAuto'),
                 slideshowSpeed: this.$container.data('popup-slideshow-speed'),
                 speed: 350,
-                transition: this.$container.data('popup-transition'),
+                transition: 'elastic',
                 onComplete: function() {
                     $.colorbox.resize();
                 }
@@ -2538,22 +2538,29 @@
     Gallery.prototype.setMouseShadow = (function() {
         var shadow = null,
             $selector = null,
-            prevStyle = this.$container.find('.grid-gallery-caption').css('box-shadow');
+            $captions = this.$container.find('.grid-gallery-caption'),
+            boxShadow = $captions.filter(':first').css('box-shadow'),
+            showOver = function(event) {
+                if (event.type === 'mouseenter') {
+                    $(this).css('box-shadow', boxShadow);
+                } else {
+                    $(this).css('box-shadow', 'none');
+                }
+            },
+            hideOver = function(event) {
+                if (event.type === 'mouseenter') {
+                    $(this).css('box-shadow', 'none');
+                } else {
+                    $(this).css('box-shadow', boxShadow);
+                }
+            };
 
-        if(this.isMouseShadowShow()) {
-            shadow = '5px 5px 5px #888';
-            $selector = this.$container.find('.shadow-show');
-        } else {
-            shadow = 'none';
-            $selector = this.$container.find('.shadow-hide');
+        if ($captions.is('.shadow-show')) {
+            $captions.css('box-shadow', 'none');
+            $captions.on('hover', showOver);
+        } else if ($captions.is('.shadow-hide')) {
+            $captions.on('hover', hideOver);
         }
-
-        $selector.on('mouseover', function() {
-            $(this).css( 'box-shadow', shadow);
-        });
-        $selector.on('mouseleave', function() {
-            $(this).css( 'box-shadow', String(prevStyle));
-        });
     });
 
     Gallery.prototype.initPagination = (function () {

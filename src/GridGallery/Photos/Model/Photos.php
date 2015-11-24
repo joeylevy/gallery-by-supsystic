@@ -299,7 +299,10 @@ class GridGallery_Photos_Model_Photos extends Rsc_Mvc_Model
 
     public function getMetadataAliases()
     {
-        return array( 'link'   => '_grid_gallery_link' );
+        return array(
+            'link'   => '_grid_gallery_link',
+            'target' => '_grid_gallery_target'
+        );
     }
 
     public function getMetadataField($alias)
@@ -324,6 +327,20 @@ class GridGallery_Photos_Model_Photos extends Rsc_Mvc_Model
             (int)$attachmentId,
             'captionEffect',
             $captionEffect
+        );
+    }
+
+    /**
+     * Sets a target.
+     * @param int    $attachmentId Attachment ID.
+     * @param string $target       Target attribute (_self, _blank, etc).
+     */
+    public function setTarget($attachmentId, $target)
+    {
+        update_post_meta(
+            (int)$attachmentId,
+            $this->getMetadataField('target'),
+            $target
         );
     }
 

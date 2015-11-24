@@ -125,6 +125,12 @@ class GridGallery_Photos_Module extends Rsc_Mvc_Module
             true
         );
 
+        $data['target'] = get_post_meta(
+            $id,
+            $photos->getMetadataField('target'),
+            true
+        );
+
         return $data;
     }
 

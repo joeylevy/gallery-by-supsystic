@@ -30,7 +30,7 @@ class SupsysticGallery
 
         /* Create new plugin $environment */
         $pluginPath = dirname(dirname(__FILE__));
-        $environment = new Rsc_Environment('sgg', '1.5.3', $pluginPath);
+        $environment = new Rsc_Environment('sgg', '1.5.4', $pluginPath);
 
         /* Configure */
         $environment->configure(
@@ -38,13 +38,13 @@ class SupsysticGallery
                 'optimizations' => 0,
                 'environment' => $this->getPluginEnvironment(),
                 'default_module' => 'galleries',
-                'lang_domain' => 'grid-gallery',
+                'lang_domain' => 'sgg',
                 'lang_path' => plugin_basename(dirname(__FILE__)) . '/langs',
                 'plugin_prefix' => 'GridGallery',
                 'plugin_source' => dirname(dirname(__FILE__)) . '/src',
                 'plugin_menu' => array(
-                    'page_title' => __('Gallery by Supsystic', 'supsystic-gallery'),
-                    'menu_title' => __('Gallery by Supsystic', 'supsystic-gallery'),
+                    'page_title' => __('Gallery by Supsystic', 'sgg'),
+                    'menu_title' => __('Gallery by Supsystic', 'sgg'),
                     'capability' => 'manage_options',
                     'menu_slug' => 'supsystic-gallery',
                     'icon_url' => 'dashicons-format-gallery',

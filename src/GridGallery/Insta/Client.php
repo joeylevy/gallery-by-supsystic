@@ -155,13 +155,20 @@ class GridGallery_Insta_Client
             $this->accessToken = get_option('insta_token');
             $this->user = get_option('insta_user');
         }
-        $response = wp_remote_get(
-            self::API_URL . "/users/{$this->user['id']}/media/recent/?access_token={$this->accessToken}"
-        );
-        $result = $this->getResponseBody($response);
+
+        return $this->getAllInstagramImages(self::API_URL . "/users/{$this->user['id']}/media/recent/?access_token={$this->accessToken}");
+    }
+
+    public function getAllInstagramImages($url) {
         $imagesUrls = array();
+        $response = wp_remote_get($url);
+        $result = $this->getResponseBody($response);
         foreach ($result['data'] as $post) {
             $imagesUrls[] = $post['images']['standard_resolution']['url'];
+        }
+        if ($result['pagination']) {
+            array_splice($imagesUrls, -1, 0, 
+                $this->getAllInstagramImages($result['pagination']['next_url']));
         }
         return $imagesUrls;
     }

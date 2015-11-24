@@ -430,32 +430,6 @@
         };
     };
 
-    Controller.prototype.initTransitionDialog = function () {
-        $('#transitionDialog').dialog({
-            autoOpen: false,
-            modal:    true,
-            width:    570,
-            buttons:  {
-                Cancel: function () {
-                    $(this).dialog('close');
-                }
-            }
-        });
-
-        Controller.prototype.initTransitionSelect = function () {
-            var $wrapper = $('#transitionPreview');
-
-            $wrapper.find('figure').on('click', function() {
-                var id = String($(this).attr('id'));
-                $('[name="box[transition]"]').attr('value', id);
-                $('#transitionDialog').dialog('close');
-            });
-        };
-
-        Controller.prototype.openTransitionsDialog = function () {
-            $('#transitionDialog').dialog('open');
-        };
-    };
 
     Controller.prototype.setScroll = function() {
         var $settingsWrap = $('.settings-wrap');
@@ -676,17 +650,19 @@
     }); 
 
     Controller.prototype.togglePopUp = (function() {
-        $table = $('#box').closest('table')
+        $popupTable = $('#box').closest('table')
 
         $('#box-enable').on('change', function () {
-            $table.find('tbody').show();
+            $popupTable.find('tbody').show();
         });
 
         $('#box-disable').on('change', function () {
-            $table.find('tbody').hide();
+            $popupTable.find('tbody').hide();
         });
 
-        $table.find('thead input[type="radio"]:checked').trigger('click').trigger('change');
+        $popupTable.find('thead input[type="radio"]:checked')
+            .trigger('click')
+            .trigger('change');
     });
 
     Controller.prototype.toggleIcons = (function() {
@@ -956,7 +932,6 @@
             controller.initDeleteDialog();
             controller.initLoadDialog();
             controller.initThemeDialog();
-            controller.initTransitionDialog();
             controller.initEffectsDialog();
             controller.initIconsDialog();
 
@@ -976,7 +951,6 @@
 
 
             controller.initThemeSelect();
-            controller.initTransitionSelect();
 
             controller.savePosts();
             controller.savePages();
@@ -1018,7 +992,6 @@
 
             // Open effects dialog
             $('#chooseEffect').on('click', controller.openEffectsDialog);
-            $('#chooseTransition').on('click', controller.openTransitionsDialog);
 
             // Cover
             $('.covers img').on('click', controller.selectCover);
@@ -1036,7 +1009,7 @@
 
 
     function ImagePreview(enabled) {
-        this.$window = $('#preview.gallery-preview').show().css('opacity', 0);
+        this.$window = $('#preview.gallery-preview');
 
         if (enabled) {
             this.init();
@@ -1209,9 +1182,10 @@
         }
 
         $(selectors.join(',')).on('change paste keyup', function() {
-            updateShadowProp({
-                boxShadow: $(fieldNames.x).val() + 'px ' + $(fieldNames.y).val() + 'px ' + $(fieldNames.blur).val() + 'px ' + $(fieldNames.color).val()
-            });
+            boxShadow = $(fieldNames.x).val() + 'px ' + $(fieldNames.y).val() + 'px ' + $(fieldNames.blur).val() + 'px ' + $(fieldNames.color).val();
+            _this.$window.find('figure')
+            .attr('data-box-shadow', boxShadow)
+            .trigger('shadowChange');
         });
 
         $('[name="use_shadow"]').on('change', function() {
@@ -1229,87 +1203,83 @@
     });
 
     ImagePreview.prototype.initMouseShadow = (function() {
-        var shadow = $('figure.grid-gallery-caption').css('box-shadow'),
-            self = this,
-            wrapper = {
-                element: '#preview figure.grid-gallery-caption',
-                $node: $('#preview figure.grid-gallery-caption'),
-                toggleEvents: function() {
-                    this.$node.off('mouseover');
-                    this.$node.off('mouseleave');
-                }
-            },
-            showOver = function() {
-                wrapper.toggleEvents();
-                shadow = wrapper.$node.css('box-shadow');
-                wrapper.$node.on('mouseover', function () {
-                    $(this).css('box-shadow', '5px 5px 5px #888');
-                });
-                wrapper.$node.on('mouseleave',function () {
-                    $(this).css('box-shadow', shadow);
-                });
-            },
-            hideOver = function() {
-                wrapper.toggleEvents();
-                shadow = wrapper.$node.css('box-shadow');
-                wrapper.$node.on('mouseover', function () {
-                    $(this).css('box-shadow', 'none');
-                });
-                wrapper.$node.on('mouseleave', function () {
-                    $(this).css('box-shadow', shadow);
-                });
-            },
+        var self = this,
+        wrapper = {
+            element: '#preview figure.grid-gallery-caption',
+            $node: $('#preview figure.grid-gallery-caption'),
+            toggleEvents: function() {
+                this.$node.off('hover', showOver);
+                this.$node.off('hover', hideOver);
+            }
+        },
+        shadow = wrapper.$node.data('box-shadow'),
+        showOver = function(event) {
+            if (event.type === 'mouseenter') {
+                $(this).css('box-shadow', shadow);
+            } else {
+                $(this).css('box-shadow', 'none');
+            }
+        },
+        hideOver = function(event) {
+            if (event.type === 'mouseenter') {
+                $(this).css('box-shadow', 'none');
+            } else {
+                $(this).css('box-shadow', shadow);
+            }
+        };
+
+        wrapper.$node.on('shadowChange', function() {
+            shadow = $(this).attr('data-box-shadow');
+            $('#useMouseOverShadow').trigger('change');
+        });
+
+        $('#useMouseOverShadow').on('change',function() {
             value = parseInt($('#useMouseOverShadow option:selected').val(), 10);
+            wrapper.toggleEvents();
 
-        if(value == 1) {
-            showOver();
-        }
-        if(value == 2) {
-            hideOver();
-        }
-
-        $('#useMouseOverShadow').on('change', $.proxy(function() {
-            value = parseInt($('#useMouseOverShadow option:selected').val(), 10);
-
-            if(value == 1) {
-                showOver();
+            if (value == 1) {
+                wrapper.$node.css('box-shadow', 'none');
+                wrapper.$node.on('hover', showOver);
             }
 
-            if(value == 2) {
-                hideOver();
+            if (value == 2) {
+                wrapper.$node.css('box-shadow', shadow);
+                wrapper.$node.on('hover', hideOver);
             }
 
             if(!value) {
-                wrapper.toggleEvents();
+                wrapper.$node.css('box-shadow', shadow);
             }
 
-        }, this));
+        }).trigger('change');
+
     });
 
     ImagePreview.prototype.initOverlayShadow = (function() {
         var wrapper = {
             element: '.grid-gallery-caption img',
-            $node: $('figure.grid-gallery-caption')
-        }, $toggle = $('[name="thumbnail[shadow][overlay]"]');
-
-        $toggle.on('change', $.proxy(function() {
-            var value = parseInt($('option:selected', $toggle).val(), 10);
-
-            if(value) {
-                this.setProp(wrapper.element , {opacity: '0.2'});
-                wrapper.$node.on('mouseover', $.proxy(function () {
-                    this.setProp(wrapper.element , {opacity: '1.0'});
-                }, this));
-                wrapper.$node.on('mouseleave', $.proxy(function () {
-                    this.setProp(wrapper.element , {opacity: '0.2'});
-                }, this));
+            $node: $('#preview figure.grid-gallery-caption')
+        }, 
+        $toggle = $('[name="thumbnail[shadow][overlay]"]'),
+        self = this,
+        overlayShadow = function(event) {
+            if (event.type === 'mouseenter') {
+                self.setProp(wrapper.element, {opacity: '1.0'});
             } else {
-                this.setProp(wrapper.element , {opacity: '1.0'});
-                wrapper.$node.off('mouseover');
-                wrapper.$node.off('mouseleave');
+                 self.setProp(wrapper.element, {opacity: '0.2'});
             }
+        };
 
-        }, this)).trigger('change');
+        $toggle.on('change', function() {
+            var value = parseInt($('option:selected', $toggle).val(), 10);
+            wrapper.$node.off('hover', overlayShadow);
+            if (value) {
+                self.setProp(wrapper.element, {opacity: '0.2'});
+                wrapper.$node.on('hover', overlayShadow);
+            } else {
+                self.setProp(wrapper.element , {opacity: '1.0'});
+            }
+        }).trigger('change');
     });
 
     ImagePreview.prototype.previewCaptionHide = function() {
@@ -1320,7 +1290,7 @@
         this.initCaptionEffects();
         $('#preview figcaption').hide();
 
-    }
+    };
 
     ImagePreview.prototype.previewCaptionShow = function(fields) {
         $('#preview figcaption').show();
@@ -1402,8 +1372,8 @@
         }, this)).trigger('change');
         
         $(getSelector(fields.position)).on('change', $.proxy(function (e) {
-            var position = $(getSelector(fields.position)).val(), wrap = $('div#preview > figure > figcaption  div.grid-gallery-figcaption-wrap');
-            wrap.css('vertical-align', position);
+            var position = $(getSelector(fields.position)).val();
+            this.setProp('.grid-gallery-figcaption-wrap', { verticalAlign: position });
         }, this)).trigger('change');
 
         var hideFigcaptionTimer;
@@ -1501,12 +1471,11 @@
                 imageStyle: figure.find('img').attr('style')
             }
         };
-
         figure.each(function() {
 
             $(this).removeAttr('style').attr('style', self.defaultStyles.figureStyle);
             $(this).find('img').removeAttr('style').attr('style', self.defaultStyles.imageStyle);
-            $(this).off('mouseenter mouseleave');
+            // $(this).off('mouseenter mouseleave');
             $(this).find('figcaption').removeClass();
 
             if ($(this).data('grid-gallery-type') == 'cube') {
@@ -1533,9 +1502,10 @@
                         .addClass(classHelper);
                 });
 
-            } 
+            }   
 
-            if ($(this).data('grid-gallery-type') == 'polaroid' && $(this).parent().hasClass('gallery-preview')) {
+
+            if ($(this).data('grid-gallery-type') == 'polaroid' && $(this).closest('#preview').length > 0) {
                 frameWidth = 20;
                 $img = $(this).find('img');
                 width = $(this).width() || $img.width();

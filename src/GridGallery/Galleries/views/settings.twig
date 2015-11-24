@@ -61,7 +61,7 @@
     {% import '@galleries/shortcode/style.twig' as style %}
     {% import '@galleries/helpers/attachment.twig' as attachment %}
 
-    <div id="preview" class="gallery-preview" style="display:none;">
+    <div id="preview" class="gallery-preview">
 
         <section class="supsystic-bar-preview" id="single-gallery-toolbar">
             <ul class="supsystic-bar-controls">
@@ -396,10 +396,6 @@
 
                         {{ form.row(translate('Background color'),
                             form.text('box[background]', settings.box.background, {'class':'gg-color-picker'}), 'box-background') }}
-
-                        {{ form.row(translate('Transition'), 
-                            form.button('chooseTransition', translate('Choose effect'), {'class': 'button bordered', 'id': 'chooseTransition'}) ~ form.hidden('box[transition]', settings.box.transition)
-                        ) }}
                         
                         {{ form.row(translate('Slideshow'),
                             form.select('box[slideshow]', {'true': translate('Enable'), 'false': translate('Disable')}, settings.box.slideshow|default('false'), {'style': 'width: auto'}),
@@ -532,12 +528,6 @@
                 settings.thumbnail.overlay.personal|default('false'),
                 { 'style': 'width: auto;' }), 'overlay-personal') }}
 
-                {{ form.row(translate('Position'),
-                    form.select('thumbnail[overlay][position]',
-                {'top': 'Top', 'middle': 'Middle', 'bottom': 'Bottom'},
-                settings.thumbnail.overlay.position,
-                { 'style': 'width: auto;' }), 'overlay-position') }}
-
                 {{ form.row(translate('Background color'),
                 form.text('thumbnail[overlay][background]', settings.thumbnail.overlay.background, {'class':'gg-color-picker'}), 'overlay-background') }}
 
@@ -554,8 +544,14 @@
                 form.input('number','thumbnail[overlay][text_size]', settings.thumbnail.overlay.text_size, { 'style': { 'width': '140px'} })
                 ~ form.select('thumbnail[overlay][text_size_unit]', ['pixels', 'percents', 'ems'], settings.thumbnail.overlay.text_size_unit, { 'style': 'margin-top: -2px; height: 27px' }), 'text-size') }}
 
-                {{ form.row(translate('Text align'),
+                {{ form.row(translate('Text horizontal align'),
                 form.select('thumbnail[overlay][text_align]', {'left': 'Left', 'right': 'Right', 'center': 'Center', 'auto': 'Auto'}, settings.thumbnail.overlay.text_align, { 'style': 'width: auto;' }), 'text-align') }}
+
+                {{ form.row(translate('Text vertical align'),
+                    form.select('thumbnail[overlay][position]',
+                {'top': 'Top', 'middle': 'Middle', 'bottom': 'Bottom'},
+                settings.thumbnail.overlay.position,
+                { 'style': 'width: auto;' }), 'overlay-position') }}
 
                 {{ form.row(translate('Font family'),
                 form.selectv('thumbnail[overlay][font_family]', fontList, settings.thumbnail.overlay.font_family,{ 'style': 'width: auto;' }), 'font-family') }}
@@ -789,13 +785,6 @@
                     {% set bigImageThemes = bigImageThemes|merge({'theme_7': 'Fullscreen popup'}) %}
                 {% endif %}
 
-                {% set transitionEffects = {
-                'fade': 'Fade',
-                'elastic': 'Elastic',
-                'none': 'None',
-                } %}
-
-
                 {% for value, name in bigImageThemes %}
                     <div class="grid-gallery-caption" style="float: left; {% if value == 'theme_2' or value == 'theme_4' or value == 'theme_6' %}margin-left: 15px;{% endif %}; cursor: pointer;">
                         <img data-name="{{ name }}" data-val="{{ value }}" style="width:262px; height: 170px;" class="theme dialog-image"
@@ -885,24 +874,6 @@
                         </figure>
                     {% endfor %}
                 {% endblock %}
-            </div>
-        </div>
-
-        <div id="transitionDialog" title="{{ translate('Select transition') }}">
-            <div id="transitionPreview" style="margin: 10px;">
-                {% for type, name in transitionEffects %}
-                    <figure id="{{ type }}" class="grid-gallery-caption" data-grid-gallery-type="{{ type }}">
-                        <img data-src="holder.js/150x150?theme=industrial&text={{ name }}" class="dialog-image"/>
-                        <figcaption style="{{ figcaptionStyle|trim }}">
-                            <div class="grid-gallery-figcaption-wrap">
-                                <span>{{ name }}</span>
-                            </div>
-                        </figcaption>
-                        <div class="select-element">
-                            {{ translate('Select') }}
-                        </div>
-                    </figure>
-                {% endfor %}
             </div>
         </div>
 

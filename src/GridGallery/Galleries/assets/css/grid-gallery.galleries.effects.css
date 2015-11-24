@@ -1881,6 +1881,7 @@ a.post .grid-gallery-caption {
 
 .grid-gallery-caption[data-grid-gallery-type="polaroid"] img { 
     z-index: 2;
+    position: relative;
 }
 
 .grid-gallery-caption[data-grid-gallery-type="polaroid"] figcaption .grid-gallery-figcaption-wrap {

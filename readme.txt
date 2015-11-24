@@ -3,7 +3,7 @@ Contributors: supsystic.com
 Donate link: http://supsystic.com/plugins/gallery
 Tags: add album, add gallery, add pictures, admin, AJAX, album, banner rotator, best gallery, best gallery plugin, comments, content gallery, Facebook, filterable gallery, foto, foto gallery, fotoalbum, fotogalerie, free photo gallery, fullscreen gallery, fullscreen slider, galeri, galerie, Galleria, galleries, gallery, galery, gallery decription, gallery image, gallery lightbox, gallery shortcode, gallery slider, grid, gird, grid gallery, image, image album, image gallery, image lightbox, image rotate, image slider, image slideshow, images, images gallery, instagram, jquery, jquery gallery, lightbox, media, mosaic, multiple pictures, polaroid, polaroid gallery, photo, photo album, photo albums, photo gallery, photoalbum, photogallery, photography, photos, photoset, picture, pictures, post feed gallery, responsive, responsive gallery, responsive wordpress photo gallery, sidebar, Simple gallery, slide, slide show, slideshow, thumbnail, thumbnail view, thumbnails, thumbs, upload images, upload photos, video gallery, videos, view images, view pictures, vimeo, watermarking, watermarks, website gallery, widget gallery, wordpress gallery, wordpress gallery plugin, wordpress photo gallery plugin, wp gallery, wp gallery plugins, youtube
 Tested up to: 4.3.1
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 
 Ultimate Grid Photo Gallery with visual editor to build photo gallery skins. Responsive mobile ready gallery to show images, posts and videos
 
@@ -286,6 +286,18 @@ Important! Photo gallery plugin shortcode must be added in a text editor page, a
 6. [Polaroid Gallery](http://supsystic.com/polaroid-gallery/ "Polaroid WordPress Gallery Plugin")
 
 == Changelog ==
+= 1.5.4 / 24.11.2015 =
+ * Open link in new window feature moved to free version
+ * Fix bug with gallery icons captions after popup close
+ * Fix Load More images issues
+ * Fix photo gallery dashboard dialog position
+ * Fix palaroid gallery effect on preview bug
+ * Fix bug with gallery main menu translation. Update default gallery translations file
+ * Instagram import list images select on click feature
+ * Fix instagram images import bug
+ * Gallery responsive on Ipad bug fix
+ * Minor responsive gallery bug fixes 
+
 = 1.5.3 / 19.11.2015 =
  * Minor bug fixes 
 

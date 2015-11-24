@@ -51,6 +51,10 @@
                     getResourcesList("{{ id }}");
                 });
 
+                $('.gg-list-item').on('click', function() {
+                    $(this).find('input:checkbox').iCheck('toggle');
+                });
+
                 var button_select = jQuery('#button-select').click(function () {
 
                     jQuery('input:checkbox').each(function () {

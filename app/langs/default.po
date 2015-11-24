@@ -43,16 +43,22 @@ msgstr ""
 msgid "Gallery by Supsystic"
 msgstr ""
 
+msgid "Import images"
+msgstr ""
+
+msgid "Facebook authorization"
+msgstr ""
+
 msgid "Upload your images from the Facebook Media Library"
 msgstr ""
 
 msgid "Login with Facebook"
 msgstr ""
 
-msgid "Upload new images"
+msgid "Return to the gallery"
 msgstr ""
 
-msgid "Import images"
+msgid "Upload new images"
 msgstr ""
 
 msgid "Logout"
@@ -62,6 +68,9 @@ msgid "Select/unselect all photos"
 msgstr ""
 
 msgid "Empty user data."
+msgstr ""
+
+msgid "Flickr authorization"
 msgstr ""
 
 msgid "Upload your images from the Flickr Media Library"
@@ -79,7 +88,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-msgid "Available"
+msgid "Enable"
 msgstr ""
 
 msgid "Disable"
@@ -142,6 +151,9 @@ msgstr ""
 msgid "Show categories"
 msgstr ""
 
+msgid "Hide \"All\" category"
+msgstr ""
+
 msgid "Enable shuffling animation"
 msgstr ""
 
@@ -176,6 +188,9 @@ msgid "Choose preset"
 msgstr ""
 
 msgid "Preset Editor"
+msgstr ""
+
+msgid "Categories order"
 msgstr ""
 
 msgid "Enable pagination"
@@ -265,16 +280,82 @@ msgstr ""
 msgid "Pages preset editor"
 msgstr ""
 
-msgid "Check"
+msgid "Activate License"
+msgstr ""
+
+msgid "Renew License"
+msgstr ""
+
+msgid "Slider by Supsystic"
+msgstr ""
+
+msgid "Congratulations! You have successfully installed and activated PRO version of ' ~ environment.getMenu().getMenuTitle() ~ ' plugin."
+msgstr ""
+
+msgid "Your premium support is expired in ' ~ days ~ ' days"
+msgstr ""
+
+msgid "You will not be able to update your pro version with expired license"
+msgstr ""
+
+msgid "Activate"
 msgstr ""
 
 msgid "Authorization oauth_verifier is not specified."
+msgstr ""
+
+msgid "Tumblr authorization"
 msgstr ""
 
 msgid "Upload your images from the Tumblr Media Library"
 msgstr ""
 
 msgid "Upload from Tumblr"
+msgstr ""
+
+msgid "Images not in albums"
+msgstr ""
+
+msgid "Albums"
+msgstr ""
+
+msgid "Fullscreen"
+msgstr ""
+
+msgid "Load More Button"
+msgstr ""
+
+msgid "Load with scroll"
+msgstr ""
+
+msgid "Load more button text"
+msgstr ""
+
+msgid "Images amount"
+msgstr ""
+
+msgid "Load more amount"
+msgstr ""
+
+msgid "Custom Buttons"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Buttons preset editor for Paginations, Categories and Load More buttons"
+msgstr ""
+
+msgid "Custom class"
+msgstr ""
+
+msgid "Font family"
+msgstr ""
+
+msgid "Border style"
+msgstr ""
+
+msgid "Page "
 msgstr ""
 
 msgid "New gallery successfully created"
@@ -340,7 +421,7 @@ msgstr ""
 msgid "You need to import images to your gallery before you can start using galleries"
 msgstr ""
 
-msgid "Choose image"
+msgid "Selected"
 msgstr ""
 
 msgid "Create new gallery"
@@ -379,10 +460,16 @@ msgstr ""
 msgid "Delete gallery"
 msgstr ""
 
+msgid "Shortcode:"
+msgstr ""
+
+msgid "PHPCode:"
+msgstr ""
+
 msgid "You have not any galleries"
 msgstr ""
 
-msgid "You don't have any galleries yet."
+msgid "You don\'t have any galleries yet."
 msgstr ""
 
 msgid "Want to create one right now?"
@@ -391,7 +478,7 @@ msgstr ""
 msgid "What is a gallery"
 msgstr ""
 
-msgid "<strong>Gallery</strong> — the highest type of entity in the Gallery by Supsystic."
+msgid "<strong>Gallery</strong> &mdash; the highest type of entity in the Gallery by Supsystic."
 msgstr ""
 
 msgid "You can have an unlimited number of galleries, to which you can attach the preloaded pictures."
@@ -400,7 +487,7 @@ msgstr ""
 msgid "Each gallery has a number of display settings and behaviors that you can save to presets and apply to other galleries."
 msgstr ""
 
-msgid "Gallery title can't be empty!"
+msgid "Gallery title can\'t be empty!"
 msgstr ""
 
 msgid "Gallery title:"
@@ -421,10 +508,10 @@ msgstr ""
 msgid "Add images"
 msgstr ""
 
-msgid "Choose image for preview"
+msgid "Select source to import from"
 msgstr ""
 
-msgid "Shortcode:"
+msgid "Import settings"
 msgstr ""
 
 msgid "Gallery Type"
@@ -437,6 +524,9 @@ msgid "Images distance"
 msgstr ""
 
 msgid "Gallery width"
+msgstr ""
+
+msgid "Gallery padding"
 msgstr ""
 
 msgid "Gallery height"
@@ -452,6 +542,9 @@ msgid "Image radius"
 msgstr ""
 
 msgid "Border"
+msgstr ""
+
+msgid "Available"
 msgstr ""
 
 msgid "Border Type"
@@ -493,40 +586,19 @@ msgstr ""
 msgid "Pop-up Image"
 msgstr ""
 
-msgid "Choose theme"
+msgid "Enabled"
 msgstr ""
 
-msgid "Disable Popup"
+msgid "Popup box theme"
+msgstr ""
+
+msgid "Choose theme"
 msgstr ""
 
 msgid "Disable on mobile"
 msgstr ""
 
 msgid "Hide Popup Captions"
-msgstr ""
-
-msgid "Theme"
-msgstr ""
-
-msgid "Transition"
-msgstr ""
-
-msgid "Choose effect"
-msgstr ""
-
-msgid "Elastic"
-msgstr ""
-
-msgid "Fade"
-msgstr ""
-
-msgid "None"
-msgstr ""
-
-msgid "Transition speed"
-msgstr ""
-
-msgid "Close speed"
 msgstr ""
 
 msgid "Slideshow"
@@ -544,16 +616,25 @@ msgstr ""
 msgid "Show caption"
 msgstr ""
 
+msgid "Choose effect"
+msgstr ""
+
+msgid "Personal captions"
+msgstr ""
+
 msgid "Transparency"
 msgstr ""
 
 msgid "Text size"
 msgstr ""
 
-msgid "Text align"
+msgid "Text horizontal align"
 msgstr ""
 
-msgid "Font family"
+msgid "Text vertical align"
+msgstr ""
+
+msgid "Hide image title tooltip"
 msgstr ""
 
 msgid "Categorize images in the gallery"
@@ -598,16 +679,10 @@ msgstr ""
 msgid "Select overlay effect"
 msgstr ""
 
-msgid "Select transition"
-msgstr ""
-
 msgid "Select shadow preset"
 msgstr ""
 
 msgid "Select shadow"
-msgstr ""
-
-msgid "Page "
 msgstr ""
 
 msgid "Choose source"
@@ -652,7 +727,7 @@ msgstr ""
 msgid "Currently this gallery has no images"
 msgstr ""
 
-msgid "Select source to import from"
+msgid "Instagram authorization"
 msgstr ""
 
 msgid "Upload your images from the Instagram Media Library"
@@ -661,10 +736,10 @@ msgstr ""
 msgid "Upload from Instagram"
 msgstr ""
 
-msgid "Your name"
+msgid "Name"
 msgstr ""
 
-msgid "Your email"
+msgid "Email"
 msgstr ""
 
 msgid "Website"
@@ -688,7 +763,10 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-msgid "Type your message"
+msgid "Message"
+msgstr ""
+
+msgid "Hello Supsystic Team!"
 msgstr ""
 
 msgid "Unable to save chosen photo %s: %s"
@@ -697,7 +775,7 @@ msgstr ""
 msgid "New Folder"
 msgstr ""
 
-msgid "The title can't be empty"
+msgid "The title can\'t be empty"
 msgstr ""
 
 msgid "Failed to update position."
@@ -784,7 +862,7 @@ msgstr ""
 msgid "Clear cache"
 msgstr ""
 
-msgid "We don't collect statistics on you, we only collect the errors encountered during use in order to improve our product."
+msgid "We don\'t collect statistics on you, we only collect the errors encountered during use in order to improve our product."
 msgstr ""
 
 msgid "Edit image"
@@ -838,6 +916,9 @@ msgstr ""
 msgid "photos"
 msgstr ""
 
+msgid "Caption effect"
+msgstr ""
+
 msgid "Video"
 msgstr ""
 
@@ -847,26 +928,3 @@ msgstr ""
 msgid "Open in new window."
 msgstr ""
 
-msgid "Welcome to"
-msgstr ""
-
-msgid "Version"
-msgstr ""
-
-msgid "Google"
-msgstr ""
-
-msgid "Wordpress.org"
-msgstr ""
-
-msgid "Reffer a friend"
-msgstr ""
-
-msgid "Find on the web"
-msgstr ""
-
-msgid "Other way"
-msgstr ""
-
-msgid "Thank for check info. Start using plugin"
-msgstr ""

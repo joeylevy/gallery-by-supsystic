@@ -439,6 +439,7 @@ class GridGallery_Photos_Controller extends GridGallery_Core_BaseController
         $attachmentId = $request->post->get('attachment_id');
         $caption = $request->post->get('caption');
         $description = $request->post->get('description');
+        $target = $request->post->get('target', '_self');
         $link = $request->post->get('link');
         $captionEffect = $request->post->get('captionEffect');
         
@@ -451,6 +452,7 @@ class GridGallery_Photos_Controller extends GridGallery_Core_BaseController
             'description'   => $description,
             'link'          => $link,
             'captionEffect' => $captionEffect,
+            'target' => $target
         ));
 
         $this->getModule('galleries')->cleanCache($request->post->get('gallery_id'));

@@ -315,7 +315,7 @@ input.cmn-toggle-round:checked + label:after {
     outline: 4px solid #2ea2cc;
 }
 
-#transitionPreview figure, #effectsPreview figure {
+#effectsPreview figure {
     cursor: pointer;
     margin: 10px;
     display: inline-block;
@@ -348,13 +348,13 @@ input.cmn-toggle-round:checked + label:after {
 }
 
 #preview.gallery-preview {
+    opacity: 0;
     float: left;
     background-color: white;
     position: relative;
     right: 20px;
     width: 420px;
     min-height: 390px;
-    opacity: 1;
     display: inline-block;
     /*box-shadow: 1px 1px 5px #aaa;*/
     -webkit-transition: opacity 500ms;
@@ -586,4 +586,9 @@ div.gg-shortcode {
 
 .load-more-button-preview .button.get-pro {
     margin-bottom: 20px;
+}
+
+.ui-dialog {
+    top: 40px!important;
+    margin-bottom: 40px!important;
 }

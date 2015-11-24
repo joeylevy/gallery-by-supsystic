@@ -75,10 +75,14 @@
 			none
 		{% endif %}
 	{% else %}
-		{% if settings.thumbnail.overlay.personal == 'true' %}
-			{{ photo.attachment.captionEffect|default(settings.thumbnail.overlay.effect) }}
+		{% if settings.icons is defined and settings.icons.enabled == 'true' %}
+			icons
 		{% else %}
-			{{ settings.thumbnail.overlay.effect }}
+			{% if settings.thumbnail.overlay.personal == 'true' %}
+				{{ photo.attachment.captionEffect|default(settings.thumbnail.overlay.effect) }}
+			{% else %}
+				{{ settings.thumbnail.overlay.effect }}
+			{% endif %}
 		{% endif %}
 	{% endif %}
 {% endset %}

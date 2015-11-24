@@ -28,11 +28,10 @@
 			data-padding="{{ settings.area.padding }}"
 			data-quicksand = "{% if settings.quicksand.enabled == '1' %}enabled{% else %}disabled{% endif %}"
 			data-quicksand-duration = "{% if settings.quicksand.duration is not empty %}{{ settings.quicksand.duration }}{% else %}none{% endif %}"
+				data-popup-slideshowAuto = "{{ settings.box.slideshowAuto|default('true') }}"
 				{% if settings.box.type == '0' and mobile != 'true' %}
 					data-popup-type ="colorbox"
 					data-popup-fadeOut = "{{ settings.box.fadeOut|default(300) }}"
-					data-popup-slideshowAuto = "{{ settings.box.slideshowAuto|default('true') }}"
-					data-popup-transition = "{{ settings.box.transition|default("elastic") }}"
 				{% endif %}
 				{% if settings.box.type == '1' and mobile != 'true' and settings.box.enabled|default('true') == 'true' %}
 					data-popup-type = "pretty-photo"
